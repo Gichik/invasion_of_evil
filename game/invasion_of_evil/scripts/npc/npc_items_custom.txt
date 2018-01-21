@@ -1,0 +1,58 @@
+#base "items/vortex_axe.kv"
+
+
+"DOTAAbilities"
+{
+
+	"item_skull_of_evil"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/skull_of_evil"			
+		"Model"							"models/props_gameplay/rune_invisibility01.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "200" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+  		"ItemInitialCharges"			"1"			
+		"ItemStackable" 				"1"	
+		"ItemPermanent" 				"0"			
+		"SideShop" 						"0"
+		//"ItemDisplayCharges" 			"1"	  
+
+	}
+
+	"item_recipe_vortex_axe_second"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_vortex_axe_second"
+		"ItemRequirements"
+		{
+			"01"						"item_vortex_axe"
+		}
+	}
+
+
+}
