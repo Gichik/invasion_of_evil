@@ -68,7 +68,7 @@ function modifier_vortex_axe:OnCreated(data)
 		end
 
 		self.blade_fury_spin_pfx = nil
-		self.speed = 10
+		self.speed = self.parent:GetBaseMoveSpeed()/50
 		self.rotate = 1
 		self.rotateMax = 12
 		self.think = 0.03
@@ -83,16 +83,18 @@ end
 
 
 function modifier_vortex_axe:OnIntervalThink()
-	if self.parent:GetMana() > 0 and self.parent:IsAlive() then
-		self.rotate = self.rotate + 1
-		if self.rotate == self.rotateMax then
-			self.rotate = 1
-			self:ApplyDamage()
-			--self.parent:SpendMana(50, self)
+	if self:GetParent() then
+		if self.parent:GetMana() > 0 and self.parent:IsAlive() then
+			self.rotate = self.rotate + 1
+			if self.rotate == self.rotateMax then
+				self.rotate = 1
+				self:ApplyDamage()
+				--self.parent:SpendMana(50, self)
+			end
+			self:PlayAnimation()
+		else
+			self:Destroy()
 		end
-		self:PlayAnimation()
-	else
-		self:Destroy()
 	end
 end
 
@@ -104,39 +106,45 @@ function modifier_vortex_axe:OnDestroy()
 			ParticleManager:ReleaseParticleIndex(self.blade_fury_spin_pfx)
 			self.blade_fury_spin_pfx = nil
 		end
-		self.parent:StopSound("Hero_Juggernaut.BladeFuryStart")
-		self.parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
+		if self:GetParent() then
+			self.parent:StopSound("Hero_Juggernaut.BladeFuryStart")
+			self.parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
+		end
 	end
 end
 
 
 function modifier_vortex_axe:PlayAnimation()
-	if self.parent:IsAlive() then
-		if self.blade_fury_spin_pfx == nil then
-			self.blade_fury_spin_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
-			ParticleManager:SetParticleControl(self.blade_fury_spin_pfx, 5, Vector(250 * 1.2, 0, 0))
-			self.parent:EmitSound("Hero_Juggernaut.BladeFuryStart")
-		end
-
-		self.parent:SetAngles(0,30*self.rotate,0)
-		self.parent:StartGesture(ACT_DOTA_ATTACK)
-
-		self.curr_pos = self.parent:GetAbsOrigin()
-		self.new_pos = self.parent.new_pos
-		self.new_forward = self.parent.new_forward
-
-		if self.new_pos == Vector(0,0,0) then
-			self.new_pos = self.curr_pos
-		end
-		
-		if self.curr_pos and self.new_pos and self.speed and self.new_forward then
-			if self:ShouldMove(self.curr_pos,self.new_pos) then
-				local vNewStep = self.curr_pos + self.speed*self.new_forward
-		        if GridNav:CanFindPath( self.curr_pos, vNewStep ) then
-					self:GetParent():SetOrigin( vNewStep )
-				end
+	if self:GetParent() then
+		if self:GetParent():IsAlive() then
+			if not self.blade_fury_spin_pfx then
+				self.blade_fury_spin_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+				ParticleManager:SetParticleControl(self.blade_fury_spin_pfx, 5, Vector(250 * 1.2, 0, 0))
+				self.parent:EmitSound("Hero_Juggernaut.BladeFuryStart")
 			end
-		end	
+
+			self.parent:SetAngles(0,30*self.rotate,0)
+			self.parent:StartGesture(ACT_DOTA_ATTACK)
+
+			self.curr_pos = self.parent:GetAbsOrigin()
+			self.new_pos = self.parent.new_pos
+			self.new_forward = self.parent.new_forward
+
+			self.speed = self.parent:GetBaseMoveSpeed()/50
+
+			if self.new_pos == Vector(0,0,0) then
+				self.new_pos = self.curr_pos
+			end
+			
+			if self.curr_pos and self.new_pos and self.speed and self.new_forward then
+				if self:ShouldMove(self.curr_pos,self.new_pos) then
+					local vNewStep = self.curr_pos + self.speed*self.new_forward
+			        if GridNav:CanFindPath( self.curr_pos, vNewStep ) then
+						self:GetParent():SetOrigin( vNewStep )
+					end
+				end
+			end	
+		end
 	end
 end
 
@@ -155,19 +163,21 @@ function modifier_vortex_axe:ShouldMove(VectorA, VectorB)
 end
 
 function modifier_vortex_axe:ApplyDamage()
-	local units = FindUnitsInRadius( self.parent:GetTeamNumber(), self.parent:GetAbsOrigin(), self.parent, 250,
-	DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
-	
-	if units then
-		--EmitSoundOn("Hero_Axe.CounterHelix", caster)	
-		for i = 1, #units do		
-	        ApplyDamage({
-	            victim = units[ i ],
-	            attacker = self.parent,
-	            damage = self.damage,
-	            damage_type = self:GetAbilityDamageType(),
-	            ability = self
-	           })		
+	if self:GetParent() then
+		local units = FindUnitsInRadius( self.parent:GetTeamNumber(), self.parent:GetAbsOrigin(), self.parent, 250,
+		DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+		
+		if units then
+			--EmitSoundOn("Hero_Axe.CounterHelix", caster)	
+			for i = 1, #units do		
+		        ApplyDamage({
+		            victim = units[ i ],
+		            attacker = self.parent,
+		            damage = self.damage,
+		            damage_type = self:GetAbilityDamageType(),
+		            ability = self
+		           })		
+			end
 		end
 	end
 end

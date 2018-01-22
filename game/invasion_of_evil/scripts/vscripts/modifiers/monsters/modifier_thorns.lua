@@ -42,7 +42,7 @@ function modifier_thorns:OnCreated()
 	if IsServer() then
 		self.incomeDmg = 0
 		self.numShoots = 5
-		self.thronsDmg = 10*self:GetParent():GetLevel()
+		self.thronsDmg = 50
 		self.thronsRadius = 700
 		self:GetParent():SetRenderColor(139, 69, 19) 
 	end

@@ -20,7 +20,7 @@ function modifier_distortion_carrier:CanBeAddToMinions()
 end
 
 function modifier_distortion_carrier:OnCreated()
-	self.damagePerTick = self:GetParent():GetLevel()*2
+	self.damagePerTick = 10
 	self.damageType = DAMAGE_TYPE_MAGICAL
 	self.damageRadius = 350
 

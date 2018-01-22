@@ -8,16 +8,16 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_HIDDEN"			
 
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"		"abilities/moobs/spawn_settings.lua"
-				"Function"			"SetRespawn"
-				"Time"				"5"
-				"NumbMinions"		"5"												
-			}
-		}	
+		//"OnOwnerDied"
+		//{
+		//	"RunScript"
+		//	{
+		//		"ScriptFile"		"abilities/moobs/spawn_settings.lua"
+		//		"Function"			"SetRespawn"
+		//		"Time"				"5"
+		//		"NumbMinions"		"5"												
+		//	}
+		//}	
 	}
 
 }

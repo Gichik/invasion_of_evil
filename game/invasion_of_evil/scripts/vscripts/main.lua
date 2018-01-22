@@ -84,17 +84,44 @@ function main:OnEntityKilled(data)
         if RollPercentage(50) then
             main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
         end
+
+        if killedEntity:HasAbility("respawn_settings") then
+            main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+        end
     end 
+
+    if killedEntity:IsRealHero()  then
+        main:GiveNewHero(killedEntity)
+    end    
+end
+
+
+function main:GiveNewHero(oldHero)
+    local playerID = oldHero:GetPlayerID()
+    local newHero = nil
+    local ability = nil
+    local abilityCount = oldHero:GetAbilityCount()
+    if playerID ~= nil and playerID ~= -1 then
+        for i = 0, 11 do
+            oldHero:RemoveItem(oldHero:GetItemInSlot(i))
+        end
+        for i = 0, abilityCount-1 do
+            ability = oldHero:GetAbilityByIndex(i)
+            if ability then
+                oldHero:RemoveAbility(ability:GetAbilityName())
+            end
+        end
+        newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), 0, 0)
+        UTIL_Remove(oldHero)
+        newHero:RespawnHero(false, false)
+    end
 end
 
 function main:SpanwMoobs()
 
     local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
     --for i = 1, 5 do
-    local unit = CreateUnitByName("npc_zombie_spawner", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
-    unit.vSpawnLoc = unit:GetAbsOrigin()
-    unit.firstDie = true
-    unit:ForceKill(false)
+    main:RespawnUnits("npc_zombie_spawner",point,5,1)
     --print("create")
     --print(unit.vSpawnLoc)
     --end
@@ -131,4 +158,28 @@ function main:OnItemPickedUp(data)
         item:SetCurrentCharges(charges)
         item:SetPurchaseTime(0) 
     end
+end
+
+function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+
+    local minionsName = string.gsub(unitName,"_spawner", "");
+
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+
+        local modifier = unit:AddNewModifier(unit, nil, "modifier_unity_of_evil", {})
+
+        for i = 1, numMinions do 
+            unit = CreateUnitByName(minionsName, SpawnLoc, true, nil, nil, team )
+            if modifier:CanBeAddToMinions() then
+                unit:AddNewModifier(unit, nil, modifier:GetName(), {})
+            end
+        end
+
+      return nil
+    end
+    )
 end

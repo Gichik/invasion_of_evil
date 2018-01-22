@@ -75,7 +75,7 @@ function modifier_weakness_aura_debuff:DeclareFunctions()
 end
 
 function modifier_weakness_aura_debuff:GetModifierAttackSpeedBonus_Constant()	
-	return self:GetCaster():GetLevel()*(-10) or 0
+	return -100
 end
 
 function modifier_weakness_aura_debuff:GetTexture()

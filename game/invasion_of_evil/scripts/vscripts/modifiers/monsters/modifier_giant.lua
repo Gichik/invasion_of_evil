@@ -41,18 +41,12 @@ function modifier_giant:GetModifierModelScale()
 end
 
 function modifier_giant:OnCreated()
-	self.damageBonus = self:GetParent():GetLevel()*50
-	self.healthBonus = self:GetParent():GetLevel()*100
+	self.damageBonus = 100
+	self.healthBonus = 1000
 	self.modelScalePerc = 60
 
 	if IsServer() then
 		self:GetParent():SetRenderColor(255, 165, 0)
-	end
-end
-
-function modifier_giant:OnDestroy()
-	if IsServer() then
-
 	end
 end
 

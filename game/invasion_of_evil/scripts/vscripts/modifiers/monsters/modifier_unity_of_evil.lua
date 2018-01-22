@@ -51,10 +51,10 @@ function modifier_unity_of_evil:GetModifierModelScale()
 end
 
 function modifier_unity_of_evil:OnCreated()
-	self.damageBonus = self:GetParent():GetLevel()*10
+	self.damageBonus = 100
 	self.healthRegen = 10
 	self.magicResBonus = 20 
-	self.physArmorBonus = self:GetParent():GetLevel()*2
+	self.physArmorBonus = 20
 	self.modelScalePers = 20
 	self.auraRadius = 700
 	self.auraDuration = 0.3
@@ -100,6 +100,10 @@ function modifier_unity_of_evil_mark:RemoveOnDeath()
     return true
 end
 
+function modifier_unity_of_evil_mark:OnCreated()
+	self.auraRadius = 700
+end
+
 function modifier_unity_of_evil_mark:OnDestroy()
 	if IsServer() then
 		local units = FindUnitsInRadius( self:GetParent():GetTeamNumber(), self:GetParent():GetAbsOrigin(), self:GetParent(), self.auraRadius,
@@ -116,3 +120,4 @@ function modifier_unity_of_evil_mark:OnDestroy()
 		end		
 	end
 end
+
