@@ -4,7 +4,7 @@ if modifier_cursed_aura == nil then
 end
 
 function modifier_cursed_aura:GetModifierAura()
-    return "modifier_cursed_aura_debuff"
+    return "modifier_cursed_aura_buff"
 end
 
 function modifier_cursed_aura:IsHidden()
@@ -72,9 +72,9 @@ end
 
 --------------------------------------------------------------------------------
 
-modifier_cursed_aura_debuff = class({})
+modifier_cursed_aura_buff = class({})
 
-function modifier_cursed_aura_debuff:DeclareFunctions()
+function modifier_cursed_aura_buff:DeclareFunctions()
         local funcs = {
         MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
         MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
@@ -83,41 +83,41 @@ function modifier_cursed_aura_debuff:DeclareFunctions()
     return funcs
 end
 
-function modifier_cursed_aura_debuff:GetAbsoluteNoDamagePhysical()
+function modifier_cursed_aura_buff:GetAbsoluteNoDamagePhysical()
     return 1
 end
 
-function modifier_cursed_aura_debuff:GetAbsoluteNoDamageMagical()
+function modifier_cursed_aura_buff:GetAbsoluteNoDamageMagical()
     return 1
 end
 
-function modifier_cursed_aura_debuff:GetAbsoluteNoDamagePure()
+function modifier_cursed_aura_buff:GetAbsoluteNoDamagePure()
     return 1
 end
 
-function modifier_cursed_aura_debuff:GetTexture()
+function modifier_cursed_aura_buff:GetTexture()
     return "doom_bringer_doom"
 end
 
-function modifier_cursed_aura_debuff:OnCreated()
+function modifier_cursed_aura_buff:OnCreated()
     if IsServer() then
         self:GetParent():SetRenderColor(0, 0, 0)
     end
 end
 
-function modifier_cursed_aura_debuff:GetEffectName()
+function modifier_cursed_aura_buff:GetEffectName()
     return "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"
 end
 
-function modifier_cursed_aura_debuff:IsHidden()
+function modifier_cursed_aura_buff:IsHidden()
     return false
 end
 
-function modifier_cursed_aura_debuff:RemoveOnDeath()
+function modifier_cursed_aura_buff:RemoveOnDeath()
     return true
 end
 
-function modifier_cursed_aura_debuff:OnDestroy()
+function modifier_cursed_aura_buff:OnDestroy()
     if IsServer() then
         self:GetParent():SetRenderColor(255, 255, 255)
     end

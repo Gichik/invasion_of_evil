@@ -27,6 +27,9 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
+    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_tinker');
+
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(main, 'GameRulesStateChange'), self)
     ListenToGameEvent("npc_spawned", Dynamic_Wrap(main, 'OnNPCSpawn'), self) 
     ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(main, 'OnPlayerGainedLevel'), self)   
@@ -55,9 +58,11 @@ function main:OnNPCSpawn(data)
             unit.next_spawn = true; 
             --unit:SetGold(0,false)        
             if unit:HasAnyAvailableInventorySpace() then
-                unit:AddItemByName("item_vortex_axe")
-                unit:AddItemByName("item_vortex_axe_second")
-                unit:AddItemByName("item_vortex_axe_third")
+                unit:AddItemByName("item_chain_lightning_scepter")
+                unit:AddItemByName("item_chain_lightning_scepter_second")
+                unit:AddItemByName("item_chain_lightning_scepter_third")
+                --unit:AddItemByName("item_vortex_axe_second")
+                --unit:AddItemByName("item_vortex_axe_third")
                 unit:AddItemByName("item_heart")
                 unit:AddItemByName("item_bloodstone")
             end
@@ -170,7 +175,7 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
         unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
         unit.vSpawnLoc = SpawnLoc 
 
-        local modifier = unit:AddNewModifier(unit, nil, "modifier_unity_of_evil", {})
+        local modifier = unit:AddNewModifier(unit, nil, "modifier_circulator_infection", {})
 
         for i = 1, numMinions do 
             unit = CreateUnitByName(minionsName, SpawnLoc, true, nil, nil, team )

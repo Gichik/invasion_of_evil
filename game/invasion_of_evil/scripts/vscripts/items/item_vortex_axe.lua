@@ -7,6 +7,8 @@ end
 function OnUnequip(data)
 	--print("OnUnequip")
 	data.caster:RemoveModifierByName("modifier_vortex_axe")
+	data.caster:RemoveModifierByName("modifier_vortex_axe_second")
+	data.caster:RemoveModifierByName("modifier_vortex_axe_third")	
 end
 
 

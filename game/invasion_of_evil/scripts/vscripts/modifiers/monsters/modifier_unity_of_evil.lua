@@ -19,6 +19,10 @@ function modifier_unity_of_evil:GetTexture()
     return "bane_fiends_grip"
 end
 
+function modifier_unity_of_evil:GetEffectName()
+    return "particles/units/heroes/hero_witchdoctor/witchdoctor_maledict_dot_skulls.vpcf"
+end
+
 function modifier_unity_of_evil:DeclareFunctions()
     local funcs = {
         MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
