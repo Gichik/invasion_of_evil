@@ -13,7 +13,7 @@ function modifier_chain_lightning_third:IsPurgable()
 end
 
 function modifier_chain_lightning_third:GetTexture()
-   return "zuus_lightning_bolt"
+    return "zuus_lightning_bolt"
 end
 
 function modifier_chain_lightning_third:RemoveOnDeath()
@@ -32,9 +32,6 @@ function modifier_chain_lightning_third:GetAbilityDamageType()
 	return DAMAGE_TYPE_MAGICAL
 end
 
-function modifier_chain_lightning_third:GetAbilityDamage()	
-	return self.damage
-end
 
 function modifier_chain_lightning_third:GetModifierConstantManaRegen()	
 	return -self.manaCost
@@ -46,10 +43,13 @@ function modifier_chain_lightning_third:OnCreated(data)
 	
 	if IsServer() then
 		self.parent = self:GetParent()
-		self.damage = self.parent:GetIntellect()*3 or 0
+		self.dmgMultiply = 3
 		self.aoeRadius = 500
 		self.lightCount = 4
 		self.think = 0.03
+
+		self.particle_id = ParticleManager:CreateParticle("particles/items2_fx/mjollnir_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+		self.parent:EmitSound("DOTA_Item.Mjollnir.Activate")
 
 		self:StartIntervalThink(self.think)
 	end
@@ -65,16 +65,19 @@ end
 
 function modifier_chain_lightning_third:OnAttackLanded(data)
 	if IsServer() then
-		if data.attacker == self:GetParent() then
-	        ApplyDamage({
-	            victim = data.target,
-	            attacker = self.parent,
-	            damage = self.damage/3,
-	            damage_type = self:GetAbilityDamageType(),
-	            ability = self
-	           })
+		if self:GetParent() then
+			if data.attacker == self:GetParent() then
+				data.target:EmitSound("Hero_Zuus.ArcLightning.Cast")
+		        ApplyDamage({
+		            victim = data.target,
+		            attacker = self.parent,
+		            damage = self.parent:GetIntellect(),
+		            damage_type = self:GetAbilityDamageType(),
+		            ability = self
+		           })			
 
-			self:ApplyDamage(data.target)
+				self:ApplyDamage(data.target)
+			end
 		end
 	end
 end
@@ -82,7 +85,15 @@ end
 
 function modifier_chain_lightning_third:OnDestroy()
 	if IsServer() then
-
+		if self.particle_id then
+			ParticleManager:DestroyParticle(self.particle_id, false)
+			ParticleManager:ReleaseParticleIndex(self.particle_id)
+			self.particle_id = nil
+		end
+		if self:GetParent() then
+			self.parent:StopSound("DOTA_Item.Mjollnir.Activate")
+			self.parent:EmitSound("DOTA_Item.Mjollnir.DeActivate")
+		end
 	end
 end
 
@@ -90,6 +101,8 @@ end
 
 function modifier_chain_lightning_third:ApplyDamage(target)
 	if self:GetParent() then
+
+		local dmg = self.dmgMultiply*self.parent:GetIntellect()
 
 		local goalCount = self.lightCount
 		local units = FindUnitsInRadius( self.parent:GetTeamNumber(), target:GetAbsOrigin(), self.parent, self.aoeRadius,
@@ -115,6 +128,7 @@ function modifier_chain_lightning_third:ApplyDamage(target)
 				endTime = 0.2*(i-1),
 				callback = function()
 					if units[i] then
+						units[i]:EmitSound("Hero_Zuus.ArcLightning.Target")
 
 						if units[i-1] then
 							modifier_chain_lightning_third:PlayAnimation(units[i-1], units[i])
@@ -123,7 +137,7 @@ function modifier_chain_lightning_third:ApplyDamage(target)
 				        ApplyDamage({
 				            victim = units[ i ],
 				            attacker = self.parent,
-				            damage = self.damage,
+				            damage = dmg,
 				            damage_type = self:GetAbilityDamageType(),
 				            ability = self
 				           })

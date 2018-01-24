@@ -1,0 +1,172 @@
+"DOTAAbilities"
+{
+	
+	"item_cleave_sword"
+	{
+		//"ID"							"1209"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/cleave_sword"					
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "10"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"30"
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+	}
+
+
+	"item_cleave_sword_second"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/cleave_sword_second"					
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "20"
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+	}
+
+	"item_cleave_sword_third"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/cleave_sword_third"					
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "30"
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_cleave_sword.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+	}
+}

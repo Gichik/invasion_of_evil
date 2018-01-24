@@ -1,5 +1,7 @@
 #base "items/vortex_axe.kv"
 #base "items/chain_lightning_scepter.kv"
+#base "items/cleave_sword.kv"
+
 
 "DOTAAbilities"
 {

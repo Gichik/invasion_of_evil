@@ -7,11 +7,13 @@ LinkLuaModifier("modifier_vortex_axe", "modifiers/items/vortex_axe/modifier_vort
 LinkLuaModifier("modifier_vortex_axe_second", "modifiers/items/vortex_axe/modifier_vortex_axe_second.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
 LinkLuaModifier("modifier_vortex_axe_third", "modifiers/items/vortex_axe/modifier_vortex_axe_third.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
 
+LinkLuaModifier("modifier_chain_lightning", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_chain_lightning_second", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning_second.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_chain_lightning_third", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning_third.lua", LUA_MODIFIER_MOTION_NONE )
 
-LinkLuaModifier("modifier_chain_lightning", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
-LinkLuaModifier("modifier_chain_lightning_second", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning_second.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
-LinkLuaModifier("modifier_chain_lightning_third", "modifiers/items/chain_lightning_scepter/modifier_chain_lightning_third.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
-
+LinkLuaModifier("modifier_cleave_sword", "modifiers/items/cleave_sword/modifier_cleave_sword.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_cleave_sword_second", "modifiers/items/cleave_sword/modifier_cleave_sword_second.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_cleave_sword_third", "modifiers/items/cleave_sword/modifier_cleave_sword_third.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------
