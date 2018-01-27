@@ -48,7 +48,6 @@ function modifier_vortex_axe:GetModifierConstantManaRegen()
 	return -self.manaCost
 end
 
-
 function modifier_vortex_axe:OnOrder(data)
 	local caster = self:GetParent()
     caster.new_forward = (data.new_pos - caster:GetOrigin()):Normalized()

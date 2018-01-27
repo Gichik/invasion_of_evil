@@ -53,6 +53,12 @@ LinkLuaModifier("modifier_devastator_aura_debuff", "modifiers/monsters/modifier_
 LinkLuaModifier("modifier_circulator_infection", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
 
+-------------------------------------------------------------------
+-------------------------HERO MODIFIER--------------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_berserk_rage", "modifiers/heroes/barbarian/berserk/modifier_berserk_rage.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 -------------------------------------------------------------------
 

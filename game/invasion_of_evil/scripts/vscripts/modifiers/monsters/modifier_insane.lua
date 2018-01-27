@@ -22,7 +22,7 @@ end
 function modifier_insane:DeclareFunctions()
     local funcs = {
         MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
-        ODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+        MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
     }
     return funcs
 end

@@ -27,8 +27,10 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
-    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
-    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_tinker');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
+
+    GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(main, "DamageFilter"), self) 
 
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(main, 'GameRulesStateChange'), self)
     ListenToGameEvent("npc_spawned", Dynamic_Wrap(main, 'OnNPCSpawn'), self) 
@@ -63,11 +65,14 @@ function main:OnNPCSpawn(data)
                 unit:AddItemByName("item_chain_lightning_scepter_third")
                 unit:AddItemByName("item_cleave_sword")
                 unit:AddItemByName("item_cleave_sword_second")
-                unit:AddItemByName("item_cleave_sword_third")
+                --unit:AddItemByName("item_cleave_sword_third")
+                unit:AddItemByName("item_vortex_axe")
                 --unit:AddItemByName("item_vortex_axe_second")
                 --unit:AddItemByName("item_vortex_axe_third")
                 unit:AddItemByName("item_heart")
                 unit:AddItemByName("item_bloodstone")
+                --unit:AddNewModifier(unit, nil, "modifier_mana_shield", {})
+
             end
         end
     end
@@ -190,4 +195,64 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
       return nil
     end
     )
+end
+
+function main:DamageFilter(data)
+    local damage                = data.damage
+    local entindex_inflictor_const  = data.entindex_inflictor_const
+    local entindex_victim_const     = data.entindex_victim_const
+    local entindex_attacker_const   = data.entindex_attacker_const
+    local damagetype_const      = data.damagetype_const
+    local ability = nil
+    local victim = nil
+    local attacker = nil
+
+
+    if damage > 0 then
+
+        if (entindex_inflictor_const) then 
+            ability = EntIndexToHScript(entindex_inflictor_const) 
+        end
+        if (entindex_victim_const) then 
+            victim  = EntIndexToHScript(entindex_victim_const)
+            if victim:IsRealHero() then
+                data.damage = self:ManaShieldReduceDmg(victim,data.damage,modifier)
+                data.damage = self:BerserkRageReduceDmg(victim,data.damage,modifier)
+            end
+        end
+        if (entindex_attacker_const) then 
+            attacker    = EntIndexToHScript(entindex_attacker_const) 
+
+        end
+        
+    end
+    return true;
+end
+
+
+function main:ManaShieldReduceDmg(hHero,damage)
+    local ability = hHero:FindAbilityByName("sapient_mana_shield") or nil
+    if ability and ability:GetLevel() > 0 then
+        local abs_persent = ability:GetSpecialValueFor("absorption_percent")/100
+        if hHero:GetMana() >= damage*abs_persent then
+            hHero:SpendMana(damage*abs_persent, ability)
+            damage = damage*(1-abs_persent)
+        end 
+    end
+    return damage   
+end 
+
+function main:BerserkRageReduceDmg(hHero,damage)
+    local ability = hHero:FindAbilityByName("berserk_rage") or nil
+    if ability and ability:GetLevel() > 0 and ability:IsCooldownReady() then
+        local maxHealth = hHero:GetMaxHealth()
+        local thresholdPerc = ability:GetSpecialValueFor("threshold_percent")/100
+        local health = hHero:GetHealth() - damage
+        if health < thresholdPerc*maxHealth then
+            hHero:AddNewModifier(hHero, ability, "modifier_berserk_rage", {duration = 5})
+            ability:StartCooldown(ability:GetCooldown(1))
+            damage = 0
+        end
+    end
+    return damage 
 end
