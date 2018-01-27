@@ -1,9 +1,4 @@
 // Dota Heroes File
-
-#base "heroes_path/berserk.kv"
-#base "heroes_path/sapient.kv"
-
-
 "DOTAAbilities"
 {
 	"Version"		"1"
