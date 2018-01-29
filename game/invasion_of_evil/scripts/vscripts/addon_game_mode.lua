@@ -47,6 +47,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_clinkz/clinkz_strafe.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf", context )
+	PrecacheResource( "particle", "particles/generic_gameplay/generic_stunned.vpcf", context )
 
 
 end

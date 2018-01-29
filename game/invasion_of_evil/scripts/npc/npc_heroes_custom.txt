@@ -8,11 +8,11 @@
 	//=================================================================================================================
 	"npc_dota_hero_axe"
 	{
-		"Ability1"		"berserk_rage"
-		"Ability2"		""
+		"Ability1"		"berserk_riot"
+		"Ability2"		"berserk_runner"
 		"Ability3"		""
-		"Ability4"		""
-		"Ability5"		""
+		"Ability4"		"berserk_knowledge_ancestors"
+		"Ability5"		"berserk_durability"
 		"Ability6"		""							
 	}
 

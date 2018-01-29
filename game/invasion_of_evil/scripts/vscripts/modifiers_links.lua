@@ -58,7 +58,14 @@ LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modi
 -------------------------------------------------------------------
 
 LinkLuaModifier("modifier_berserk_rage", "modifiers/heroes/barbarian/berserk/modifier_berserk_rage.lua", LUA_MODIFIER_MOTION_NONE )
-
+LinkLuaModifier("modifier_berserk_crit", "modifiers/heroes/barbarian/berserk/modifier_berserk_crit.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_crit_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_crit.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_stun", "modifiers/heroes/barbarian/berserk/modifier_berserk_stun.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_stun_debuff", "modifiers/heroes/barbarian/berserk/modifier_berserk_stun.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_know_anc", "modifiers/heroes/barbarian/berserk/modifier_berserk_know_anc.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_durability", "modifiers/heroes/barbarian/berserk/modifier_berserk_durability.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_riot", "modifiers/heroes/barbarian/berserk/modifier_berserk_riot.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_runner", "modifiers/heroes/barbarian/berserk/modifier_berserk_runner.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 
