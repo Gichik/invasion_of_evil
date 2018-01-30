@@ -8,7 +8,7 @@ function modifier_berserk_stun:IsHidden()
 end
 
 function modifier_berserk_stun:GetTexture()
-    return "lone_druid_rabid"
+    return "custom_folder/berserk_heavy"
 end
 
 function modifier_berserk_stun:RemoveOnDeath()
@@ -59,7 +59,7 @@ function modifier_berserk_stun_debuff:IsHidden()
 end
 
 function modifier_berserk_stun_debuff:GetTexture()
-    return "lone_druid_rabid"
+    return "custom_folder/berserk_heavy"
 end
 
 function modifier_berserk_stun_debuff:OnCreated()

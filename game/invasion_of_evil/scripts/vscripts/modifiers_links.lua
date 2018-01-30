@@ -54,7 +54,7 @@ LinkLuaModifier("modifier_circulator_infection", "modifiers/monsters/modifier_ci
 LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
--------------------------HERO MODIFIER--------------------------
+-------------------------BERSERK MODIFIER--------------------------
 -------------------------------------------------------------------
 
 LinkLuaModifier("modifier_berserk_rage", "modifiers/heroes/barbarian/berserk/modifier_berserk_rage.lua", LUA_MODIFIER_MOTION_NONE )
@@ -66,6 +66,21 @@ LinkLuaModifier("modifier_berserk_know_anc", "modifiers/heroes/barbarian/berserk
 LinkLuaModifier("modifier_berserk_durability", "modifiers/heroes/barbarian/berserk/modifier_berserk_durability.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_riot", "modifiers/heroes/barbarian/berserk/modifier_berserk_riot.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_runner", "modifiers/heroes/barbarian/berserk/modifier_berserk_runner.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_heroism", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_heroism_mark", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_heroism_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_battle_rage", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_battle_rage_mark", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_battle_rage_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+-------------------------------------------------------------------
+-------------------------TEMPLAR MODIFIER--------------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_templar_strength_of_will", "modifiers/heroes/knight/templar/modifier_templar_strength_of_will.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_experience", "modifiers/heroes/knight/templar/modifier_templar_experience.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_experience_debuff", "modifiers/heroes/knight/templar/modifier_templar_experience.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_heavy_armor", "modifiers/heroes/knight/templar/modifier_templar_heavy_armor.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 

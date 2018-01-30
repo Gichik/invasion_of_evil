@@ -1,0 +1,98 @@
+"DOTAAbilities"
+{
+
+	"templar_strength_of_will"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/templar_strength_of_will"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_resist"	"5 10 15 20 25 30 35"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_strength_of_will"
+			}
+		}					    
+	}
+
+
+	"templar_experience"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/templar_experience"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stun_chance"			"5 9 13 17 21 25 29"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_experience"
+			}
+		}					    
+	}
+
+
+	"templar_heavy_armor"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "lich_frost_armor"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_heavy_armor"
+			}
+		}					    
+	}
+
+}

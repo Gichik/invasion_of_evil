@@ -10,8 +10,8 @@
 	{
 		"Ability1"		"berserk_riot"
 		"Ability2"		"berserk_runner"
-		"Ability3"		""
-		"Ability4"		"berserk_knowledge_ancestors"
+		"Ability3"		"berserk_heroism"
+		"Ability4"		"berserk_battle_rage"
 		"Ability5"		"berserk_durability"
 		"Ability6"		""							
 	}
@@ -29,4 +29,16 @@
 		"Ability9"		""
 		"Ability10"		""							
 	}	
+
+
+	"npc_dota_hero_dragon_knight"
+	{
+		"Ability1"		"templar_strength_of_will"
+		"Ability2"		"templar_experience"
+		"Ability3"		"templar_heavy_armor"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""							
+	}
+
 }

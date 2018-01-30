@@ -8,7 +8,7 @@ function modifier_berserk_runner:IsHidden()
 end
 
 function modifier_berserk_runner:GetTexture()
-    return "troll_warlord_whirling_axes_ranged"
+    return "custom_folder/berserk_runner"
 end
 
 function modifier_berserk_runner:RemoveOnDeath()

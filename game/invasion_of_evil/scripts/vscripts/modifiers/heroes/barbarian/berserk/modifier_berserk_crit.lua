@@ -8,7 +8,7 @@ function modifier_berserk_crit:IsHidden()
 end
 
 function modifier_berserk_crit:GetTexture()
-    return "axe_culling_blade"
+    return "custom_folder/berserk_ripper"
 end
 
 function modifier_berserk_crit:RemoveOnDeath()

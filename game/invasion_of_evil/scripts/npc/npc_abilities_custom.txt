@@ -2,7 +2,7 @@
 
 #base "heroes_path/berserk.kv"
 #base "heroes_path/sapient.kv"
-
+#base "heroes_path/templar.kv"
 
 "DOTAAbilities"
 {

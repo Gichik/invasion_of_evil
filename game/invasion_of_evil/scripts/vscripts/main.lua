@@ -27,8 +27,9 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
-    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
+     GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');
 
     GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(main, "DamageFilter"), self) 
 
@@ -183,7 +184,7 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
         unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
         unit.vSpawnLoc = SpawnLoc 
 
-        local modifier = unit:AddNewModifier(unit, nil, "modifier_giant", {})
+        local modifier = unit:AddNewModifier(unit, nil, "modifier_explosive", {})
 
         for i = 1, numMinions do 
             unit = CreateUnitByName(minionsName, SpawnLoc, true, nil, nil, team )
