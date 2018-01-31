@@ -33,11 +33,11 @@
 
 	"npc_dota_hero_dragon_knight"
 	{
-		"Ability1"		"templar_strength_of_will"
-		"Ability2"		"templar_experience"
+		"Ability1"		"templar_shield_bearer"
+		"Ability2"		"templar_nobleness"
 		"Ability3"		"templar_heavy_armor"
-		"Ability4"		""
-		"Ability5"		""
+		"Ability4"		"templar_frightfulness"
+		"Ability5"		"templar_taunt"
 		"Ability6"		""							
 	}
 

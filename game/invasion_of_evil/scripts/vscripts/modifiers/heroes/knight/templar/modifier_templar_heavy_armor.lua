@@ -23,7 +23,7 @@ function modifier_templar_heavy_armor:DeclareFunctions()
 end
 
 function modifier_templar_heavy_armor:GetModifierPhysicalArmorBonus()	
-	return 10*self:GetAbility():GetLevel() or 0
+	return self:GetAbility():GetSpecialValueFor("bonus_armor")*self:GetAbility():GetLevel() or 0
 end
 
 

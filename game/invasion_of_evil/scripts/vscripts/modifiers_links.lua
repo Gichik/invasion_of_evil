@@ -81,6 +81,16 @@ LinkLuaModifier("modifier_templar_strength_of_will", "modifiers/heroes/knight/te
 LinkLuaModifier("modifier_templar_experience", "modifiers/heroes/knight/templar/modifier_templar_experience.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_experience_debuff", "modifiers/heroes/knight/templar/modifier_templar_experience.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_heavy_armor", "modifiers/heroes/knight/templar/modifier_templar_heavy_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_frightfulness", "modifiers/heroes/knight/templar/modifier_templar_frightfulness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_frightfulness_debuff", "modifiers/heroes/knight/templar/modifier_templar_frightfulness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_strength_of_body", "modifiers/heroes/knight/templar/modifier_templar_strength_of_body.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_fruits_of_training", "modifiers/heroes/knight/templar/modifier_templar_fruits_of_training.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_nobleness", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_nobleness_buff", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_nobleness_lore", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_templar_shield_bearer", "modifiers/heroes/knight/templar/modifier_templar_shield_bearer.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 
 -------------------------------------------------------------------
 
