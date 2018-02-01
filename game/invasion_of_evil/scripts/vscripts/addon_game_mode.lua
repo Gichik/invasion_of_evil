@@ -22,7 +22,10 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts", context )
-		
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts", context )		
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts", context )			
+
+
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 
@@ -48,6 +51,10 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf", context )
 	PrecacheResource( "particle", "particles/generic_gameplay/generic_stunned.vpcf", context )
+	PrecacheResource( "particle", "particles/econ/items/juggernaut/jugg_fortunes_tout/jugg_healling_ward_fortunes_tout_hero_heal_flame.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_necrolyte/necrolyte_spirit_ground_aura.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_kunkka/kunkka_ghostship_marker_ripple.vpcf", context )
+	PrecacheResource( "particle", "particles/items_fx/healing_clarity_c.vpcf", context )
 
 
 end

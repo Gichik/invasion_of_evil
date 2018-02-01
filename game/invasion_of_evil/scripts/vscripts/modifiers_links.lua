@@ -62,7 +62,7 @@ LinkLuaModifier("modifier_berserk_crit", "modifiers/heroes/barbarian/berserk/mod
 LinkLuaModifier("modifier_berserk_crit_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_crit.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_stun", "modifiers/heroes/barbarian/berserk/modifier_berserk_stun.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_stun_debuff", "modifiers/heroes/barbarian/berserk/modifier_berserk_stun.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_berserk_know_anc", "modifiers/heroes/barbarian/berserk/modifier_berserk_know_anc.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_knowledge_elders", "modifiers/heroes/barbarian/berserk/modifier_berserk_knowledge_elders.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_durability", "modifiers/heroes/barbarian/berserk/modifier_berserk_durability.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_riot", "modifiers/heroes/barbarian/berserk/modifier_berserk_riot.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_runner", "modifiers/heroes/barbarian/berserk/modifier_berserk_runner.lua", LUA_MODIFIER_MOTION_NONE )
@@ -89,6 +89,21 @@ LinkLuaModifier("modifier_templar_nobleness", "modifiers/heroes/knight/templar/m
 LinkLuaModifier("modifier_templar_nobleness_buff", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_nobleness_lore", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_shield_bearer", "modifiers/heroes/knight/templar/modifier_templar_shield_bearer.lua", LUA_MODIFIER_MOTION_NONE )
+
+-------------------------------------------------------------------
+-------------------------SAPIENT MODIFIER--------------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_sapient_cheerful_spirit", "modifiers/heroes/enchanter/sapient/modifier_sapient_cheerful_spirit.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_strength_of_mind", "modifiers/heroes/enchanter/sapient/modifier_sapient_strength_of_mind.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_concentration", "modifiers/heroes/enchanter/sapient/modifier_sapient_concentration.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_sapience", "modifiers/heroes/enchanter/sapient/modifier_sapient_sapience.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_knowledge_of_ancients", "modifiers/heroes/enchanter/sapient/modifier_sapient_knowledge_of_ancients.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_life", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_life.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_life_buff", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_life.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_life_lore", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_life.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_magic", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_magic.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_magic_buff", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_magic.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_flows_of_magic_lore", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_magic.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 

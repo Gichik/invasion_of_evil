@@ -8,7 +8,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_axe"
 	{
-		"Ability1"		"berserk_riot"
+		"Ability1"		"berserk_knowledge_elders"
 		"Ability2"		"berserk_runner"
 		"Ability3"		"berserk_heroism"
 		"Ability4"		"berserk_battle_rage"
@@ -19,10 +19,10 @@
 	"npc_dota_hero_rubick"
 	{
 		"Ability1"		"sapient_mana_shield"
-		"Ability2"		""
-		"Ability3"		""
-		"Ability4"		""
-		"Ability5"		""
+		"Ability2"		"sapient_cheerful_spirit"
+		"Ability3"		"sapient_strength_of_mind"
+		"Ability4"		"sapient_flows_of_magic"
+		"Ability5"		"sapient_flows_of_life"
 		"Ability6"		""
 		"Ability7"		""
 		"Ability8"		""

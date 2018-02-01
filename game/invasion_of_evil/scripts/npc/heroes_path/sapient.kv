@@ -42,4 +42,218 @@
 		}			    
 	}	
 	
+
+	"sapient_cheerful_spirit"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "witch_doctor_voodoo_restoration"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"20 40 60 80 100 120 140"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_sapient_cheerful_spirit"
+			}
+		}					    
+	}
+
+	"sapient_strength_of_mind"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "chen_hand_of_god"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"200 400 600 800 1000 1200 1400"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_sapient_strength_of_mind"
+			}
+		}					    
+	}
+
+	"sapient_concentration"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "invoker_ghost_walk"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"3 6 9 12 15 18 21"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_sapient_concentration"
+			}
+		}					    
+	}
+
+	"sapient_sapience"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "keeper_of_the_light_spirit_form"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"5 10 15 20 25 30 40"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_sapient_sapience"
+			}
+		}					    
+	}
+
+	"sapient_knowledge_of_ancients"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "oracle_fates_edict"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_dmg_perc"			"1 2 3 4 5 6 7"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_sapient_knowledge_of_ancients"
+			}
+		}					    
+	}
+
+	"sapient_flows_of_life"
+	{
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"abilities/heroes/enchanter/sapient/sapient_flows_of_life.lua"			
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "dazzle_shadow_wave"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"1"
+		"AbilityCastRange"				"700"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_hp_regen"		"5 10 15 20 25 30 35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"700"
+			}						
+		}					    
+	}
+
+
+	"sapient_flows_of_magic"
+	{
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"abilities/heroes/enchanter/sapient/sapient_flows_of_magic.lua"			
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "wisp_tether"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"1"
+		"AbilityCastRange"				"700"
+		
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mp_regen"		"5 10 15 20 25 30 35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"700"
+			}						
+		}					    
+	}
+
 }
