@@ -25,4 +25,94 @@
 		//}	
 	}
 
+	"empty_slot_1"
+	{
+		"BaseClass" 					"ability_datadriven"		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"0"	
+	}
+
+	"empty_slot_2"
+	{
+		"BaseClass" 					"ability_datadriven"		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"0"	
+	}
+
+	"empty_slot_3"
+	{
+		"BaseClass" 					"ability_datadriven"		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"0"	
+	}
+
+	"berserk_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "axe_berserkers_call"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"berserk"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
+	"templar_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "dragon_knight_dragon_blood"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"templar"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
+	"sapient_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "keeper_of_the_light_spirit_form"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"sapient"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
 }

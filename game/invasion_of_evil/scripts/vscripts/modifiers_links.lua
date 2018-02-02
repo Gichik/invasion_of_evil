@@ -105,6 +105,9 @@ LinkLuaModifier("modifier_sapient_flows_of_magic", "modifiers/heroes/enchanter/s
 LinkLuaModifier("modifier_sapient_flows_of_magic_buff", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_magic.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_sapient_flows_of_magic_lore", "modifiers/heroes/enchanter/sapient/modifier_sapient_flows_of_magic.lua", LUA_MODIFIER_MOTION_NONE )
 
+LinkLuaModifier("modifier_sapient_magic_circle", "modifiers/heroes/enchanter/sapient/modifier_sapient_magic_circle.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_magic_circle_buff", "modifiers/heroes/enchanter/sapient/modifier_sapient_magic_circle.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_sapient_magic_circle_immune", "modifiers/heroes/enchanter/sapient/modifier_sapient_magic_circle.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 -------------------------------------------------------------------

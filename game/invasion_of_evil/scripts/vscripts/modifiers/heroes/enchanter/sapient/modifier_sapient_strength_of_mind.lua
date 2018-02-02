@@ -23,6 +23,6 @@ function modifier_sapient_strength_of_mind:DeclareFunctions()
 end
 
 function modifier_sapient_strength_of_mind:GetModifierExtraManaBonus()	
-	return self:GetAbility():GetSpecialValueFor("bonus_mana")
+	return self:GetAbility():GetSpecialValueFor("bonus_mana") or 0
 end
 

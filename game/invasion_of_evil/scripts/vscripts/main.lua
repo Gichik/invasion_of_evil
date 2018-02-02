@@ -1,12 +1,6 @@
 if main == nil then
     main = class({})
 end
----------------------------------ice modif------------------------------------------------
-
---LinkLuaModifier( "modifier_directional_move", "modifiers/modifier_directional_move", LUA_MODIFIER_MOTION_HORIZONTAL )
-
-------------------------------------------------------------------------------------------
-
 
 
 function main:InitGameMode()
@@ -27,8 +21,8 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
-    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
-    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
+    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');
 
     GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(main, "DamageFilter"), self) 
@@ -39,9 +33,8 @@ function main:InitGameMode()
     ListenToGameEvent("dota_player_killed", Dynamic_Wrap(main, "OnSomeHeroKilled"), self)
     ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
-
+    ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
 end
-
 
 
 function main:GameRulesStateChange(data)
@@ -59,7 +52,16 @@ function main:OnNPCSpawn(data)
     if unit:IsHero() then
         if not unit.next_spawn then
             unit.next_spawn = true; 
-            --unit:SetGold(0,false)        
+            --unit:SetGold(0,false)
+            unit:SetAbilityPoints(0) 
+            local ability = nil 
+            for i = 0, 3 do
+                ability = unit:GetAbilityByIndex(i)
+                if ability then
+                    ability:SetLevel(1)
+                end 
+            end
+     
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_chain_lightning_scepter")
                 --unit:AddItemByName("item_chain_lightning_scepter_second")
@@ -78,6 +80,47 @@ function main:OnNPCSpawn(data)
         end
     end
 
+end
+
+function main:OnAbilityLearned(data)
+    --print("OnAbilityLearned")
+
+    --local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero()
+    local hHero = PlayerResource:GetPlayer(data.player-1):GetAssignedHero()
+    local ability = hHero:FindAbilityByName(data.abilityname)
+    local pathName = nil
+
+    if ability:GetLevel() <= 1 then
+        if not data.abilityname:find("special_bonus") then
+
+            if data.abilityname:find("berserk") then
+                pathName = "berserk"
+            end
+            if data.abilityname:find("templar") then
+                pathName = "templar"
+            end  
+            if data.abilityname:find("sapient") then
+                pathName = "sapient"
+            end              
+
+            hHero:RemoveAbility(data.abilityname)
+
+            for i = 0, 3 do
+                local fallAbility = hHero:GetAbilityByIndex(i)
+                if fallAbility and fallAbility:GetLevel() <= 0 then
+                    hHero:RemoveAbility(fallAbility:GetAbilityName())
+                end
+            end
+
+           ability = hHero:AddAbility(data.abilityname)
+           ability:SetLevel(1)
+           AddPathAbilitiesToHero({
+                caster = hHero, 
+                Path = pathName, 
+                Tier = ability:GetAbilityIndex()+2
+            })
+       end
+   end
 end
 
 

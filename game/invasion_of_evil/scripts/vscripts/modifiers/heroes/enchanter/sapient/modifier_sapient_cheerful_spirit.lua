@@ -22,7 +22,10 @@ function modifier_sapient_cheerful_spirit:DeclareFunctions()
     return funcs
 end
 
-function modifier_sapient_cheerful_spirit:GetModifierAttackSpeedBonus_Constant()	
-	return self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
+function modifier_sapient_cheerful_spirit:GetModifierAttackSpeedBonus_Constant()
+	if self:GetAbility() then
+		return self:GetAbility():GetSpecialValueFor("bonus_attack_speed") or 0
+	end
+	return 0
 end
 

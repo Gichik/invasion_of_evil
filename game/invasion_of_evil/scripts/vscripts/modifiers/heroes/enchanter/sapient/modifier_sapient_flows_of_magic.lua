@@ -52,7 +52,7 @@ function modifier_sapient_flows_of_magic:GetAuraSearchType()
 end
 
 function modifier_sapient_flows_of_magic:GetAuraDuration()
-    return self.auraDuration
+    return self.auraDuration or 0
 end
 
 function modifier_sapient_flows_of_magic:OnCreated(data)

@@ -65,11 +65,11 @@
 	}
 
 
-	"templar_heavy_armor"
+	"templar_shield_bearer"
 	{
 		"BaseClass" 					"ability_datadriven"
     	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
-	    "AbilityTextureName"            "lich_frost_armor"
+	    "AbilityTextureName"            "dragon_knight_dragon_tail"
 	    "MaxLevel"                      "7"	
 	    "LevelsBetweenUpgrades" 		"1"
 
@@ -79,9 +79,14 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"10"
-			}			
+				"var_type"			"FIELD_INTEGER"
+				"block_dmg"			"10 20 30 40 50 60 70"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"block_chance"		"50"
+			}						
 		}
 
 		"OnUpgrade"
@@ -90,7 +95,7 @@
 			{
 				"ScriptFile"	"abilities/ability_helper.lua"
 				"Function"		"ApplyModifierToUnit"
-				"ModifName"		"modifier_templar_heavy_armor"
+				"ModifName"		"modifier_templar_shield_bearer"
 			}
 		}					    
 	}
@@ -126,6 +131,37 @@
 				"ScriptFile"	"abilities/ability_helper.lua"
 				"Function"		"ApplyModifierToUnit"
 				"ModifName"		"modifier_templar_frightfulness"
+			}
+		}					    
+	}
+
+
+	"templar_heavy_armor"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "lich_frost_armor"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_heavy_armor"
 			}
 		}					    
 	}
@@ -191,6 +227,7 @@
 		}					    
 	}	
 
+
 	"templar_nobleness"
 	{
 		"BaseClass" 					"ability_datadriven"
@@ -226,40 +263,6 @@
 		}					    
 	}
 
-	"templar_shield_bearer"
-	{
-		"BaseClass" 					"ability_datadriven"
-    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
-	    "AbilityTextureName"            "dragon_knight_dragon_tail"
-	    "MaxLevel"                      "7"	
-	    "LevelsBetweenUpgrades" 		"1"
-
-		// Special
-		//--------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"block_dmg"			"10 20 30 40 50 60 70"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"block_chance"		"50"
-			}						
-		}
-
-		"OnUpgrade"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"abilities/ability_helper.lua"
-				"Function"		"ApplyModifierToUnit"
-				"ModifName"		"modifier_templar_shield_bearer"
-			}
-		}					    
-	}
 
 	"templar_taunt"
 	{

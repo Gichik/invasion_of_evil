@@ -23,5 +23,5 @@ function modifier_sapient_sapience:DeclareFunctions()
 end
 
 function modifier_sapient_sapience:GetModifierBonusStats_Intellect()	
-	return self:GetAbility():GetSpecialValueFor("bonus_intellect")
+	return self:GetAbility():GetSpecialValueFor("bonus_intellect") or 0
 end

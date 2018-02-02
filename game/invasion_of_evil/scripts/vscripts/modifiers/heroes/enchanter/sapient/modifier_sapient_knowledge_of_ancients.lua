@@ -23,5 +23,5 @@ function modifier_sapient_knowledge_of_ancients:DeclareFunctions()
 end
 
 function modifier_sapient_knowledge_of_ancients:GetModifierPreAttack_BonusDamage()	
-	return self:GetParent():GetMaxMana()*self:GetAbility():GetSpecialValueFor("mana_dmg_perc")/100
+	return self:GetParent():GetMaxMana()*self:GetAbility():GetSpecialValueFor("mana_dmg_perc")/100 or 0
 end

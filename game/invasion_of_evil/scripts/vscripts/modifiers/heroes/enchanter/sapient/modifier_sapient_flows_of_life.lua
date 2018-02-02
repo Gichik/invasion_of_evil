@@ -44,7 +44,7 @@ end
 
 
 function modifier_sapient_flows_of_life:GetAuraRadius()
-    return self:GetAbility():GetSpecialValueFor("aura_radius")
+    return self:GetAbility():GetSpecialValueFor("aura_radius") or 0
     
 end
 

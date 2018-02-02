@@ -22,6 +22,9 @@ function modifier_sapient_concentration:DeclareFunctions()
     return funcs
 end
 
-function modifier_sapient_concentration:GetModifierConstantManaRegen()	
-	return self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
+function modifier_sapient_concentration:GetModifierConstantManaRegen()
+	if self:GetAbility() then	
+		return self:GetAbility():GetSpecialValueFor("bonus_mana_regen") or 0
+	end
+	return 0
 end
