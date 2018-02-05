@@ -15,6 +15,10 @@ LinkLuaModifier("modifier_cleave_sword", "modifiers/items/cleave_sword/modifier_
 LinkLuaModifier("modifier_cleave_sword_second", "modifiers/items/cleave_sword/modifier_cleave_sword_second.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_cleave_sword_third", "modifiers/items/cleave_sword/modifier_cleave_sword_third.lua", LUA_MODIFIER_MOTION_NONE )
 
+
+
+LinkLuaModifier("modifier_teleport_progress", "modifiers/items/bejesus_evil/modifier_teleport_progress.lua", LUA_MODIFIER_MOTION_NONE )
+
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------
 -------------------------------------------------------------------
@@ -52,6 +56,11 @@ LinkLuaModifier("modifier_devastator_aura_debuff", "modifiers/monsters/modifier_
 
 LinkLuaModifier("modifier_circulator_infection", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_range_magick_attack", "modifiers/monsters/modifier_range_magick_attack.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
 
 -------------------------------------------------------------------
 -------------------------BERSERK MODIFIER--------------------------
@@ -121,9 +130,16 @@ function GetRandomModifierName()
 						"modifier_elusive",
 						"modifier_reflector",
 						"modifier_explosive",
+						"modifier_insane",
+						"modifier_devourer",
+						"modifier_breaking_bone",
 						"modifier_weakness_aura",
 						"modifier_cursed_aura",
 						"modifier_unity_of_evil",
-						"modifier_pest_aura"}						
+						"modifier_pest_aura",
+						"modifier_revitalizing_loss",
+						"modifier_devastator_aura",
+						"modifier_circulator_infection"
+						}						
 	return ModifName[RandomInt(1,#ModifName)]
 end

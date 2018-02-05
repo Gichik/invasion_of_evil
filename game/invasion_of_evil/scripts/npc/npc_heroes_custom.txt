@@ -6,39 +6,357 @@
 	//=================================================================================================================
 	// HERO: Templar Assassin
 	//=================================================================================================================
+
 	"npc_dota_hero_axe"
 	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"Role"			"Carry,Durable"
+		"Rolelevels"	"3,2"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"		"berserk_path"
 		"Ability2"		"empty_slot_1"
 		"Ability3"		"empty_slot_2"
 		"Ability4"		"empty_slot_3"
 		"Ability5"		""
-		"Ability6"		""							
+		"Ability6"		""	
+		"Ability10"		"special_bonus_mp_regen_10"
+		"Ability11"		"special_bonus_strength_10"
+		"Ability12"		"special_bonus_hp_regen_10"
+		"Ability13"		"special_bonus_attack_damage_30"
+		"Ability14"		"special_bonus_armor_10"
+		"Ability15"		"special_bonus_magic_resistance_20"
+		"Ability16"		"special_bonus_strength_20"
+		"Ability17"		"special_bonus_attack_speed_70"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"0"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"10"
+		"AttackDamageMax"			"20"
+		"AttackRate"				"1.700000"
+		"AttackAnimationPoint"		"0.500000"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"				"150"
+		"ProjectileSpeed"			"0"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"20"
+		"AttributeStrengthGain"		"2"
+		"AttributeBaseIntelligence"	"10"
+		"AttributeIntelligenceGain"	"1"
+		"AttributeBaseAgility"		"10"
+		"AttributeAgilityGain"		"1"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"350"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"										
 	}
 
-	"npc_dota_hero_rubick"
+
+	"npc_dota_hero_beastmaster"
 	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"Role"			"Carry,Durable"
+		"Rolelevels"	"3,2"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"		"berserk_path"
-		"Ability2"		"templar_path"
-		"Ability3"		"sapient_path"
-		"Ability4"		"empty_slot"
+		"Ability2"		"empty_slot_1"
+		"Ability3"		"empty_slot_2"
+		"Ability4"		"empty_slot_3"
 		"Ability5"		""
-		"Ability6"		""
-		"Ability7"		""
-		"Ability8"		""
-		"Ability9"		""
-		"Ability10"		""							
-	}	
+		"Ability6"		""	
+		"Ability10"		"special_bonus_mp_regen_10"
+		"Ability11"		"special_bonus_strength_10"
+		"Ability12"		"special_bonus_hp_regen_10"
+		"Ability13"		"special_bonus_attack_damage_30"
+		"Ability14"		"special_bonus_armor_10"
+		"Ability15"		"special_bonus_magic_resistance_20"
+		"Ability16"		"special_bonus_strength_20"
+		"Ability17"		"special_bonus_attack_speed_70"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"0"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"10"
+		"AttackDamageMax"			"20"
+		"AttackRate"				"1.700000"
+		"AttackAnimationPoint"		"0.500000"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"				"150"
+		"ProjectileSpeed"			"0"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"20"
+		"AttributeStrengthGain"		"2"
+		"AttributeBaseIntelligence"	"10"
+		"AttributeIntelligenceGain"	"1"
+		"AttributeBaseAgility"		"10"
+		"AttributeAgilityGain"		"1"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"350"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"										
+	}
 
 
 	"npc_dota_hero_dragon_knight"
 	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"Role"			"Durable,Disabler,Carry"
+		"Rolelevels"	"3,3,2"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"		"templar_path"
 		"Ability2"		"empty_slot_1"
 		"Ability3"		"empty_slot_2"
 		"Ability4"		"empty_slot_3"
 		"Ability5"		""
-		"Ability6"		""							
+		"Ability6"		""
+		"Ability10"		"special_bonus_mp_regen_10"
+		"Ability11"		"special_bonus_agility_10"
+		"Ability12"		"special_bonus_attack_damage_30"
+		"Ability13"		"special_bonus_magic_resistance_20"
+		"Ability14"		"special_bonus_hp_500"
+		"Ability15"		"special_bonus_attack_speed_30"
+		"Ability16"		"special_bonus_strength_20"
+		"Ability17"		"special_bonus_agility_20"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"2"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"7"
+		"AttackDamageMax"			"15"
+		"AttackRate"				"1.450000"
+		"AttackAnimationPoint"		"0.300000"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"				"150"
+		"ProjectileSpeed"			"0"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"10"
+		"AttributeStrengthGain"		"1"
+		"AttributeBaseIntelligence"	"10"
+		"AttributeIntelligenceGain"	"1"
+		"AttributeBaseAgility"		"20"
+		"AttributeAgilityGain"		"2"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"300"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
+	}
+
+
+	"npc_dota_hero_silencer"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"Role"			"Durable,Disabler,Carry"
+		"Rolelevels"	"3,3,2"
+		"PickSound"		""
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"		"templar_path"
+		"Ability2"		"empty_slot_1"
+		"Ability3"		"empty_slot_2"
+		"Ability4"		"empty_slot_3"
+		"Ability5"		""
+		"Ability6"		""
+		"Ability10"		"special_bonus_mp_regen_10"
+		"Ability11"		"special_bonus_agility_10"
+		"Ability12"		"special_bonus_attack_damage_30"
+		"Ability13"		"special_bonus_magic_resistance_20"
+		"Ability14"		"special_bonus_hp_500"
+		"Ability15"		"special_bonus_attack_speed_30"
+		"Ability16"		"special_bonus_strength_20"
+		"Ability17"		"special_bonus_agility_20"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"2"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"7"
+		"AttackDamageMax"			"15"
+		"AttackRate"				"1.450000"
+		"AttackAnimationPoint"		"0.300000"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"				"150"
+		"ProjectileSpeed"			"0"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"10"
+		"AttributeStrengthGain"		"1"
+		"AttributeBaseIntelligence"	"10"
+		"AttributeIntelligenceGain"	"1"
+		"AttributeBaseAgility"		"20"
+		"AttributeAgilityGain"		"2"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"300"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
+	}	
+
+
+	"npc_dota_hero_rubick"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"Role"			"Support,Carry,Durable"
+		"Rolelevels"	"3,2,1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"		"sapient_path"
+		"Ability2"		"empty_slot_1"
+		"Ability3"		"empty_slot_2"
+		"Ability4"		"empty_slot_3"
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		""
+		"Ability11"		"special_bonus_mp_regen_14"
+		"Ability12"		"special_bonus_intelligence_10"
+		"Ability13"		"special_bonus_magic_resistance_20"
+		"Ability14"		"special_bonus_attack_speed_50"
+		"Ability15"		"special_bonus_hp_500"
+		"Ability16"		"special_bonus_mp_500"
+		"Ability17"		"special_bonus_intelligence_20"
+		"Ability18"		"special_bonus_attack_range_200"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"-1"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"5"
+		"AttackDamageMax"			"10"
+		"AttackRate"				"1.700000"
+		"AttackAnimationPoint"		"0.400000"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"550"
+		"ProjectileSpeed"			"1125"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"		"10"
+		"AttributeStrengthGain"		"1"
+		"AttributeBaseIntelligence"	"20"
+		"AttributeIntelligenceGain"	"2"
+		"AttributeBaseAgility"		"10"
+		"AttributeAgilityGain"		"1"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"330"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
+	}
+
+
+	"npc_dota_hero_keeper_of_the_light"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"Role"			"Support,Carry,Durable"
+		"Rolelevels"	"3,2,1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"		"sapient_path"
+		"Ability2"		"empty_slot_1"
+		"Ability3"		"empty_slot_2"
+		"Ability4"		"empty_slot_3"
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"special_bonus_mp_regen_14"
+		"Ability11"		"special_bonus_intelligence_10"
+		"Ability12"		"special_bonus_magic_resistance_20"
+		"Ability13"		"special_bonus_attack_speed_50"
+		"Ability14"		"special_bonus_hp_500"
+		"Ability15"		"special_bonus_mp_500"
+		"Ability16"		"special_bonus_intelligence_20"
+		"Ability17"		"special_bonus_attack_range_200"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"		"-1"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"5"
+		"AttackDamageMax"			"10"
+		"AttackRate"				"1.700000"
+		"AttackAnimationPoint"		"0.400000"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"550"
+		"ProjectileSpeed"			"1125"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"		"10"
+		"AttributeStrengthGain"		"1"
+		"AttributeBaseIntelligence"	"20"
+		"AttributeIntelligenceGain"	"2"
+		"AttributeBaseAgility"		"10"
+		"AttributeAgilityGain"		"1"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"			"330"
+		"MovementTurnRate"		"0.500000"
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
 	}
 
 }

@@ -115,4 +115,40 @@
 		}	
 	}
 
+
+	"range_magick_attack"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "shadow_demon_disruption"
+	    "MaxLevel"                      "1"	
+	    	
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_min"			"50"
+			}
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_max"			"80"
+			}						
+		}
+
+		"OnCreated"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_range_magick_attack"
+			}
+		}
+
+	}		
+
 }

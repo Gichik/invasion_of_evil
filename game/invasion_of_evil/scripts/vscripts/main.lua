@@ -21,7 +21,7 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
-    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');
 
@@ -46,14 +46,22 @@ end
 
 
 function main:OnNPCSpawn(data)
-
+    --print("OnNPCSpawn")
     local unit = EntIndexToHScript(data.entindex)
 
-    if unit:IsHero() then
+    if unit:IsRealHero() then
         if not unit.next_spawn then
+
             unit.next_spawn = true; 
             --unit:SetGold(0,false)
-            unit:SetAbilityPoints(0) 
+            unit:SetAbilityPoints(0)
+
+            Timers:CreateTimer(1, function()
+                unit:RemoveModifierByName("modifier_silencer_int_steal")
+              return nil
+            end
+            )
+
             local ability = nil 
             for i = 0, 3 do
                 ability = unit:GetAbilityByIndex(i)
@@ -66,7 +74,9 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_chain_lightning_scepter")
                 --unit:AddItemByName("item_chain_lightning_scepter_second")
                 unit:AddItemByName("item_chain_lightning_scepter_third")
-                unit:AddItemByName("item_cleave_sword")
+                unit:AddItemByName("item_bejesus_evil")
+                unit:AddItemByName("item_bejesus_evil")
+                unit:AddItemByName("item_bejesus_evil")
                 unit:AddItemByName("item_cleave_sword_second")
                 --unit:AddItemByName("item_cleave_sword_third")
                 unit:AddItemByName("item_vortex_axe")
@@ -142,9 +152,13 @@ function main:OnEntityKilled(data)
             main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
         end
 
-        if killedEntity:HasAbility("respawn_settings") then
+        --if killedEntity:HasAbility("respawn_settings") then
+        --    main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+        --end
+        if killedEntity:GetUnitName():find("_spawner") then
             main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
         end
+
     end 
 
     if killedEntity:IsRealHero()  then
@@ -178,7 +192,10 @@ function main:SpanwMoobs()
 
     local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
     --for i = 1, 5 do
-    main:RespawnUnits("npc_zombie_spawner",point,5,1)
+    main:RespawnUnits("npc_gargoyle_spawner",point,5,1)
+
+    point = Entities:FindByName( nil, "spawner_2"):GetAbsOrigin()
+    CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     --print("create")
     --print(unit.vSpawnLoc)
     --end
@@ -220,9 +237,9 @@ end
 function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
     
     local team = DOTA_TEAM_NEUTRALS
-
+    local unit = nil
     local minionsName = string.gsub(unitName,"_spawner", "");
-
+    
     Timers:CreateTimer(time, function()
         unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
         unit.vSpawnLoc = SpawnLoc 
@@ -230,7 +247,7 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
         local modifier = unit:AddNewModifier(unit, nil, "modifier_explosive", {})
 
         for i = 1, numMinions do 
-            unit = CreateUnitByName(minionsName, SpawnLoc, true, nil, nil, team )
+            unit = CreateUnitByName(minionsName, SpawnLoc + RandomVector(100), true, nil, nil, team )
             if modifier:CanBeAddToMinions() then
                 unit:AddNewModifier(unit, nil, modifier:GetName(), {})
             end
@@ -247,26 +264,47 @@ function main:DamageFilter(data)
     local entindex_victim_const     = data.entindex_victim_const
     local entindex_attacker_const   = data.entindex_attacker_const
     local damagetype_const      = data.damagetype_const
-    local ability = nil
-    local victim = nil
-    local attacker = nil
-
+    local hAbility = nil
+    local hVictim = nil
+    local hAttacker = nil
 
     if damage > 0 then
 
         if (entindex_inflictor_const) then 
-            ability = EntIndexToHScript(entindex_inflictor_const) 
+            hAbility = EntIndexToHScript(entindex_inflictor_const) 
         end
         if (entindex_victim_const) then 
-            victim  = EntIndexToHScript(entindex_victim_const)
-            if victim:IsRealHero() then
-                data.damage = self:ManaShieldReduceDmg(victim,data.damage,modifier)
-                data.damage = self:BerserkRageReduceDmg(victim,data.damage,modifier)
+            hVictim  = EntIndexToHScript(entindex_victim_const)
+            if hVictim:IsRealHero() then
+                data.damage = self:ManaShieldReduceDmg(hVictim,data.damage,modifier)
+                data.damage = self:BerserkRageReduceDmg(hVictim,data.damage,modifier)
+                --print("hero")
+                --print(data.damagetype_const)
+                --print(data.damage)
             end
         end
-        if (entindex_attacker_const) then 
-            attacker    = EntIndexToHScript(entindex_attacker_const) 
 
+        if (entindex_attacker_const) and (entindex_victim_const) then 
+            hAttacker    = EntIndexToHScript(entindex_attacker_const)
+            hVictim  = EntIndexToHScript(entindex_victim_const)
+            --[[
+            if hAttacker:IsCreature() then
+                if hAttacker:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+                    if not hAttacker.magic_attack then
+                        hAttacker.magic_attack = true 
+                        ApplyDamage({
+                            victim = hVictim,
+                            attacker = hAttacker,
+                            damage = hAttacker:GetBaseDamageMax(),
+                            damage_type = DAMAGE_TYPE_MAGICAL,
+                            ability = hAbility
+                           })
+                        hAttacker.magic_attack = nil
+                        data.damage = 0
+                        return false 
+                    end
+                end
+            end]]
         end
         
     end
