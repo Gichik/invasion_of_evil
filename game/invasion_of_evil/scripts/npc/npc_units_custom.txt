@@ -17,8 +17,8 @@
 		"HealthBarOffset"			"140"
 		"HasInventory"				"0"
 		"ConsideredHero"			"0"
-		"IsNeutralUnitType"         "1"
-
+		"UseNeutralCreepBehavior"	"1"
+		"CanBeDominated"            "0"
 
 		"UnitLabel"					"npc_base"
 		
@@ -39,8 +39,8 @@
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"0"
-		"AttackDamageMax"			"0"
+		"AttackDamageMin"			"5"
+		"AttackDamageMax"			"10"
 		
 		// Bounty
 		//----------------------------------------------------------------
@@ -56,8 +56,8 @@
 		
 		// Movement
 		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
-		"MovementSpeed"				"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"200"		// Speed.
 		
 		// Status
 		//----------------------------------------------------------------
@@ -76,7 +76,7 @@
 		"TeamName"					"DOTA_TEAM_GOODGUYS"
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 				// Creature Data
 		//----------------------------------------------------------------

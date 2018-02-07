@@ -43,7 +43,7 @@ function modifier_chain_lightning_second:OnCreated(data)
 	
 	if IsServer() then
 		self.parent = self:GetParent()
-		self.dmgMultiply = 2
+		self.dmgMultiply = self:GetAbility():GetSpecialValueFor("int_in_dmg_perc")/100 or 0
 		self.aoeRadius = 500
 		self.lightCount = 4
 		self.think = 0.03

@@ -34,6 +34,8 @@ function main:InitGameMode()
     ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
     ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
+
+    PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
 end
 
 
@@ -50,17 +52,18 @@ function main:OnNPCSpawn(data)
     local unit = EntIndexToHScript(data.entindex)
 
     if unit:IsRealHero() then
+
+        Timers:CreateTimer(1, function()
+            unit:RemoveModifierByName("modifier_silencer_int_steal")
+          return nil
+        end
+        )
+
         if not unit.next_spawn then
 
             unit.next_spawn = true; 
             --unit:SetGold(0,false)
             unit:SetAbilityPoints(0)
-
-            Timers:CreateTimer(1, function()
-                unit:RemoveModifierByName("modifier_silencer_int_steal")
-              return nil
-            end
-            )
 
             local ability = nil 
             for i = 0, 3 do
@@ -71,16 +74,20 @@ function main:OnNPCSpawn(data)
             end
      
             if unit:HasAnyAvailableInventorySpace() then
-                --unit:AddItemByName("item_chain_lightning_scepter")
-                --unit:AddItemByName("item_chain_lightning_scepter_second")
+                unit:AddItemByName("item_chain_lightning_scepter")
+                unit:AddItemByName("item_chain_lightning_scepter_second")
                 unit:AddItemByName("item_chain_lightning_scepter_third")
-                unit:AddItemByName("item_bejesus_evil")
-                unit:AddItemByName("item_bejesus_evil")
-                unit:AddItemByName("item_bejesus_evil")
-                unit:AddItemByName("item_cleave_sword_second")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil") 
+                unit:AddItemByName("item_cleave_sword")               
+                --unit:AddItemByName("item_cleave_sword_second")
                 --unit:AddItemByName("item_cleave_sword_third")
-                unit:AddItemByName("item_vortex_axe")
-                --unit:AddItemByName("item_vortex_axe_second")
+               -- unit:AddItemByName("item_vortex_axe")
+               -- unit:AddItemByName("item_vortex_axe_second")
                 --unit:AddItemByName("item_vortex_axe_third")
                 unit:AddItemByName("item_heart")
                 unit:AddItemByName("item_bloodstone")
@@ -148,17 +155,18 @@ function main:OnEntityKilled(data)
     local killedEntity = EntIndexToHScript(data.entindex_killed)
 
     if killedEntity:IsCreature()  then
-        if RollPercentage(50) then
-            main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
-        end
+        if killedEntity:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+            if RollPercentage(50) then
+                main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
+            end
 
-        --if killedEntity:HasAbility("respawn_settings") then
-        --    main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
-        --end
-        if killedEntity:GetUnitName():find("_spawner") then
-            main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+            --if killedEntity:HasAbility("respawn_settings") then
+            --    main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+            --end
+            if killedEntity:GetUnitName():find("_spawner") then
+                main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+            end
         end
-
     end 
 
     if killedEntity:IsRealHero()  then
@@ -192,23 +200,38 @@ function main:SpanwMoobs()
 
     local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
     --for i = 1, 5 do
-    main:RespawnUnits("npc_gargoyle_spawner",point,5,1)
+    main:RespawnUnits("npc_spawner_gargoyle",point,5,1)
 
     point = Entities:FindByName( nil, "spawner_2"):GetAbsOrigin()
     CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     --print("create")
     --print(unit.vSpawnLoc)
     --end
-
 end
 
  
-function main:CreateDrop (itemName, pos)
+function main:CreateDrop(itemName, pos)
    local newItem = CreateItem(itemName, nil, nil)
    newItem:SetPurchaseTime(0)
-   CreateItemOnPositionSync(pos, newItem)
+   local drop = CreateItemOnPositionSync(pos, newItem)
    newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 350)))
+
+    Timers:CreateTimer(5, function()
+        if newItem and IsValidEntity(newItem) then
+            if not newItem:GetOwnerEntity() then 
+
+                if drop and IsValidEntity(drop) then 
+                    UTIL_Remove(drop) 
+                end
+
+                UTIL_Remove(newItem)
+            end
+        end
+      return nil
+    end
+    )
 end
+
 
 function main:OnItemPickedUp(data)
     --print("spawn")
@@ -337,4 +360,19 @@ function main:BerserkRageReduceDmg(hHero,damage)
         end
     end
     return damage 
+end
+
+
+function main:SetPortalOwExist(flag)
+    PORTAL_OW_EXIST = flag
+end
+
+
+function main:FocusCameraOnPlayer(player)
+    PlayerResource:SetCameraTarget(player:GetPlayerOwnerID(),player)
+    Timers:CreateTimer(1, function()
+        PlayerResource:SetCameraTarget(player:GetPlayerOwnerID(), nil)
+        return nil
+    end
+    )
 end

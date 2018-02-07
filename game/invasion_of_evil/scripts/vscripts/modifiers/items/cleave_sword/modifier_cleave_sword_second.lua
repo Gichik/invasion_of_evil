@@ -40,7 +40,7 @@ function modifier_cleave_sword_second:OnCreated(data)
 	
 	if IsServer() then
 		self.parent = self:GetParent()
-		self.dmgMultiply = 0.6
+		self.dmgMultiply = self:GetAbility():GetSpecialValueFor("dmg_perc")/100 or 0
 		self.cleaveStRadius = 100
 		self.cleaveEndRadius = 500
 		self.cleaveDistance = 500

@@ -57,13 +57,13 @@
 	}
 
 
-	"item_bejesus_evil"
+	"item_entrails_evil"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"item_lua"
-		"ScriptFile"					"items/item_bejesus_evil.lua"
-		"AbilityTextureName"			"custom_folder/bejesus_evil"
+		"ScriptFile"					"items/item_entrails_evil.lua"
+		"AbilityTextureName"			"custom_folder/entrails_evil"
 		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
 		//"Model"							"models/props_gameplay/recipe.vmdl"
 

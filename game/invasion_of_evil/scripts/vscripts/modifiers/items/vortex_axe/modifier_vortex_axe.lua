@@ -71,7 +71,7 @@ function modifier_vortex_axe:OnCreated(data)
 		self.rotate = 1
 		self.rotateMax = 12
 		self.think = 0.03
-		self.damage = (self.parent:GetStrength()*self.rotateMax*self.think) or 0
+		self.dmgMultiply = self:GetAbility():GetSpecialValueFor("str_in_dmg_perc")/100 or 0
 		self.curr_pos = self.parent:GetAbsOrigin()
 		self.new_pos = nil
 		self.new_forward = nil
@@ -163,16 +163,18 @@ end
 
 function modifier_vortex_axe:ApplyDamage()
 	if self:GetParent() then
+
+		local dmg = self.dmgMultiply*(self.parent:GetStrength()*self.rotateMax*self.think) or 0
+
 		local units = FindUnitsInRadius( self.parent:GetTeamNumber(), self.parent:GetAbsOrigin(), self.parent, 250,
 		DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 		
 		if units then
-			--EmitSoundOn("Hero_Axe.CounterHelix", caster)	
 			for i = 1, #units do		
 		        ApplyDamage({
 		            victim = units[ i ],
 		            attacker = self.parent,
-		            damage = self.damage,
+		            damage = dmg,
 		            damage_type = self:GetAbilityDamageType(),
 		            ability = self
 		           })		

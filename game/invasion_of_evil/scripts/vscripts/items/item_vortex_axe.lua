@@ -43,7 +43,7 @@ function OnToggle(data)
 		caster:RemoveModifierByName("modifier_vortex_axe_second")
 		caster:RemoveModifierByName("modifier_vortex_axe_third")
 	else
-		caster:AddNewModifier(caster, self, modifName, {})
+		caster:AddNewModifier(caster, data.ability, modifName, {})
 	end
 
 end
