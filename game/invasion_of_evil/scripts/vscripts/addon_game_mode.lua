@@ -80,5 +80,10 @@ function Activate()
 		print("----------------------------------------Test map Start----------------------------------------")	
 		main:InitGameMode()
 	end
+
+	if MapName == "forest_map" then
+		print("----------------------------------------Forest map Start----------------------------------------")	
+		main:InitGameMode()
+	end
 	
 end
