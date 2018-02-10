@@ -21,6 +21,8 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
 
+    GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
+
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');

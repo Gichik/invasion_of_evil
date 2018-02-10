@@ -31,6 +31,11 @@
 		"Ability16"		"special_bonus_strength_20"
 		"Ability17"		"special_bonus_attack_speed_70"
 
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
+
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"		"0"
@@ -60,7 +65,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"			"350"
 		"MovementTurnRate"		"0.500000"
-		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"										
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"												
 	}
 
 
@@ -87,6 +92,11 @@
 		"Ability15"		"special_bonus_magic_resistance_20"
 		"Ability16"		"special_bonus_strength_20"
 		"Ability17"		"special_bonus_attack_speed_70"
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -146,6 +156,11 @@
 		"Ability16"		"special_bonus_strength_20"
 		"Ability17"		"special_bonus_agility_20"
 
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
+
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"		"2"
@@ -204,6 +219,11 @@
 		"Ability15"		"special_bonus_attack_speed_30"
 		"Ability16"		"special_bonus_strength_20"
 		"Ability17"		"special_bonus_agility_20"
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -266,6 +286,11 @@
 		"Ability17"		"special_bonus_intelligence_20"
 		"Ability18"		"special_bonus_attack_range_200"
 
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
+
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"		"-1"
@@ -326,6 +351,11 @@
 		"Ability15"		"special_bonus_mp_500"
 		"Ability16"		"special_bonus_intelligence_20"
 		"Ability17"		"special_bonus_attack_range_200"
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------

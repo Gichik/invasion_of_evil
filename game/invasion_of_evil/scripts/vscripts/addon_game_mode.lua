@@ -36,8 +36,8 @@ function Precache( context )
 	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl", context )
 	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
-
-
+	PrecacheResource( "model", "models/props_tree/dire_tree009_tintable.vmdl", context )
+	PrecacheResource( "model", "models/props_tree/dire_tree007.vmdl", context )
 
 	------------------------------------------------particles-----------------------------------------------------
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )
