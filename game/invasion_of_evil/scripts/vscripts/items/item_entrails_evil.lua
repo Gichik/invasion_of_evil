@@ -64,7 +64,7 @@ end
 function item_entrails_evil:OnSpellStart()
 	if IsServer() then
 
-	print("OnSpellStart")
+	--print("OnSpellStart")
 
 		local hCaster = self:GetCaster()
 		local hTarget = self:GetCursorTarget()
@@ -99,7 +99,7 @@ end
 
 function item_entrails_evil:CreatePortalAnimation()
 	if IsServer() then
-		print("CreatePortalAnimation")
+		--print("CreatePortalAnimation")
 		if self.tpParticleID == nil and PORTAL_OW_POINT then
 	    	self.tpParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, self)
 	    	ParticleManager:SetParticleControl(self.tpParticleID, 0, PORTAL_OW_POINT )
@@ -110,7 +110,7 @@ end
 
 function item_entrails_evil:DestroyPortal()
 	if IsServer() then
-		print("DestroyPortal")
+		--print("DestroyPortal")
 		main:SetPortalOwExist(false)
 		if self.tpParticleID then
 			ParticleManager:DestroyParticle(self.tpParticleID, false)
@@ -118,9 +118,7 @@ function item_entrails_evil:DestroyPortal()
 			self.tpParticleID = nil
 		end
 
-		local point = Entities:FindByName( nil, "spawner_3"):GetAbsOrigin()
-
-		local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, point, nil, 500,
+		local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, nil, 2000,
 		DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 		
 		if units then	
@@ -134,7 +132,7 @@ function item_entrails_evil:DestroyPortal()
 			end
 		end
 
-		units = FindUnitsInRadius( DOTA_TEAM_BADGUYS, point, nil, 500,
+		units = FindUnitsInRadius( DOTA_TEAM_NEUTRALS, SPAWNER_OW_POINT, nil, 2000,
 		DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 		
 		if units then	
@@ -146,13 +144,32 @@ function item_entrails_evil:DestroyPortal()
 end
 
 function item_entrails_evil:CreateNewPortal()
-	print("CreateNewPortal")
+	--print("CreateNewPortal")
 	main:SetPortalOwExist(true)
 	self:CreatePortalAnimation()
 	StartSoundEventFromPosition("Hero_ShadowDemon.Disruption",PORTAL_OW_POINT)
+	self:SpawnNewOWBoss()
     Timers:CreateTimer(PORTAL_OW_DURATION, function()
         self:DestroyPortal()
       	return nil
     end
     )
+
+
+    
+end
+
+function item_entrails_evil:SpawnNewOWBoss()
+    local unit = nil
+    
+    unit = CreateUnitByName(GetUnitNameFor("church",1), SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+
+    local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
+
+    for i = 1, BOSS_MINIONS_COUNT do 
+        unit = CreateUnitByName(GetUnitNameFor("church",2), SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
+        if modifier:CanBeAddToMinions() then
+            unit:AddNewModifier(unit, nil, modifier:GetName(), {})
+        end
+    end
 end

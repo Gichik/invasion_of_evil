@@ -33,11 +33,38 @@ function Precache( context )
 	
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
-	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl", context )
-	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
 	PrecacheResource( "model", "models/props_tree/dire_tree009_tintable.vmdl", context )
 	PrecacheResource( "model", "models/props_tree/dire_tree007.vmdl", context )
+
+	PrecacheResource( "model", "models/heroes/undying/undying_minion_torso.vmdl", context ) --npc_half_zombie
+
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl", context ) --npc_ghost
+	PrecacheResource( "model", "models/heroes/undying/undying_minion.vmdl", context ) --npc_zombie
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl", context )	--npc_skeleton
+	PrecacheResource( "model", "models/items/courier/mlg_wraith_courier/mlg_wraith_courier.vmdl", context )	-- npc_nightmare
+
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl", context ) -- npc_gargoyle
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl", context ) -- npc_demon
+	PrecacheResource( "model", "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl", context )	-- npc_fiend	
+	PrecacheResource( "model", "models/items/courier/dc_demon/dc_demon_flying.vmdl", context ) -- npc_flying_demon
+
+	PrecacheResource( "model", "models/items/courier/little_fraid_the_courier_of_simons_retribution/little_fraid_the_courier_of_simons_retribution.vmdl", context )	--npc_evil_seed
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl", context ) -- npc_satyr
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl", context ) -- npc_harpy
+	PrecacheResource( "model", "models/items/courier/deathbringer/deathbringer_flying.vmdl", context ) -- npc_deathbringer
+
+	PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl", context ) -- npc_cursed_tree_boss
+	PrecacheResource( "model", "models/heroes/undying/undying_flesh_golem.vmdl", context ) -- npc_cemetery_boss
+	PrecacheResource( "model", "models/items/warlock/warlock_fourleg_demon.vmdl", context ) -- npc_church_boss
+									
+
+
+	PrecacheResource( "model", "models/courier/imp/imp_flying.vmdl", context )
+	PrecacheResource( "model", "models/courier/smeevil/smeevil_flying.vmdl", context )
+	PrecacheResource( "model", "models/items/courier/boooofus_courier/boooofus_courier.vmdl", context )
+	
+
 
 	------------------------------------------------particles-----------------------------------------------------
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )

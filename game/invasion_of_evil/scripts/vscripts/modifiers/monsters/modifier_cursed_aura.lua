@@ -60,12 +60,12 @@ function modifier_cursed_aura:GetAuraEntityReject(target)
 end
 
 function modifier_cursed_aura:OnCreated()
-    self.auraRadius = 1000
+    self.auraRadius = 800
     self.auraDuration = 0.5
 
 	if IsServer() then
 		self:GetParent():SetRenderColor(0, 0, 0)
-        self:GetParent():SetModelScale(1.2)
+        self:GetParent():SetModelScale(1.0)
 	end
 end
 

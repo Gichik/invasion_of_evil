@@ -53,7 +53,7 @@ function modifier_revitalizing_loss:GetAuraDuration()
 end
 
 function modifier_revitalizing_loss:OnCreated()
-    self.auraRadius = 1000
+    self.auraRadius = 800
     self.auraDuration = 0.5
 
 	if IsServer() then
@@ -83,7 +83,7 @@ function modifier_revitalizing_loss_buff:GetTexture()
 end
 
 function modifier_revitalizing_loss_buff:OnCreated()
-    self.hpRegenBonus = 70
+    self.hpRegenBonus = 50
 end
 
 function modifier_revitalizing_loss_buff:GetEffectName()

@@ -17,7 +17,7 @@ LinkLuaModifier("modifier_cleave_sword_third", "modifiers/items/cleave_sword/mod
 
 
 
-LinkLuaModifier("modifier_teleport_progress", "modifiers/items/bejesus_evil/modifier_teleport_progress.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_teleport_progress", "modifiers/items/entrails_evil/modifier_teleport_progress.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------

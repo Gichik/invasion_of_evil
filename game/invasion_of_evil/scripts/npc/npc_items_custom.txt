@@ -80,7 +80,7 @@
 		"ItemQuality"					"artifact"	
 		"ItemCost"                      "0" 
 		"ItemDroppable"					"1" 
-		"ItemPurchasable"				"0" 
+		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1" 
 		"ItemInitialCharges"			"1"	

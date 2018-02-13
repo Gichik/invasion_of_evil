@@ -4,12 +4,9 @@
 
 
 function TeleportTrigger(data)
-	print("TeleportTrigger")
-	print(PORTAL_OW_EXIST)
+	--print("TeleportTrigger")
 	if PORTAL_OW_EXIST == true then
-
-		print("teleport")
-		local point = Entities:FindByName( nil, "spawner_3"):GetAbsOrigin()
+		local point = Entities:FindByName( nil, "hero_teleport_spawner"):GetAbsOrigin()
 		local activator = data.activator
 
 		activator:SetAbsOrigin(point) 

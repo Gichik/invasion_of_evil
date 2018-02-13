@@ -37,14 +37,17 @@ function main:InitGameMode()
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
     ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
 
-    --PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
+    PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
+    SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
+
+    AddFOWViewer(DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, 2000, 60, false)
 end
 
 
 function main:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --main:SpanwMoobs()
+        main:SpanwMoobs()
     end
 end
 
@@ -77,7 +80,7 @@ function main:OnNPCSpawn(data)
      
             if unit:HasAnyAvailableInventorySpace() then
                 unit:AddItemByName("item_chain_lightning_scepter")
-                unit:AddItemByName("item_chain_lightning_scepter_second")
+                --unit:AddItemByName("item_chain_lightning_scepter_second")
                 unit:AddItemByName("item_chain_lightning_scepter_third")
                 unit:AddItemByName("item_entrails_evil")
                 unit:AddItemByName("item_entrails_evil")
@@ -165,9 +168,18 @@ function main:OnEntityKilled(data)
             --if killedEntity:HasAbility("respawn_settings") then
             --    main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
             --end
-            if killedEntity:GetUnitName():find("_spawner") then
-                main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
+
+            if killedEntity:GetUnitName():find("_start") then
+                self:RespawnStartUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,START_MONS_RESPAWN_TIME)
             end
+
+            if killedEntity:GetUnitName():find("_spawner") then
+                self:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,MONSTERS_RESPAWN_TIME)
+            end
+
+            if killedEntity:GetUnitName():find("_mini_boss") then
+                self:RespawnMiniBoss(killedEntity:GetUnitName(),killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
+            end            
         end
     end 
 
@@ -199,19 +211,50 @@ function main:GiveNewHero(oldHero)
 end
 
 function main:SpanwMoobs()
-
+--[[
     local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
-    --for i = 1, 5 do
     main:RespawnUnits("npc_spawner_gargoyle",point,5,1)
-
     point = Entities:FindByName( nil, "spawner_2"):GetAbsOrigin()
-    CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
-    --print("create")
-    --print(unit.vSpawnLoc)
-    --end
+    CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )]]
+
+    local point = nil
+    local unit = nil
+
+    point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
+    unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(0,-1,0))
+
+    for i = 1, 3 do
+        point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
+        --unit = CreateUnitByName("npc_start_half_zombie", point, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        --unit.vSpawnLoc = point 
+        self:RespawnStartUnits("npc_start_half_zombie", point, MINIONS_COUNT, 5)
+    end
+
+    for i = 1, 4 do
+        point = Entities:FindByName( nil, "cemetery_spawner_" .. i ):GetAbsOrigin()
+        self:RespawnUnits(GetUnitNameFor("cemetery",i), point, MINIONS_COUNT, 1)
+
+        point = Entities:FindByName( nil, "church_spawner_" .. i ):GetAbsOrigin()
+        self:RespawnUnits(GetUnitNameFor("church",i), point, MINIONS_COUNT, 1)
+
+        point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
+        self:RespawnUnits(GetUnitNameFor("cursed_tree",i), point, MINIONS_COUNT, 1)      
+    end    
+
+    point = Entities:FindByName( nil, "cemetery_spawner_5" ):GetAbsOrigin()
+    self:RespawnMiniBoss(GetUnitNameFor("cemetery",5), point, 1)
+
+    point = Entities:FindByName( nil, "church_spawner_5" ):GetAbsOrigin()
+    self:RespawnMiniBoss(GetUnitNameFor("church",5), point, 1)
+
+    point = Entities:FindByName( nil, "cursed_tree_spawner_5" ):GetAbsOrigin()
+    self:RespawnMiniBoss(GetUnitNameFor("cursed_tree",5), point, 1)    
 end
 
- 
+
+
+
 function main:CreateDrop(itemName, pos)
    local newItem = CreateItem(itemName, nil, nil)
    newItem:SetPurchaseTime(0)
@@ -259,6 +302,26 @@ function main:OnItemPickedUp(data)
     end
 end
 
+
+function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    local minionsName = string.gsub(unitName,"_start", "");
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+
+        for i = 1, numMinions do 
+            unit = CreateUnitByName(minionsName, SpawnLoc + RandomVector(100), true, nil, nil, team )
+        end
+
+      return nil
+    end
+    )
+end
+
 function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
     
     local team = DOTA_TEAM_NEUTRALS
@@ -269,7 +332,7 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
         unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
         unit.vSpawnLoc = SpawnLoc 
 
-        local modifier = unit:AddNewModifier(unit, nil, "modifier_explosive", {})
+        local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
 
         for i = 1, numMinions do 
             unit = CreateUnitByName(minionsName, SpawnLoc + RandomVector(100), true, nil, nil, team )
@@ -282,6 +345,37 @@ function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
     end
     )
 end
+
+
+function main:RespawnMiniBoss(unitName,SpawnLoc,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    local modifName = nil
+
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+
+        local modifCount = 0
+
+        for i = 0, 10 do
+            modifName = GetRandomModifierName()
+            if not unit:HasModifier(modifName) then
+                unit:AddNewModifier(unit, nil, modifName, {})
+                modifCount = modifCount + 1
+            end
+            if modifCount >= 3 then
+                break
+            end
+        end
+
+      return nil
+    end
+    )
+end
+
 
 function main:DamageFilter(data)
     local damage                = data.damage
@@ -356,7 +450,7 @@ function main:BerserkRageReduceDmg(hHero,damage)
         local thresholdPerc = ability:GetSpecialValueFor("threshold_percent")/100
         local health = hHero:GetHealth() - damage
         if health < thresholdPerc*maxHealth then
-            hHero:AddNewModifier(hHero, ability, "modifier_berserk_rage", {duration = 5})
+            hHero:AddNewModifier(hHero, ability, "modifier_berserk_rage", {duration = ability:GetSpecialValueFor("duration")})
             ability:StartCooldown(ability:GetCooldown(1))
             damage = 0
         end
