@@ -155,7 +155,6 @@ function main:OnSomeHeroKilled(data)
 
 end
 
-
 function main:OnEntityKilled(data)
     local killedEntity = EntIndexToHScript(data.entindex_killed)
 
@@ -165,27 +164,148 @@ function main:OnEntityKilled(data)
                 main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
             end
 
-            --if killedEntity:HasAbility("respawn_settings") then
-            --    main:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,5,5)
-            --end
-
-            if killedEntity:GetUnitName():find("_start") then
-                self:RespawnStartUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,START_MONS_RESPAWN_TIME)
-            end
-
-            if killedEntity:GetUnitName():find("_spawner") then
-                self:RespawnUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,MONSTERS_RESPAWN_TIME)
-            end
-
             if killedEntity:GetUnitName():find("_mini_boss") then
-                self:RespawnMiniBoss(killedEntity:GetUnitName(),killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
-            end            
+                self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
+            end  
+
+            if killedEntity.spawner then
+                if killedEntity:GetUnitName():find("_start") then
+                    self:RespawnStartUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,START_MONS_RESPAWN_TIME)
+                else 
+                    self:RespawnUnits(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc,MINIONS_COUNT,MONSTERS_RESPAWN_TIME)
+                end
+            end
         end
     end 
 
     if killedEntity:IsRealHero()  then
         main:GiveNewHero(killedEntity)
     end    
+end
+
+function main:SpanwMoobs()
+
+    local point = nil
+    local unit = nil
+
+    point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
+    unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(0,-1,0))
+
+    for i = 1, 3 do
+        point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
+        self:RespawnStartUnits("npc_start_evil_warrior", point, MINIONS_COUNT, 1)
+    end
+
+    for i = 1, 5 do
+        self:CreateUnits("cemetery", i, 1)
+        self:CreateUnits("church", i, 1)
+        self:CreateUnits("cursed_tree", i, 1)     
+    end      
+end
+
+
+function main:CreateUnits(biomName,spawnerNumber,time)
+    --print("CreateUnits")
+    if biomName and spawnerNumber and time then
+        local unitSettings = GetUnitFor(biomName, spawnerNumber) or nil
+        local point = Entities:FindByName( nil, biomName .. "_spawner_" .. spawnerNumber ):GetAbsOrigin() or nil
+
+        if unitSettings and point then
+            if unitSettings[1] == "npc_mini_boss"  then
+                self:RespawnMiniBoss(unitSettings[1], unitSettings[2], unitSettings[3], point, time)
+            else
+                self:RespawnUnits(unitSettings[1], unitSettings[2], unitSettings[3], point, MINIONS_COUNT, time)   
+            end      
+        end
+    end
+end
+
+
+
+function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+        unit.spawner = true
+
+        for i = 1, numMinions do 
+            unit = CreateUnitByName(unitName, SpawnLoc + RandomVector(100), true, nil, nil, team )
+        end
+
+      return nil
+    end
+    )
+end
+
+
+function main:RespawnUnits(unitName,modelName,modelScale,SpawnLoc,numMinions,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+        unit.modelName = modelName
+        unit.spawner = true
+        unit:SetOriginalModel(modelName)
+        unit.modelScale = modelScale
+        unit:SetModelScale(modelScale)
+
+        local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
+
+        for i = 1, numMinions do 
+            unit = CreateUnitByName(unitName, SpawnLoc + RandomVector(100), true, nil, nil, team )
+            unit:SetOriginalModel(modelName)
+            unit:SetModelScale(modelScale)
+            unit.spawner = false
+            if modifier:CanBeAddToMinions() then
+                unit:AddNewModifier(unit, nil, modifier:GetName(), {})
+            end
+        end
+
+      return nil
+    end
+    )
+end
+
+
+function main:RespawnMiniBoss(unitName,modelName,modelScale,SpawnLoc,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    local modifName = nil
+
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+        unit.modelName = modelName
+        unit:SetOriginalModel(modelName)
+        unit.modelScale = modelScale
+        unit:SetModelScale(modelScale)
+
+        local modifCount = 0
+
+        for i = 0, 10 do
+            modifName = GetRandomModifierName()
+            if not unit:HasModifier(modifName) then
+                unit:AddNewModifier(unit, nil, modifName, {})
+                modifCount = modifCount + 1
+            end
+            if modifCount >= 3 then
+                break
+            end
+        end
+
+      return nil
+    end
+    )
 end
 
 
@@ -209,50 +329,6 @@ function main:GiveNewHero(oldHero)
         newHero:RespawnHero(false, false)
     end
 end
-
-function main:SpanwMoobs()
---[[
-    local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
-    main:RespawnUnits("npc_spawner_gargoyle",point,5,1)
-    point = Entities:FindByName( nil, "spawner_2"):GetAbsOrigin()
-    CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )]]
-
-    local point = nil
-    local unit = nil
-
-    point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
-    unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
-    unit:SetForwardVector(Vector(0,-1,0))
-
-    for i = 1, 3 do
-        point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
-        --unit = CreateUnitByName("npc_start_half_zombie", point, true, nil, nil, DOTA_TEAM_NEUTRALS)
-        --unit.vSpawnLoc = point 
-        self:RespawnStartUnits("npc_start_half_zombie", point, MINIONS_COUNT, 5)
-    end
-
-    for i = 1, 4 do
-        point = Entities:FindByName( nil, "cemetery_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnUnits(GetUnitNameFor("cemetery",i), point, MINIONS_COUNT, 1)
-
-        point = Entities:FindByName( nil, "church_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnUnits(GetUnitNameFor("church",i), point, MINIONS_COUNT, 1)
-
-        point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnUnits(GetUnitNameFor("cursed_tree",i), point, MINIONS_COUNT, 1)      
-    end    
-
-    point = Entities:FindByName( nil, "cemetery_spawner_5" ):GetAbsOrigin()
-    self:RespawnMiniBoss(GetUnitNameFor("cemetery",5), point, 1)
-
-    point = Entities:FindByName( nil, "church_spawner_5" ):GetAbsOrigin()
-    self:RespawnMiniBoss(GetUnitNameFor("church",5), point, 1)
-
-    point = Entities:FindByName( nil, "cursed_tree_spawner_5" ):GetAbsOrigin()
-    self:RespawnMiniBoss(GetUnitNameFor("cursed_tree",5), point, 1)    
-end
-
-
 
 
 function main:CreateDrop(itemName, pos)
@@ -303,80 +379,6 @@ function main:OnItemPickedUp(data)
 end
 
 
-function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
-    
-    local team = DOTA_TEAM_NEUTRALS
-    local unit = nil
-    local minionsName = string.gsub(unitName,"_start", "");
-    
-    Timers:CreateTimer(time, function()
-        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
-        unit.vSpawnLoc = SpawnLoc 
-
-        for i = 1, numMinions do 
-            unit = CreateUnitByName(minionsName, SpawnLoc + RandomVector(100), true, nil, nil, team )
-        end
-
-      return nil
-    end
-    )
-end
-
-function main:RespawnUnits(unitName,SpawnLoc,numMinions,time)
-    
-    local team = DOTA_TEAM_NEUTRALS
-    local unit = nil
-    local minionsName = string.gsub(unitName,"_spawner", "");
-    
-    Timers:CreateTimer(time, function()
-        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
-        unit.vSpawnLoc = SpawnLoc 
-
-        local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
-
-        for i = 1, numMinions do 
-            unit = CreateUnitByName(minionsName, SpawnLoc + RandomVector(100), true, nil, nil, team )
-            if modifier:CanBeAddToMinions() then
-                unit:AddNewModifier(unit, nil, modifier:GetName(), {})
-            end
-        end
-
-      return nil
-    end
-    )
-end
-
-
-function main:RespawnMiniBoss(unitName,SpawnLoc,time)
-    
-    local team = DOTA_TEAM_NEUTRALS
-    local unit = nil
-    local modifName = nil
-
-    
-    Timers:CreateTimer(time, function()
-        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
-        unit.vSpawnLoc = SpawnLoc 
-
-        local modifCount = 0
-
-        for i = 0, 10 do
-            modifName = GetRandomModifierName()
-            if not unit:HasModifier(modifName) then
-                unit:AddNewModifier(unit, nil, modifName, {})
-                modifCount = modifCount + 1
-            end
-            if modifCount >= 3 then
-                break
-            end
-        end
-
-      return nil
-    end
-    )
-end
-
-
 function main:DamageFilter(data)
     local damage                = data.damage
     local entindex_inflictor_const  = data.entindex_inflictor_const
@@ -397,33 +399,12 @@ function main:DamageFilter(data)
             if hVictim:IsRealHero() then
                 data.damage = self:ManaShieldReduceDmg(hVictim,data.damage,modifier)
                 data.damage = self:BerserkRageReduceDmg(hVictim,data.damage,modifier)
-                --print("hero")
-                --print(data.damagetype_const)
-                --print(data.damage)
             end
         end
 
         if (entindex_attacker_const) and (entindex_victim_const) then 
             hAttacker    = EntIndexToHScript(entindex_attacker_const)
             hVictim  = EntIndexToHScript(entindex_victim_const)
-            --[[
-            if hAttacker:IsCreature() then
-                if hAttacker:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-                    if not hAttacker.magic_attack then
-                        hAttacker.magic_attack = true 
-                        ApplyDamage({
-                            victim = hVictim,
-                            attacker = hAttacker,
-                            damage = hAttacker:GetBaseDamageMax(),
-                            damage_type = DAMAGE_TYPE_MAGICAL,
-                            ability = hAbility
-                           })
-                        hAttacker.magic_attack = nil
-                        data.damage = 0
-                        return false 
-                    end
-                end
-            end]]
         end
         
     end

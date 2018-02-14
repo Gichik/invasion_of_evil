@@ -78,5 +78,19 @@
       "secretshop"
       {
         "item"   "item_entrails_evil"
+        "item"   "item_nil_talisman"
+        "item"   "item_nil_talisman_second"
+        "item"   "item_nil_talisman_third"                
+        "item"   "item_amulet_of_courage"
+        "item"   "item_amulet_of_courage_second"
+        "item"   "item_amulet_of_courage_third"                        
+        "item"   "item_omexe_armor"
+        "item"   "item_omexe_armor_second"
+        "item"   "item_omexe_armor_third"        
+        "item"   "item_armor_hazhadal"
+        "item"   "item_armor_hazhadal_second"
+        "item"   "item_ring_of_mp_regen"
+        "item"   "item_ring_of_mp_regen_second"
+        "item"   "item_ring_of_mp_regen_third"       
       }
   }

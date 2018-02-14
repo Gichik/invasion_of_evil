@@ -86,7 +86,8 @@ function item_entrails_evil:OnSpellStart()
 				modifier:IncrementStackCount()
 				if modifier:GetStackCount() >= ENTRAILS_FOR_PORTAL then
 					hTarget:RemoveModifierByName("modifier_teleport_progress")
-					self:CreateNewPortal()
+					self:CreateWawes()
+					--self:CreateNewPortal()
 				end
 			else
 				hTarget:AddNewModifier(hTarget, nil, "modifier_teleport_progress", {}):IncrementStackCount()
@@ -143,6 +144,41 @@ function item_entrails_evil:DestroyPortal()
 	end	
 end
 
+function item_entrails_evil:CreateWawes()
+	local point = nil
+	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
+	local waveCount = 20
+	local unit = nil
+	
+	main:SetPortalOwExist(true)
+
+    Timers:CreateTimer(1, function()
+    	if waveCount >= 10 and targetPoint then
+			for i = 1, 6 do
+				point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
+				if RollPercentage(50) then
+			    	unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+				else
+					unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+				end
+			end
+
+			waveCount = waveCount - 2
+      		return 2
+      	end
+
+      	if waveCount > 0 then
+      		waveCount = waveCount - 2
+      		return 2
+      	end
+
+      	self:CreateNewPortal()
+      	return nil
+    end
+    )
+end
+
+
 function item_entrails_evil:CreateNewPortal()
 	--print("CreateNewPortal")
 	main:SetPortalOwExist(true)
@@ -154,20 +190,17 @@ function item_entrails_evil:CreateNewPortal()
       	return nil
     end
     )
-
-
-    
 end
 
 function item_entrails_evil:SpawnNewOWBoss()
     local unit = nil
     
-    unit = CreateUnitByName(GetUnitNameFor("church",1), SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+    unit = CreateUnitByName("npc_melee_evil_warrior", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
 
     local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
 
     for i = 1, BOSS_MINIONS_COUNT do 
-        unit = CreateUnitByName(GetUnitNameFor("church",2), SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
+        unit = CreateUnitByName("npc_melee_evil_warrior", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
         if modifier:CanBeAddToMinions() then
             unit:AddNewModifier(unit, nil, modifier:GetName(), {})
         end

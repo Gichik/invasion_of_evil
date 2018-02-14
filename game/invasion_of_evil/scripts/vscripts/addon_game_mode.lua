@@ -58,7 +58,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/undying/undying_flesh_golem.vmdl", context ) -- npc_cemetery_boss
 	PrecacheResource( "model", "models/items/warlock/warlock_fourleg_demon.vmdl", context ) -- npc_church_boss
 									
-
+	PrecacheResource( "model", "models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl", context ) -- npc_range_wave_warrior
 
 	PrecacheResource( "model", "models/courier/imp/imp_flying.vmdl", context )
 	PrecacheResource( "model", "models/courier/smeevil/smeevil_flying.vmdl", context )
