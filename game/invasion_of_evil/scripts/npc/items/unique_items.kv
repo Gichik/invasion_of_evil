@@ -1,0 +1,403 @@
+"DOTAAbilities"
+{
+	
+   "item_winged_paladin_gloves"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/gloves/winged_paladin_gloves" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_res"		"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"-10"
+			}			
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_gloves_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agility"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 		"%bonus_movespeed"								
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_CANNOT_MISS"  			"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+			}
+		}					
+   }
+
+
+   "item_armor_gleaming_sea"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/armor/armor_gleaming_sea" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp"				"100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mp"				"100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"5"
+			}				
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_res"		"5"
+			}
+		
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_armor_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
+					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_strength"					
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"				
+				}				
+			}
+		}					
+   }
+
+
+   "item_ring_of_the_basilius"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/ring_of_the_basilius"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mp_regen"		"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp_regen"		"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_res"		"5"
+			}			
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp"				"100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mp"				"100"
+			}				
+		
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_ring_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 			"%bonus_mp_regen"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 			"%bonus_hp_regen"					
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"					
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
+					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"
+				}				
+			}
+		}					
+   }
+
+
+   "item_poor_man_shield"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/armor/poor_man_shield" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_str"				"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"5"
+			}				
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"-10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"20"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_dmg"				"30"
+			}					
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_shield_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"					
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 		"%bonus_movespeed"	
+				}				
+			}
+		}
+
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_block_physical_damage"
+			}		
+		}
+
+		"OnUnequip"
+		{
+			"RemoveModifier"
+			    {
+			        "ModifierName"   "modifier_block_physical_damage"
+			        "Target"         "CASTER"
+			    }		
+		}
+   }
+
+
+   "item_amulet_of_conversion"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/amulet_of_conversion"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{			
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mp"				"100"
+			}				
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp"				"100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"5"
+			}	
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_res"		"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"5"
+			}				
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_ring_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"					
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"					
+				}				
+			}
+		}					
+   }
+
+}

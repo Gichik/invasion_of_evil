@@ -60,7 +60,7 @@ function modifier_cursed_aura:GetAuraEntityReject(target)
 end
 
 function modifier_cursed_aura:OnCreated()
-    self.auraRadius = 800
+    self.auraRadius = 600
     self.auraDuration = 0.5
 
 	if IsServer() then

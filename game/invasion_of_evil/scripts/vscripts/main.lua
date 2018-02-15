@@ -69,6 +69,7 @@ function main:OnNPCSpawn(data)
             unit.next_spawn = true; 
             --unit:SetGold(0,false)
             unit:SetAbilityPoints(0)
+            unit:SetGold(5, true)
 
             local ability = nil 
             for i = 0, 3 do
@@ -79,23 +80,23 @@ function main:OnNPCSpawn(data)
             end
      
             if unit:HasAnyAvailableInventorySpace() then
-                unit:AddItemByName("item_chain_lightning_scepter")
+                --unit:AddItemByName("item_chain_lightning_scepter")
                 --unit:AddItemByName("item_chain_lightning_scepter_second")
-                unit:AddItemByName("item_chain_lightning_scepter_third")
-                unit:AddItemByName("item_entrails_evil")
-                unit:AddItemByName("item_entrails_evil")
-                unit:AddItemByName("item_entrails_evil")
-                unit:AddItemByName("item_entrails_evil")
-                unit:AddItemByName("item_entrails_evil")
-                unit:AddItemByName("item_entrails_evil") 
-                unit:AddItemByName("item_cleave_sword")               
+                --unit:AddItemByName("item_chain_lightning_scepter_third")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil") 
+                --unit:AddItemByName("item_cleave_sword")               
                 --unit:AddItemByName("item_cleave_sword_second")
                 --unit:AddItemByName("item_cleave_sword_third")
-               -- unit:AddItemByName("item_vortex_axe")
+                --unit:AddItemByName("item_vortex_axe")
                -- unit:AddItemByName("item_vortex_axe_second")
                 --unit:AddItemByName("item_vortex_axe_third")
-                unit:AddItemByName("item_heart")
-                unit:AddItemByName("item_bloodstone")
+                --unit:AddItemByName("item_heart")
+                --unit:AddItemByName("item_bloodstone")
                 --unit:AddNewModifier(unit, nil, "modifier_berserk_crit", {})
 
             end
@@ -160,16 +161,40 @@ function main:OnEntityKilled(data)
 
     if killedEntity:IsCreature()  then
         if killedEntity:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
-            if RollPercentage(50) then
-                main:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
+
+            if RollPercentage(HEAL_DROP_PERC) then
+                self:CreateDrop("item_potion_of_heal", killedEntity:GetAbsOrigin())
             end
 
-            if killedEntity:GetUnitName():find("_mini_boss") then
+            if not killedEntity:GetUnitName():find("wave") then
+                if RollPercentage(SKULL_DROP_PERC) then
+                    self:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
+                end
+
+                if RollPercentage(COMMON_DROP_PERC) then
+                    if killedEntity:GetUnitName():find("start") then
+                        self:CreateDrop(GetRandomItemNameFrom("start"), killedEntity:GetAbsOrigin())
+                    else
+                        self:CreateDrop(GetRandomItemNameFrom("common"), killedEntity:GetAbsOrigin())
+                    end
+                end
+            end
+
+            if killedEntity:GetUnitName():find("mini_boss") then
                 self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
+                if RollPercentage(100) then
+                    self:CreateDrop(GetRandomItemNameFrom("common"), killedEntity:GetAbsOrigin())
+                end
+                if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
+                    self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
+                end 
+                if RollPercentage(1) then
+                    self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
+                end        
             end  
 
             if killedEntity.spawner then
-                if killedEntity:GetUnitName():find("_start") then
+                if killedEntity:GetUnitName():find("start") then
                     self:RespawnStartUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,START_MONS_RESPAWN_TIME)
                 else 
                     self:RespawnUnits(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc,MINIONS_COUNT,MONSTERS_RESPAWN_TIME)
@@ -191,6 +216,18 @@ function main:SpanwMoobs()
     point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
     unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     unit:SetForwardVector(Vector(0,-1,0))
+
+    point = Entities:FindByName( nil, "npc_spawner_2" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(-1,-1,0))
+
+    point = Entities:FindByName( nil, "npc_spawner_3" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(1,-1,0))
+
+    point = Entities:FindByName( nil, "npc_spawner_4" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(0,1,0))
 
     for i = 1, 3 do
         point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
@@ -335,9 +372,9 @@ function main:CreateDrop(itemName, pos)
    local newItem = CreateItem(itemName, nil, nil)
    newItem:SetPurchaseTime(0)
    local drop = CreateItemOnPositionSync(pos, newItem)
-   newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 350)))
+   newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(0, 50)))
 
-    Timers:CreateTimer(5, function()
+    Timers:CreateTimer(TIME_BEFORE_REMOVE_DROP, function()
         if newItem and IsValidEntity(newItem) then
             if not newItem:GetOwnerEntity() then 
 
@@ -397,20 +434,46 @@ function main:DamageFilter(data)
         if (entindex_victim_const) then 
             hVictim  = EntIndexToHScript(entindex_victim_const)
             if hVictim:IsRealHero() then
-                data.damage = self:ManaShieldReduceDmg(hVictim,data.damage,modifier)
-                data.damage = self:BerserkRageReduceDmg(hVictim,data.damage,modifier)
+                data.damage = self:ManaShieldReduceDmg(hVictim,data.damage)
+                data.damage = self:BerserkRageReduceDmg(hVictim,data.damage)
             end
         end
 
         if (entindex_attacker_const) and (entindex_victim_const) then 
             hAttacker    = EntIndexToHScript(entindex_attacker_const)
             hVictim  = EntIndexToHScript(entindex_victim_const)
+            if hAttacker:IsRealHero() then
+                if hAttacker:HasItemInInventory("item_amulet_of_conversion") then
+                    self:ApplyItemLifestealToHero(hAttacker,data.damage,"item_amulet_of_conversion")
+                end
+            end 
         end
         
     end
     return true;
 end
 
+
+function main:ApplyItemLifestealToHero(hHero,damage,itemName)
+    --print("ApplyItemLifestealToHero")
+    local item = nil
+    local heal = nil
+
+    for i = 0, 5 do
+        item = hHero:GetItemInSlot(i)
+        if item then
+            if item:GetAbilityName() == itemName then
+                break
+            end
+        end
+    end
+
+    if item then
+        heal = damage*item:GetSpecialValueFor("lifesteal_percent")/100
+        hHero:Heal(heal, hHero)
+        ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal_b.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
+    end   
+end
 
 function main:ManaShieldReduceDmg(hHero,damage)
     local ability = hHero:FindAbilityByName("sapient_mana_shield") or nil

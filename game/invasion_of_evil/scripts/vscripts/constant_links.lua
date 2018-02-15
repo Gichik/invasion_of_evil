@@ -10,50 +10,79 @@ MINIONS_COUNT = 4
 BOSS_MINIONS_COUNT = 5
 PORTAL_OW_DURATION = 10    -- OTHERKIN_WORLD
 ENTRAILS_FOR_PORTAL = 2
+
+
+HEAL_DROP_PERC = 30
+SKULL_DROP_PERC = 50
+COMMON_DROP_PERC = 10
+ENTRAILS_EVIL_DROP_PERC = 30
+TIME_BEFORE_REMOVE_DROP = 20
+
 PORTAL_OW_EXIST = false
-
-
 PORTAL_OW_POINT = nil
 SPAWNER_OW_POINT = nil
 -------------------------------------------------------------------
---[[
-CEMETERY_MONSTERS = { 
-        "npc_spawner_zombie",
-        "npc_spawner_ghost",
-        "npc_spawner_skeleton",
-        "npc_spawner_nightmare",
-        "npc_cemetery_mini_boss"
-        } 
-CHURCH_MONSTERS = { 
-        "npc_spawner_demon",
-        "npc_spawner_gargoyle",
-        "npc_spawner_fiend",
-        "npc_flying_demon",
-        "npc_church_mini_boss"
-        }   
 
-CURSED_TREE_MONSTERS = { 
-        "npc_spawner_evil_seed",
-        "npc_spawner_harpy",
-        "npc_spawner_satyr",
-        "npc_spawner_deathbringer",
-        "npc_cursed_tree_mini_boss"
+START_ITEMS = { 
+        "item_unbroken_stallion_gloves",
+        "item_toxic_siege_gloves",
+        "item_omexe_armor",
+        "item_armor_hazhadal",
+        "item_ring_of_hp_regen",
+        "item_ring_of_mp_regen",
+        "item_nil_talisman",
+        "item_amulet_of_courage"
         }
 
-function GetUnitNameFor(biomName,id)
-    if biomName == "cemetery" then
-        return CEMETERY_MONSTERS[id]        
+
+COMMON_ITEMS = { 
+        "item_unbroken_stallion_gloves",
+        "item_unbroken_stallion_gloves_second",
+        "item_unbroken_stallion_gloves_third",
+        "item_toxic_siege_gloves",
+        "item_toxic_siege_gloves_second",
+        "item_toxic_siege_gloves_third",
+        "item_omexe_armor",
+        "item_omexe_armor_second",
+        "item_omexe_armor_third",
+        "item_armor_hazhadal",
+        "item_armor_hazhadal_second",
+        "item_armor_hazhadal_third",
+        "item_ring_of_hp_regen",
+        "item_ring_of_hp_regen_second",
+        "item_ring_of_hp_regen_third",
+        "item_ring_of_mp_regen",
+        "item_ring_of_mp_regen_second",
+        "item_ring_of_mp_regen_third",
+        "item_nil_talisman",
+        "item_nil_talisman_second",
+        "item_nil_talisman_third",
+        "item_amulet_of_courage",
+        "item_amulet_of_courage_second",
+        "item_amulet_of_courage_third"
+        } 
+
+UNIQUE_ITEMS = { 
+        "item_winged_paladin_gloves",
+        "item_armor_gleaming_sea",
+        "item_ring_of_the_basilius",
+        "item_poor_man_shield",
+        "item_amulet_of_conversion"
+        }   
+
+function GetRandomItemNameFrom(itemQuality)
+    if itemQuality == "start" then
+        return START_ITEMS[RandomInt(1,#START_ITEMS)]        
     end
 
-    if biomName == "church" then
-        return CHURCH_MONSTERS[id]        
-    end                     
-
-    if biomName == "cursed_tree" then
-        return CURSED_TREE_MONSTERS[id]        
+    if itemQuality == "common" then
+        return COMMON_ITEMS[RandomInt(1,#COMMON_ITEMS)]        
     end
-end]]
 
+    if itemQuality == "unique" then
+        return UNIQUE_ITEMS[RandomInt(1,#UNIQUE_ITEMS)]        
+    end
+end
 
 
 CEMETERY_MONSTERS = { 

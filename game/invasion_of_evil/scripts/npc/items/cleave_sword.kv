@@ -15,7 +15,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
 		"ItemQuality"					"epic"	
-		"ItemCost"                      "1" 
+		"ItemCost"                      "5" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 
@@ -81,7 +81,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
 		"ItemQuality"					"epic"	
-		"ItemCost"                      "1" 
+		"ItemCost"                      "0" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 
@@ -146,7 +146,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
 		"ItemQuality"					"epic"	
-		"ItemCost"                      "1" 
+		"ItemCost"                      "0" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 
@@ -198,4 +198,53 @@
 			}		
 		}
 	}
+
+
+	"item_recipe_cleave_sword_second"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_cleave_sword_second"
+		"ItemRequirements"
+		{
+			"01"						"item_cleave_sword"
+		}
+	}
+
+	"item_recipe_cleave_sword_third"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"200"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_cleave_sword_third"
+		"ItemRequirements"
+		{
+			"01"						"item_cleave_sword_second"
+		}
+	}
+
+
 }

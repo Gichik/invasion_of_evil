@@ -95,5 +95,95 @@
 					}
 		}
 	}		
+
+
+	"npc_guardian"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/legion_commander/legion_commander.vmdl"
+		"ModelScale"				"1.1"
+		"Level"						"10"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"0"
+		"ConsideredHero"			"1"
+		"IsNeutralUnitType"         "1"
+		"UseNeutralCreepBehavior" 	"1"
+		"CanBeDominated"            "0"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"40"
+		"MagicalResistance"			"80"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"200"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"500"
+		"AttackRange"				"100"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+		"CollisionSize"				"1"
+		
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"250"	
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"3000"
+		"StatusHealthRegen"			"10"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"900"
+		"VisionNighttimeRange"		"900"
+		
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			"AttachWearables"
+				{
+					"Wearable1" { "ItemDef" "431" }
+					"Wearable2" { "ItemDef" "432" }
+					"Wearable2" { "ItemDef" "434" }
+					"Wearable2" { "ItemDef" "435" }															
+				}
+		}		
+	}
+
 	
 }
