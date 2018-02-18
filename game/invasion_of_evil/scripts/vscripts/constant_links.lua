@@ -7,10 +7,9 @@ MONSTERS_RESPAWN_TIME = 5
 MINI_BOSS_RESPAWN_TIME = 5
 START_MONS_RESPAWN_TIME = 5
 MINIONS_COUNT = 4
-BOSS_MINIONS_COUNT = 5
-PORTAL_OW_DURATION = 10    -- OTHERKIN_WORLD
+BOSS_MINIONS_COUNT = 10
+PORTAL_OW_DURATION = 60    -- OTHERKIN_WORLD
 ENTRAILS_FOR_PORTAL = 2
-
 
 HEAL_DROP_PERC = 30
 SKULL_DROP_PERC = 50
@@ -18,10 +17,21 @@ COMMON_DROP_PERC = 10
 ENTRAILS_EVIL_DROP_PERC = 30
 TIME_BEFORE_REMOVE_DROP = 20
 
+WAVE_DURATION = 1
+BREAK_AFTER_WAVE = 2
+
 PORTAL_OW_EXIST = false
+WAVE_STATE = false
 PORTAL_OW_POINT = nil
 SPAWNER_OW_POINT = nil
+MUSIC_SOURCE = nil
 -------------------------------------------------------------------
+
+BOSSES_NAME = { 
+        "lump_of_flame_boss",
+        "flamethrower_boss",
+        "cursed_flame_boss",
+        }
 
 START_ITEMS = { 
         "item_unbroken_stallion_gloves",
@@ -97,7 +107,7 @@ CHURCH_MONSTERS = {
         {"npc_range_evil_warrior", "models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl", 0.6},
         {"npc_melee_evil_warrior", "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl", 0.6},
         {"npc_range_evil_warrior", "models/items/courier/dc_demon/dc_demon_flying.vmdl", 0.9},
-        {"npc_mini_boss", "models/items/warlock/warlock_fourleg_demon.vmdl", 1.0}
+        {"npc_mini_boss", "models/items/warlock/golem/ahmhedoq/ahmhedoq.vmdl", 1.0}
         }   
 
 CURSED_TREE_MONSTERS = { 

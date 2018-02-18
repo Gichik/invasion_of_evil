@@ -1,6 +1,7 @@
 // Units File
 
 #base "monsters/npc_monsters.kv"
+#base "monsters/npc_bosses.kv"
 
 "DOTAUnits"
 {
@@ -104,10 +105,12 @@
 		"BaseClass"					"npc_dota_creature"
 		"Model"						"models/heroes/legion_commander/legion_commander.vmdl"
 		"ModelScale"				"1.1"
+		"SoundSet"					"n_creep_Melee"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"		
 		"Level"						"10"
 		"HealthBarOffset"			"140"
 		"HasInventory"				"0"
-		"ConsideredHero"			"1"
+		"ConsideredHero"			"0"
 		"IsNeutralUnitType"         "1"
 		"UseNeutralCreepBehavior" 	"1"
 		"CanBeDominated"            "0"
@@ -128,11 +131,11 @@
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"100"
-		"AttackDamageMax"			"200"
+		"AttackDamageMin"			"50"
+		"AttackDamageMax"			"100"
 		"AttackRate"				"1.0"
 		"AttackAnimationPoint"		"0.4"
-		"AttackAcquisitionRange"	"500"
+		"AttackAcquisitionRange"	"700"
 		"AttackRange"				"100"
 		
 		// Bounty
@@ -154,15 +157,15 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"3000"
+		"StatusHealth"				"1000"
 		"StatusHealthRegen"			"10"
 		"StatusMana"				"0"
 		"StatusManaRegen"			"0"
 		
 		// Vision
 		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"900"
-		"VisionNighttimeRange"		"900"
+		"VisionDaytimeRange"		"700"
+		"VisionNighttimeRange"		"700"
 		
 		// Team
 		//----------------------------------------------------------------

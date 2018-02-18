@@ -24,7 +24,7 @@ function item_entrails_evil:CastFilterResultTarget(hTarget)
 			return UF_FAIL_CUSTOM
 		end		
 
-		if PORTAL_OW_EXIST == true then
+		if PORTAL_OW_EXIST == true or WAVE_STATE == true then
 			return UF_FAIL_CUSTOM
 		end	
 
@@ -53,7 +53,7 @@ function item_entrails_evil:GetCustomCastErrorTarget(hTarget)
 			return "#dota_hud_error_havent_charges"
 		end	
 
-		if PORTAL_OW_EXIST == true then
+		if PORTAL_OW_EXIST == true or WAVE_STATE == true then
 			return "#dota_hud_error_necromant_tired"
 		end	
 
@@ -101,11 +101,20 @@ end
 function item_entrails_evil:CreatePortalAnimation()
 	if IsServer() then
 		--print("CreatePortalAnimation")
-		if self.tpParticleID == nil and PORTAL_OW_POINT then
-	    	self.tpParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, self)
-	    	ParticleManager:SetParticleControl(self.tpParticleID, 0, PORTAL_OW_POINT )
-	   		ParticleManager:SetParticleControl(self.tpParticleID, 1, Vector(300, 0, 0))
+		Timers:CreateTimer(0, function()
+			if PORTAL_OW_POINT and PORTAL_OW_EXIST then
+		    	self.tpParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, self)
+		    	ParticleManager:SetParticleControl(self.tpParticleID, 0, PORTAL_OW_POINT )
+		   		ParticleManager:SetParticleControl(self.tpParticleID, 1, Vector(300, 0, 0))
+			end
+
+			if PORTAL_OW_EXIST then
+				return 10
+			end
+
+			return nil
 		end
+		)
 	end
 end
 
@@ -147,29 +156,31 @@ end
 function item_entrails_evil:CreateWawes()
 	local point = nil
 	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
-	local waveCount = 20
+	local waveCount = WAVE_DURATION
 	local unit = nil
+	EmitGlobalSound("Invasion_of_evil.EpicFight1")
+	GameRules:SendCustomMessage("<font color='#58ACFA'>Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
 	
-	main:SetPortalOwExist(true)
+	main:SetWaveState(true)
 
     Timers:CreateTimer(1, function()
-    	if waveCount >= 10 and targetPoint then
+    	if waveCount > 0 and targetPoint then
 			for i = 1, 6 do
 				point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
 				if RollPercentage(50) then
-			    	unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+			    	--unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
 				else
-					unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+					--unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
 				end
 			end
 
-			waveCount = waveCount - 2
-      		return 2
+			waveCount = waveCount - 1
+      		return 1
       	end
 
-      	if waveCount > 0 then
-      		waveCount = waveCount - 2
-      		return 2
+      	if waveCount == 0 then
+      		waveCount = -1
+      		return BREAK_AFTER_WAVE
       	end
 
       	self:CreateNewPortal()
@@ -181,6 +192,7 @@ end
 
 function item_entrails_evil:CreateNewPortal()
 	--print("CreateNewPortal")
+	main:SetWaveState(false)
 	main:SetPortalOwExist(true)
 	self:CreatePortalAnimation()
 	StartSoundEventFromPosition("Hero_ShadowDemon.Disruption",PORTAL_OW_POINT)
@@ -195,12 +207,16 @@ end
 function item_entrails_evil:SpawnNewOWBoss()
     local unit = nil
     
-    unit = CreateUnitByName("npc_melee_evil_warrior", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+    --unit = CreateUnitByName(BOSSES_NAME[RandomInt(1, #BOSSES_NAME)], SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+    unit = CreateUnitByName("flamethrower_boss", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+        
+
+    unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
 
     local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
 
     for i = 1, BOSS_MINIONS_COUNT do 
-        unit = CreateUnitByName("npc_melee_evil_warrior", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
+        unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
         if modifier:CanBeAddToMinions() then
             unit:AddNewModifier(unit, nil, modifier:GetName(), {})
         end

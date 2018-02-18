@@ -30,6 +30,13 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_arc_warden.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bane.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts", context )		
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts", context )
+
+
 	
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
@@ -51,7 +58,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/items/courier/deathbringer/deathbringer_flying.vmdl", context ) -- npc_deathbringer
 	PrecacheResource( "model", "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl", context ) -- npc_cursed_tree_boss
 	PrecacheResource( "model", "models/heroes/undying/undying_flesh_golem.vmdl", context ) -- npc_cemetery_boss
-	PrecacheResource( "model", "models/items/warlock/warlock_fourleg_demon.vmdl", context ) -- npc_church_boss					
+	PrecacheResource( "model", "models/items/warlock/golem/ahmhedoq/ahmhedoq.vmdl", context ) -- npc_church_boss					
 	PrecacheResource( "model", "models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl", context ) -- npc_range_wave_warrior
 	PrecacheResource( "model", "models/props_gameplay/salve_red.vmdl", context ) --potion of heal
 	PrecacheResource( "model", "models/heroes/legion_commander/legion_commander.vmdl", context ) --npc_guardian
@@ -59,6 +66,14 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/legion_commander/legion_commander_head.vmdl", context ) --npc_guardian
 	PrecacheResource( "model", "models/heroes/legion_commander/legion_commander_shoulders.vmdl", context ) --npc_guardian
 	PrecacheResource( "model", "models/heroes/legion_commander/legion_commander_weapon.vmdl", context ) --npc_guardian
+	PrecacheResource( "model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context ) --lump_of_flame_boss
+	PrecacheResource( "model", "models/heroes/warlock/warlock_demon.vmdl", context ) --flamethrower_boss
+	PrecacheResource( "model", "models/items/invoker/forge_spirit/esl_relics_forge_spirit/esl_relics_forge_spirit.vmdl", context ) --cursed_flame_boss
+	PrecacheResource( "model", "particles/units/heroes/hero_lina/lina_base_attack.vpcf", context ) --flame range attack
+	PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl", context ) --npc_minion_ow
+
+
+
 
 
 	PrecacheResource( "model", "models/courier/imp/imp_flying.vmdl", context )
@@ -99,6 +114,18 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom_ring.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal_b.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_warlock/warlock_rain_of_chaos_explosion.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_phoenix/phoenix_sunray.vpcf", context )
+	PrecacheResource( "particle", "particles/neutral_fx/satyr_hellcaller.vpcf", context ) -- fireball
+
+
+	PrecacheResource( "particle", "particles/items2_fx/radiance_owner.vpcf", context ) -- burn
+	PrecacheResource( "particle", "particles/items2_fx/radiance.vpcf", context ) -- burn
+
+	PrecacheResource( "particle", "particles/neutral_fx/black_dragon_fireball.vpcf", context ) -- crushing_explosion
+	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_ti7_golden/antimage_blink_start_ti7_golden_flame.vpcf", context ) -- crushing_explosion
+
+
 
 
 
@@ -112,7 +139,7 @@ function Activate()
 
 	if MapName == "test_map" then
 		print("----------------------------------------Test map Start----------------------------------------")	
-		main:InitGameMode()
+		main:TestInit()
 	end
 
 	if MapName == "forest_map" then

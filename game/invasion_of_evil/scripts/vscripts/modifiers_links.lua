@@ -61,6 +61,18 @@ LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modi
 
 LinkLuaModifier("modifier_range_magick_attack", "modifiers/monsters/modifier_range_magick_attack.lua", LUA_MODIFIER_MOTION_NONE )
 
+-------------------------------------------------------------------
+-------------------------MONSTER BOSSES ABILITY--------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_bosses_autocast", "modifiers/monsters/modifier_bosses_autocast.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+LinkLuaModifier("modifier_signal_animation", "modifiers/monsters/modifier_signal_animation.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_cast_ray", "modifiers/monsters/modifier_cast_ray.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_singe", "modifiers/monsters/modifier_singe.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_burning", "modifiers/monsters/modifier_burning.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_burning_debuff", "modifiers/monsters/modifier_burning.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 

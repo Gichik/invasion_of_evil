@@ -3,27 +3,13 @@
 #base "heroes_path/berserk.kv"
 #base "heroes_path/sapient.kv"
 #base "heroes_path/templar.kv"
+#base "monsters/bosses_ability.kv"
+
 
 "DOTAAbilities"
 {
 	"Version"		"1"
 
-	"respawn_settings"
-	{
-		"BaseClass" 					"ability_datadriven"
-		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_HIDDEN"			
-
-		//"OnOwnerDied"
-		//{
-		//	"RunScript"
-		//	{
-		//		"ScriptFile"		"abilities/moobs/spawn_settings.lua"
-		//		"Function"			"SetRespawn"
-		//		"Time"				"5"
-		//		"NumbMinions"		"5"												
-		//	}
-		//}	
-	}
 
 	"empty_slot_1"
 	{

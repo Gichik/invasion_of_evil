@@ -3,6 +3,58 @@ if main == nil then
 end
 
 
+function main:TestInit()
+    print( "TestInit" )
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 3 )
+
+    GameRules:SetUseUniversalShopMode( true )
+    GameRules:SetHeroSelectionTime( 30.0 )
+    GameRules:SetStrategyTime( 0.0 )
+    GameRules:SetShowcaseTime( 0.0 )
+    GameRules:SetPreGameTime( 5.0 )
+
+    GameRules:SetGoldTickTime( 60.0 )
+    GameRules:SetGoldPerTick( 0 )
+    GameRules:SetStartingGold( 0 )    
+
+    GameRules:GetGameModeEntity():SetTopBarTeamValuesOverride( true )
+    GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
+
+    GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
+
+    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
+    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');
+
+    GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(main, "DamageFilter"), self) 
+
+    --ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(main, 'GameRulesStateChange'), self)
+    ListenToGameEvent("npc_spawned", Dynamic_Wrap(main, 'OnNPCSpawn'), self) 
+    --ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(main, 'OnPlayerGainedLevel'), self)   
+    --ListenToGameEvent("dota_player_killed", Dynamic_Wrap(main, "OnSomeHeroKilled"), self)
+    --ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
+    --ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
+    ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
+    --ListenToGameEvent( "player_chat", Dynamic_Wrap( main, "OnChat" ), self )
+
+    local point = Entities:FindByName( nil, "spawner_1"):GetAbsOrigin()
+    local unit = CreateUnitByName("cursed_flame_boss", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+    unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
+
+    local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
+
+    for i = 1, 4 do 
+        unit = CreateUnitByName("npc_minion_ow", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+        if modifier:CanBeAddToMinions() then
+            unit:AddNewModifier(unit, nil, modifier:GetName(), {})
+        end
+    end
+
+end
+
+
+
 function main:InitGameMode()
     print( "InitGameMode" )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
@@ -23,7 +75,7 @@ function main:InitGameMode()
 
     GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
 
-    --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+    GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_dragon_knight');
 
@@ -36,18 +88,36 @@ function main:InitGameMode()
     ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
     ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
+    ListenToGameEvent( "player_chat", Dynamic_Wrap( main, "OnChat" ), self )
+
 
     PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
     SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
 
-    AddFOWViewer(DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, 2000, 60, false)
+   --AddFOWViewer(DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, 2000, 60, false)
+    --self:TestBosses()
 end
 
+
+function main:SetPortalOwExist(flag)
+    PORTAL_OW_EXIST = flag
+end
+
+function main:SetWaveState(flag)
+    WAVE_STATE = flag
+end
+
+function main:ApplyMusicOn(soundName,hSource)
+    --print("SetMusicSource")
+    MUSIC_SOURCE = hSource
+    StartSoundEvent(soundName,hSource)
+end
 
 function main:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         main:SpanwMoobs()
+        --EmitGlobalSound("Invasion_of_evil.ShadowHouse")
     end
 end
 
@@ -57,7 +127,7 @@ function main:OnNPCSpawn(data)
     local unit = EntIndexToHScript(data.entindex)
 
     if unit:IsRealHero() then
-
+        
         Timers:CreateTimer(1, function()
             unit:RemoveModifierByName("modifier_silencer_int_steal")
           return nil
@@ -83,27 +153,30 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_chain_lightning_scepter")
                 --unit:AddItemByName("item_chain_lightning_scepter_second")
                 --unit:AddItemByName("item_chain_lightning_scepter_third")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil") 
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil")
+                unit:AddItemByName("item_entrails_evil") 
                 --unit:AddItemByName("item_cleave_sword")               
                 --unit:AddItemByName("item_cleave_sword_second")
                 --unit:AddItemByName("item_cleave_sword_third")
                 --unit:AddItemByName("item_vortex_axe")
                -- unit:AddItemByName("item_vortex_axe_second")
                 --unit:AddItemByName("item_vortex_axe_third")
-                --unit:AddItemByName("item_heart")
-                --unit:AddItemByName("item_bloodstone")
-                --unit:AddNewModifier(unit, nil, "modifier_berserk_crit", {})
+                unit:AddItemByName("item_heart")
+                unit:AddItemByName("item_heart")
+                unit:AddItemByName("item_heart")
+                unit:AddItemByName("item_bloodstone")
+                --unit:AddNewModifier(unit, nil, "modifier_burning", {})
 
             end
         end
     end
 
 end
+
 
 function main:OnAbilityLearned(data)
     --print("OnAbilityLearned")
@@ -216,6 +289,7 @@ function main:SpanwMoobs()
     point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
     unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     unit:SetForwardVector(Vector(0,-1,0))
+    --self:ApplyMusicOn("Invasion_of_evil.ShadowHouse",unit)
 
     point = Entities:FindByName( nil, "npc_spawner_2" ):GetAbsOrigin()
     unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
@@ -503,11 +577,6 @@ function main:BerserkRageReduceDmg(hHero,damage)
 end
 
 
-function main:SetPortalOwExist(flag)
-    PORTAL_OW_EXIST = flag
-end
-
-
 function main:FocusCameraOnPlayer(player)
     PlayerResource:SetCameraTarget(player:GetPlayerOwnerID(),player)
     Timers:CreateTimer(1, function()
@@ -515,4 +584,23 @@ function main:FocusCameraOnPlayer(player)
         return nil
     end
     )
+end
+
+
+--playerid,text,teamonly,userid,splitscreenplayer
+function main:OnChat( data )
+
+    local player = PlayerResource:GetPlayer(data.playerid) 
+    local text = data.text
+    if text == "-stopsound" then
+        --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
+        --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
+    end
+end
+
+function main:TestBosses()
+    local unit = CreateUnitByName("cursed_flame_boss", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS )
+    unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
+
+    --unit:SetAbsOrigin(Entities:FindByName( nil, "hero_teleport_spawner"):GetAbsOrigin())
 end

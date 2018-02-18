@@ -19,7 +19,7 @@
 		"Ability1"		"berserk_path"
 		"Ability2"		"empty_slot_1"
 		"Ability3"		"empty_slot_2"
-		"Ability4"		"empty_slot_3"
+		"Ability4"		"empty_slot_3"	
 		"Ability5"		""
 		"Ability6"		""	
 		"Ability10"		"special_bonus_mp_regen_10"
