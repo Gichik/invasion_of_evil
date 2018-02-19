@@ -3,13 +3,14 @@
 ------------------------------Settings-----------------------------
 -------------------------------------------------------------------
 
-MONSTERS_RESPAWN_TIME = 5
-MINI_BOSS_RESPAWN_TIME = 5
-START_MONS_RESPAWN_TIME = 5
+MONSTERS_RESPAWN_TIME = 10
+MINI_BOSS_RESPAWN_TIME = 30
+START_MONS_RESPAWN_TIME = 10
 MINIONS_COUNT = 4
 BOSS_MINIONS_COUNT = 10
-PORTAL_OW_DURATION = 60    -- OTHERKIN_WORLD
-ENTRAILS_FOR_PORTAL = 2
+PORTAL_OW_DURATION = 300    -- OTHERKIN_WORLD
+ENTRAILS_FOR_PORTAL = 3
+HEART_FOR_END = 3
 
 HEAL_DROP_PERC = 30
 SKULL_DROP_PERC = 50
@@ -17,8 +18,8 @@ COMMON_DROP_PERC = 10
 ENTRAILS_EVIL_DROP_PERC = 30
 TIME_BEFORE_REMOVE_DROP = 20
 
-WAVE_DURATION = 1
-BREAK_AFTER_WAVE = 2
+WAVE_DURATION = 120
+BREAK_AFTER_WAVE = 20
 
 PORTAL_OW_EXIST = false
 WAVE_STATE = false
@@ -28,9 +29,9 @@ MUSIC_SOURCE = nil
 -------------------------------------------------------------------
 
 BOSSES_NAME = { 
-        "lump_of_flame_boss",
-        "flamethrower_boss",
-        "cursed_flame_boss",
+        "lump_of_flame_big_boss",
+        "flamethrower_big_boss",
+        "cursed_flame_big_boss",
         }
 
 START_ITEMS = { 
@@ -43,7 +44,6 @@ START_ITEMS = {
         "item_nil_talisman",
         "item_amulet_of_courage"
         }
-
 
 COMMON_ITEMS = { 
         "item_unbroken_stallion_gloves",

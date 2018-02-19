@@ -71,6 +71,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/items/invoker/forge_spirit/esl_relics_forge_spirit/esl_relics_forge_spirit.vmdl", context ) --cursed_flame_boss
 	PrecacheResource( "model", "particles/units/heroes/hero_lina/lina_base_attack.vpcf", context ) --flame range attack
 	PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl", context ) --npc_minion_ow
+	PrecacheResource( "model", "models/props_gameplay/aegis.vmdl", context ) --npc_minion_ow
 
 
 
@@ -84,7 +85,8 @@ function Precache( context )
 
 	------------------------------------------------particles-----------------------------------------------------
 	
-	PrecacheResource( "particle_folder", "particles/units/heroes/legion_commander", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_legion_commander", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_enigma", context )
 
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_track_trail_circle.vpcf", context )	
@@ -139,7 +141,7 @@ function Activate()
 
 	if MapName == "test_map" then
 		print("----------------------------------------Test map Start----------------------------------------")	
-		main:TestInit()
+		GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
 	if MapName == "forest_map" then

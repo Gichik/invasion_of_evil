@@ -22,7 +22,7 @@ function sizzling_ray:OnSpellStart()
 	self.rotate = 0
 	self.maxRotate = math.floor(self.duration / self.think) 
 	self.damage = self:GetSpecialValueFor("damage") or 0
-
+	self.particleID = nil
 	self.caster:AddNewModifier(self.caster, self, "modifier_cast_ray", {})
 
     Timers:CreateTimer(0, function()
@@ -66,9 +66,10 @@ function sizzling_ray:RayAnimation()
 	self.caster:SetAngles( 0, 5*self.rotate, 0 )
 
 	local particleName = "particles/units/heroes/hero_phoenix/phoenix_sunray.vpcf"
-	self.particleID = ParticleManager:CreateParticle( particleName, PATTACH_ABSORIGIN_FOLLOW, self.caster )
-	ParticleManager:SetParticleControlEnt( self.particleID, 0, self.caster, PATTACH_POINT_FOLLOW, "attach_hitloc", self.caster:GetAbsOrigin(), true )
-	local endPoint = self.caster:GetForwardVector()*self:GetCastRange(self.caster:GetAbsOrigin(),self.caster)
+	self.particleID = ParticleManager:CreateParticle( particleName, PATTACH_ABSORIGIN, self.caster )
+	ParticleManager:SetParticleControlEnt( self.particleID, 0, self.caster, PATTACH_POINT, "attach_hitloc", self.caster:GetAbsOrigin(), true )
+	local endPoint = self.caster:GetAbsOrigin() + self.caster:GetForwardVector()*self:GetCastRange(self.caster:GetAbsOrigin(),self.caster)
+	endPoint = GetGroundPosition( endPoint, nil )
 	endPoint.z = 300
 	ParticleManager:SetParticleControl( self.particleID, 1,endPoint)
 

@@ -92,7 +92,7 @@ end
 
 function modifier_burning_debuff:OnCreated(data)
 	if IsServer() then
-		self.burnDmg = 30
+		self.burnDmg = 50
 		self.attacker = self:GetCaster() or nil		
 		self:StartIntervalThink(1.0) 
 	end

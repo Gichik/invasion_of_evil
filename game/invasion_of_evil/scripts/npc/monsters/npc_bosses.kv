@@ -94,7 +94,7 @@
 	}	
 
 
-	"lump_of_flame_boss"	
+	"lump_of_flame_big_boss"	
 	{
 		// General
 		//----------------------------------------------------------------
@@ -184,7 +184,7 @@
 	}
 
 
-	"flamethrower_boss"	
+	"flamethrower_big_boss"	
 	{
 		// General
 		//----------------------------------------------------------------
@@ -274,7 +274,7 @@
 	}
 
 
-	"cursed_flame_boss"	
+	"cursed_flame_big_boss"	
 	{
 		// General
 		//----------------------------------------------------------------
@@ -287,8 +287,8 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					"exhausting_fireball"
-		"Ability2"					"range_magick_attack"
+		"Ability1"					"range_magick_attack"
+		"Ability2"					"exhausting_fireball"
 		"Ability3"					"duplicate_teleport"	
 		"Ability4"					""
 
@@ -363,7 +363,7 @@
 		}
 	}
 
-	"duplicate_cursed_flame_boss"	
+	"duplicate_cursed_flame_big_boss"	
 	{
 		// General
 		//----------------------------------------------------------------
@@ -452,5 +452,94 @@
 		}
 	}
 
+
+	"final_boss"	
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/enigma/enigma.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_Enigma"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				"2.1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"range_magick_attack"
+		"Ability2"					"exhausting_fireball"
+		"Ability3"					"sizzling_ray"	
+		"Ability4"					"crushing_explosion"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"70"
+		"MagicalResistance"         "50"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"150"
+		"AttackDamageMax"			"300"
+		"AttackRate"				"1.6"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"2000"
+		"AttackRange"				"1000"
+	    "ProjectileModel"       	"particles/units/heroes/hero_enigma/enigma_base_attack.vpcf"
+	    "ProjectileSpeed"       	"1000"	     
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"40"
+		"HealthBarOffset"			"170"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"100"
+		"BountyGoldMin"				"0"	
+		"BountyGoldMax"				"0"	
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"170"	
+		
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"3000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"	
+		"StatusManaRegen"			"0.0"		 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"2000"
+		"VisionNighttimeRange"		"2000"
+
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_BADGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			//Level Up
+			"HPGain"                    "10"
+			"DamageGain"                "5"
+			"ArmorGain"                 "0.2"
+			"ManaGain"                  "1"
+			"MagicResistGain"           "0.2"
+			"MoveSpeedGain"             "0"
+			"BountyGain"                "0"
+			"XPGain"                    "0"
+		}
+	}
 
 }

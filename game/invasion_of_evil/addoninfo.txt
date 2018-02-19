@@ -1,8 +1,8 @@
 "AddonInfo"
 {
-	maps  "test_map"
+	maps  "forest_map"
 	"IsPlayable" "1"
-	"test_map"
+	"forest_map"
  	{
   		"MaxPlayers" "3"
  	}

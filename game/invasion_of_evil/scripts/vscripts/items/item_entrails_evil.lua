@@ -62,10 +62,8 @@ function item_entrails_evil:GetCustomCastErrorTarget(hTarget)
 end
 
 function item_entrails_evil:OnSpellStart()
-	if IsServer() then
-
 	--print("OnSpellStart")
-
+	if IsServer() then
 		local hCaster = self:GetCaster()
 		local hTarget = self:GetCursorTarget()
 		local hItem = self
@@ -87,7 +85,6 @@ function item_entrails_evil:OnSpellStart()
 				if modifier:GetStackCount() >= ENTRAILS_FOR_PORTAL then
 					hTarget:RemoveModifierByName("modifier_teleport_progress")
 					self:CreateWawes()
-					--self:CreateNewPortal()
 				end
 			else
 				hTarget:AddNewModifier(hTarget, nil, "modifier_teleport_progress", {}):IncrementStackCount()
@@ -168,9 +165,9 @@ function item_entrails_evil:CreateWawes()
 			for i = 1, 6 do
 				point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
 				if RollPercentage(50) then
-			    	--unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+			    	unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
 				else
-					--unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+					unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
 				end
 			end
 
@@ -192,6 +189,17 @@ end
 
 function item_entrails_evil:CreateNewPortal()
 	--print("CreateNewPortal")
+	local messageTime = PORTAL_OW_DURATION - 15
+	if messageTime < 0 then
+		messageTime = 0
+	end
+	
+    Timers:CreateTimer(messageTime, function()
+    	GameRules:SendCustomMessageToTeam("#teleport_end", DOTA_TEAM_GOODGUYS, 0, 0)
+		return nil
+    end
+    )
+
 	main:SetWaveState(false)
 	main:SetPortalOwExist(true)
 	self:CreatePortalAnimation()
@@ -207,10 +215,7 @@ end
 function item_entrails_evil:SpawnNewOWBoss()
     local unit = nil
     
-    --unit = CreateUnitByName(BOSSES_NAME[RandomInt(1, #BOSSES_NAME)], SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
-    unit = CreateUnitByName("flamethrower_boss", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
-        
-
+    unit = CreateUnitByName(BOSSES_NAME[RandomInt(1, #BOSSES_NAME)], SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS )   
     unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
 
     local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})

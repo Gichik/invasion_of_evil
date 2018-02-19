@@ -10,5 +10,5 @@
 	"npc_dota_hero_dragon_knight"		"-1"
 	"npc_dota_hero_silencer"			"-1"		
 	"npc_dota_hero_rubick"				"-1" 
-	"npc_dota_hero_keeper_of_the_light"	"-1" 	
+	"npc_dota_hero_dazzle"				"-1" 	
 }

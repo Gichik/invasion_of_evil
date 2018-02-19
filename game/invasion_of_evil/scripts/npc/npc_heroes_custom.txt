@@ -63,7 +63,7 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"			"350"
+		"MovementSpeed"			"330"
 		"MovementTurnRate"		"0.500000"
 		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"												
 	}
@@ -125,7 +125,7 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"			"350"
+		"MovementSpeed"			"330"
 		"MovementTurnRate"		"0.500000"
 		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"										
 	}
@@ -318,13 +318,13 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"			"330"
+		"MovementSpeed"			"320"
 		"MovementTurnRate"		"0.500000"
 		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
 	}
 
 
-	"npc_dota_hero_keeper_of_the_light"
+	"npc_dota_hero_dazzle"
 	{
 
 		// General
@@ -384,7 +384,7 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"			"330"
+		"MovementSpeed"			"320"
 		"MovementTurnRate"		"0.500000"
 		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"				
 	}
