@@ -16,6 +16,8 @@ function Precache( context )
 	]]
 
 	------------------------------------------------sounds-----------------------------------------------------
+	PrecacheResource( "soundfile", "soundevents/invasion_of_evil_sounds_custom.vsndevts", context )
+
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts", context )	
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts", context )

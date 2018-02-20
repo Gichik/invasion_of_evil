@@ -6,6 +6,7 @@ function ApplyModifierToUnit(data)
 end
 
 function AddPathAbilitiesToHero(data)
+    --print("AddPathAbilitiesToHero")
 
 	local hHero = data.caster
 	local pathName = data.Path

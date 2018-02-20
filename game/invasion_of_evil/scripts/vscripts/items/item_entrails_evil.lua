@@ -155,9 +155,11 @@ function item_entrails_evil:CreateWawes()
 	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
 	local waveCount = WAVE_DURATION
 	local unit = nil
+	GameRules:SendCustomMessageToTeam("#wave_start", DOTA_TEAM_GOODGUYS, 0, 0)
 	EmitGlobalSound("Invasion_of_evil.EpicFight1")
 	GameRules:SendCustomMessage("<font color='#58ACFA'>Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
 	
+
 	main:SetWaveState(true)
 
     Timers:CreateTimer(1, function()
@@ -171,12 +173,13 @@ function item_entrails_evil:CreateWawes()
 				end
 			end
 
-			waveCount = waveCount - 1
-      		return 1
+			waveCount = waveCount - 2
+      		return 2
       	end
 
       	if waveCount == 0 then
       		waveCount = -1
+      		GameRules:SendCustomMessageToTeam("#wave_end", DOTA_TEAM_GOODGUYS, 0, 0)
       		return BREAK_AFTER_WAVE
       	end
 

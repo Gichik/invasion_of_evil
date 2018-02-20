@@ -67,6 +67,7 @@ function main:GameRulesStateChange(data)
         GameRules:SendCustomMessageToTeam("#start_necromancer_message_1", DOTA_TEAM_GOODGUYS, 0, 0)
         GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
         EmitGlobalSound("Invasion_of_evil.ShadowHouse")
+        GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
     end
 end
 
@@ -109,15 +110,12 @@ end
 
 function main:OnAbilityLearned(data)
     --print("OnAbilityLearned")
-
-    --local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero()
-    local hHero = PlayerResource:GetPlayer(data.player-1):GetAssignedHero()
+    local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero()
     local ability = hHero:FindAbilityByName(data.abilityname)
     local pathName = nil
-
+        
     if ability:GetLevel() <= 1 then
         if not data.abilityname:find("special_bonus") then
-
             if data.abilityname:find("berserk") then
                 pathName = "berserk"
             end
@@ -132,13 +130,16 @@ function main:OnAbilityLearned(data)
 
             for i = 0, 3 do
                 local fallAbility = hHero:GetAbilityByIndex(i)
-                if fallAbility and fallAbility:GetLevel() <= 0 then
-                    hHero:RemoveAbility(fallAbility:GetAbilityName())
+                if fallAbility then
+                    if fallAbility:GetLevel() <= 0 then
+                        hHero:RemoveAbility(fallAbility:GetAbilityName())
+                    end
                 end
             end
 
            ability = hHero:AddAbility(data.abilityname)
            ability:SetLevel(1)
+           
            AddPathAbilitiesToHero({
                 caster = hHero, 
                 Path = pathName, 
@@ -147,7 +148,6 @@ function main:OnAbilityLearned(data)
        end
    end
 end
-
 
 function main:OnPlayerGainedLevel(data)
 
@@ -579,3 +579,4 @@ function main:TestBosses()
 
     --unit:SetAbsOrigin(Entities:FindByName( nil, "hero_teleport_spawner"):GetAbsOrigin())
 end
+

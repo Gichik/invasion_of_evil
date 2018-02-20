@@ -116,12 +116,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_min"			"40"
+				"damage_min"			"25"
 			}
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_max"			"60"
+				"damage_max"			"50"
 			}						
 		}
 
