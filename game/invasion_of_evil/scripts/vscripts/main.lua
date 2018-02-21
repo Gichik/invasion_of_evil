@@ -66,8 +66,10 @@ function main:GameRulesStateChange(data)
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         GameRules:SendCustomMessageToTeam("#start_necromancer_message_1", DOTA_TEAM_GOODGUYS, 0, 0)
         GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
-        EmitGlobalSound("Invasion_of_evil.ShadowHouse")
-        GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
+        EmitGlobalSound("Invasion_of_evil.Nocturnus")
+        
+        --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
+        GameRules:SendCustomMessage("<font color='#58ACFA'>Adrian von Ziegler - Nocturnus</font>", 0, 0)
     end
 end
 

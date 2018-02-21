@@ -2,6 +2,7 @@
 {
 	maps  "forest_map"
 	"IsPlayable" "1"
+	"HeroGuidesSupported" "0"
 	"forest_map"
  	{
   		"MaxPlayers" "3"
