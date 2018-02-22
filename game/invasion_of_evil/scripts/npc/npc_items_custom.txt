@@ -139,6 +139,1566 @@
 	}
 
 
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------HELM--------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_helm_resist"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/helm/helm_resist"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_resist"			"5"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_helm_resist_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%bonus_resist"					
+				}
+			}
+		}					
+   }
+
+
+   "item_helm_resist_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/helm/helm_resist_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_resist"			"10"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_helm_resist_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%bonus_resist"					
+				}
+			}
+		}					
+   }
+
+
+   "item_helm_resist_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/helm/helm_resist_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_resist"			"15"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_helm_resist_bonus"
+			{
+				"Passive" "1"  
+				"IsHidden" "1"  
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%bonus_resist"					
+				}
+			}
+		}					
+   }
+
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Scapular----------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_scapular_mp"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/scapular/scapular_mp"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"100"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_scapular_mp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"					
+				}
+			}
+		}					
+   }
+
+
+   "item_scapular_mp_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/scapular/scapular_mp_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"200"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_scapular_mp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"					
+				}
+			}
+		}					
+   }
+
+
+   "item_scapular_mp_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/scapular/scapular_mp_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"300"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_scapular_mp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"					
+				}
+			}
+		}					
+   }
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Breastplate-------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_breastplate_str"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/breastplate/breastplate_str" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"3"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_breastplate_str"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_strength"					
+				}
+			}
+		}					
+   }
+
+
+   "item_breastplate_str_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/breastplate/breastplate_str_second" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"6"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_breastplate_str"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_strength"					
+				}
+			}
+		}					
+   }
+
+
+   "item_breastplate_str_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/breastplate/breastplate_str_third" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"9"
+			}
+
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_breastplate_str"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_strength"					
+				}
+			}
+		}					
+   }
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Gloves------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_gloves_dmg"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/gloves/gloves_dmg" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"6"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_gloves_dmg"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"					
+				}
+			}
+		}					
+   }
+
+
+   "item_gloves_dmg_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/gloves/gloves_dmg_second" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"12"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_gloves_dmg"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"					
+				}
+			}
+		}					
+   }
+
+
+   "item_gloves_dmg_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/gloves/gloves_dmg_third" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"str;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"		
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"18"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_gloves_dmg"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"					
+				}
+			}
+		}					
+   }
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Belt--------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_belt_hp"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/belt/belt_hp"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;health_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_belt_hp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_health"					
+				}
+			}
+		}					
+   }
+
+
+   "item_belt_hp_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/belt/belt_hp_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;health_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"200"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_belt_hp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_health"					
+				}
+			}
+		}					
+   }
+
+
+   "item_belt_hp_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/belt/belt_hp_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;health_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"300"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_belt_hp"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_health"					
+				}
+			}
+		}					
+   }
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Pants-------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_pants_int"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/pants/pants_int"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"armor;int"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"3"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_pants_int"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intellect"					
+				}
+			}
+		}					
+   }
+
+
+   "item_pants_int_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/pants/pants_int_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"armor;int"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"6"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_pants_int"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intellect"					
+				}
+			}
+		}					
+   }   
+
+
+   "item_pants_int_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/pants/pants_int_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"armor;int"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"9"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_pants_int"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intellect"					
+				}
+			}
+		}					
+   }   
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Boots-------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_boots_agi"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/boots/boots_agi" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"3"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_boots_agi"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_agility"							
+				}
+			}
+		}					
+   }
+
+
+   "item_boots_agi_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/boots/boots_agi_second" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"6"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_boots_agi"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_agility"							
+				}
+			}
+		}					
+   }
+
+
+   "item_boots_agi_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/boots/boots_agi_third" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"9"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_boots_agi"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_agility"							
+				}
+			}
+		}					
+   }
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Ring--------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_ring_hp_regen"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/ring_hp_regen"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"3"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_ring_hp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%bonus_health_regen"					
+				}
+			}
+		}					
+   }   
+
+
+   "item_ring_hp_regen_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/ring_hp_regen_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+    	
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"6"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_ring_hp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%bonus_health_regen"					
+				}
+			}
+		}					
+   }   
+
+
+   "item_ring_hp_regen_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/ring_hp_regen_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"hp_regen;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+    	
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"9"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_ring_hp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%bonus_health_regen"					
+				}
+			}
+		}					
+   }   
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Amulet------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_amulet_mp_regen"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/amulet_mp_regen"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen"		"3"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_amulet_mp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"%bonus_mana_regen"				
+				}
+			}
+		}					
+   }
+
+
+   "item_amulet_mp_regen_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/amulet_mp_regen_second"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen"		"6"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_amulet_mp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"%bonus_mana_regen"				
+				}
+			}
+		}					
+   }
+
+   "item_amulet_mp_regen_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/jewelry/amulet_mp_regen_third"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"mana_regen;mana_pool"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen"		"9"
+			}
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_amulet_mp_regen"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"%bonus_mana_regen"				
+				}
+			}
+		}					
+   }
+
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------Shield------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+
+   "item_shield_armor"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/shield/shield_armor" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"-10"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_shield_armor"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%bonus_armor"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 	"%bonus_movespeed"								
+				}
+			}
+		}					
+   }
+
+
+   "item_shield_armor_second"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/shield/shield_armor_second" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"-10"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_shield_armor"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%bonus_armor"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 	"%bonus_movespeed"								
+				}
+			}
+		}					
+   }
+
+
+   "item_shield_armor_third"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/shield/shield_armor_third" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"agi;damage"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"9"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"-10"
+			}						
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_shield_armor"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%bonus_armor"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 	"%bonus_movespeed"								
+				}
+			}
+		}					
+   }
+
+
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------	
+
    "item_unbroken_stallion_gloves"
    {
 

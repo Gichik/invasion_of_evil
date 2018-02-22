@@ -52,7 +52,7 @@ function modifier_weakness_aura:GetAuraDuration()
 end
 
 function modifier_weakness_aura:OnCreated()
-    self.auraRadius = 700
+    self.auraRadius = 600
     self.auraDuration = 0.3
 
 	if IsServer() then
@@ -75,7 +75,7 @@ function modifier_weakness_aura_debuff:DeclareFunctions()
 end
 
 function modifier_weakness_aura_debuff:GetModifierAttackSpeedBonus_Constant()	
-	return -100
+	return -60
 end
 
 function modifier_weakness_aura_debuff:GetTexture()

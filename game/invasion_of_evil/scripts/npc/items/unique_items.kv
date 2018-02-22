@@ -1,6 +1,7 @@
 "DOTAAbilities"
 {
-	
+
+
    "item_winged_paladin_gloves"
    {
 
@@ -20,6 +21,7 @@
 		"ItemCost"						"0"	 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
 
 		// Special
 		//------------------------------------------------------------------------------------------------------------	
@@ -28,27 +30,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"5"
+				"bonus_damage"			"10"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_magic_res"		"5"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movespeed"		"-10"
+				"bonus_attack_speed"	"30"
 			}			
 		}		
 		
@@ -56,18 +43,15 @@
 		//------------------------------------------------------------------------------------------------------------	
 		"Modifiers"
 		{
-			"modifier_gloves_bonus"
+			"modifier_winged_paladin_gloves"
 			{
-				"Passive" "1"  
-				"IsHidden" "1"  
-				
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agility"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 		"%bonus_movespeed"								
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"								
 				}
 
 				"States"
@@ -98,6 +82,7 @@
 		"ItemCost"						"0"	 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
 
 		// Special
 		//------------------------------------------------------------------------------------------------------------	
@@ -106,47 +91,28 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"5"
+				"bonus_armor"			"6"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp"				"100"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_mp"				"100"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"5"
+				"bonus_strength"		"6"
 			}				
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_magic_res"		"5"
-			}
-		
 		}		
 		
 		// Modifiers
 		//------------------------------------------------------------------------------------------------------------	
 		"Modifiers"
 		{
-			"modifier_armor_bonus"
+			"modifier_armor_gleaming_sea"
 			{
-				"Passive" "1"  
-				"IsHidden" "1"  
-				
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
-					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
-					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_strength"					
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"				
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_strength"									
 				}				
 			}
 		}					
@@ -172,6 +138,7 @@
 		"ItemCost"						"0"	 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
 
 		// Special
 		//------------------------------------------------------------------------------------------------------------	
@@ -180,47 +147,28 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mp_regen"		"5"
-			}
+				"bonus_hp_regen"		"6"
+			}			
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp_regen"		"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_magic_res"		"5"
-			}			
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_hp"				"100"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_mp"				"100"
-			}				
-		
+				"bonus_hp"				"200"
+			}		
 		}		
 		
 		// Modifiers
 		//------------------------------------------------------------------------------------------------------------	
 		"Modifiers"
 		{
-			"modifier_ring_bonus"
+			"modifier_ring_of_the_basilius"
 			{
-				"Passive" "1"  
-				"IsHidden" "1"  
-				
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 			"%bonus_mp_regen"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 			"%bonus_hp_regen"					
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"					
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 			"%bonus_hp_regen"										
 					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
-					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"
 				}				
 			}
 		}					
@@ -246,6 +194,7 @@
 		"ItemCost"						"0"	
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
 
 		// Special
 		//------------------------------------------------------------------------------------------------------------	
@@ -254,34 +203,19 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"5"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"5"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"5"
+				"bonus_armor"			"6"
 			}				
-			"05"
+			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_movespeed"		"-10"
 			}
-			"06"
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"block_chance"			"20"
 			}
-			"07"
+			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"block_dmg"				"30"
@@ -292,17 +226,14 @@
 		//------------------------------------------------------------------------------------------------------------	
 		"Modifiers"
 		{
-			"modifier_shield_bonus"
+			"modifier_poor_man_shield"
 			{
-				"Passive" "1"  
-				"IsHidden" "1"  
-				
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"					
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"					
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 		"%bonus_movespeed"	
 				}				
 			}
@@ -348,6 +279,7 @@
 		"ItemCost"						"0"	 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
 
 		// Special
 		//------------------------------------------------------------------------------------------------------------	
@@ -356,24 +288,14 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mp"				"100"
+				"bonus_mp"				"200"
 			}				
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp"				"100"
+				"bonus_mana_regen"		"6"
 			}
 			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"5"
-			}	
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_magic_res"		"5"
-			}
-			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"lifesteal_percent"		"5"
@@ -384,17 +306,15 @@
 		//------------------------------------------------------------------------------------------------------------	
 		"Modifiers"
 		{
-			"modifier_ring_bonus"
+			"modifier_amulet_of_conversion"
 			{
-				"Passive" "1"  
-				"IsHidden" "1"  
-				
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_BONUS" 						"%bonus_mp"					
-					"MODIFIER_PROPERTY_HEALTH_BONUS" 					"%bonus_hp"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_magic_res"					
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 			"%bonus_mana_regen"					
 				}				
 			}
 		}					

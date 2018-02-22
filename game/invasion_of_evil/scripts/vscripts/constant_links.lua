@@ -4,7 +4,7 @@
 -------------------------------------------------------------------
 
 MONSTERS_RESPAWN_TIME = 10
-MINI_BOSS_RESPAWN_TIME = 30
+MINI_BOSS_RESPAWN_TIME = 20
 START_MONS_RESPAWN_TIME = 10
 MINIONS_COUNT = 4
 BOSS_MINIONS_COUNT = 10
@@ -14,7 +14,7 @@ HEART_FOR_END = 3
 
 HEAL_DROP_PERC = 30
 SKULL_DROP_PERC = 50
-COMMON_DROP_PERC = 10
+COMMON_DROP_PERC = 20
 ENTRAILS_EVIL_DROP_PERC = 30
 TIME_BEFORE_REMOVE_DROP = 20
 
@@ -34,43 +34,45 @@ BOSSES_NAME = {
         "cursed_flame_big_boss",
         }
 
-START_ITEMS = { 
-        "item_unbroken_stallion_gloves",
-        "item_toxic_siege_gloves",
-        "item_omexe_armor",
-        "item_armor_hazhadal",
-        "item_ring_of_hp_regen",
-        "item_ring_of_mp_regen",
-        "item_nil_talisman",
-        "item_amulet_of_courage"
+FIRST_ITEMS = { 
+        "item_helm_resist",
+        "item_scapular_mp",
+        "item_breastplate_str",
+        "item_gloves_dmg",
+        "item_belt_hp",
+        "item_pants_int",
+        "item_boots_agi",
+        "item_ring_hp_regen",
+        "item_amulet_mp_regen",
+        "item_shield_armor"                
         }
 
-COMMON_ITEMS = { 
-        "item_unbroken_stallion_gloves",
-        "item_unbroken_stallion_gloves_second",
-        "item_unbroken_stallion_gloves_third",
-        "item_toxic_siege_gloves",
-        "item_toxic_siege_gloves_second",
-        "item_toxic_siege_gloves_third",
-        "item_omexe_armor",
-        "item_omexe_armor_second",
-        "item_omexe_armor_third",
-        "item_armor_hazhadal",
-        "item_armor_hazhadal_second",
-        "item_armor_hazhadal_third",
-        "item_ring_of_hp_regen",
-        "item_ring_of_hp_regen_second",
-        "item_ring_of_hp_regen_third",
-        "item_ring_of_mp_regen",
-        "item_ring_of_mp_regen_second",
-        "item_ring_of_mp_regen_third",
-        "item_nil_talisman",
-        "item_nil_talisman_second",
-        "item_nil_talisman_third",
-        "item_amulet_of_courage",
-        "item_amulet_of_courage_second",
-        "item_amulet_of_courage_third"
+SECOND_ITEMS = { 
+        "item_helm_resist_second",
+        "item_scapular_mp_second",
+        "item_breastplate_str_second",
+        "item_gloves_dmg_second",
+        "item_belt_hp_second",
+        "item_pants_int_second",
+        "item_boots_agi_second",
+        "item_ring_hp_regen_second",
+        "item_amulet_mp_regen_second",
+        "item_shield_armor_second"              
         } 
+
+THIRD_ITEMS = { 
+        "item_helm_resist_third",
+        "item_scapular_mp_third",
+        "item_breastplate_str_third",
+        "item_gloves_dmg_third",
+        "item_belt_hp_third",
+        "item_pants_int_third",
+        "item_boots_agi_third",
+        "item_ring_hp_regen_third",
+        "item_amulet_mp_regen_third",
+        "item_shield_armor_third"                
+        } 
+
 
 UNIQUE_ITEMS = { 
         "item_winged_paladin_gloves",
@@ -81,13 +83,17 @@ UNIQUE_ITEMS = {
         }   
 
 function GetRandomItemNameFrom(itemQuality)
-    if itemQuality == "start" then
-        return START_ITEMS[RandomInt(1,#START_ITEMS)]        
+    if itemQuality == "first" then
+        return FIRST_ITEMS[RandomInt(1,#FIRST_ITEMS)]        
     end
 
-    if itemQuality == "common" then
-        return COMMON_ITEMS[RandomInt(1,#COMMON_ITEMS)]        
+    if itemQuality == "second" then
+        return SECOND_ITEMS[RandomInt(1,#SECOND_ITEMS)]        
     end
+
+    if itemQuality == "third" then
+        return THIRD_ITEMS[RandomInt(1,#THIRD_ITEMS)]        
+    end    
 
     if itemQuality == "unique" then
         return UNIQUE_ITEMS[RandomInt(1,#UNIQUE_ITEMS)]        

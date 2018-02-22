@@ -117,7 +117,7 @@ function modifier_unity_of_evil_mark:OnDestroy()
 			--EmitSoundOn("Hero_Axe.CounterHelix", caster)	
 			for i = 1, #units do	
 			local modifier = units[i]:FindModifierByName("modifier_unity_of_evil")	
-				if modifier and modifier:GetStackCount() < 10 then
+				if modifier and modifier:GetStackCount() < 5 then
 					modifier:IncrementStackCount()
 				end		
 			end

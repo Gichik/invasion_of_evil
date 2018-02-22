@@ -190,33 +190,31 @@ function main:OnEntityKilled(data)
 
                 if RollPercentage(COMMON_DROP_PERC) then
                     if killedEntity:GetUnitName():find("start") then
-                        self:CreateDrop(GetRandomItemNameFrom("start"), killedEntity:GetAbsOrigin())
+                        self:CreateDrop(GetRandomItemNameFrom("first"), killedEntity:GetAbsOrigin())
                     else
-                        self:CreateDrop(GetRandomItemNameFrom("common"), killedEntity:GetAbsOrigin())
+                        self:CreateDrop(GetRandomItemNameFrom("second"), killedEntity:GetAbsOrigin())
                     end
                 end
             end
 
             if killedEntity:GetUnitName():find("mini_boss") then
                 self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
-                if RollPercentage(100) then
-                    self:CreateDrop(GetRandomItemNameFrom("common"), killedEntity:GetAbsOrigin())
-                end
+                
+                self:CreateDrop(GetRandomItemNameFrom("third"), killedEntity:GetAbsOrigin())
+                
                 if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
                     self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
                 end 
-                if RollPercentage(1) then
+                if RollPercentage(10) then
                     self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
                 end        
             end  
 
             if killedEntity:GetUnitName():find("big_boss") then
-                if RollPercentage(100) then
-                    self:CreateDrop("item_heart_of_evil", killedEntity:GetAbsOrigin())
-                end 
-                if RollPercentage(100) then
-                    self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
-                end 
+                
+                self:CreateDrop("item_heart_of_evil", killedEntity:GetAbsOrigin())
+                self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
+            
                 GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
                 Timers:CreateTimer(15, function()
                     self:ApplyBackTeleport() 
