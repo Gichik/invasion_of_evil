@@ -55,12 +55,12 @@ function modifier_unity_of_evil:GetModifierModelScale()
 end
 
 function modifier_unity_of_evil:OnCreated()
-	self.damageBonus = 100
-	self.healthRegen = 10
-	self.magicResBonus = 20 
-	self.physArmorBonus = 20
+	self.damageBonus = 90
+	self.healthRegen = 7
+	self.magicResBonus = 15 
+	self.physArmorBonus = 15
 	self.modelScalePers = 20
-	self.auraRadius = 700
+	self.auraRadius = 600
 	self.auraDuration = 0.3
 
 	if IsServer() then
@@ -105,7 +105,7 @@ function modifier_unity_of_evil_mark:RemoveOnDeath()
 end
 
 function modifier_unity_of_evil_mark:OnCreated()
-	self.auraRadius = 700
+	self.auraRadius = 600
 end
 
 function modifier_unity_of_evil_mark:OnDestroy()

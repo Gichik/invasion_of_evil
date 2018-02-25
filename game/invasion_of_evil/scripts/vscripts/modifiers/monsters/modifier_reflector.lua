@@ -26,6 +26,9 @@ function modifier_reflector:DeclareFunctions()
     return funcs
 end
 
+--[[new_pos, process_procs,order_type,issuer_player_index,fail_type,damage_category,reincarnate,damage,ignore_invis
+attacker,ranged_attack,record,unit,do_not_consume,damage_type,activity,heart_regen_applied,diffusal_applied
+mkb_tested,no_attack_cooldown,damage_flags,original_damage,gain,cost,basher_tested,distance]]
 function modifier_reflector:OnTakeDamage(data)
 	if IsServer() then
 		if data.unit == self:GetParent() then
@@ -33,7 +36,7 @@ function modifier_reflector:OnTakeDamage(data)
 	            victim = data.attacker,
 	            attacker = self:GetParent(),
 	            damage = data.damage*self.refPercent/100,
-	            damage_type = DAMAGE_TYPE_PURE,
+	            damage_type = data.damage_type,
 	            ability = self
 	           })
 	        local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_spectre/spectre_dispersion_fallback_mid.vpcf", PATTACH_POINT_FOLLOW, data.attacker) 

@@ -22,6 +22,7 @@ end
 function modifier_cleave_sword_second:DeclareFunctions()
     local funcs = {
     	MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+    	MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
     }
     return funcs
@@ -35,9 +36,14 @@ function modifier_cleave_sword_second:GetModifierConstantManaRegen()
 	return -self.manaCost
 end
 
+function modifier_cleave_sword_second:GetModifierPreAttack_BonusDamage()	
+	return self.damageBonus
+end
+
 function modifier_cleave_sword_second:OnCreated(data)
 	self.manaCost = 20
-	
+	self.damageBonus = self:GetAbility():GetSpecialValueFor("bonus_dmg") or 0	
+
 	if IsServer() then
 		self.parent = self:GetParent()
 		self.dmgMultiply = self:GetAbility():GetSpecialValueFor("dmg_perc")/100 or 0

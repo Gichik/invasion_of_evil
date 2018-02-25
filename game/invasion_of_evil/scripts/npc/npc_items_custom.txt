@@ -130,14 +130,127 @@
 		{
 			"SpendCharge" {}
 
-			"Heal"
-			{
-				"HealAmount"	"30"
-				"Target"		"CASTER"
-			}		
+			//"Heal"
+			//{
+			//	"HealAmount"	"30"
+			//	"Target"		"CASTER"
+			//}
+
+	        "ApplyModifier"
+	        {
+	            "Target" "CASTER"
+	            "ModifierName" "modifier_potion_hp_regen"
+	            "Duration"		"3"
+	        }					
 		}
+
+		"Modifiers"
+		{
+			"modifier_potion_hp_regen"
+			{
+				"Passive" 		"0"  
+				"IsHidden" 		"0"  
+				"TextureName"	"custom_folder/potion_hp"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"15"					
+				}
+			}
+		}	
 	}
 
+
+	"item_potion_of_mana"
+	{
+		// General
+		//---------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 
+		"Model"							"models/props_gameplay/salve_blue.vmdl"		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemPurchasable"				"0"
+		"ItemQuality"					"consumable"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"ItemDroppable"					"1" 		
+		"ItemKillable"					"0"
+		"ItemCastOnPickup"				"1"
+
+		"OnSpellStart"
+		{
+			"SpendCharge" {}
+
+	        "ApplyModifier"
+	        {
+	            "Target" "CASTER"
+	            "ModifierName" "modifier_potion_mp_regen"
+	            "Duration"		"3"
+	        }					
+		}
+
+		"Modifiers"
+		{
+			"modifier_potion_mp_regen"
+			{
+				"Passive" 		"0"  
+				"IsHidden" 		"0"  
+				"TextureName"	"custom_folder/potion_mp"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"15"				
+				}
+			}
+		}	
+	}
+
+	"item_holy_water"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_holy_water.lua"
+		"AbilityTextureName"			"custom_folder/holy_water"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		//"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"  
+		"ItemQuality"					"artifact"	
+		"ItemCost"                      "150" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"ItemInitialCharges"			"1"	
+		"ItemStackable" 				"1"
+		"ItemPermanent" 				"0"	
+		"SideShop" 						"1"
+	} 
 
 	//-------------------------------------------------------------------------------------------------------
 	//-------------------------------------------HELM--------------------------------------------------------
@@ -325,7 +438,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mana"			"100"
+				"bonus_mana"			"200"
 			}
 
 		}		
@@ -376,7 +489,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mana"			"200"
+				"bonus_mana"			"400"
 			}
 
 		}		
@@ -427,7 +540,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_mana"			"300"
+				"bonus_mana"			"600"
 			}
 
 		}		
@@ -790,7 +903,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"100"
+				"bonus_health"			"200"
 			}
 		}		
 		
@@ -840,7 +953,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"200"
+				"bonus_health"			"400"
 			}
 		}		
 		
@@ -890,7 +1003,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"300"
+				"bonus_health"			"600"
 			}
 		}		
 		

@@ -30,7 +30,7 @@ function main:InitGameMode()
 
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(main, 'GameRulesStateChange'), self)
     ListenToGameEvent("npc_spawned", Dynamic_Wrap(main, 'OnNPCSpawn'), self) 
-    ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(main, 'OnPlayerGainedLevel'), self)   
+    --ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(main, 'OnPlayerGainedLevel'), self)   
     ListenToGameEvent("dota_player_killed", Dynamic_Wrap(main, "OnSomeHeroKilled"), self)
     ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
@@ -151,8 +151,13 @@ function main:OnAbilityLearned(data)
    end
 end
 
+--player, level,splitscreenplayer
 function main:OnPlayerGainedLevel(data)
-
+    local hPlayer = EntIndexToHScript(data.player)
+    local hHero = hPlayer:GetAssignedHero()
+    --[[if hHero:GetLevel() > 20 and hHero:GetLevel() < 25 then 
+        hHero:SetAbilityPoints(hHero:GetAbilityPoints() + 1)
+    end]]
 end
 
 
@@ -182,6 +187,9 @@ function main:OnEntityKilled(data)
             if RollPercentage(HEAL_DROP_PERC) then
                 self:CreateDrop("item_potion_of_heal", killedEntity:GetAbsOrigin())
             end
+            if RollPercentage(HEAL_DROP_PERC) then
+                self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
+            end            
 
             if not killedEntity:GetUnitName():find("wave") then
                 if RollPercentage(SKULL_DROP_PERC) then

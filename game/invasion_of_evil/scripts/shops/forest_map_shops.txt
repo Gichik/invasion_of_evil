@@ -79,6 +79,7 @@
       {
         "item"   "item_vortex_axe"
         "item"   "item_cleave_sword" 
-        "item"   "item_chain_lightning_scepter"                       
+        "item"   "item_chain_lightning_scepter"  
+        "item"   "item_holy_water"                             
       }
   }

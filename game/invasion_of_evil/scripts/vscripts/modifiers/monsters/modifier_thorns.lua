@@ -43,7 +43,7 @@ function modifier_thorns:OnCreated()
 		self.incomeDmg = 0
 		self.numShoots = 5
 		self.thronsDmg = 50
-		self.thronsRadius = 500
+		self.thronsRadius = 400
 		self:GetParent():SetRenderColor(139, 69, 19) 
 	end
 end

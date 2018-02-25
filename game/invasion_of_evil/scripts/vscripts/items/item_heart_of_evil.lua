@@ -69,8 +69,6 @@ function item_heart_of_evil:OnSpellStart()
 		local hCaster = self:GetCaster()
 		local hTarget = self:GetCursorTarget()
 		local hItem = self
-		local itemName = self:GetAbilityName()
-		local newItem = nil
 
 		hTarget:EmitSound("Item.DropWorld")
 		if hTarget:GetUnitName() == "npc_necromant_base" then

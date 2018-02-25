@@ -55,7 +55,7 @@ end
 function modifier_explosive:OnCreated()
 	if IsServer() then
 		self.explosiveDmg = 100
-		self.explosiveRadius = 500
+		self.explosiveRadius = 400
 		self:GetParent():SetRenderColor(255, 69, 0) 
 	end
 end

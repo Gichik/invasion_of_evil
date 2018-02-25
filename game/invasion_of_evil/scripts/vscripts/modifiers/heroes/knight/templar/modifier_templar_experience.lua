@@ -26,7 +26,16 @@ function modifier_templar_experience:OnAttackLanded(data)
 	if IsServer() then
 		if data.attacker == self:GetParent() then
 			if RollPercentage(self:GetAbility():GetSpecialValueFor("stun_chance")) then
-				data.target:AddNewModifier(data.attacker, self, "modifier_templar_experience_debuff", {duration = 1})
+
+			    local units = FindUnitsInRadius( data.attacker:GetTeamNumber(), data.target:GetAbsOrigin(), nil, self:GetAbility():GetSpecialValueFor("aoe_radius"),
+			    DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+			    
+			    if units then   
+			        for i = 1, #units do
+			        	units[ i ]:AddNewModifier(data.attacker, self, "modifier_templar_experience_debuff", {duration = 1})
+			        end
+			    end				
+				
 			end
 		end
 	end

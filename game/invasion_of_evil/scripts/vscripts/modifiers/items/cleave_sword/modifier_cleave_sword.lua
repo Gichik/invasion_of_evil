@@ -22,6 +22,7 @@ end
 function modifier_cleave_sword:DeclareFunctions()
     local funcs = {
     	MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+    	MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
     }
     return funcs
@@ -35,8 +36,13 @@ function modifier_cleave_sword:GetModifierConstantManaRegen()
 	return -self.manaCost
 end
 
+function modifier_cleave_sword:GetModifierPreAttack_BonusDamage()	
+	return self.damageBonus
+end
+
 function modifier_cleave_sword:OnCreated(data)
 	self.manaCost = 10
+	self.damageBonus = self:GetAbility():GetSpecialValueFor("bonus_dmg") or 0
 	
 	if IsServer() then
 		self.parent = self:GetParent()
@@ -45,7 +51,7 @@ function modifier_cleave_sword:OnCreated(data)
 		self.cleaveEndRadius = 500
 		self.cleaveDistance = 500
 		self.think = 0.03
-
+		
 		self.particle_id = ParticleManager:CreateParticle("particles/units/heroes/hero_clinkz/clinkz_strafe.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
 		self.parent:EmitSound("Hero_Clinkz.Strafe")
 

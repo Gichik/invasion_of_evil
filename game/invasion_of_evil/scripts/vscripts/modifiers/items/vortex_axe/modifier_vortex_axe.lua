@@ -106,6 +106,7 @@ function modifier_vortex_axe:OnDestroy()
 			self.blade_fury_spin_pfx = nil
 		end
 		if self:GetParent() then
+			FindClearSpaceForUnit(self:GetParent(), self:GetParent():GetAbsOrigin(), false) 
 			self.parent:StopSound("Hero_Juggernaut.BladeFuryStart")
 			self.parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
 		end

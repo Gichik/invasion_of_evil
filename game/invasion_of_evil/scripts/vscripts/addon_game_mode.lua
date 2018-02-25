@@ -74,6 +74,7 @@ function Precache( context )
 	PrecacheResource( "model", "particles/units/heroes/hero_lina/lina_base_attack.vpcf", context ) --flame range attack
 	PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl", context ) --npc_minion_ow
 	PrecacheResource( "model", "models/props_gameplay/aegis.vmdl", context ) --npc_minion_ow
+	PrecacheResource( "model", "models/heroes/nightstalker/nightstalker_night.vmdl", context ) --church monsters
 
 
 

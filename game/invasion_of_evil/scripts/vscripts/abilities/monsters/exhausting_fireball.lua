@@ -76,7 +76,7 @@ function exhausting_fireball:CreateProjectile()
 				Ability = self,
 				Source = self.caster,
 				vSpawnOrigin = self.caster:GetAbsOrigin(),
-				vVelocity = self.caster:GetForwardVector() * 2500 * 0.7, 
+				vVelocity = self.caster:GetForwardVector() * 2000 * 0.7, 
 				fStartRadius = 50,
 				fEndRadius = 50,
 				fDistance = self:GetCastRange(self.caster:GetAbsOrigin(),self.caster),

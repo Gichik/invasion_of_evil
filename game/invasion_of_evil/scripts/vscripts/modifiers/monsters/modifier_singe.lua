@@ -27,7 +27,7 @@ function modifier_singe:DeclareFunctions()
 end
 
 function modifier_singe:GetModifierIncomingDamage_Percentage()	
-	return self:GetStackCount() * 10
+	return self:GetStackCount() * 7
 end
 
 function modifier_singe:OnCreated()
