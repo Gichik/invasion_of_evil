@@ -78,8 +78,14 @@
       "secretshop"
       {
         "item"   "item_vortex_axe"
+        "item"   "item_vortex_axe_second"
+        "item"   "item_vortex_axe_third"                
         "item"   "item_cleave_sword" 
-        "item"   "item_chain_lightning_scepter"  
+        "item"   "item_cleave_sword_second"
+        "item"   "item_cleave_sword_third"                
+        "item"   "item_chain_lightning_scepter"
+        "item"   "item_chain_lightning_scepter_second"
+        "item"   "item_chain_lightning_scepter_third"                  
         "item"   "item_holy_water"                             
       }
   }

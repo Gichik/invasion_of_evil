@@ -48,10 +48,19 @@ function modifier_vortex_axe:GetModifierConstantManaRegen()
 	return -self.manaCost
 end
 
+
+--new_pos,process_procs,order_type,issuer_player_index,fail_type,damage_category,reincarnate,damage
+--ignore_invis,cost,ranged_attack,record,unit,do_not_consume,damage_type,activity,heart_regen_applied
+--diffusal_applied,no_attack_cooldown,damage_flags,original_damage,mkb_tested,gain,basher_tested,distance
 function modifier_vortex_axe:OnOrder(data)
-	local caster = self:GetParent()
-    caster.new_forward = (data.new_pos - caster:GetOrigin()):Normalized()
-	caster.new_pos = data.new_pos
+	--print("OnOrder")
+	if data.unit == self:GetParent() then 
+		self.new_forward = (data.new_pos - self:GetParent():GetAbsOrigin()):Normalized()
+		self.new_pos = data.new_pos
+	end
+	--local caster = self:GetParent()
+    --caster.new_forward = (data.new_pos - caster:GetOrigin()):Normalized()
+	--caster.new_pos = data.new_pos
 end
 
 
@@ -127,8 +136,8 @@ function modifier_vortex_axe:PlayAnimation()
 			self.parent:StartGesture(ACT_DOTA_ATTACK)
 
 			self.curr_pos = self.parent:GetAbsOrigin()
-			self.new_pos = self.parent.new_pos
-			self.new_forward = self.parent.new_forward
+			--self.new_pos = self.parent.new_pos
+			--self.new_forward = self.parent.new_forward
 
 			self.speed = self.parent:GetBaseMoveSpeed()/50
 

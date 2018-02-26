@@ -375,10 +375,25 @@
 
 	"item_tpscroll"
 	{
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"	
 		"ItemPurchasable"				"0"
 		"ItemCost"                      "1"
 		"ItemSellable"					"1" 		 		
 		"ItemDroppable"					"1"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCooldown"				"0.0"
+		"AbilitySharedCooldown"			"teleport"
+		"AbilityChannelTime"			"0.0"
+		"AbilityCastPoint"				"0.0"
+
 	}
 
 	"item_dust"

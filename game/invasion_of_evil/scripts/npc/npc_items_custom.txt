@@ -153,7 +153,7 @@
 				"TextureName"	"custom_folder/potion_hp"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"15"					
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"10"					
 				}
 			}
 		}	
@@ -209,7 +209,7 @@
 				"TextureName"	"custom_folder/potion_mp"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"15"				
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"10"				
 				}
 			}
 		}	
@@ -241,7 +241,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"  
 		"ItemQuality"					"artifact"	
-		"ItemCost"                      "150" 
+		"ItemCost"                      "100" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 

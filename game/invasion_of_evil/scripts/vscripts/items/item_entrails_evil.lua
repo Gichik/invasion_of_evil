@@ -218,10 +218,10 @@ function item_entrails_evil:SpawnNewOWBoss()
     
     unit = CreateUnitByName(BOSSES_NAME[RandomInt(1, #BOSSES_NAME)], SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS )   
     unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
-
+    main:SetBossOwStatus(true)
 
     Timers:CreateTimer(0, function()
-    	if SPAWNER_OW_POINT and PORTAL_OW_EXIST then
+    	if SPAWNER_OW_POINT and PORTAL_OW_EXIST and BOSS_OW_ELIVE then
 		    for i = 1, BOSS_MINIONS_COUNT do 
 		        unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
 		    end

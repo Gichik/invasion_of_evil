@@ -56,7 +56,7 @@ end
 
 function modifier_unity_of_evil:OnCreated()
 	self.damageBonus = 90
-	self.healthRegen = 7
+	self.healthRegen = 9
 	self.magicResBonus = 15 
 	self.physArmorBonus = 15
 	self.modelScalePers = 20

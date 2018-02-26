@@ -50,9 +50,10 @@ end
 
 
 function modifier_vortex_axe_second:OnOrder(data)
-	local caster = self:GetParent()
-    caster.new_forward = (data.new_pos - caster:GetOrigin()):Normalized()
-	caster.new_pos = data.new_pos
+	if data.unit == self:GetParent() then 
+		self.new_forward = (data.new_pos - self:GetParent():GetAbsOrigin()):Normalized()
+		self.new_pos = data.new_pos
+	end
 end
 
 
@@ -128,8 +129,8 @@ function modifier_vortex_axe_second:PlayAnimation()
 			self.parent:StartGesture(ACT_DOTA_ATTACK)
 
 			self.curr_pos = self.parent:GetAbsOrigin()
-			self.new_pos = self.parent.new_pos
-			self.new_forward = self.parent.new_forward
+			--self.new_pos = self.parent.new_pos
+			--self.new_forward = self.parent.new_forward
 
 			self.speed = self.parent:GetBaseMoveSpeed()/50
 			

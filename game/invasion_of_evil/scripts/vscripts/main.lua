@@ -55,6 +55,10 @@ function main:SetWaveState(flag)
     WAVE_STATE = flag
 end
 
+function main:SetBossOwStatus(flag)
+    BOSS_OW_ELIVE = flag
+end
+
 function main:ApplyMusicOn(soundName,hSource)
     --print("SetMusicSource")
     MUSIC_SOURCE = hSource
@@ -191,7 +195,7 @@ function main:OnEntityKilled(data)
                 self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
             end            
 
-            if not killedEntity:GetUnitName():find("wave") then
+            if not killedEntity:GetUnitName():find("wave") and killedEntity:GetUnitName() ~= "npc_minion_ow" then
                 if RollPercentage(SKULL_DROP_PERC) then
                     self:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
                 end
@@ -223,6 +227,8 @@ function main:OnEntityKilled(data)
                 self:CreateDrop("item_heart_of_evil", killedEntity:GetAbsOrigin())
                 self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
             
+                self:SetBossOwStatus(false)
+
                 GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
                 Timers:CreateTimer(15, function()
                     self:ApplyBackTeleport() 
@@ -560,6 +566,10 @@ function main:OnChat( data )
     local player = PlayerResource:GetPlayer(data.playerid) 
     local text = data.text
     if text == "-stopsound" then
+        --print("StopSound")
+        --EmitGlobalSound("Item.DropWorld")
+        --StopSoundEvent("Invasion_of_evil.Nocturnus",player)
+        --player:StopSound("Invasion_of_evil.Nocturnus")
         --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
         --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
     end
