@@ -182,4 +182,147 @@
 	}	
 
 
+	"fire_storm"
+	{
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"abilities/monsters/fire_storm.lua"			
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"			
+	    "AbilityTextureName"            "invoker_sun_strike"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"8"
+		"AbilityCastRange"				"600"
+		"AbilityManaCost"				"0"
+		"AbilityCastPoint"				"0.5"
+		"AoERadius"               		"600"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aoe_radius"			"600"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dmg_radius"			"200"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"8"
+			}
+		}					    
+	}
+
+
+	"echoes_victims"
+	{
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"abilities/monsters/echoes_victims.lua"			
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"			
+	    "AbilityTextureName"            "custom_folder/echoes_victims"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"15"
+		"AbilityCastRange"				"600"
+		"AbilityManaCost"				"0"
+		"AbilityCastPoint"				"0.5"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"sZone_duration"		"2"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hands_duration"		"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hands_radius"			"150"
+			}									
+		}					    
+	}
+
+	"puddle_of_poison"
+	{
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"abilities/monsters/puddle_of_poison.lua"			
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"			
+	    "AbilityTextureName"            "custom_folder/puddle_of_poison"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"7"
+		"AbilityCastRange"				"600"
+		"AbilityManaCost"				"0"
+		"AbilityCastPoint"				"0.5"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"puddle_duration"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"puddle_radius"			"250"
+			}												
+		}					    
+	}
+
+	"aoe_hex"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "shadow_shaman_voodoo"
+	    "MaxLevel"                      "1"	
+	    	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"
+
+		"OnCreated"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_aoe_hex"
+			}
+		}
+
+	}	
+
+
+
 }

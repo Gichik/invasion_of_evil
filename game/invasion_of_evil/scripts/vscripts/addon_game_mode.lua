@@ -37,8 +37,8 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts", context )
-
-
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts", context )
 	
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
@@ -90,6 +90,10 @@ function Precache( context )
 	
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_legion_commander", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_enigma", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_witchdoctor", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_bane", context )
+
+
 
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_track_trail_circle.vpcf", context )	
@@ -129,11 +133,6 @@ function Precache( context )
 
 	PrecacheResource( "particle", "particles/neutral_fx/black_dragon_fireball.vpcf", context ) -- crushing_explosion
 	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_ti7_golden/antimage_blink_start_ti7_golden_flame.vpcf", context ) -- crushing_explosion
-
-
-
-
-
 
 end
 

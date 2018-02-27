@@ -78,7 +78,12 @@ LinkLuaModifier("modifier_singe", "modifiers/monsters/modifier_singe.lua", LUA_M
 LinkLuaModifier("modifier_burning", "modifiers/monsters/modifier_burning.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_burning_debuff", "modifiers/monsters/modifier_burning.lua", LUA_MODIFIER_MOTION_NONE )
 
-
+LinkLuaModifier("modifier_echoes_victims", "modifiers/monsters/modifier_echoes_victims.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_echoes_victims_debuff", "modifiers/monsters/modifier_echoes_victims.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_puddle_of_poison", "modifiers/monsters/modifier_puddle_of_poison.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_puddle_of_poison_debuff", "modifiers/monsters/modifier_puddle_of_poison.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_aoe_hex", "modifiers/monsters/modifier_aoe_hex.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_hexed_tree", "modifiers/monsters/modifier_aoe_hex.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------BERSERK MODIFIER--------------------------

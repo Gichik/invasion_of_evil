@@ -24,7 +24,7 @@ function sapient_magic_circle:OnSpellStart()
 		if caster and point then
 			caster.magic_circle_point = point
 			caster.magic_circle_regen = self:GetSpecialValueFor("bonus_regen")
-			CreateModifierThinker( caster, self, "modifier_sapient_magic_circle", {duration = dur}, point, caster:GetTeamNumber(), true)
+			CreateModifierThinker( caster, self, "modifier_sapient_magic_circle", {duration = dur}, point, caster:GetTeamNumber(), false)
 			StartSoundEventFromPosition("Hero_ArcWarden.MagneticField.Cast",point)
 		end
 	end
