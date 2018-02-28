@@ -52,7 +52,7 @@ function modifier_devastator_aura:GetAuraDuration()
 end
 
 function modifier_devastator_aura:OnCreated()
-    self.auraRadius = 700
+    self.auraRadius = 600
     self.auraDuration = 0.3
 
 	if IsServer() then

@@ -15,3 +15,11 @@ function TeleportTrigger(data)
 		main:FocusCameraOnPlayer(activator)
 	end
 end
+
+
+function TeleportHome(data)
+	--print("TeleportTrigger")
+	local activator = data.activator
+    activator:RespawnHero(false, false)
+    main:FocusCameraOnPlayer(activator)
+end

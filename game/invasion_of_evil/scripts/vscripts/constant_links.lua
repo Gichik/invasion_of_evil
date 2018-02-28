@@ -12,6 +12,11 @@ PORTAL_OW_DURATION = 300    -- OTHERKIN_WORLD
 ENTRAILS_FOR_PORTAL = 3
 HEART_FOR_END = 3
 
+TRAN_GRASS_DROP_PERC = 3
+TRAN_GRASS_FOR_DUNGEON = 5
+NOTE_DROP_PERC = 1
+TIME_BEFORE_DUNGEON = 180
+
 HEAL_DROP_PERC = 10
 SKULL_DROP_PERC = 50
 COMMON_DROP_PERC = 20
@@ -80,7 +85,8 @@ UNIQUE_ITEMS = {
         "item_armor_gleaming_sea",
         "item_ring_of_the_basilius",
         "item_poor_man_shield",
-        "item_amulet_of_conversion"
+        "item_amulet_of_conversion",
+        "item_protective_amulet"
         }   
 
 function GetRandomItemNameFrom(itemQuality)

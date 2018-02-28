@@ -137,4 +137,66 @@
 
 	}		
 
+
+	"ability_no_health_bar"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_HIDDEN"			
+		
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_no_health_bar"
+			}
+		
+		}
+		
+		"Modifiers"
+		{
+			"modifier_no_health_bar"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}		
+		}			
+	}
+
+
+	"ability_no_damage"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_HIDDEN"			
+		
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_no_damage"
+			}
+		
+		}
+		
+		"Modifiers"
+		{
+			"modifier_no_damage"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+		        "Properties"
+		        {
+		          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+		          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
+		          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+		        }
+			}		
+		}			
+	}
+
 }

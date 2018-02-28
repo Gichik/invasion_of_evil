@@ -31,7 +31,7 @@ function exhausting_fireball:OnSpellStart()
 	Timers:CreateTimer(2, function()
 
 		local units = FindUnitsInRadius( self.caster:GetTeamNumber(), self.caster:GetAbsOrigin(), self.caster, self:GetCastRange(self.caster:GetAbsOrigin(),self.caster),
-			DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+			DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 
 		if units then
 			self.hTarget = units[RandomInt(1, #units)]

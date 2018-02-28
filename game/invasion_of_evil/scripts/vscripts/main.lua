@@ -21,6 +21,7 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
     GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
     GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
+    GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
 
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
@@ -195,7 +196,11 @@ function main:OnEntityKilled(data)
                 self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
             end            
 
-            if not killedEntity:GetUnitName():find("wave") and killedEntity:GetUnitName() ~= "npc_minion_ow" then
+            if not killedEntity:GetUnitName():find("wave") 
+                and killedEntity:GetUnitName() ~= "npc_minion_ow"
+                and killedEntity:GetUnitName() ~= "npc_cursed_minion"
+                and not killedEntity:GetUnitName():find("boss") then
+
                 if RollPercentage(SKULL_DROP_PERC) then
                     self:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
                 end
@@ -207,6 +212,17 @@ function main:OnEntityKilled(data)
                         self:CreateDrop(GetRandomItemNameFrom("second"), killedEntity:GetAbsOrigin())
                     end
                 end
+
+                if RollPercentage(NOTE_DROP_PERC) then
+                    self:CreateDrop("item_note_" .. RandomInt(1,3), killedEntity:GetAbsOrigin())
+                end
+
+                if not killedEntity:GetUnitName():find("start") then
+                    if RollPercentage(TRAN_GRASS_DROP_PERC) then
+                        self:CreateDrop("item_tran_grass", killedEntity:GetAbsOrigin())
+                    end
+                end
+
             end
 
             if killedEntity:GetUnitName():find("mini_boss") then
@@ -217,9 +233,9 @@ function main:OnEntityKilled(data)
                 if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
                     self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
                 end 
-                if RollPercentage(10) then
-                    self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
-                end        
+                --if RollPercentage(10) then
+                --    self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
+                --end        
             end  
 
             if killedEntity:GetUnitName():find("big_boss") then
@@ -238,11 +254,33 @@ function main:OnEntityKilled(data)
                       
             end
 
+            if killedEntity:GetUnitName():find("dungeon_boss") then
+                self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
+                self:CreateDungeonFor(killedEntity:GetUnitName(),TIME_BEFORE_DUNGEON)                    
+            end
+  
+           --[[ if killedEntity.biomName then
+                if killedEntity.biomName == "cursed_tree" then
+                    if RollPercentage(TRAN_GRASS_DROP_PERC) then
+                        self:CreateDrop("item_tran_grass", killedEntity:GetAbsOrigin())
+                    end                      
+                end
+            end]] 
+
             if killedEntity.spawner then
                 if killedEntity:GetUnitName():find("start") then
-                    self:RespawnStartUnits(killedEntity:GetUnitName(),killedEntity.vSpawnLoc,MINIONS_COUNT,START_MONS_RESPAWN_TIME)
+                    self:RespawnStartUnits( killedEntity:GetUnitName(),
+                                            killedEntity.vSpawnLoc,
+                                            MINIONS_COUNT,
+                                            START_MONS_RESPAWN_TIME)
                 else 
-                    self:RespawnUnits(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc,MINIONS_COUNT,MONSTERS_RESPAWN_TIME)
+                    self:RespawnUnits(  killedEntity:GetUnitName(), 
+                                        killedEntity.modelName, 
+                                        killedEntity.modelScale, 
+                                        killedEntity.vSpawnLoc,
+                                        MINIONS_COUNT,
+                                        MONSTERS_RESPAWN_TIME,
+                                        killedEntity.biomName)
                 end
             end
 
@@ -250,7 +288,21 @@ function main:OnEntityKilled(data)
     end 
 
     if killedEntity:IsRealHero()  then
-        main:GiveNewHero(killedEntity)
+        local haveProtect = false
+        for i = 0, 8 do
+            item = killedEntity:GetItemInSlot(i)
+            if item ~= nil then
+                if item:GetAbilityName() == "item_protective_amulet" then
+                    haveProtect = true
+                    killedEntity:RemoveItem(item)
+                    break
+                end
+            end
+        end
+
+        if haveProtect == false then
+            main:GiveNewHero(killedEntity)
+        end
     end    
 end
 
@@ -285,7 +337,9 @@ function main:SpanwMoobs()
         self:CreateUnits("cemetery", i, 1)
         self:CreateUnits("church", i, 1)
         self:CreateUnits("cursed_tree", i, 1)     
-    end      
+    end 
+
+    self:CreateDungeonFor("dungeon_boss_cursed",5)     
 end
 
 
@@ -299,12 +353,41 @@ function main:CreateUnits(biomName,spawnerNumber,time)
             if unitSettings[1] == "npc_mini_boss"  then
                 self:RespawnMiniBoss(unitSettings[1], unitSettings[2], unitSettings[3], point, time)
             else
-                self:RespawnUnits(unitSettings[1], unitSettings[2], unitSettings[3], point, MINIONS_COUNT, time)   
+                self:RespawnUnits(unitSettings[1], unitSettings[2], unitSettings[3], point, MINIONS_COUNT, time, biomName)   
             end      
         end
     end
 end
 
+function main:CreateDungeonFor(bossName,time)
+    --print("CreateUnits")
+    if bossName and time then
+
+        Timers:CreateTimer(time, function()
+            local biomName = nil
+            local spawnerCount = nil
+            local point = nil
+            local unit = nil
+            --npc_minion_ow
+            if bossName == "dungeon_boss_cursed" then
+                biomName = "cursed"
+                spawnerCount = 11
+                GameRules:SendCustomMessage("#witch_reincarnated", 0, 0)
+            end
+            point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_1" ):GetAbsOrigin()
+            unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+            unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})        
+            for i = 2, spawnerCount do
+                point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_" .. i ):GetAbsOrigin()
+                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+            end
+            return nil
+        end
+        )
+    end
+end
 
 
 function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
@@ -327,7 +410,7 @@ function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
 end
 
 
-function main:RespawnUnits(unitName,modelName,modelScale,SpawnLoc,numMinions,time)
+function main:RespawnUnits(unitName,modelName,modelScale,SpawnLoc,numMinions,time,biomName)
     
     local team = DOTA_TEAM_NEUTRALS
     local unit = nil
@@ -340,6 +423,7 @@ function main:RespawnUnits(unitName,modelName,modelScale,SpawnLoc,numMinions,tim
         unit:SetOriginalModel(modelName)
         unit.modelScale = modelScale
         unit:SetModelScale(modelScale)
+        unit.biomName = biomName
 
         local modifier = unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
 
@@ -348,6 +432,7 @@ function main:RespawnUnits(unitName,modelName,modelScale,SpawnLoc,numMinions,tim
             unit:SetOriginalModel(modelName)
             unit:SetModelScale(modelScale)
             unit.spawner = false
+            unit.biomName = biomName
             if modifier:CanBeAddToMinions() then
                 unit:AddNewModifier(unit, nil, modifier:GetName(), {})
             end

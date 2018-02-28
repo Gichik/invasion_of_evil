@@ -252,6 +252,106 @@
 		"SideShop" 						"1"
 	} 
 
+
+	"item_tran_grass"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_tran_grass.lua"
+		"AbilityTextureName"			"item_tango"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/tango.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"  
+		"ItemQuality"					"artifact"	
+		"ItemCost"                      "0" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"ItemInitialCharges"			"1"	
+		"ItemStackable" 				"1"
+		"ItemPermanent" 				"0"	
+		"SideShop" 						"0" 
+	} 
+
+
+	"item_note_1"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/note_icon"			
+		"Model"							"models/props_gameplay/tpscroll01.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 	  
+	}
+
+	"item_note_2"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/note_icon"			
+		"Model"							"models/props_gameplay/tpscroll01.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 	  
+	}
+
+	"item_note_3"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/note_icon"			
+		"Model"							"models/props_gameplay/tpscroll01.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 	  
+	}
+
 	//-------------------------------------------------------------------------------------------------------
 	//-------------------------------------------HELM--------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------

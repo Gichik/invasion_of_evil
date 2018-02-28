@@ -26,13 +26,14 @@ end
 function modifier_aoe_hex:OnCreated() 
 	if IsServer() then
 		self.caster = self:GetCaster()
+        self.castRange = 1200
 		self:StartIntervalThink(20) 
 	end
 end
 
 function modifier_aoe_hex:OnIntervalThink()
 	if self:GetCaster() then
-		local units = FindUnitsInRadius( self.caster:GetTeamNumber(), self.caster:GetAbsOrigin(), self.caster, 1000,
+		local units = FindUnitsInRadius( self.caster:GetTeamNumber(), self.caster:GetAbsOrigin(), self.caster, self.castRange,
 		DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 		
 		if units then

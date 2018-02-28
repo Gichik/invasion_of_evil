@@ -76,7 +76,10 @@ function Precache( context )
 	PrecacheResource( "model", "models/props_gameplay/aegis.vmdl", context ) --npc_minion_ow
 	PrecacheResource( "model", "models/heroes/nightstalker/nightstalker_night.vmdl", context ) --church monsters
 
-
+	PrecacheResource( "model", "models/props_tree/tree_cine_02_10k.vmdl", context ) --cursed tree
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl", context ) --dungeon cursed units
+	PrecacheResource( "model", "models/props_gameplay/tango.vmdl", context ) --tran-grass
+	PrecacheResource( "model", "models/props_gameplay/tpscroll01.vmdl", context ) --item_note
 
 
 
