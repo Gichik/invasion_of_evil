@@ -15,6 +15,9 @@ LinkLuaModifier("modifier_cleave_sword", "modifiers/items/cleave_sword/modifier_
 LinkLuaModifier("modifier_cleave_sword_second", "modifiers/items/cleave_sword/modifier_cleave_sword_second.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_cleave_sword_third", "modifiers/items/cleave_sword/modifier_cleave_sword_third.lua", LUA_MODIFIER_MOTION_NONE )
 
+LinkLuaModifier("modifier_ice_shards", "modifiers/items/ice_shards_spear/modifier_ice_shards.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_ice_shards_second", "modifiers/items/ice_shards_spear/modifier_ice_shards_second.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_ice_shards_third", "modifiers/items/ice_shards_spear/modifier_ice_shards_third.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 LinkLuaModifier("modifier_teleport_progress", "modifiers/items/consumable_items/modifier_teleport_progress.lua", LUA_MODIFIER_MOTION_NONE )

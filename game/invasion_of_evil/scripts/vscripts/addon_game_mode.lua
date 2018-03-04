@@ -39,7 +39,8 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts", context )
-	
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts", context )
+		
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
@@ -129,13 +130,15 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_warlock/warlock_rain_of_chaos_explosion.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_phoenix/phoenix_sunray.vpcf", context )
 	PrecacheResource( "particle", "particles/neutral_fx/satyr_hellcaller.vpcf", context ) -- fireball
-
-
 	PrecacheResource( "particle", "particles/items2_fx/radiance_owner.vpcf", context ) -- burn
 	PrecacheResource( "particle", "particles/items2_fx/radiance.vpcf", context ) -- burn
-
 	PrecacheResource( "particle", "particles/neutral_fx/black_dragon_fireball.vpcf", context ) -- crushing_explosion
 	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_ti7_golden/antimage_blink_start_ti7_golden_flame.vpcf", context ) -- crushing_explosion
+	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf", context ) -- ice shards spear
+	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff.vpcf", context ) -- ice shards spear
+
+
+
 
 end
 

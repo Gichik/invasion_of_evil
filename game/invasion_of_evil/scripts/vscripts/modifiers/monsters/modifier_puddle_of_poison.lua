@@ -98,7 +98,7 @@ end
 
 function modifier_puddle_of_poison_debuff:OnCreated(data)
 	if IsServer() then
-		self.dmg = 20
+		self.dmg = 40
 		self.attacker = self:GetCaster() or nil		
 		self:StartIntervalThink(0.3) 
 	end

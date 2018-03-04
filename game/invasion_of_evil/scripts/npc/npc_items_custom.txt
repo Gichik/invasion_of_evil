@@ -2,6 +2,7 @@
 #base "items/chain_lightning_scepter.kv"
 #base "items/cleave_sword.kv"
 #base "items/unique_items.kv"
+#base "items/ice_shards_spear.kv"
 
 "DOTAAbilities"
 {
@@ -286,6 +287,18 @@
 		"ItemStackable" 				"1"
 		"ItemPermanent" 				"0"	
 		"SideShop" 						"0" 
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"count_for_dung"		"3"
+			}
+		}	
+
 	} 
 
 

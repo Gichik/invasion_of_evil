@@ -1,0 +1,311 @@
+"DOTAAbilities"
+{
+	
+	"item_ice_shards_spear"
+	{
+		//"ID"							"1209"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/weapon/ice_shards_spear"
+		//"ScriptFile"					"items/item_vortex_axe"						
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "5" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "10"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_bonus"	"50"
+			}	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dmg_perc"				"60"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"shards_count"			"4"
+			}									
+		}
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+
+		"OnProjectileHitUnit"
+	 	{
+	 		"DeleteOnHit"	"1"
+	 		"RunScript"
+	 		{
+	 			"ScriptFile"		"items/item_ice_shards_spear.lua"
+	 			"Function"			"OnShardsHitUnit"
+	 		}
+	  	}
+	}
+
+
+	"item_ice_shards_spear_second"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/weapon/ice_shards_spear_second"					
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "20"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_bonus"	"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dmg_perc"				"60"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"shards_count"			"4"
+			}											
+		}
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+
+		"OnProjectileHitUnit"
+	 	{
+	 		"DeleteOnHit"	"1"
+	 		"RunScript"
+	 		{
+	 			"ScriptFile"		"items/item_ice_shards_spear.lua"
+	 			"Function"			"OnShardsHitUnit"
+	 		}
+	  	}
+
+	}
+
+	"item_ice_shards_spear_third"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom_folder/weapon/ice_shards_spear_third"					
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"  
+		"ItemQuality"					"epic"	
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+		"SideShop" 						"0"
+							
+        // Casting
+        //--------------------------------------------
+        "AbilityCastRange"              "1000"
+        "AbilityCastPoint"              "0.3"
+        "AbilityCooldown"               "0"
+        "AbilityManaCost"               "30"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_bonus"	"150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dmg_perc"				"60"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"shards_count"			"4"
+			}										
+		}
+
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+		
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnToggle"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"items/item_ice_shards_spear.lua"
+				"Function"			"OnUnequip"				
+			}		
+		}
+
+		"OnProjectileHitUnit"
+	 	{
+	 		"DeleteOnHit"	"1"
+	 		"RunScript"
+	 		{
+	 			"ScriptFile"		"items/item_ice_shards_spear.lua"
+	 			"Function"			"OnShardsHitUnit"
+	 		}
+	  	}		
+	}
+
+
+	"item_recipe_ice_shards_spear_second"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"50"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_ice_shards_spear_second"
+		"ItemRequirements"
+		{
+			"01"						"item_ice_shards_spear"
+		}
+	}
+
+	"item_recipe_ice_shards_spear_third"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_ice_shards_spear_third"
+		"ItemRequirements"
+		{
+			"01"						"item_ice_shards_spear_second"
+		}
+	}
+
+}

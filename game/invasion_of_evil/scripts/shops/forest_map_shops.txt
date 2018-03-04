@@ -85,7 +85,10 @@
         "item"   "item_cleave_sword_third"                
         "item"   "item_chain_lightning_scepter"
         "item"   "item_chain_lightning_scepter_second"
-        "item"   "item_chain_lightning_scepter_third"                  
+        "item"   "item_chain_lightning_scepter_third" 
+        "item"   "item_ice_shards_spear"
+        "item"   "item_ice_shards_spear_second"
+        "item"   "item_ice_shards_spear_third"                           
         "item"   "item_holy_water"                             
       }
   }

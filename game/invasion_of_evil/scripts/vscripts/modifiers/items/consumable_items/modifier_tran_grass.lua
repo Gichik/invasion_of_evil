@@ -1,4 +1,4 @@
-require( 'constant_links' )
+
 if modifier_tran_grass == nil then
 	modifier_tran_grass = class({})
 end
@@ -26,13 +26,14 @@ function modifier_tran_grass:OnCreated( data )
 		self.caster = self:GetCaster()
 		self.tree_pos = Entities:FindByName( nil, "cursed_tree"):GetAbsOrigin()
 		self.tp_point = Entities:FindByName( nil, "dungeon_cursed_hero_spawner"):GetAbsOrigin()
+		self.countForDung = self:GetAbility():GetSpecialValueFor("count_for_dung")
 		self:StartIntervalThink(1)
 	end
 end
 
 function modifier_tran_grass:OnIntervalThink()
 	if self:GetCaster() then
-		if self:GetStackCount() >= TRAN_GRASS_FOR_DUNGEON  then
+		if self:GetStackCount() >= self.countForDung then
 			if self:CanBeMoved(self.caster:GetAbsOrigin(), self.tree_pos) then
 				self.caster:SetAbsOrigin(self.tp_point) 
 				FindClearSpaceForUnit(self.caster, self.caster:GetAbsOrigin(), false) 

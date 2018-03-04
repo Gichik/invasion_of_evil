@@ -10,7 +10,7 @@ function item_tran_grass:CastFilterResult()
 		if self:GetCaster() then
 			local modifier = self:GetCaster():FindModifierByName("modifier_tran_grass")
 			if modifier then
-				if modifier:GetStackCount() >= TRAN_GRASS_FOR_DUNGEON  then
+				if modifier:GetStackCount() >= self:GetSpecialValueFor("count_for_dung")  then
 					return UF_FAIL_CUSTOM
 				end
 			end	
@@ -32,7 +32,7 @@ function item_tran_grass:GetCustomCastError()
 		if self:GetCaster() then
 			local modifier = self:GetCaster():FindModifierByName("modifier_tran_grass")
 			if modifier then
-				if modifier:GetStackCount() >= TRAN_GRASS_FOR_DUNGEON  then
+				if modifier:GetStackCount() >= self:GetSpecialValueFor("count_for_dung") then
 					return "#dota_hud_full_tran_grass"
 				end
 			end
@@ -51,7 +51,6 @@ function item_tran_grass:OnSpellStart()
 	if IsServer() then
 
 	--print("OnSpellStart")
-
 		local hCaster = self:GetCaster()
 		local hItem = self
 		local modifier = self:GetCaster():FindModifierByName("modifier_tran_grass") or nil
@@ -59,7 +58,7 @@ function item_tran_grass:OnSpellStart()
 		if modifier then
 			modifier:IncrementStackCount()
 		else
-			hCaster:AddNewModifier(hCaster, nil, "modifier_tran_grass", {}):IncrementStackCount()
+			hCaster:AddNewModifier(hCaster, self, "modifier_tran_grass", {}):IncrementStackCount()
 		end
 
 		if hItem:GetCurrentCharges() <= hItem:GetInitialCharges() then

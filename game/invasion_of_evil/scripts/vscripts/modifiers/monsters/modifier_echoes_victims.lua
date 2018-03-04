@@ -91,7 +91,7 @@ end]]
 
 function modifier_echoes_victims_debuff:OnCreated(data)
 	if IsServer() then
-		self.dmg = 20
+		self.dmg = 50
 		self.attacker = self:GetCaster() or nil		
 		self:StartIntervalThink(0.3) 
 	end

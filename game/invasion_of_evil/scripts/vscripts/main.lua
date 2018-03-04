@@ -74,7 +74,7 @@ function main:GameRulesStateChange(data)
         EmitGlobalSound("Invasion_of_evil.Nocturnus")
         
         --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
-        GameRules:SendCustomMessage("<font color='#58ACFA'>Adrian von Ziegler - Nocturnus</font>", 0, 0)
+        GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian von Ziegler - Nocturnus</font>", 0, 0)
     end
 end
 
@@ -106,7 +106,7 @@ function main:OnNPCSpawn(data)
             end
      
             if unit:HasAnyAvailableInventorySpace() then
-                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_ice_shards_spear")
                 --unit:AddItemByName("item_heart")
             end
         end
@@ -192,6 +192,7 @@ function main:OnEntityKilled(data)
             if RollPercentage(HEAL_DROP_PERC) then
                 self:CreateDrop("item_potion_of_heal", killedEntity:GetAbsOrigin())
             end
+
             if RollPercentage(HEAL_DROP_PERC) then
                 self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
             end            
