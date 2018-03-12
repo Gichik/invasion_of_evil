@@ -16,6 +16,17 @@ function modifier_sapient_flows_of_magic:RemoveOnDeath()
 end
 
 function modifier_sapient_flows_of_magic:DeclareFunctions()
+    return nil
+end
+
+function modifier_sapient_flows_of_magic:CheckState() 
+  local state = {
+      [MODIFIER_STATE_ROOTED] = true,
+  }
+  return state
+end
+
+--[[function modifier_sapient_flows_of_magic:DeclareFunctions()
     local funcs = {
         MODIFIER_EVENT_ON_UNIT_MOVED
     }
@@ -28,7 +39,7 @@ function modifier_sapient_flows_of_magic:OnUnitMoved(data)
 			self:Destroy()
 		end
 	end
-end
+end]]
 
 function modifier_sapient_flows_of_magic:IsAura()
     return true

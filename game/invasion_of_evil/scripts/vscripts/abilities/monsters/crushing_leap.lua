@@ -39,7 +39,7 @@ end
 
 
 function crushing_leap:Jump()
-	if self:GetCaster() then
+	if not self:GetCaster():IsNull() then
 
 		local units = nil
 		local target = nil

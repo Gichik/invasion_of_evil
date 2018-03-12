@@ -92,7 +92,6 @@ function main:OnNPCSpawn(data)
         )
 
         if not unit.next_spawn then
-
             unit.next_spawn = true; 
             unit:SetAbilityPoints(0)
             unit:SetGold(5, true)
@@ -109,6 +108,7 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_ice_shards_spear")
                 --unit:AddItemByName("item_heart")
             end
+
         end
     end
 
@@ -132,6 +132,9 @@ function main:OnAbilityLearned(data)
             if data.abilityname:find("sapient") then
                 pathName = "sapient"
             end              
+            if data.abilityname:find("summoner") then
+                pathName = "summoner"
+            end  
 
             hHero:RemoveAbility(data.abilityname)
 
@@ -495,6 +498,7 @@ function main:GiveNewHero(oldHero)
             end
         end
         newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), 0, 0)
+        newHero:SetGold(5, true)
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
     end
@@ -663,7 +667,7 @@ end
 
 function main:ApplyBackTeleport()
     local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, nil, 2000,
-    DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+    DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
     
     if units then   
         for i = 1, #units do

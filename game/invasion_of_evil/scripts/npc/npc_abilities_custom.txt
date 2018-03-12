@@ -1,8 +1,9 @@
 // Dota Heroes File
 
 #base "heroes_path/berserk.kv"
-#base "heroes_path/sapient.kv"
 #base "heroes_path/templar.kv"
+#base "heroes_path/sapient.kv"
+#base "heroes_path/summoner.kv"
 #base "monsters/bosses_ability.kv"
 
 
@@ -101,6 +102,29 @@
 		}	
 	}
 
+
+	"summoner_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "doom_bringer_doom"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"summoner"
+				"Tier"				"1"												
+			}
+		}	
+	}
 
 	"range_magick_attack"
 	{

@@ -145,6 +145,20 @@ LinkLuaModifier("modifier_sapient_magic_circle", "modifiers/heroes/enchanter/sap
 LinkLuaModifier("modifier_sapient_magic_circle_buff", "modifiers/heroes/enchanter/sapient/modifier_sapient_magic_circle.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_sapient_magic_circle_immune", "modifiers/heroes/enchanter/sapient/modifier_sapient_magic_circle.lua", LUA_MODIFIER_MOTION_NONE )
 
+-------------------------------------------------------------------
+-------------------------SUMMONER MODIFIER--------------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_summoner_vampirism", "modifiers/heroes/enchanter/summoner/modifier_summoner_vampirism.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_third_eye", "modifiers/heroes/enchanter/summoner/modifier_summoner_third_eye.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_third_eye_buff", "modifiers/heroes/enchanter/summoner/modifier_summoner_third_eye.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_predator", "modifiers/heroes/enchanter/summoner/modifier_summoner_predator.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_aesculapius", "modifiers/heroes/enchanter/summoner/modifier_summoner_aesculapius.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_aesculapius_buff", "modifiers/heroes/enchanter/summoner/modifier_summoner_aesculapius.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_mammock", "modifiers/heroes/enchanter/summoner/modifier_summoner_mammock.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_mammock_debuff", "modifiers/heroes/enchanter/summoner/modifier_summoner_mammock.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
 
 -------------------------------------------------------------------
 

@@ -15,7 +15,13 @@ function sapient_flows_of_life:GetAbilityTargetType()
     return DOTA_UNIT_TARGET_NONE
 end
 
-function sapient_flows_of_life:OnSpellStart()
-   self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_sapient_flows_of_life", {})
-   self:GetCaster():EmitSound("Hero_Necrolyte.SpiritForm.Cast")
+
+function sapient_flows_of_life:OnToggle()
+	if self:GetToggleState() then
+		self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_sapient_flows_of_life", {})
+		self:GetCaster():EmitSound("Hero_Necrolyte.SpiritForm.Cast")
+	else
+		self:GetCaster():RemoveModifierByName("modifier_sapient_flows_of_life")
+	end
 end
+

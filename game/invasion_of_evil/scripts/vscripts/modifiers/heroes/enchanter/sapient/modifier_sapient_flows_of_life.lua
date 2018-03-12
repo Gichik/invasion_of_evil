@@ -16,19 +16,23 @@ function modifier_sapient_flows_of_life:RemoveOnDeath()
 end
 
 function modifier_sapient_flows_of_life:DeclareFunctions()
-    local funcs = {
-        MODIFIER_EVENT_ON_UNIT_MOVED
-    }
-    return funcs
+    return nil
 end
 
-function modifier_sapient_flows_of_life:OnUnitMoved(data)	
+function modifier_sapient_flows_of_life:CheckState() 
+  local state = {
+      [MODIFIER_STATE_ROOTED] = true,
+  }
+  return state
+end
+
+--[[function modifier_sapient_flows_of_life:OnUnitMoved(data)	
 	if IsServer() then
 		if data.unit == self:GetParent() then
 			self:Destroy()
 		end
 	end
-end
+end]]
 
 function modifier_sapient_flows_of_life:IsAura()
     return true

@@ -40,7 +40,8 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts", context )
-		
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts", context )
+			
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
@@ -82,6 +83,22 @@ function Precache( context )
 	PrecacheResource( "model", "models/props_gameplay/tango.vmdl", context ) --tran-grass
 	PrecacheResource( "model", "models/props_gameplay/tpscroll01.vmdl", context ) --item_note
 
+	PrecacheResource( "model", "models/heroes/tiny_01/tiny_01.vmdl", context ) --npc_mammock
+	PrecacheResource( "model", "models/items/tiny/burning_stone_giant_head/burning_stone_giant_head.vmdl", context ) --npc_mammock
+	PrecacheResource( "model", "models/items/tiny/burning_stone_giant_body/burning_stone_giant_body.vmdl", context ) --npc_mammock
+	PrecacheResource( "model", "models/items/tiny/burning_stone_giant_left_arm/burning_stone_giant_left_arm.vmdl", context ) --npc_mammock
+	PrecacheResource( "model", "models/items/tiny/burning_stone_giant_right_arm/burning_stone_giant_right_arm.vmdl", context ) --npc_mammock
+
+	PrecacheResource( "model", "models/heroes/shadow_fiend/shadow_fiend.vmdl", context ) --npc_predator
+	PrecacheResource( "model", "models/heroes/shadow_fiend/shadow_fiend_arms.vmdl", context ) --npc_predator
+	PrecacheResource( "model", "models/heroes/shadow_fiend/shadow_fiend_head.vmdl", context ) --npc_predator
+	PrecacheResource( "model", "models/heroes/shadow_fiend/shadow_fiend_shoulders.vmdl", context ) --npc_predator
+	
+	PrecacheResource( "model", "models/heroes/puck/puck.vmdl", context ) --npc_aesculapius
+	PrecacheResource( "model", "models/heroes/puck/puck_horns.vmdl", context ) --npc_aesculapius
+	PrecacheResource( "model", "models/heroes/puck/puck_tail.vmdl", context ) --npc_aesculapius
+	PrecacheResource( "model", "models/heroes/puck/puck_wings.vmdl", context ) --npc_aesculapius
+	
 
 
 	PrecacheResource( "model", "models/courier/imp/imp_flying.vmdl", context )
@@ -136,6 +153,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_ti7_golden/antimage_blink_start_ti7_golden_flame.vpcf", context ) -- crushing_explosion
 	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf", context ) -- ice shards spear
 	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff.vpcf", context ) -- ice shards spear
+	PrecacheResource( "particle", "particles/units/heroes/hero_chen/chen_hand_of_god_fallback_mid.vpcf", context ) -- summoner_victim
 
 
 

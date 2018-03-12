@@ -67,6 +67,7 @@ function item_entrails_evil:OnSpellStart()
 		local hCaster = self:GetCaster()
 		local hTarget = self:GetCursorTarget()
 		local hItem = self
+		self.think_number = 1
 
 		hTarget:EmitSound("Item.DropWorld")
 		if hTarget:GetUnitName() == "npc_necromant_base" then
@@ -92,61 +93,6 @@ function item_entrails_evil:OnSpellStart()
 	end
 end
 
-
-function item_entrails_evil:CreatePortalAnimation()
-	if IsServer() then
-		--print("CreatePortalAnimation")
-		Timers:CreateTimer(0, function()
-			if PORTAL_OW_POINT and PORTAL_OW_EXIST then
-		    	self.tpParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, self)
-		    	ParticleManager:SetParticleControl(self.tpParticleID, 0, PORTAL_OW_POINT )
-		   		ParticleManager:SetParticleControl(self.tpParticleID, 1, Vector(300, 0, 0))
-			end
-
-			if PORTAL_OW_EXIST then
-				return 10
-			end
-
-			return nil
-		end
-		)
-	end
-end
-
-function item_entrails_evil:DestroyPortal()
-	if IsServer() then
-		--print("DestroyPortal")
-		main:SetPortalOwExist(false)
-		if self.tpParticleID then
-			ParticleManager:DestroyParticle(self.tpParticleID, false)
-			ParticleManager:ReleaseParticleIndex(self.tpParticleID)
-			self.tpParticleID = nil
-		end
-
-		local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, nil, 2000,
-		DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
-		
-		if units then	
-			for i = 1, #units do
-				if units[i]:IsRealHero() then
-					units[i]:RespawnHero(false, false)
-					main:FocusCameraOnPlayer(units[i])
-				else
-					UTIL_Remove(units[i])
-				end
-			end
-		end
-
-		units = FindUnitsInRadius( DOTA_TEAM_NEUTRALS, SPAWNER_OW_POINT, nil, 2000,
-		DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
-		
-		if units then	
-			for i = 1, #units do
-				UTIL_Remove(units[i])
-			end
-		end
-	end	
-end
 
 function item_entrails_evil:CreateWawes()
 	local point = nil
@@ -190,28 +136,94 @@ end
 
 function item_entrails_evil:CreateNewPortal()
 	--print("CreateNewPortal")
-	local messageTime = PORTAL_OW_DURATION - 15
-	if messageTime < 0 then
-		messageTime = 0
-	end
-	
-    Timers:CreateTimer(messageTime, function()
-    	GameRules:SendCustomMessageToTeam("#teleport_end", DOTA_TEAM_GOODGUYS, 0, 0)
-		return nil
-    end
-    )
 
 	main:SetWaveState(false)
 	main:SetPortalOwExist(true)
 	self:CreatePortalAnimation()
 	StartSoundEventFromPosition("Hero_ShadowDemon.Disruption",PORTAL_OW_POINT)
 	self:SpawnNewOWBoss()
-    Timers:CreateTimer(PORTAL_OW_DURATION, function()
-        self:DestroyPortal()
+    Timers:CreateTimer(30, function()
+
+    	if self.think_number >= PORTAL_OW_THINK_COUNT then
+    		self:DestroyPortal()
+    		return nil
+    	end
+
+    	if BOSS_OW_ELIVE then
+    		self.think_number = self.think_number + 1
+    		return 30
+    	end
+
+       	self:DestroyPortal()
       	return nil
     end
     )
 end
+
+
+function item_entrails_evil:CreatePortalAnimation()
+	if IsServer() then
+		--print("CreatePortalAnimation")
+		Timers:CreateTimer(0, function()
+			if PORTAL_OW_POINT and PORTAL_OW_EXIST then
+		    	self.tpParticleID = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, self)
+		    	ParticleManager:SetParticleControl(self.tpParticleID, 0, PORTAL_OW_POINT )
+		   		ParticleManager:SetParticleControl(self.tpParticleID, 1, Vector(300, 0, 0))
+			end
+
+			if PORTAL_OW_EXIST then
+				return 10
+			end
+
+			return nil
+		end
+		)
+	end
+end
+
+function item_entrails_evil:DestroyPortal()
+	if IsServer() then
+		--print("DestroyPortal")
+		GameRules:SendCustomMessageToTeam("#teleport_end", DOTA_TEAM_GOODGUYS, 0, 0)
+    	Timers:CreateTimer(15, function()
+	    	
+			main:SetPortalOwExist(false)
+			if self.tpParticleID then
+				ParticleManager:DestroyParticle(self.tpParticleID, false)
+				ParticleManager:ReleaseParticleIndex(self.tpParticleID)
+				self.tpParticleID = nil
+			end
+
+			local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, nil, 2000,
+			DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+			
+			if units then	
+				for i = 1, #units do
+					if units[i]:IsRealHero() then
+						units[i]:RespawnHero(false, false)
+						main:FocusCameraOnPlayer(units[i])
+					else
+						UTIL_Remove(units[i])
+					end
+				end
+			end
+
+			units = FindUnitsInRadius( DOTA_TEAM_NEUTRALS, SPAWNER_OW_POINT, nil, 2000,
+			DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+			
+			if units then	
+				for i = 1, #units do
+					UTIL_Remove(units[i])
+				end
+			end
+
+			return nil
+	    end)
+
+	end	
+end
+
+
 
 function item_entrails_evil:SpawnNewOWBoss()
     local unit = nil
