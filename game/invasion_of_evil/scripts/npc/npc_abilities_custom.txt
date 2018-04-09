@@ -1,9 +1,12 @@
 // Dota Heroes File
 
 #base "heroes_path/berserk.kv"
+#base "heroes_path/exile.kv"
 #base "heroes_path/templar.kv"
+#base "heroes_path/dishonored.kv"
 #base "heroes_path/sapient.kv"
 #base "heroes_path/summoner.kv"
+
 #base "monsters/bosses_ability.kv"
 
 
@@ -74,6 +77,29 @@
 				"ScriptFile"		"abilities/ability_helper.lua"
 				"Function"			"AddPathAbilitiesToHero"
 				"Path"				"templar"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
+	"dishonored_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "custom_folder/dishonored_path"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"dishonored"
 				"Tier"				"1"												
 			}
 		}	

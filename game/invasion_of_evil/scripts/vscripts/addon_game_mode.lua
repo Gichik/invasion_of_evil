@@ -41,7 +41,11 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_viper.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_winter_wyvern.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts", context )
-			
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts", context )			
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts", context )
+
+
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
@@ -154,6 +158,12 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf", context ) -- ice shards spear
 	PrecacheResource( "particle", "particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff.vpcf", context ) -- ice shards spear
 	PrecacheResource( "particle", "particles/units/heroes/hero_chen/chen_hand_of_god_fallback_mid.vpcf", context ) -- summoner_victim
+	PrecacheResource( "particle", "particles/items2_fx/soul_ring_blood.vpcf", context ) -- dishonored_insidious
+	PrecacheResource( "particle", "particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf", context ) -- dishonored_counterattack
+	PrecacheResource( "particle", "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf", context ) -- templar_blessing
+	PrecacheResource( "particle", "particles/units/heroes/hero_nevermore/nevermore_necro_souls.vpcf", context ) -- modifier_exile_highlander
+
+
 
 
 

@@ -12,7 +12,7 @@ function modifier_berserk_runner:GetTexture()
 end
 
 function modifier_berserk_runner:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_runner:DeclareFunctions()

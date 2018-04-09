@@ -12,11 +12,7 @@ function modifier_summoner_predator:GetTexture()
 end
 
 function modifier_summoner_predator:RemoveOnDeath()
-	return true
-end
-
-function modifier_summoner_predator:CanBeAddToMinions()
-    return true
+	return false
 end
 
 function modifier_summoner_predator:DeclareFunctions()

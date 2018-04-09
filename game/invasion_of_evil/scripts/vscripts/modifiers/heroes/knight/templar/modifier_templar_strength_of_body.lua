@@ -12,7 +12,7 @@ function modifier_templar_strength_of_body:GetTexture()
 end
 
 function modifier_templar_strength_of_body:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_strength_of_body:DeclareFunctions()

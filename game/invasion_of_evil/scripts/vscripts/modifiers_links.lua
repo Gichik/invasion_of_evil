@@ -109,6 +109,18 @@ LinkLuaModifier("modifier_berserk_battle_rage", "modifiers/heroes/barbarian/bers
 LinkLuaModifier("modifier_berserk_battle_rage_mark", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_battle_rage_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
 
+-------------------------------------------------------------------
+-------------------------BERSERK MODIFIER--------------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_exile_highlander", "modifiers/heroes/barbarian/exile/modifier_exile_highlander.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_trophies", "modifiers/heroes/barbarian/exile/modifier_exile_trophies.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_trophies_debuff", "modifiers/heroes/barbarian/exile/modifier_exile_trophies.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_ardor", "modifiers/heroes/barbarian/exile/modifier_exile_ardor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_alert", "modifiers/heroes/barbarian/exile/modifier_exile_alert.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_alert_buff", "modifiers/heroes/barbarian/exile/modifier_exile_alert.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_meditation", "modifiers/heroes/barbarian/exile/modifier_exile_meditation.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_meditation_debuff", "modifiers/heroes/barbarian/exile/modifier_exile_meditation.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 -------------------------------------------------------------------
 -------------------------TEMPLAR MODIFIER--------------------------
@@ -125,6 +137,24 @@ LinkLuaModifier("modifier_templar_nobleness", "modifiers/heroes/knight/templar/m
 LinkLuaModifier("modifier_templar_nobleness_buff", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_nobleness_lore", "modifiers/heroes/knight/templar/modifier_templar_nobleness.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_templar_shield_bearer", "modifiers/heroes/knight/templar/modifier_templar_shield_bearer.lua", LUA_MODIFIER_MOTION_NONE )
+
+-------------------------------------------------------------------
+--------------------DISHONORED MODIFIER--------------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_dishonored_insidious", "modifiers/heroes/knight/dishonored/modifier_dishonored_insidious.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_insidious_buff", "modifiers/heroes/knight/dishonored/modifier_dishonored_insidious.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_counterattack", "modifiers/heroes/knight/dishonored/modifier_dishonored_counterattack.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_fleetness", "modifiers/heroes/knight/dishonored/modifier_dishonored_fleetness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_leather_armor", "modifiers/heroes/knight/dishonored/modifier_dishonored_leather_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_honed_blows", "modifiers/heroes/knight/dishonored/modifier_dishonored_honed_blows.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_sword_dance", "modifiers/heroes/knight/dishonored/modifier_dishonored_sword_dance.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_acuteness_reaction", "modifiers/heroes/knight/dishonored/modifier_dishonored_acuteness_reaction.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_second_breath", "modifiers/heroes/knight/dishonored/modifier_dishonored_second_breath.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dishonored_second_breath_buff", "modifiers/heroes/knight/dishonored/modifier_dishonored_second_breath.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
 
 -------------------------------------------------------------------
 -------------------------SAPIENT MODIFIER--------------------------

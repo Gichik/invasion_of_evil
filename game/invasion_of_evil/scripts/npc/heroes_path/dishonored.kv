@@ -1,0 +1,286 @@
+"DOTAAbilities"
+{
+
+	"dishonored_counterattack"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/dishonored_counterattack"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"counter_chance"		"5 9 13 17 21 25 33"
+			}						
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_counterattack"
+			}
+		}					    
+	}
+
+
+	"dishonored_insidious"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/dishonored_insidious"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0.5"
+		"AbilityCastRange"				"300"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"insidious_chance"			"5 9 13 17 21 25 33"
+			}						
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_insidious"
+			}
+		}					    
+	}
+
+
+	"dishonored_honed_blows"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "bounty_hunter_jinada"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_dmg"			"10 16 22 28 34 40 50"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_honed_blows"
+			}
+		}					    
+	}	
+
+
+	"dishonored_strength_of_body"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "earth_spirit_petrify"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_health"		"200"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_strength_of_body"
+			}
+		}					    
+	}	
+
+
+	"dishonored_sword_dance"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/dishonored_sword_dance"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"20 30 40 50 60 70 100"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_sword_dance"
+			}
+		}					    
+	}
+
+
+	"dishonored_second_breath"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/dishonored_second_breath"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"5 10 15 20 25 30 40"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_second_breath"
+			}
+		}					    
+	}
+
+	"dishonored_leather_armor"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "centaur_return"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5 8 11 14 17 20 30"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_leather_armor"
+			}
+		}					    
+	}
+
+	"dishonored_acuteness_reaction"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "disruptor_glimpse"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"evasion_chance"		"25 30 35 40 45 50 60"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_acuteness_reaction"
+			}
+		}					    
+	}
+
+	"dishonored_fleetness"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "custom_folder/dishonored_fleetness"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"5 10 15 20 25 30 40"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_dishonored_fleetness"
+			}
+		}					    
+	}
+
+
+
+}

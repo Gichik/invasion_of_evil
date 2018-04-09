@@ -242,7 +242,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"  
 		"ItemQuality"					"artifact"	
-		"ItemCost"                      "100" 
+		"ItemCost"                      "50" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 
@@ -707,7 +707,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"3"
+				"bonus_strength"		"5"
 			}
 
 		}		
@@ -758,7 +758,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"6"
+				"bonus_strength"		"10"
 			}
 
 		}		
@@ -809,7 +809,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"9"
+				"bonus_strength"		"15"
 			}
 
 		}		
@@ -863,7 +863,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"6"
+				"bonus_damage"			"10"
 			}
 		}		
 		
@@ -913,7 +913,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"12"
+				"bonus_damage"			"16"
 			}
 		}		
 		
@@ -963,7 +963,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"18"
+				"bonus_damage"			"22"
 			}
 		}		
 		
@@ -1169,7 +1169,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_intellect"		"3"
+				"bonus_intellect"		"5"
 			}
 		}		
 		
@@ -1219,7 +1219,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_intellect"		"6"
+				"bonus_intellect"		"10"
 			}
 		}		
 		
@@ -1269,7 +1269,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_intellect"		"9"
+				"bonus_intellect"		"15"
 			}
 		}		
 		
@@ -1322,7 +1322,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"3"
+				"bonus_agility"			"5"
 			}						
 		}		
 		
@@ -1372,7 +1372,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"6"
+				"bonus_agility"			"10"
 			}						
 		}		
 		
@@ -1422,7 +1422,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"9"
+				"bonus_agility"			"15"
 			}						
 		}		
 		
@@ -1781,7 +1781,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"3"
+				"bonus_armor"			"4"
 			}
 			"02"
 			{
@@ -1837,12 +1837,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"6"
+				"bonus_armor"			"7"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movespeed"		"-10"
+				"bonus_movespeed"		"-20"
 			}						
 		}		
 		
@@ -1893,12 +1893,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"9"
+				"bonus_armor"			"10"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movespeed"		"-10"
+				"bonus_movespeed"		"-30"
 			}						
 		}		
 		

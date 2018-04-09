@@ -8,7 +8,7 @@ function modifier_berserk_heroism:IsHidden()
 end
 
 function modifier_berserk_heroism:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_heroism:GetTexture()

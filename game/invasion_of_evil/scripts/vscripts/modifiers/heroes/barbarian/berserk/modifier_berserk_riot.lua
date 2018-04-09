@@ -12,7 +12,7 @@ function modifier_berserk_riot:GetTexture()
 end
 
 function modifier_berserk_riot:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_riot:DeclareFunctions()

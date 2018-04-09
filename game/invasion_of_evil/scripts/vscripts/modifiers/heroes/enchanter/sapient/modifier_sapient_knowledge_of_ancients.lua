@@ -12,7 +12,7 @@ function modifier_sapient_knowledge_of_ancients:GetTexture()
 end
 
 function modifier_sapient_knowledge_of_ancients:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_knowledge_of_ancients:DeclareFunctions()

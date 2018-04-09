@@ -12,7 +12,7 @@ function modifier_templar_shield_bearer:GetTexture()
 end
 
 function modifier_templar_shield_bearer:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_shield_bearer:DeclareFunctions()

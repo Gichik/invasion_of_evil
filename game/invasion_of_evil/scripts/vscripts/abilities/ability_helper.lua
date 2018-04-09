@@ -76,9 +76,27 @@ function AddPathAbilitiesToHero(data)
         end
         if abilityTier == 3 then
             hHero:AddAbility("templar_nobleness")
-            hHero:AddAbility("templar_taunt")
+            hHero:AddAbility("templar_blessing")
         end
     end   
+
+    if pathName == "dishonored" then
+        if abilityTier == 1 then
+            hHero:AddAbility("dishonored_counterattack")
+            hHero:AddAbility("dishonored_insidious")
+            hHero:AddAbility("dishonored_honed_blows")
+            hHero:AddAbility("dishonored_strength_of_body")
+        end
+        if abilityTier == 2 then
+            hHero:AddAbility("dishonored_sword_dance")
+            hHero:AddAbility("dishonored_second_breath")
+            hHero:AddAbility("dishonored_leather_armor")
+        end
+        if abilityTier == 3 then
+            hHero:AddAbility("dishonored_acuteness_reaction")
+            hHero:AddAbility("dishonored_fleetness")
+        end
+    end  
 
     if pathName == "summoner" then
         if abilityTier == 1 then

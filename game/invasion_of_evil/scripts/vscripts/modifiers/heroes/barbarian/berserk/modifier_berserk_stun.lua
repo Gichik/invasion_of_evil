@@ -12,7 +12,7 @@ function modifier_berserk_stun:GetTexture()
 end
 
 function modifier_berserk_stun:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_stun:DeclareFunctions()

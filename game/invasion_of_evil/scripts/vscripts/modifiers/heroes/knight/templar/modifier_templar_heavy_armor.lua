@@ -12,7 +12,7 @@ function modifier_templar_heavy_armor:GetTexture()
 end
 
 function modifier_templar_heavy_armor:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_heavy_armor:DeclareFunctions()

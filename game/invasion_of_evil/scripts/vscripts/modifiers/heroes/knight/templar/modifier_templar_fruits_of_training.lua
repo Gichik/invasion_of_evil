@@ -12,7 +12,7 @@ function modifier_templar_fruits_of_training:GetTexture()
 end
 
 function modifier_templar_fruits_of_training:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_fruits_of_training:DeclareFunctions()

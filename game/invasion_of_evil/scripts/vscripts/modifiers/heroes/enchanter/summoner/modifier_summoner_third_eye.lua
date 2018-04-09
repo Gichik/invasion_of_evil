@@ -12,7 +12,7 @@ function modifier_summoner_third_eye:GetTexture()
 end
 
 function modifier_summoner_third_eye:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_summoner_third_eye:DeclareFunctions()

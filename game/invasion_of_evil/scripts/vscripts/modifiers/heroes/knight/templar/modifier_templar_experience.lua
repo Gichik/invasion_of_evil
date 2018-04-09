@@ -12,7 +12,7 @@ function modifier_templar_experience:GetTexture()
 end
 
 function modifier_templar_experience:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_experience:DeclareFunctions()

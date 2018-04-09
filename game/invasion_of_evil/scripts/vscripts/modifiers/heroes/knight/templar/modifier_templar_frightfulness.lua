@@ -12,7 +12,7 @@ function modifier_templar_frightfulness:IsHidden()
 end
 
 function modifier_templar_frightfulness:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_frightfulness:IsAura()

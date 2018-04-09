@@ -12,7 +12,7 @@ function modifier_sapient_cheerful_spirit:GetTexture()
 end
 
 function modifier_sapient_cheerful_spirit:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_cheerful_spirit:DeclareFunctions()

@@ -12,7 +12,7 @@ function modifier_templar_nobleness:IsHidden()
 end
 
 function modifier_templar_nobleness:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_nobleness:IsAura()

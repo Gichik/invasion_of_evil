@@ -52,7 +52,7 @@ function modifier_berserk_rage:IsHidden()
 end
 
 function modifier_berserk_rage:RemoveOnDeath()
-    return true
+    return false
 end
 
 

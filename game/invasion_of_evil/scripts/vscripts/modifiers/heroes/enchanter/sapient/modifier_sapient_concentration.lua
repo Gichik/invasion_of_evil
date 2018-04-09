@@ -12,7 +12,7 @@ function modifier_sapient_concentration:GetTexture()
 end
 
 function modifier_sapient_concentration:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_concentration:DeclareFunctions()

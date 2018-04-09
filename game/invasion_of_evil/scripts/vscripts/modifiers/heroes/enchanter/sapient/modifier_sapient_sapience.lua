@@ -12,7 +12,7 @@ function modifier_sapient_sapience:GetTexture()
 end
 
 function modifier_sapient_sapience:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_sapience:DeclareFunctions()

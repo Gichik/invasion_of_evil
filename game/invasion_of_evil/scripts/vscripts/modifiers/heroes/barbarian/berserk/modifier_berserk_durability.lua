@@ -12,7 +12,7 @@ function modifier_berserk_durability:GetTexture()
 end
 
 function modifier_berserk_durability:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_durability:DeclareFunctions()

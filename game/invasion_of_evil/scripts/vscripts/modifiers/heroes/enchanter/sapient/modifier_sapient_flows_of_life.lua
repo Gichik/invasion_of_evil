@@ -12,7 +12,7 @@ function modifier_sapient_flows_of_life:IsHidden()
 end
 
 function modifier_sapient_flows_of_life:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_flows_of_life:DeclareFunctions()

@@ -12,7 +12,7 @@ function modifier_berserk_knowledge_elders:GetTexture()
 end
 
 function modifier_berserk_knowledge_elders:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_knowledge_elders:DeclareFunctions()

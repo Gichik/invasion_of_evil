@@ -128,7 +128,10 @@ function main:OnAbilityLearned(data)
             end
             if data.abilityname:find("templar") then
                 pathName = "templar"
-            end  
+            end 
+            if data.abilityname:find("dishonored") then
+                pathName = "dishonored"
+            end              
             if data.abilityname:find("sapient") then
                 pathName = "sapient"
             end              

@@ -12,7 +12,7 @@ function modifier_summoner_aesculapius:IsHidden()
 end
 
 function modifier_summoner_aesculapius:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_summoner_aesculapius:IsAura()

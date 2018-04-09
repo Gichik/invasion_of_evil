@@ -12,7 +12,7 @@ function modifier_summoner_vampirism:GetTexture()
 end
 
 function modifier_summoner_vampirism:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_summoner_vampirism:DeclareFunctions()

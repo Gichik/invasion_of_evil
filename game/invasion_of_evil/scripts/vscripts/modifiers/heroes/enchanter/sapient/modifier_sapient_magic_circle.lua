@@ -13,7 +13,7 @@ function modifier_sapient_magic_circle:IsHidden()
 end
 
 function modifier_sapient_magic_circle:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_magic_circle:IsAura()
@@ -25,7 +25,10 @@ function modifier_sapient_magic_circle:GetModifierAura()
 end
 
 function modifier_sapient_magic_circle:GetAuraRadius()
-    return self:GetAbility():GetSpecialValueFor( "aoe_radius" )
+    if self:GetAbility() then
+        return self:GetAbility():GetSpecialValueFor( "aoe_radius" )
+    end
+    return 0
 end
 
 function modifier_sapient_magic_circle:GetAuraSearchTeam()

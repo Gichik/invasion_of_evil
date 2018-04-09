@@ -12,7 +12,7 @@ function modifier_templar_strength_of_will:GetTexture()
 end
 
 function modifier_templar_strength_of_will:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_templar_strength_of_will:DeclareFunctions()

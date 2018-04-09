@@ -8,7 +8,7 @@ function modifier_berserk_battle_rage:IsHidden()
 end
 
 function modifier_berserk_battle_rage:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_berserk_battle_rage:GetTexture()

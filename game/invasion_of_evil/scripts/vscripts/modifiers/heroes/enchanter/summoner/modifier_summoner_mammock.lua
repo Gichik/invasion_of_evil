@@ -8,7 +8,7 @@ function modifier_summoner_mammock:IsHidden()
 end
 
 function modifier_summoner_mammock:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_summoner_mammock:GetTexture()

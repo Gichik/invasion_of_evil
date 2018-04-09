@@ -12,7 +12,7 @@ function modifier_sapient_strength_of_mind:GetTexture()
 end
 
 function modifier_sapient_strength_of_mind:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_sapient_strength_of_mind:DeclareFunctions()
