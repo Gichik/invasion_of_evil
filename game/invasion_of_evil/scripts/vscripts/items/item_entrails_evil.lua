@@ -81,6 +81,7 @@ function item_entrails_evil:OnSpellStart()
 			if hTarget:HasModifier("modifier_teleport_progress") then
 				local modifier = hTarget:FindModifierByName("modifier_teleport_progress")
 				modifier:IncrementStackCount()
+
 				if modifier:GetStackCount() >= ENTRAILS_FOR_PORTAL then
 					hTarget:RemoveModifierByName("modifier_teleport_progress")
 					self:CreateWawes()
@@ -99,11 +100,11 @@ function item_entrails_evil:CreateWawes()
 	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
 	local waveCount = WAVE_DURATION
 	local unit = nil
+
 	GameRules:SendCustomMessageToTeam("#wave_start", DOTA_TEAM_GOODGUYS, 0, 0)
 	EmitGlobalSound("Invasion_of_evil.EpicFight1")
 	GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
 	
-
 	main:SetWaveState(true)
 
     Timers:CreateTimer(1, function()
@@ -112,8 +113,10 @@ function item_entrails_evil:CreateWawes()
 				point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
 				if RollPercentage(50) then
 			    	unit = CreateUnitByName("npc_melee_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+			    	unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 				else
 					unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+					unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 				end
 			end
 
@@ -236,6 +239,7 @@ function item_entrails_evil:SpawnNewOWBoss()
     	if SPAWNER_OW_POINT and PORTAL_OW_EXIST and BOSS_OW_ELIVE then
 		    for i = 1, BOSS_MINIONS_COUNT do 
 		        unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
+		        unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 		    end
       		return 20
       	end

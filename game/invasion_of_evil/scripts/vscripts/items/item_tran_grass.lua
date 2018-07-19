@@ -3,7 +3,7 @@ if item_tran_grass == nil then
 	item_tran_grass = class({})
 end
 
-
+--фильтры нужны, когда отключен автоподбор
 function item_tran_grass:CastFilterResult()
 	--print("Error")
 	if IsServer() then
@@ -54,6 +54,15 @@ function item_tran_grass:OnSpellStart()
 		local hCaster = self:GetCaster()
 		local hItem = self
 		local modifier = self:GetCaster():FindModifierByName("modifier_tran_grass") or nil
+
+		--проверка при автоподборе
+		if modifier then
+			if modifier:GetStackCount() >= self:GetSpecialValueFor("count_for_dung") then
+				main:CreateDrop("item_tran_grass", hCaster:GetAbsOrigin())
+				hCaster:RemoveItem(hItem)
+				return nil
+			end
+		end
 
 		if modifier then
 			modifier:IncrementStackCount()

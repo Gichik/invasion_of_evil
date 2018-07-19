@@ -106,7 +106,12 @@ function main:OnNPCSpawn(data)
      
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_ice_shards_spear")
-                --unit:AddItemByName("item_heart")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_heart_of_evil")
             end
 
         end
@@ -254,6 +259,7 @@ function main:OnEntityKilled(data)
                 self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
             
                 self:SetBossOwStatus(false)
+                MINIONS_LEVEL = MINIONS_LEVEL + 1
 
                 GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
                 Timers:CreateTimer(15, function()
@@ -493,6 +499,8 @@ function main:GiveNewHero(oldHero)
     local newHero = nil
     local ability = nil
     local abilityCount = oldHero:GetAbilityCount()
+    local heroLevel = oldHero:GetLevel()
+
     if playerID ~= nil and playerID ~= -1 then
         for i = 0, 11 do
             oldHero:RemoveItem(oldHero:GetItemInSlot(i))
@@ -507,6 +515,9 @@ function main:GiveNewHero(oldHero)
         newHero:SetGold(5, true)
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
+        for i = 1, heroLevel-1 do
+            newHero:HeroLevelUp(false)
+        end
     end
 end
 
