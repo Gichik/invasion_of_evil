@@ -126,6 +126,9 @@ function main:OnAbilityLearned(data)
             if data.abilityname:find("berserk") then
                 pathName = "berserk"
             end
+            if data.abilityname:find("exile") then
+                pathName = "exile"
+            end            
             if data.abilityname:find("templar") then
                 pathName = "templar"
             end 

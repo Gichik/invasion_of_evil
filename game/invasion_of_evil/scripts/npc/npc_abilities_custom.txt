@@ -59,6 +59,29 @@
 		}	
 	}
 
+	"exile_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "beastmaster_primal_roar"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"exile"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
 	"templar_path"
 	{
 		"BaseClass" 					"ability_datadriven"		

@@ -100,17 +100,20 @@ LinkLuaModifier("modifier_berserk_stun", "modifiers/heroes/barbarian/berserk/mod
 LinkLuaModifier("modifier_berserk_stun_debuff", "modifiers/heroes/barbarian/berserk/modifier_berserk_stun.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_knowledge_elders", "modifiers/heroes/barbarian/berserk/modifier_berserk_knowledge_elders.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_durability", "modifiers/heroes/barbarian/berserk/modifier_berserk_durability.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_berserk_riot", "modifiers/heroes/barbarian/berserk/modifier_berserk_riot.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_berserk_runner", "modifiers/heroes/barbarian/berserk/modifier_berserk_runner.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_heroism", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_heroism_mark", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_heroism_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_heroism.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_battle_rage", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_battle_rage_mark", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_berserk_battle_rage_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_battle_rage.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_spirit_of_war", "modifiers/heroes/barbarian/berserk/modifier_berserk_spirit_of_war.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_spirit_of_war_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_spirit_of_war.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_spirit_of_nimbleness", "modifiers/heroes/barbarian/berserk/modifier_berserk_spirit_of_nimbleness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_berserk_spirit_of_nimbleness_buff", "modifiers/heroes/barbarian/berserk/modifier_berserk_spirit_of_nimbleness.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 -------------------------------------------------------------------
--------------------------BERSERK MODIFIER--------------------------
+-------------------------EXILE MODIFIER--------------------------
 -------------------------------------------------------------------
 LinkLuaModifier("modifier_exile_highlander", "modifiers/heroes/barbarian/exile/modifier_exile_highlander.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_exile_trophies", "modifiers/heroes/barbarian/exile/modifier_exile_trophies.lua", LUA_MODIFIER_MOTION_NONE )
@@ -120,6 +123,11 @@ LinkLuaModifier("modifier_exile_alert", "modifiers/heroes/barbarian/exile/modifi
 LinkLuaModifier("modifier_exile_alert_buff", "modifiers/heroes/barbarian/exile/modifier_exile_alert.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_exile_meditation", "modifiers/heroes/barbarian/exile/modifier_exile_meditation.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_exile_meditation_debuff", "modifiers/heroes/barbarian/exile/modifier_exile_meditation.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_zeal", "modifiers/heroes/barbarian/exile/modifier_exile_zeal.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_intimidation", "modifiers/heroes/barbarian/exile/modifier_exile_intimidation.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_intimidation_debuff", "modifiers/heroes/barbarian/exile/modifier_exile_intimidation.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_riot", "modifiers/heroes/barbarian/exile/modifier_exile_riot.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_exile_severity", "modifiers/heroes/barbarian/exile/modifier_exile_severity.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 -------------------------------------------------------------------

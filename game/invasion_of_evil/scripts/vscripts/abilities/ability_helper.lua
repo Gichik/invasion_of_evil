@@ -57,8 +57,8 @@ function AddPathAbilitiesToHero(data)
             hHero:AddAbility("berserk_rage")
         end
         if abilityTier == 3 then
-            hHero:AddAbility("berserk_riot")
-            hHero:AddAbility("berserk_runner")
+            hHero:AddAbility("berserk_spirit_of_war")
+            hHero:AddAbility("berserk_spirit_of_nimbleness")
         end
     end
 
@@ -116,5 +116,22 @@ function AddPathAbilitiesToHero(data)
         end
     end
 
+    if pathName == "exile" then
+        if abilityTier == 1 then
+            hHero:AddAbility("exile_alert")
+            hHero:AddAbility("exile_ardor")
+            hHero:AddAbility("exile_trophies")
+            hHero:AddAbility("exile_meditation")
+        end
+        if abilityTier == 2 then
+            hHero:AddAbility("exile_riot")
+            hHero:AddAbility("exile_severity")
+            hHero:AddAbility("exile_intimidation")
+        end
+        if abilityTier == 3 then
+            hHero:AddAbility("exile_highlander")
+            hHero:AddAbility("exile_zeal")
+        end
+    end
 
 end
