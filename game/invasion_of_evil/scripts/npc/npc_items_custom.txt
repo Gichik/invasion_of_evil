@@ -242,7 +242,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"  
 		"ItemQuality"					"artifact"	
-		"ItemCost"                      "50" 
+		"ItemCost"                      "30" 
 		"ItemDroppable"					"1" 
 		"ItemPurchasable"				"1" 
 		"ItemSellable"					"1" 

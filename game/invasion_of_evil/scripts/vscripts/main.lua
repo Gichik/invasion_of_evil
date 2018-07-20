@@ -22,6 +22,8 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
     GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
     GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
+    GameRules:GetGameModeEntity():SetLoseGoldOnDeath(false)
+
 
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
@@ -499,7 +501,6 @@ function main:GiveNewHero(oldHero)
     local newHero = nil
     local ability = nil
     local abilityCount = oldHero:GetAbilityCount()
-    local heroLevel = oldHero:GetLevel()
 
     if playerID ~= nil and playerID ~= -1 then
         for i = 0, 11 do
@@ -511,13 +512,9 @@ function main:GiveNewHero(oldHero)
                 oldHero:RemoveAbility(ability:GetAbilityName())
             end
         end
-        newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), 0, 0)
-        newHero:SetGold(5, true)
+        newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), oldHero:GetGold(), oldHero:GetCurrentXP())
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
-        for i = 1, heroLevel-1 do
-            newHero:HeroLevelUp(false)
-        end
     end
 end
 
