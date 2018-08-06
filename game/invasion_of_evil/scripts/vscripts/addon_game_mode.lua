@@ -18,6 +18,8 @@ function Precache( context )
 	------------------------------------------------sounds-----------------------------------------------------
 	PrecacheResource( "soundfile", "soundevents/invasion_of_evil_sounds_custom.vsndevts", context )
 
+	PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context )
+
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts", context )	
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts", context )
@@ -45,7 +47,9 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts", context )
 
+	
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
@@ -162,6 +166,8 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf", context ) -- dishonored_counterattack
 	PrecacheResource( "particle", "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf", context ) -- templar_blessing
 	PrecacheResource( "particle", "particles/units/heroes/hero_nevermore/nevermore_necro_souls.vpcf", context ) -- modifier_exile_highlander
+	PrecacheResource( "particle", "particles/units/heroes/hero_pugna/pugna_netherblast_fluidexp.vpcf", context ) -- modifier_strychnine_dagger poison
+	PrecacheResource( "particle", "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf", context ) -- modifier_strychnine_dagger
 
 
 

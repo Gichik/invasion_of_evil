@@ -20,6 +20,12 @@ LinkLuaModifier("modifier_ice_shards_second", "modifiers/items/ice_shards_spear/
 LinkLuaModifier("modifier_ice_shards_third", "modifiers/items/ice_shards_spear/modifier_ice_shards_third.lua", LUA_MODIFIER_MOTION_NONE )
 
 
+LinkLuaModifier("modifier_strychnine_dagger", "modifiers/items/strychnine_dagger/modifier_strychnine_dagger.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_strychnine_dagger_second", "modifiers/items/strychnine_dagger/modifier_strychnine_dagger_second.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_strychnine_dagger_third", "modifiers/items/strychnine_dagger/modifier_strychnine_dagger_third.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_strychnine", "modifiers/items/strychnine_dagger/modifier_strychnine.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 LinkLuaModifier("modifier_teleport_progress", "modifiers/items/consumable_items/modifier_teleport_progress.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_heart_evil_progress", "modifiers/items/consumable_items/modifier_heart_evil_progress.lua", LUA_MODIFIER_MOTION_NONE )
 

@@ -3,6 +3,7 @@
 #base "items/cleave_sword.kv"
 #base "items/unique_items.kv"
 #base "items/ice_shards_spear.kv"
+#base "items/strychnine_dagger.kv"
 
 "DOTAAbilities"
 {
