@@ -3,6 +3,7 @@ require( 'main' )
 require( 'timers' )
 require( 'modifiers_links' )
 require( 'constant_links' )
+require( 'owLogic' )
 require( 'triggers' )
 require( 'abilities/ability_helper' )
 

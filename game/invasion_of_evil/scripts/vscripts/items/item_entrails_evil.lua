@@ -84,7 +84,7 @@ function item_entrails_evil:OnSpellStart()
 
 				if modifier:GetStackCount() >= ENTRAILS_FOR_PORTAL then
 					hTarget:RemoveModifierByName("modifier_teleport_progress")
-					self:CreateWawes()
+					self:CreateWaves()
 				end
 			else
 				hTarget:AddNewModifier(hTarget, nil, "modifier_teleport_progress", {}):IncrementStackCount()
@@ -95,7 +95,7 @@ function item_entrails_evil:OnSpellStart()
 end
 
 
-function item_entrails_evil:CreateWawes()
+function item_entrails_evil:CreateWaves()
 	local point = nil
 	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
 	local waveCount = WAVE_DURATION

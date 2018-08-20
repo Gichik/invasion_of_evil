@@ -62,6 +62,10 @@ function main:SetBossOwStatus(flag)
     BOSS_OW_ELIVE = flag
 end
 
+function main:SetFinalState(flag)
+    FINAL_BOSS_STATE = flag
+end
+
 function main:ApplyMusicOn(soundName,hSource)
     --print("SetMusicSource")
     MUSIC_SOURCE = hSource
@@ -72,11 +76,14 @@ function main:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         GameRules:SendCustomMessageToTeam("#start_necromancer_message_1", DOTA_TEAM_GOODGUYS, 0, 0)
-        GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
+        --GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
         EmitGlobalSound("Invasion_of_evil.Nocturnus")
         
         --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
         GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian von Ziegler - Nocturnus</font>", 0, 0)
+        
+
+        StartOwTimer()
     end
 end
 
@@ -247,9 +254,9 @@ function main:OnEntityKilled(data)
                 
                 self:CreateDrop(GetRandomItemNameFrom("third"), killedEntity:GetAbsOrigin())
                 
-                if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
-                    self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
-                end 
+                --if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
+                    --self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
+                --end 
                 --if RollPercentage(10) then
                 --    self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
                 --end        
@@ -701,4 +708,3 @@ function main:TestBosses()
 
     --unit:SetAbsOrigin(Entities:FindByName( nil, "hero_teleport_spawner"):GetAbsOrigin())
 end
-

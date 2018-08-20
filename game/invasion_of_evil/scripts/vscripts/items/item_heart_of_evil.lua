@@ -103,6 +103,8 @@ end
 
 function item_heart_of_evil:CreateFinalBoss(hTarget)
 	UTIL_Remove(hTarget)
+	main:SetFinalState(true)
+	
    	local point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
     unit = CreateUnitByName("final_boss", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
     FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
