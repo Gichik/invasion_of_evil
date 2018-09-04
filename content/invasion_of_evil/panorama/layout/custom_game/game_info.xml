@@ -1,0 +1,50 @@
+<!--Все слова, что начинаются с элемента # 
+являются переменными из addon_english.txt 
+и прочих файлов локализации-->
+
+<root>
+
+	<!--Прописываем источники наших стилей, один из которых делали сами, второй дефолтный-->	
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/game_info.css" />
+	</styles>
+
+	<!--Оформляем нашу главную фоновую панельку-->
+	<Panel class="GameInfo" >
+
+		<!--Надпись оглавления в отдельной панельке-->
+		<Panel id="Title">
+			<Label id="TitleName" text="#addon_game_name" />
+		</Panel> 
+
+		<!--Первый заголовок-->	
+		<Label id="H1" class="Header" html="true" text="#info_head_start" /> 
+		<Panel id="Info1" class="InfoStringRight" >
+			<Image id="InfoImage" src="file://{images}/custom_game/game_info/zombie.png" />	
+			<Label id="InfoTextLeft" text="#info_text_start" />			
+		</Panel>
+
+		<!--Второй заголовок-->
+		<Label id="H2" class="Header" html="true" text="#info_head_ten_level" />
+		<Panel id="Info2" class="InfoStringDown" >
+			<Image id="InfoImageFull" src="file://{images}/custom_game/game_info/items.png" />
+			<Label id="InfoTextMarginCenter" text="#info_text_ten_level" />						
+		</Panel> 
+
+		<!--Третий заголовок-->
+		<Label id="H3" class="Header" html="true" text="#info_head_fifteen_level" />
+		<Panel id="Info3" class="InfoStringRight" >
+			<Image id="InfoImage" src="file://{images}/custom_game/game_info/star.png" />	
+			<Label id="InfoTextLeft" text="#info_text_fifteen_level" />						
+		</Panel> 
+
+		<!--Четвертый заголовок-->
+		<Label id="H4" class="Header" html="true" text="#info_head_lore" />
+		<Panel id="Info4" class="InfoStringDown" >
+			<Label id="InfoTextMarginCenter" text="#info_text_lore" />						
+		</Panel> 
+
+
+	</Panel>		
+</root>
