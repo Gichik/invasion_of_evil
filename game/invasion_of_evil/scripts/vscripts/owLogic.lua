@@ -114,8 +114,15 @@ function SpawnNewOWBoss()
     unit = CreateUnitByName(BOSSES_NAME[RandomInt(1, #BOSSES_NAME)], SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS )   
     unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
     main:SetBossOwStatus(true)
+    unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 
-    Timers:CreateTimer(0, function()
+    for i = 1, BOSS_MINIONS_COUNT do 
+        unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(700), true, nil, nil, DOTA_TEAM_NEUTRALS )
+        unit:CreatureLevelUp(MINIONS_LEVEL - 1)
+        unit.spawner = true
+    end
+
+   --[[] Timers:CreateTimer(0, function()
     	if SPAWNER_OW_POINT and PORTAL_OW_EXIST and BOSS_OW_ELIVE then
 		    for i = 1, BOSS_MINIONS_COUNT do 
 		        unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
@@ -125,7 +132,7 @@ function SpawnNewOWBoss()
       	end
       	return nil
     end
-    )
+    )--]]
 
 end
 
@@ -184,7 +191,7 @@ function DestroyPortal()
 		end
 
 		--возможно понадобиться, если нужно будет точнее настраивать время
-		--LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false))
+		LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false)) - 180
 		GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
 		return nil
     end)

@@ -93,7 +93,7 @@ function main:OnNPCSpawn(data)
     local unit = EntIndexToHScript(data.entindex)
 
     if unit:IsRealHero() then
-        
+
         Timers:CreateTimer(1, function()
             unit:RemoveModifierByName("modifier_silencer_int_steal")
           return nil
@@ -101,6 +101,10 @@ function main:OnNPCSpawn(data)
         )
 
         if not unit.next_spawn then
+            
+            HERO_OF_PLAYER[NUMBER_OF_PLAYER] = unit;
+            NUMBER_OF_PLAYER = NUMBER_OF_PLAYER + 1;
+
             unit.next_spawn = true; 
             unit:SetAbilityPoints(0)
             unit:SetGold(5, true)
@@ -133,10 +137,20 @@ end
 
 function main:OnAbilityLearned(data)
     --print("OnAbilityLearned")
-    local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero()
+    local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero() or nil
     local ability = hHero:FindAbilityByName(data.abilityname)
     local pathName = nil
-        
+
+    if not hHero then
+        GameRules:SendCustomMessageToTeam("Console: player not here.", DOTA_TEAM_GOODGUYS, 0, 0)
+        for i = 0, 2 do
+            hHero = HERO_OF_PLAYER[i]
+            if hHero:HasAbility(data.abilityname) then
+                i = 3
+            end
+        end
+    end
+
     if ability:GetLevel() <= 1 then
         if not data.abilityname:find("special_bonus") then
             if data.abilityname:find("berserk") then
@@ -280,7 +294,7 @@ function main:OnEntityKilled(data)
                 self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
             
                 self:SetBossOwStatus(false)
-                MINIONS_LEVEL = MINIONS_LEVEL + 1
+                MINIONS_LEVEL = MINIONS_LEVEL + 3
 
                 GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
                 Timers:CreateTimer(15, function()
@@ -315,6 +329,8 @@ function main:OnEntityKilled(data)
                                             killedEntity.vSpawnLoc,
                                             false,
                                             TREE_RESPAWN_TIME)
+                elseif killedEntity:GetUnitName() == "npc_minion_ow" then
+                    self:RespawnMinionOWUnits(15)
                 else
                     self:RespawnUnits(  killedEntity:GetUnitName(), 
                                         killedEntity.modelName, 
@@ -590,6 +606,24 @@ function main:RespawnMiniBoss(unitName,modelName,modelScale,SpawnLoc,time)
             if modifCount >= 3 then
                 break
             end
+        end
+
+      return nil
+    end
+    )
+end
+
+
+function main:RespawnMinionOWUnits(time)
+
+    local unit = nil
+    
+    Timers:CreateTimer(time, function()
+
+        if SPAWNER_OW_POINT and PORTAL_OW_EXIST and BOSS_OW_ELIVE then
+            unit = CreateUnitByName("npc_minion_ow", SPAWNER_OW_POINT + RandomVector(700), true, nil, nil, DOTA_TEAM_NEUTRALS )
+            unit:CreatureLevelUp(MINIONS_LEVEL - 1)
+            unit.spawner = true
         end
 
       return nil

@@ -36,7 +36,7 @@ function crushing_explosion:OnSpellStart()
 	self.damage = self:GetSpecialValueFor("damage") or 0
 	self.stunDuration = self:GetSpecialValueFor("stun_duration") or 0
 	self.aoeRadius = self:GetSpecialValueFor("aoe_radius") or 0
-	self.think = 2
+	self.think = 2.5
 	self.caster:AddNewModifier(self.caster, self, "modifier_signal_animation", {duration = self.think})
 	self.caster:EmitSound("Hero_Nevermore.RequiemOfSoulsCast")
 

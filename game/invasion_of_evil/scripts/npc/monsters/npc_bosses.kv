@@ -13,7 +13,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"Level"						"1"
+		"Level"						"13"
 		"ModelScale" 				"0.9"
 
 		// Abilities
@@ -32,8 +32,8 @@
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"50"
-		"AttackDamageMax"			"80"
+		"AttackDamageMin"			"40"
+		"AttackDamageMax"			"60"
 		"AttackRate"				"1.6"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"2000"
@@ -59,7 +59,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"300"
+		"StatusHealth"				"250"
 		"StatusHealthRegen"			"0.5"
 		"StatusMana"				"0"	
 		"StatusManaRegen"			"0.0"		 
@@ -82,15 +82,29 @@
 		"Creature"
 		{
 			//Level Up
-			"HPGain"                    "70"
-			"DamageGain"                "30"
-			"ArmorGain"                 "5"
+			"HPGain"                    "25"
+			"DamageGain"                "13"
+			"ArmorGain"                 "2"
 			"ManaGain"                  "1"
-			"MagicResistGain"           "5"
+			"MagicResistGain"           "2"
 			"MoveSpeedGain"             "0"
 			"BountyGain"                "0"
 			"XPGain"                    "0"
+
+			"DefaultState"       "Invade"
+			"States"
+			{
+			    "Invade"
+			    {
+			        "Name"          "Invade"
+			        "Aggression"    "100.0"
+			        "Avoidance"     "20.0"
+			        "Support"       "0.0"
+			        "RoamDistance"  "1000.0"
+			    }
+			}
 		}
+
 	}	
 
 
@@ -102,7 +116,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"Level"						"20"
+		"Level"						"17"
 		"ModelScale" 				"1.5"
 
 
@@ -115,15 +129,15 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"75"
-		"MagicalResistance"         "55"
+		"ArmorPhysical"				"30"
+		"MagicalResistance"         "30"
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"500"
-		"AttackDamageMax"			"700"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"200"
 		"AttackRate"				"1.6"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"2000"
@@ -149,7 +163,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"5000"
+		"StatusHealth"				"3100"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"	
 		"StatusManaRegen"			"0.0"		 
@@ -166,6 +180,35 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			//Level Up
+			"HPGain"                    "700"
+			"DamageGain"                "70"
+			"ArmorGain"                 "7"
+			"ManaGain"                  "1"
+			"MagicResistGain"           "7"
+			"MoveSpeedGain"             "0"
+			"BountyGain"                "0"
+			"XPGain"                    "0"
+
+			"DefaultState"       "Invade"
+			"States"
+			{
+			    "Invade"
+			    {
+			        "Name"          "Invade"
+			        "Aggression"    "100.0"
+			        "Avoidance"     "20.0"
+			        "Support"       "0.0"
+			        "RoamDistance"  "1000.0"
+			    }
+			}
+		}
+
 	}
 
 
@@ -177,7 +220,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
-		"Level"						"20"
+		"Level"						"17"
 		"ModelScale" 				"1.5"
 
 
@@ -190,15 +233,15 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"75"
-		"MagicalResistance"         "55"
+		"ArmorPhysical"				"30"
+		"MagicalResistance"         "30"
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"500"
-		"AttackDamageMax"			"700"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"200"
 		"AttackRate"				"1.6"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"2000"
@@ -224,7 +267,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"5000"
+		"StatusHealth"				"3100"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"	
 		"StatusManaRegen"			"0.0"		 
@@ -241,6 +284,35 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			//Level Up
+			"HPGain"                    "700"
+			"DamageGain"                "70"
+			"ArmorGain"                 "7"
+			"ManaGain"                  "1"
+			"MagicResistGain"           "7"
+			"MoveSpeedGain"             "0"
+			"BountyGain"                "0"
+			"XPGain"                    "0"
+
+			"DefaultState"       "Invade"
+			"States"
+			{
+			    "Invade"
+			    {
+			        "Name"          "Invade"
+			        "Aggression"    "100.0"
+			        "Avoidance"     "20.0"
+			        "Support"       "0.0"
+			        "RoamDistance"  "1000.0"
+			    }
+			}
+		}
+
 
 	}
 
@@ -253,7 +325,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_Bane.Attack"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
-		"Level"						"20"
+		"Level"						"17"
 		"ModelScale" 				"2.1"
 
 		// Abilities
@@ -265,8 +337,8 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"75"
-		"MagicalResistance"         "55"
+		"ArmorPhysical"				"30"
+		"MagicalResistance"         "30"
 
 		// Attack
 		//----------------------------------------------------------------
@@ -300,7 +372,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"5000"
+		"StatusHealth"				"3100"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"	
 		"StatusManaRegen"			"0.0"		 
@@ -318,6 +390,34 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			//Level Up
+			"HPGain"                    "700"
+			"DamageGain"                "70"
+			"ArmorGain"                 "7"
+			"ManaGain"                  "1"
+			"MagicResistGain"           "7"
+			"MoveSpeedGain"             "0"
+			"BountyGain"                "0"
+			"XPGain"                    "0"
+
+			"DefaultState"       "Invade"
+			"States"
+			{
+			    "Invade"
+			    {
+			        "Name"          "Invade"
+			        "Aggression"    "100.0"
+			        "Avoidance"     "20.0"
+			        "Support"       "0.0"
+			        "RoamDistance"  "1000.0"
+			    }
+			}
+		}
+
 	}
 
 	"duplicate_cursed_flame"	
@@ -328,7 +428,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Hero_Bane.Attack"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
-		"Level"						"20"
+		"Level"						"17"
 		"ModelScale" 				"2.1"
 
 		// Abilities
@@ -341,7 +441,7 @@
 		// Armor
 		//----------------------------------------------------------------
 		"ArmorPhysical"				"20"
-		"MagicalResistance"         "10"
+		"MagicalResistance"         "20"
 
 		// Attack
 		//----------------------------------------------------------------
@@ -375,7 +475,7 @@
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"1000"
+		"StatusHealth"				"1100"
 		"StatusHealthRegen"			"0"
 		"StatusMana"				"0"	
 		"StatusManaRegen"			"0.0"		 
@@ -392,6 +492,34 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			//Level Up
+			"HPGain"                    "700"
+			"DamageGain"                "70"
+			"ArmorGain"                 "7"
+			"ManaGain"                  "1"
+			"MagicResistGain"           "7"
+			"MoveSpeedGain"             "0"
+			"BountyGain"                "0"
+			"XPGain"                    "0"
+
+			"DefaultState"       "Invade"
+			"States"
+			{
+			    "Invade"
+			    {
+			        "Name"          "Invade"
+			        "Aggression"    "100.0"
+			        "Avoidance"     "20.0"
+			        "Support"       "0.0"
+			        "RoamDistance"  "1000.0"
+			    }
+			}
+		}
 
 	}
 
@@ -819,8 +947,8 @@
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"			"300"
-		"AttackDamageMax"			"500"
+		"AttackDamageMin"			"500"
+		"AttackDamageMax"			"700"
 		"AttackRate"				"1.6"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"2000"

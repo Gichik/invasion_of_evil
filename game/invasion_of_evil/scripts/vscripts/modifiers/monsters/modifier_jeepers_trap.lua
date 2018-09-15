@@ -78,7 +78,7 @@ function modifier_jeepers_trap_debuff:OnCreated()
 				{
 					victim = self:GetParent(),
 					attacker = self:GetCaster(),
-					damage = 100,
+					damage = 200,
 					damage_type = DAMAGE_TYPE_PHYSICAL,
 					ability = self,
 				}
