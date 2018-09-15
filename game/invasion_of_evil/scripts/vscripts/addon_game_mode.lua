@@ -107,13 +107,15 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/puck/puck_horns.vmdl", context ) --npc_aesculapius
 	PrecacheResource( "model", "models/heroes/puck/puck_tail.vmdl", context ) --npc_aesculapius
 	PrecacheResource( "model", "models/heroes/puck/puck_wings.vmdl", context ) --npc_aesculapius
-	
-
 
 	PrecacheResource( "model", "models/courier/imp/imp_flying.vmdl", context )
 	PrecacheResource( "model", "models/courier/smeevil/smeevil_flying.vmdl", context )
 	PrecacheResource( "model", "models/items/courier/boooofus_courier/boooofus_courier.vmdl", context )
 	
+	PrecacheResource( "model", "models/items/bounty_hunter/back_jawtrap.vmdl", context ) --jeepers trap
+	PrecacheResource( "model", "models/items/furion/treant_flower_1.vmdl", context ) --tree	
+	PrecacheResource( "model", "models/heroes/lycan/lycan.vmdl", context ) --vern
+
 
 
 	------------------------------------------------particles-----------------------------------------------------
@@ -169,8 +171,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_nevermore/nevermore_necro_souls.vpcf", context ) -- modifier_exile_highlander
 	PrecacheResource( "particle", "particles/units/heroes/hero_pugna/pugna_netherblast_fluidexp.vpcf", context ) -- modifier_strychnine_dagger poison
 	PrecacheResource( "particle", "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf", context ) -- modifier_strychnine_dagger
-
-
+	PrecacheResource( "particle", "particles/world_destruction_fx/tree_dire_destroy.vpcf", context ) -- modifier_jeepers_trap_check
 
 
 

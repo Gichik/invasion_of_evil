@@ -115,13 +115,15 @@ function main:OnNPCSpawn(data)
      
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_ice_shards_spear")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
-                --unit:AddItemByName("item_entrails_evil")
+                --unit:AddItemByName("item_blink")
+                --unit:AddItemByName("item_heart")
+                --unit:AddItemByName("item_note_dungeon_jeepers_one")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
             end
+
+            --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_jeepers", {})
 
         end
     end
@@ -223,6 +225,9 @@ function main:OnEntityKilled(data)
             if not killedEntity:GetUnitName():find("wave") 
                 and killedEntity:GetUnitName() ~= "npc_minion_ow"
                 and killedEntity:GetUnitName() ~= "npc_cursed_minion"
+                and killedEntity:GetUnitName() ~= "npc_jeepers_minion"
+                and killedEntity:GetUnitName() ~= "npc_jeepers_trap"
+                and killedEntity:GetUnitName() ~= "npc_tree"                
                 and not killedEntity:GetUnitName():find("boss") then
 
                 if RollPercentage(SKULL_DROP_PERC) then
@@ -237,14 +242,21 @@ function main:OnEntityKilled(data)
                     end
                 end
 
-                if RollPercentage(NOTE_DROP_PERC) then
-                    self:CreateDrop("item_note_" .. RandomInt(1,3), killedEntity:GetAbsOrigin())
-                end
+                --if not killedEntity:GetUnitName():find("start") then
+                --    if RollPercentage(TRAN_GRASS_DROP_PERC) then
+                --        self:CreateDrop("item_tran_grass", killedEntity:GetAbsOrigin())
+                --    end                    
+                --end
 
-                if not killedEntity:GetUnitName():find("start") then
-                    if RollPercentage(TRAN_GRASS_DROP_PERC) then
-                        self:CreateDrop("item_tran_grass", killedEntity:GetAbsOrigin())
+                if killedEntity:GetUnitName():find("start") then
+                    if RollPercentage(NOTE_DROP_PERC) then
+                        --self:CreateDrop("item_note_" .. RandomInt(1,3), killedEntity:GetAbsOrigin())
+                        self:CreateDrop("item_note_dungeon_cursed_one", killedEntity:GetAbsOrigin())
                     end
+
+                    if RollPercentage(NOTE_DROP_PERC) then
+                        self:CreateDrop("item_note_dungeon_jeepers_one", killedEntity:GetAbsOrigin())
+                    end                 
                 end
 
             end
@@ -298,7 +310,12 @@ function main:OnEntityKilled(data)
                                             killedEntity.vSpawnLoc,
                                             MINIONS_COUNT,
                                             START_MONS_RESPAWN_TIME)
-                else 
+                elseif killedEntity:GetUnitName() == "npc_tree" then
+                    self:RespawnEnvironmentUnits( killedEntity:GetUnitName(),
+                                            killedEntity.vSpawnLoc,
+                                            false,
+                                            TREE_RESPAWN_TIME)
+                else
                     self:RespawnUnits(  killedEntity:GetUnitName(), 
                                         killedEntity.modelName, 
                                         killedEntity.modelScale, 
@@ -341,6 +358,10 @@ function main:SpanwMoobs()
     unit:SetForwardVector(Vector(0,-1,0))
     --self:ApplyMusicOn("Invasion_of_evil.ShadowHouse",unit)
 
+    point = Entities:FindByName( nil, "npc_spawner_5"):GetAbsOrigin()
+    unit = CreateUnitByName("npc_vern_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+    unit:SetForwardVector(Vector(-1,0,0))
+
     point = Entities:FindByName( nil, "npc_spawner_2" ):GetAbsOrigin()
     unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     unit:SetForwardVector(Vector(-1,-1,0))
@@ -358,13 +379,19 @@ function main:SpanwMoobs()
         self:RespawnStartUnits("npc_start_evil_warrior", point, MINIONS_COUNT, 1)
     end
 
+    for i = 6, 15 do
+        point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
+        self:RespawnEnvironmentUnits("npc_tree", point, false, 1)
+    end
+
     for i = 1, 5 do
         self:CreateUnits("cemetery", i, 1)
         self:CreateUnits("church", i, 1)
         self:CreateUnits("cursed_tree", i, 1)     
     end 
 
-    self:CreateDungeonFor("dungeon_boss_cursed",5)     
+    self:CreateDungeonFor("dungeon_boss_cursed",5) 
+    self:CreateDungeonFor("dungeon_boss_jeepers",5)     
 end
 
 
@@ -398,20 +425,88 @@ function main:CreateDungeonFor(bossName,time)
                 biomName = "cursed"
                 spawnerCount = 11
                 GameRules:SendCustomMessage("#witch_reincarnated", 0, 0)
+            
+                point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_1" ):GetAbsOrigin()
+                unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})        
+                for i = 2, spawnerCount do
+                    point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_" .. i ):GetAbsOrigin()
+                    unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                    unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                    unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                end
             end
-            point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_1" ):GetAbsOrigin()
-            unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_NEUTRALS )
-            unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})        
-            for i = 2, spawnerCount do
-                point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_" .. i ):GetAbsOrigin()
-                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
-                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
-                unit = CreateUnitByName("npc_cursed_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+
+            if bossName == "dungeon_boss_jeepers" then
+                biomName = "jeepers"
+                spawnerCount = 5
+                GameRules:SendCustomMessage("#jeepers_reincarnated", 0, 0)
+            
+                point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_1" ):GetAbsOrigin()
+
+                local units = FindUnitsInRadius( DOTA_TEAM_NEUTRALS, point, nil, 2000,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+                
+                if units then   
+                    for i = 1, #units do
+                        UTIL_Remove(units[i])
+                    end
+                end
+               
+                unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                unit:AddNewModifier(unit, nil, "modifier_replacement_of_organs", {})
+                --unit:AddNewModifier(unit, nil, "modifier_jeepers_trap", {})
+                
+                for i = 2, spawnerCount do
+                    point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_" .. i ):GetAbsOrigin()
+                    unit = CreateUnitByName("npc_jeepers_minion", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                end
+
+
+                for i = spawnerCount, 18 do
+                    point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_" .. i ):GetAbsOrigin()
+                    unit = CreateUnitByName("npc_jeepers_trap", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                    unit:AddNewModifier(unit, nil, "modifier_jeepers_trap", {})
+                    unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+                    unit:AddNewModifier(unit, nil, "modifier_invisible", {})
+                end                
             end
+
             return nil
         end
         )
     end
+end
+
+
+function main:RespawnEnvironmentUnits(unitName,SpawnLoc,healthbar,time)
+    
+    local team = DOTA_TEAM_NEUTRALS
+    local unit = nil
+    local directionX = RandomInt(0, 1)
+    local directionY = RandomInt(0, 1)
+
+    if directionX == 0 then
+        directionX = -1 
+    end
+
+    if directionY == 0 then
+        directionY = -1
+    end
+    
+    Timers:CreateTimer(time, function()
+        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+        unit.vSpawnLoc = SpawnLoc 
+        unit.spawner = true
+        if not healthbar then
+           unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+        end
+
+        unit:SetForwardVector(Vector(directionX,directionY,0))
+
+      return nil
+    end
+    )
 end
 
 
@@ -520,6 +615,15 @@ function main:GiveNewHero(oldHero)
             end
         end
         newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), oldHero:GetGold(), oldHero:GetCurrentXP())
+       
+        if oldHero:HasModifier("modifier_quest_dungeon_jeepers") then
+            newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_jeepers", {})
+        end
+
+        if oldHero:HasModifier("modifier_quest_dungeon_cursed") then
+            newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_cursed", {})
+        end
+
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
     end

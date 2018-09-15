@@ -24,7 +24,10 @@ function modifier_puddle_of_poison:CanBeAddToMinions()
 end
 
 function modifier_puddle_of_poison:GetAuraRadius()
-    return self:GetAbility():GetSpecialValueFor("puddle_radius")
+	if self:GetCaster() then
+    	return self:GetAbility():GetSpecialValueFor("puddle_radius")
+	end
+	return 500
 end
 
 function modifier_puddle_of_poison:GetTexture()

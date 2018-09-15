@@ -93,13 +93,13 @@ end
 
 function modifier_ice_shards:CreateShards(hTarget)
 	if self:GetParent() then
-		local goalCount = self.shardCount
+		local goalCount = self.shardCount + 1
 
 		local units = FindUnitsInRadius( self.parent:GetTeamNumber(), hTarget:GetAbsOrigin(), self.parent, self.aoeRadius,
 			DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
 			
 		if units and #units > 1 then
-			if goalCount > #units then
+			if goalCount  > #units then
 				goalCount = #units
 			end
 

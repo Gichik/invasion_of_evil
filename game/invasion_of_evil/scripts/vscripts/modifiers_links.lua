@@ -36,6 +36,13 @@ LinkLuaModifier("modifier_tran_grass", "modifiers/items/consumable_items/modifie
 LinkLuaModifier("modifier_block_physical_damage", "modifiers/items/unique_items/modifier_block_physical_damage.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
+-------------------------QUESTS MODIFIERS--------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_quest_dungeon_jeepers", "modifiers/quests/modifier_quest_dungeon_jeepers.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_quest_dungeon_cursed", "modifiers/quests/modifier_quest_dungeon_cursed.lua", LUA_MODIFIER_MOTION_NONE )
+
+-------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------
 -------------------------------------------------------------------
 
@@ -74,6 +81,15 @@ LinkLuaModifier("modifier_circulator_infection", "modifiers/monsters/modifier_ci
 LinkLuaModifier("modifier_circulator_infection_debuff", "modifiers/monsters/modifier_circulator_infection.lua", LUA_MODIFIER_MOTION_NONE )
 
 LinkLuaModifier("modifier_range_magick_attack", "modifiers/monsters/modifier_range_magick_attack.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_replacement_of_organs", "modifiers/monsters/modifier_replacement_of_organs.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_replacement_of_organs_mark", "modifiers/monsters/modifier_replacement_of_organs.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_jeepers_trap", "modifiers/monsters/modifier_jeepers_trap.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_jeepers_trap_debuff", "modifiers/monsters/modifier_jeepers_trap.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_invisible", "modifiers/monsters/modifier_invisible.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_no_health_bar", "modifiers/monsters/modifier_no_health_bar.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 -------------------------------------------------------------------
 -------------------------MONSTER BOSSES ABILITY--------------------
