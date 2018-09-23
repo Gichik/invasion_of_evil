@@ -73,55 +73,55 @@ function modifier_alchemy:ApplyAlchemyBuff(combination)
 	--print("------ApplyAlchemyBuff-------")
 	--print(combination)
 		if combination == "rrr" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_hp_regen_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_hp_regen_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "ggg" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_health_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_health_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "bbb" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_mp_regen_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_mp_regen_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "rrg" or combination == "rgr" or combination == "grr" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_damage_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_damage_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "rrb" or combination == "rbr" or combination == "brr" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_movement_speed_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_movement_speed_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "ggr" or combination == "grg" or combination == "rgg" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_armor_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_armor_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "ggb" or combination == "gbg" or combination == "bgg" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_accuracy_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_accuracy_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "bbr" or combination == "brb" or combination == "rbb" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_magic_resist_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_magic_resist_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
 
 		if combination == "bbg" or combination == "bgb" or combination == "gbb" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_attack_speed_buff", {duration = 120})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_attack_speed_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end
@@ -130,20 +130,12 @@ function modifier_alchemy:ApplyAlchemyBuff(combination)
 		if combination == "rgb" or combination == "rbg" 
 			or combination == "grb" or combination == "gbr"
 			or combination == "brg" or combination == "bgr" then
+				self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_poisoning_debuff", {duration = 180})
 				EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
-				ApplyDamage(
-					{
-						victim = self:GetCaster(),
-						attacker = self:GetCaster(),
-						damage = 99999,
-						damage_type = DAMAGE_TYPE_PURE,
-						ability = self,
-					}
-				)
 			return nil
 		end
 
-		self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_fail_buff", {duration = 120})
+		self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_fail_buff", {duration = 180})
 		EmitSoundOn("DOTA_Item.MagicStick.Activate", self:GetCaster())
 
 	end
@@ -164,7 +156,7 @@ function modifier_alchemy:RemoveAlchemyBuff()
 		--caster:RemoveModifierByName("modifier_alchemy_evasion_buff")
 		caster:RemoveModifierByName("modifier_alchemy_magic_resist_buff")	
 		caster:RemoveModifierByName("modifier_alchemy_attack_speed_buff")
-
+		caster:RemoveModifierByName("modifier_alchemy_poisoning_debuff")
 
 	end
 end

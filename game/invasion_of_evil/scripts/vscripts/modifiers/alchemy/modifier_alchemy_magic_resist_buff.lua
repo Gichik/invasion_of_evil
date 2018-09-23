@@ -27,7 +27,7 @@ function modifier_alchemy_magic_resist_buff:GetModifierMagicalResistanceBonus()
 end
 
 function modifier_alchemy_magic_resist_buff:OnCreated()
-    self.magicResBonus = 10
+    self.magicResBonus = 15
 end
 
 

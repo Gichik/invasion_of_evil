@@ -66,6 +66,8 @@ LinkLuaModifier("modifier_alchemy_armor_buff", "modifiers/alchemy/modifier_alche
 LinkLuaModifier("modifier_alchemy_evasion_buff", "modifiers/alchemy/modifier_alchemy_evasion_buff.lua", LUA_MODIFIER_MOTION_NONE )
 
 
+LinkLuaModifier("modifier_alchemy_poisoning_debuff", "modifiers/alchemy/modifier_alchemy_poisoning_debuff.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 
 -------------------------------------------------------------------

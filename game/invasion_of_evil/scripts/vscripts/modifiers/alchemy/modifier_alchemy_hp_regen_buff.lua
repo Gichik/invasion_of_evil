@@ -27,7 +27,7 @@ function modifier_alchemy_hp_regen_buff:GetModifierConstantHealthRegen()
 end
 
 function modifier_alchemy_hp_regen_buff:OnCreated()
-	self.hpRegenBonus = 6
+	self.hpRegenBonus = 9
 end
 
 

@@ -27,7 +27,7 @@ function modifier_alchemy_mp_regen_buff:GetModifierConstantManaRegen()
 end
 
 function modifier_alchemy_mp_regen_buff:OnCreated()
-	self.mpRegenBonus = 6
+	self.mpRegenBonus = 9
 end
 
 

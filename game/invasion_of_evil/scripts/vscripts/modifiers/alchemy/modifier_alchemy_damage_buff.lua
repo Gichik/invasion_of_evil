@@ -27,7 +27,7 @@ function modifier_alchemy_damage_buff:GetModifierPreAttack_BonusDamage()
 end
 
 function modifier_alchemy_damage_buff:OnCreated()
-    self.damageBonus = 16
+    self.damageBonus = 22
 end
 
 

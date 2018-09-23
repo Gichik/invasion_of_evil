@@ -22,6 +22,6 @@ function modifier_alchemy_evasion_buff:DeclareFunctions()
 end
 
 function modifier_alchemy_evasion_buff:GetModifierEvasion_Constant()	
-	return 25
+	return 30
 end
 

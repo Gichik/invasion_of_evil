@@ -27,7 +27,7 @@ function modifier_alchemy_movement_speed_buff:GetModifierMoveSpeedBonus_Constant
 end
 
 function modifier_alchemy_movement_speed_buff:OnCreated()
-    self.moveSpeedBonus = 80
+    self.moveSpeedBonus = 100
 end
 
 

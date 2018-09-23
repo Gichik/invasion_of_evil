@@ -27,7 +27,7 @@ function modifier_alchemy_armor_buff:GetModifierPhysicalArmorBonus()
 end
 
 function modifier_alchemy_armor_buff:OnCreated()
-    self.physArmorBonus = 7
+    self.physArmorBonus = 10
 end
 
 

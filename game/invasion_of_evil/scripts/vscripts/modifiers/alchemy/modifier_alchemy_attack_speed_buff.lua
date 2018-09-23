@@ -27,7 +27,7 @@ function modifier_alchemy_attack_speed_buff:GetModifierAttackSpeedBonus_Constant
 end
 
 function modifier_alchemy_attack_speed_buff:OnCreated()
-    self.attackSpeedBonus = 30
+    self.attackSpeedBonus = 40
 end
 
 

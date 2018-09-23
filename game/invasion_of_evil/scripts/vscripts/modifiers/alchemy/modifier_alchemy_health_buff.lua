@@ -27,7 +27,7 @@ function modifier_alchemy_health_buff:GetModifierExtraHealthBonus()
 end
 
 function modifier_alchemy_health_buff:OnCreated()
-    self.healthBonus = 400
+    self.healthBonus = 600
 end
 
 
