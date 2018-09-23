@@ -40,8 +40,14 @@
 		</Panel> 
 
 		<!--Четвертый заголовок-->
-		<Label id="H4" class="Header" html="true" text="#info_head_lore" />
+		<Label id="H4" class="Header" html="true" text="#info_head_alchemy" />
 		<Panel id="Info4" class="InfoStringDown" >
+			<Label id="InfoTextMarginCenter" text="#info_text_alchemy" />						
+		</Panel> 
+
+		<!--Пятый заголовок-->
+		<Label id="H5" class="Header" html="true" text="#info_head_lore" />
+		<Panel id="Info5" class="InfoStringDown" >
 			<Label id="InfoTextMarginCenter" text="#info_text_lore" />						
 		</Panel> 
 

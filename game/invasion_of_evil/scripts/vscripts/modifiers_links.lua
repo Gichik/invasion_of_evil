@@ -41,6 +41,32 @@ LinkLuaModifier("modifier_block_physical_damage", "modifiers/items/unique_items/
 
 LinkLuaModifier("modifier_quest_dungeon_jeepers", "modifiers/quests/modifier_quest_dungeon_jeepers.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_quest_dungeon_cursed", "modifiers/quests/modifier_quest_dungeon_cursed.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_npc_invulnerable", "modifiers/quests/modifier_npc_invulnerable.lua", LUA_MODIFIER_MOTION_NONE )
+
+-------------------------------------------------------------------
+-------------------------ALCHEMY MODIFIERS--------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_color_red", "modifiers/alchemy/modifier_color_red.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_color_green", "modifiers/alchemy/modifier_color_green.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_color_blue", "modifiers/alchemy/modifier_color_blue.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy", "modifiers/alchemy/modifier_alchemy.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_alchemy_health_buff", "modifiers/alchemy/modifier_alchemy_health_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_hp_regen_buff", "modifiers/alchemy/modifier_alchemy_hp_regen_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_fail_buff", "modifiers/alchemy/modifier_alchemy_fail_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_attack_speed_buff", "modifiers/alchemy/modifier_alchemy_attack_speed_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_magic_resist_buff", "modifiers/alchemy/modifier_alchemy_magic_resist_buff.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_alchemy_damage_buff", "modifiers/alchemy/modifier_alchemy_damage_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_mp_regen_buff", "modifiers/alchemy/modifier_alchemy_mp_regen_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_movement_speed_buff", "modifiers/alchemy/modifier_alchemy_movement_speed_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_accuracy_buff", "modifiers/alchemy/modifier_alchemy_accuracy_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_armor_buff", "modifiers/alchemy/modifier_alchemy_armor_buff.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_alchemy_evasion_buff", "modifiers/alchemy/modifier_alchemy_evasion_buff.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
 
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------

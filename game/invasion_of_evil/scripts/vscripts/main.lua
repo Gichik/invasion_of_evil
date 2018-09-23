@@ -2,6 +2,9 @@ if main == nil then
     main = class({})
 end
 
+--npc_spawner_bush_1
+--npc_spawner_alchemist_1
+
 function main:InitGameMode()
    --print( "InitGameMode" )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
@@ -39,7 +42,6 @@ function main:InitGameMode()
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
     ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
     ListenToGameEvent( "player_chat", Dynamic_Wrap( main, "OnChat" ), self )
-
 
     PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
     SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
@@ -121,13 +123,13 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_ice_shards_spear")
                 --unit:AddItemByName("item_blink")
                 --unit:AddItemByName("item_heart")
-                --unit:AddItemByName("item_note_dungeon_jeepers_one")
+                --unit:AddItemByName("item_note_alchemist_one")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
             end
 
-            --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_jeepers", {})
+            --unit:AddNewModifier(unit, nil, "modifier_alchemy", {})
 
         end
     end
@@ -241,7 +243,8 @@ function main:OnEntityKilled(data)
                 and killedEntity:GetUnitName() ~= "npc_cursed_minion"
                 and killedEntity:GetUnitName() ~= "npc_jeepers_minion"
                 and killedEntity:GetUnitName() ~= "npc_jeepers_trap"
-                and killedEntity:GetUnitName() ~= "npc_tree"                
+                and killedEntity:GetUnitName() ~= "npc_tree"
+                and not killedEntity:GetUnitName():find("bush")                
                 and not killedEntity:GetUnitName():find("boss") then
 
                 if RollPercentage(SKULL_DROP_PERC) then
@@ -265,12 +268,20 @@ function main:OnEntityKilled(data)
                 if killedEntity:GetUnitName():find("start") then
                     if RollPercentage(NOTE_DROP_PERC) then
                         --self:CreateDrop("item_note_" .. RandomInt(1,3), killedEntity:GetAbsOrigin())
-                        self:CreateDrop("item_note_dungeon_cursed_one", killedEntity:GetAbsOrigin())
-                    end
+                        local variation = RandomInt(1, 3)
 
-                    if RollPercentage(NOTE_DROP_PERC) then
-                        self:CreateDrop("item_note_dungeon_jeepers_one", killedEntity:GetAbsOrigin())
-                    end                 
+                        if variation == 1 then
+                            self:CreateDrop("item_note_dungeon_cursed_one", killedEntity:GetAbsOrigin())
+                        end
+
+                        if variation == 2 then
+                            self:CreateDrop("item_note_dungeon_jeepers_one", killedEntity:GetAbsOrigin())
+                        end   
+
+                        if variation == 3 then
+                            self:CreateDrop("item_note_alchemist_one", killedEntity:GetAbsOrigin())
+                        end
+                    end                                  
                 end
 
             end
@@ -328,7 +339,23 @@ function main:OnEntityKilled(data)
                     self:RespawnEnvironmentUnits( killedEntity:GetUnitName(),
                                             killedEntity.vSpawnLoc,
                                             false,
-                                            TREE_RESPAWN_TIME)
+                                            TREE_RESPAWN_TIME,
+                                            nil)
+                elseif killedEntity:GetUnitName() == "npc_bush" then
+                    local color = RandomInt(1, 3)
+                    local modifierName = "modifier_color_red"
+                    if color == 2 then
+                        modifierName = "modifier_color_green"
+                    end
+                    if color == 3 then
+                        modifierName = "modifier_color_blue"
+                    end
+
+                    self:RespawnEnvironmentUnits( killedEntity:GetUnitName(),
+                                            killedEntity.vSpawnLoc,
+                                            false,
+                                            TREE_RESPAWN_TIME,
+                                            modifierName)
                 elseif killedEntity:GetUnitName() == "npc_minion_ow" then
                     self:RespawnMinionOWUnits(15)
                 else
@@ -390,6 +417,22 @@ function main:SpanwMoobs()
     unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     unit:SetForwardVector(Vector(0,1,0))
 
+    point = Entities:FindByName( nil, "npc_spawner_alchemist_1" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_alchemist_tombstone", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+    unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+    unit:SetForwardVector(Vector(0,1,0))
+
+    point = Entities:FindByName( nil, "npc_spawner_alchemist_2" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_alchemist_table", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+    unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+    unit:SetForwardVector(Vector(0,1,0))
+
+    point = Entities:FindByName( nil, "npc_spawner_alchemist_3" ):GetAbsOrigin()
+    unit = CreateUnitByName("npc_alchemist_book", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+    unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+    unit:SetForwardVector(Vector(0,1,0))
+
+
     for i = 1, 3 do
         point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
         self:RespawnStartUnits("npc_start_evil_warrior", point, MINIONS_COUNT, 1)
@@ -397,7 +440,20 @@ function main:SpanwMoobs()
 
     for i = 6, 15 do
         point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnEnvironmentUnits("npc_tree", point, false, 1)
+        self:RespawnEnvironmentUnits("npc_tree", point, false, 1, nil)
+    end
+
+    for i = 1, 15 do
+        local color = RandomInt(1, 3)
+        local modifierName = "modifier_color_red"
+        if color == 2 then
+            modifierName = "modifier_color_green"
+        end
+        if color == 3 then
+            modifierName = "modifier_color_blue"
+        end        
+        point = Entities:FindByName( nil, "npc_spawner_bush_" .. i ):GetAbsOrigin()
+        self:RespawnEnvironmentUnits("npc_bush", point, false, 1, modifierName)
     end
 
     for i = 1, 5 do
@@ -495,7 +551,7 @@ function main:CreateDungeonFor(bossName,time)
 end
 
 
-function main:RespawnEnvironmentUnits(unitName,SpawnLoc,healthbar,time)
+function main:RespawnEnvironmentUnits(unitName,SpawnLoc,healthbar,time,modifierName)
     
     local team = DOTA_TEAM_NEUTRALS
     local unit = nil
@@ -518,6 +574,9 @@ function main:RespawnEnvironmentUnits(unitName,SpawnLoc,healthbar,time)
            unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
         end
 
+        if modifierName then
+            unit:AddNewModifier(unit, nil, modifierName, {})
+        end
         unit:SetForwardVector(Vector(directionX,directionY,0))
 
       return nil
@@ -658,6 +717,11 @@ function main:GiveNewHero(oldHero)
             newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_cursed", {})
         end
 
+
+        if oldHero:HasModifier("modifier_alchemy") then
+            newHero:AddNewModifier(newHero, nil, "modifier_alchemy", {})
+        end
+
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
     end
@@ -754,20 +818,24 @@ function main:ApplyItemLifestealToHero(hHero,damage,itemName)
     --print("ApplyItemLifestealToHero")
     local item = nil
     local heal = nil
+    local applyHeal = false
 
     for i = 0, 5 do
         item = hHero:GetItemInSlot(i)
         if item then
             if item:GetAbilityName() == itemName then
+                applyHeal = true;
                 break
             end
         end
     end
 
-    if item then
+    if applyHeal then
         heal = damage*item:GetSpecialValueFor("lifesteal_percent")/100
         hHero:Heal(heal, hHero)
         ParticleManager:CreateParticle("particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal_b.vpcf", PATTACH_ABSORIGIN_FOLLOW, hHero)
+    else
+        return nil
     end   
 end
 

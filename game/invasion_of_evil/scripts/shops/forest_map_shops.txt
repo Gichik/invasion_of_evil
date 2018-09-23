@@ -13,6 +13,7 @@
         "item"   "item_ice_shards_spear" 
             
         "item"   "item_holy_water" 
+        
       }
 
       "attributes"
@@ -22,7 +23,8 @@
         "item"   "item_strychnine_dagger_second"
 
         "item"   "item_cleave_sword_second"   
-        "item"   "item_ice_shards_spear_second" 
+        "item"   "item_ice_shards_spear_second"
+        "item"   "item_ingot_of_magical_metal"         
       }
 
       "weapons_armor"
@@ -32,12 +34,17 @@
         "item"   "item_strychnine_dagger_third"
 
         "item"   "item_cleave_sword_third"   
-        "item"   "item_ice_shards_spear_third"                          
+        "item"   "item_ice_shards_spear_third"                                 
       }
 
       "misc"
       {
-
+        "item"   "item_winged_paladin_gloves" 
+        "item"   "item_armor_gleaming_sea" 
+        "item"   "item_ring_of_the_basilius" 
+        "item"   "item_poor_man_shield" 
+        "item"   "item_amulet_of_conversion" 
+        "item"   "item_protective_amulet" 
       }  
 
       // Level 1 - Green Recipes
@@ -62,6 +69,7 @@
 
         "item"   "item_cleave_sword_second"   
         "item"   "item_ice_shards_spear_second"
+        "item"   "item_ingot_of_magical_metal"        
       }
 
       "magics"
@@ -88,7 +96,12 @@
      // Level 4 - Orange / Orb / Artifacts
       "artifacts"
       {
-
+        "item"   "item_winged_paladin_gloves" 
+        "item"   "item_armor_gleaming_sea" 
+        "item"   "item_ring_of_the_basilius" 
+        "item"   "item_poor_man_shield" 
+        "item"   "item_amulet_of_conversion" 
+        "item"   "item_protective_amulet"         
       }
 
      //Sideshop Start - Page 1
@@ -122,7 +135,8 @@
         "item"   "item_ice_shards_spear_second"
         "item"   "item_ice_shards_spear_third"  
 
-        "item"   "item_holy_water"              
+        "item"   "item_holy_water"
+        "item"   "item_ingot_of_magical_metal" 
       }
 
      //Secret Shop Start

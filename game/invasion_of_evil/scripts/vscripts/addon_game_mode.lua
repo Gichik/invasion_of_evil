@@ -21,6 +21,7 @@ function Precache( context )
 
 	PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context )
 
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts", context )	
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts", context )
@@ -116,6 +117,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/items/furion/treant_flower_1.vmdl", context ) --tree	
 	PrecacheResource( "model", "models/heroes/lycan/lycan.vmdl", context ) --vern
 
+	PrecacheResource( "model", "models/items/pugna/ward/weta_call_of_the_nether_lotus_ward/weta_call_of_the_nether_lotus_ward.vmdl", context ) --bush
 
 
 	------------------------------------------------particles-----------------------------------------------------

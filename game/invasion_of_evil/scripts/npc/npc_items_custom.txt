@@ -34,6 +34,179 @@
 		//"ItemDisplayCharges" 			"1"	  
 	}
 
+	"item_ingot_of_magical_metal"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/misc/ingot_of_magical_metal_1"			
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemQuality"					"epic"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"  
+	}
+
+	"item_two_ingot_of_magical_metal"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/misc/ingot_of_magical_metal_2"			
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemQuality"					"epic"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"1" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"  
+	}
+
+	"item_three_ingot_of_magical_metal"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_ingot_of_magical_metal_3.lua"
+		"AbilityTextureName"			"custom_folder/misc/ingot_of_magical_metal_3"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+			
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "0" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
+
+	"item_recipe_ingot_of_magical_metal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"5"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_ingot_of_magical_metal"
+		"ItemRequirements"
+		{
+			"01"						"item_winged_paladin_gloves"
+			"02"						"item_armor_gleaming_sea"
+			"03"						"item_ring_of_the_basilius"
+			"04"						"item_poor_man_shield"
+			"05"						"item_amulet_of_conversion"
+			"06"						"item_protective_amulet"
+		}
+	}
+
+
+	"item_recipe_two_ingot_of_magical_metal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_two_ingot_of_magical_metal"
+		"ItemRequirements"
+		{
+			"01"						"item_ingot_of_magical_metal;item_ingot_of_magical_metal"
+		}
+	}
+
+
+	"item_recipe_three_ingot_of_magical_metal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven" 		
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"AbilityTextureName"			"custom_folder/item_recipe"		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_three_ingot_of_magical_metal"
+		"ItemRequirements"
+		{
+			"01"						"item_two_ingot_of_magical_metal;item_ingot_of_magical_metal"
+			"02"						"item_ingot_of_magical_metal;item_ingot_of_magical_metal;item_ingot_of_magical_metal"
+		}
+	}
+
+	"item_casting_shape"
+	{
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"         		"DOTA_ABILITY_BEHAVIOR_PASSIVE" 
+		"AbilityTextureName"			"custom_folder/misc/casting_shape"			
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemQuality"					"epic"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"  
+	}
+
 
 	"item_entrails_evil"
 	{
@@ -568,6 +741,168 @@
 		"ItemKillable"					"1" 
 	}
 
+
+	"item_note_alchemist_one"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_note_alchemist_one.lua"
+		"AbilityTextureName"			"custom_folder/note_icon"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
+
+	"item_note_alchemist_two"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_note_alchemist_two.lua"
+		"AbilityTextureName"			"custom_folder/note_icon"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
+
+	"item_note_alchemist_three"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_note_alchemist_three.lua"
+		"AbilityTextureName"			"custom_folder/note_icon"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
+
+	"item_note_alchemist_fourth"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_note_alchemist_fourth.lua"
+		"AbilityTextureName"			"custom_folder/note_icon"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
+
+	"item_note_alchemist_fifth"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_note_alchemist_fifth.lua"
+		"AbilityTextureName"			"custom_folder/note_icon"
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Behavior
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemQuality"					"epic"
+		"ItemCost"                      "1" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1" 
+	}
 
 
 	//-------------------------------------------------------------------------------------------------------
