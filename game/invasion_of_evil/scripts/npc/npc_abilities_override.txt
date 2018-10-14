@@ -377,6 +377,7 @@
 	{
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/note/jotting_icon"			
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------

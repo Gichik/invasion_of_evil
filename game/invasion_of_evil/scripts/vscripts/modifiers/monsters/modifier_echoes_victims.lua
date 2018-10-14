@@ -24,7 +24,11 @@ function modifier_echoes_victims:CanBeAddToMinions()
 end
 
 function modifier_echoes_victims:GetAuraRadius()
-    return self:GetAbility():GetSpecialValueFor("hands_radius")
+	local radius = 200
+	if self:GetAbility() then
+		radius = self:GetAbility():GetSpecialValueFor("hands_radius")
+	end
+    return  radius
 end
 
 function modifier_echoes_victims:GetTexture()

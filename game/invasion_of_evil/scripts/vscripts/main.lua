@@ -10,7 +10,7 @@ function main:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
-    GameRules:SetUseUniversalShopMode( true )
+    GameRules:SetUseUniversalShopMode( false )
     GameRules:SetHeroSelectionTime( 30.0 )
     GameRules:SetStrategyTime( 0.0 )
     GameRules:SetShowcaseTime( 0.0 )
@@ -211,9 +211,13 @@ function main:OnSomeHeroKilled(data)
 
 end
 
+
+----entindex_attacker,entindex_killed,damagebits,splitscreenplayer
+
 function main:OnEntityKilled(data)
     
     local killedEntity = EntIndexToHScript(data.entindex_killed)
+    local attackerEntity = EntIndexToHScript(data.entindex_attacker)
 
     if killedEntity:IsCreature()  then
 
@@ -305,7 +309,6 @@ function main:OnEntityKilled(data)
                 self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
             
                 self:SetBossOwStatus(false)
-                MINIONS_LEVEL = MINIONS_LEVEL + 3
 
                 GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
                 Timers:CreateTimer(15, function()
@@ -317,7 +320,19 @@ function main:OnEntityKilled(data)
             end
 
             if killedEntity:GetUnitName():find("dungeon_boss") then
-                self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
+                local dropItemName = GetRandomItemNameFrom("unique")
+
+                if PROPHECY_ITEM then 
+                    dropItemName = PROPHECY_ITEM
+                    PROPHECY_ITEM = nil
+                end
+
+                if attackerEntity.iProphecyName == dropItemName then
+                    attackerEntity:EmitSound("Item.LotusOrb.Activate")
+                    attackerEntity:RemoveModifierByName(attackerEntity.mProphecyName)
+                end
+
+                self:CreateDrop(dropItemName, killedEntity:GetAbsOrigin())
                 self:CreateDungeonFor(killedEntity:GetUnitName(),TIME_BEFORE_DUNGEON)                    
             end
   

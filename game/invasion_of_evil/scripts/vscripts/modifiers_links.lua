@@ -68,6 +68,15 @@ LinkLuaModifier("modifier_alchemy_evasion_buff", "modifiers/alchemy/modifier_alc
 
 LinkLuaModifier("modifier_alchemy_poisoning_debuff", "modifiers/alchemy/modifier_alchemy_poisoning_debuff.lua", LUA_MODIFIER_MOTION_NONE )
 
+-------------------------------------------------------------------
+-------------------------PROPHECY MODIFIERS--------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_prophecy_winged_paladin_gloves", "modifiers/items/prophecy/modifier_prophecy_winged_paladin_gloves.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_prophecy_armor_gleaming_sea", "modifiers/items/prophecy/modifier_prophecy_armor_gleaming_sea.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_prophecy_ring_of_the_basilius", "modifiers/items/prophecy/modifier_prophecy_ring_of_the_basilius.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_prophecy_poor_man_shield", "modifiers/items/prophecy/modifier_prophecy_poor_man_shield.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_prophecy_amulet_of_conversion", "modifiers/items/prophecy/modifier_prophecy_amulet_of_conversion.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 -------------------------------------------------------------------

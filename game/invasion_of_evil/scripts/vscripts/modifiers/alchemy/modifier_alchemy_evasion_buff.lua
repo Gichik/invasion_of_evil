@@ -7,7 +7,7 @@ function modifier_alchemy_evasion_buff:IsHidden()
 end
 
 function modifier_alchemy_evasion_buff:GetTexture()
-    return "custom_folder/alchemy/alchemy_evasion_buff"
+    return "custom_folder/alchemy/alchemy_damage_buff"
 end
 
 function modifier_alchemy_evasion_buff:RemoveOnDeath()

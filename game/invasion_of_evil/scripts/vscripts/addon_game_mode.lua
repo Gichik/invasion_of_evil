@@ -174,7 +174,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_pugna/pugna_netherblast_fluidexp.vpcf", context ) -- modifier_strychnine_dagger poison
 	PrecacheResource( "particle", "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf", context ) -- modifier_strychnine_dagger
 	PrecacheResource( "particle", "particles/world_destruction_fx/tree_dire_destroy.vpcf", context ) -- modifier_jeepers_trap_check
-
+	PrecacheResource( "particle", "particles/units/heroes/hero_dark_seer/dark_seer_loadout.vpcf", context ) -- prophecy
 
 
 

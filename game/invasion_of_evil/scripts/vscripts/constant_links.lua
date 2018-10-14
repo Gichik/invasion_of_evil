@@ -25,6 +25,8 @@ TREE_RESPAWN_TIME = 60
 HEAL_DROP_PERC = 10
 SKULL_DROP_PERC = 50
 COMMON_DROP_PERC = 20
+PROPHECY_DROP_PERC = 30
+PROPHECY_ITEM = nil
 ENTRAILS_EVIL_DROP_PERC = 30
 TIME_BEFORE_REMOVE_DROP = 20
 
@@ -163,3 +165,8 @@ function GetUnitFor(biomName,id)
         return CURSED_TREE_MONSTERS[id]        
     end
 end
+
+function SetProphecyItemName(itemName)
+    PROPHECY_ITEM = itemName
+end
+
