@@ -61,3 +61,53 @@ function TeleportTriggerDungCursed(data)
 		modifier:SetStackCount(0)
 	end	
 end
+
+
+function TeleportTriggerCellar(data)
+	--print("TeleportTrigger")
+	local caller = data.caller:GetName()
+	local point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
+	local activator = data.activator
+
+	if caller == "trigger_teleport_to_cellar_1" then
+		point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
+	end
+
+	if caller == "trigger_teleport_to_cellar_2" then
+		point = Entities:FindByName( nil, "cellar_hero_spawner_2"):GetAbsOrigin()
+	end
+
+	if caller == "trigger_teleport_to_cellar_3" then
+		point = Entities:FindByName( nil, "cellar_hero_spawner_3"):GetAbsOrigin()
+	end
+
+	activator:SetAbsOrigin(point) 
+	FindClearSpaceForUnit(activator, point, false) 
+	activator:Stop()
+	main:FocusCameraOnPlayer(activator)
+end
+
+
+function TeleportTriggerFromCellar(data)
+	--print("TeleportTrigger")
+	local caller = data.caller:GetName()
+	local point = Entities:FindByName( nil, "cellar_hero_home_spawner_1"):GetAbsOrigin()
+	local activator = data.activator
+
+	if caller == "trigger_teleport_from_cellar_1" then
+		point = Entities:FindByName( nil, "cellar_hero_home_spawner_1"):GetAbsOrigin()
+	end
+
+	if caller == "trigger_teleport_from_cellar_2" then
+		point = Entities:FindByName( nil, "cellar_hero_home_spawner_2"):GetAbsOrigin()
+	end
+
+	if caller == "trigger_teleport_from_cellar_3" then
+		point = Entities:FindByName( nil, "cellar_hero_home_spawner_3"):GetAbsOrigin()
+	end
+
+	activator:SetAbsOrigin(point) 
+	FindClearSpaceForUnit(activator, point, false) 
+	activator:Stop()
+	main:FocusCameraOnPlayer(activator)
+end

@@ -1,10 +1,12 @@
 #base "items/vortex_axe.kv"
 #base "items/chain_lightning_scepter.kv"
 #base "items/cleave_sword.kv"
-#base "items/unique_items.kv"
-#base "items/prophecy_items.kv"
 #base "items/ice_shards_spear.kv"
 #base "items/strychnine_dagger.kv"
+#base "items/unique_items.kv"
+#base "items/prophecy_items.kv"
+#base "items/achievement_items.kv"
+
 
 "DOTAAbilities"
 {

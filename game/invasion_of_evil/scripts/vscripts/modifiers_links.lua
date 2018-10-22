@@ -43,6 +43,15 @@ LinkLuaModifier("modifier_quest_dungeon_jeepers", "modifiers/quests/modifier_que
 LinkLuaModifier("modifier_quest_dungeon_cursed", "modifiers/quests/modifier_quest_dungeon_cursed.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_npc_invulnerable", "modifiers/quests/modifier_npc_invulnerable.lua", LUA_MODIFIER_MOTION_NONE )
 
+LinkLuaModifier("modifier_quest_ghostbusters", "modifiers/quests/modifier_quest_ghostbusters.lua", LUA_MODIFIER_MOTION_NONE )
+
+-------------------------------------------------------------------
+-------------------------ACHIEVEMENT MODIFIERS--------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_achievement_ghostbusters", "modifiers/achievement/modifier_achievement_ghostbusters.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 -------------------------------------------------------------------
 -------------------------ALCHEMY MODIFIERS--------------------
 -------------------------------------------------------------------

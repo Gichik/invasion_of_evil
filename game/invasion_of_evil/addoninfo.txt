@@ -1,9 +1,9 @@
 "AddonInfo"
 {
-	maps  "forest_map"
+	maps  "chapter_one"
 	"IsPlayable" "1"
 	"HeroGuidesSupported" "0"
-	"forest_map"
+	"chapter_one"
  	{
   		"MaxPlayers" "3"
  	}

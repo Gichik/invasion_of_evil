@@ -22,7 +22,7 @@ TIME_BEFORE_DUNGEON = 120
 TREE_RESPAWN_TIME = 60
 
 
-HEAL_DROP_PERC = 10
+HEAL_DROP_PERC = 15
 SKULL_DROP_PERC = 50
 COMMON_DROP_PERC = 20
 PROPHECY_DROP_PERC = 30
@@ -137,9 +137,9 @@ CEMETERY_MONSTERS = {
         {"npc_mini_boss", "models/heroes/undying/undying_flesh_golem.vmdl", 1.0}
         } 
 CHURCH_MONSTERS = { 
-        {"npc_melee_evil_warrior", "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl", 0.7},
+        {"npc_melee_evil_warrior", "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", 0.7},
         {"npc_range_evil_warrior", "models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl", 0.6},
-        {"npc_melee_evil_warrior", "models/heroes/nightstalker/nightstalker_night.vmdl", 0.9},
+        {"npc_melee_evil_warrior", "models/heroes/shadow_demon/shadow_demon.vmdl", 0.9},
         {"npc_range_evil_warrior", "models/items/courier/dc_demon/dc_demon_flying.vmdl", 0.9},
         {"npc_mini_boss", "models/items/warlock/golem/ahmhedoq/ahmhedoq.vmdl", 1.0}
         }   

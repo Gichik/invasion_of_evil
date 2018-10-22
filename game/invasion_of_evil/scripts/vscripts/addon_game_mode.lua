@@ -87,6 +87,9 @@ function Precache( context )
 	PrecacheResource( "model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl", context ) --npc_minion_ow
 	PrecacheResource( "model", "models/props_gameplay/aegis.vmdl", context ) --npc_minion_ow
 	PrecacheResource( "model", "models/heroes/nightstalker/nightstalker_night.vmdl", context ) --church monsters
+	PrecacheResource( "model", "models/heroes/shadow_demon/shadow_demon.vmdl", context ) --church monsters
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl", context ) --church monsters
+
 
 	PrecacheResource( "model", "models/props_tree/tree_cine_02_10k.vmdl", context ) --cursed tree
 	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl", context ) --dungeon cursed units
@@ -190,7 +193,7 @@ function Activate()
 		GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
-	if MapName == "forest_map" then
+	if MapName == "chapter_one" then
 		print("----------------------------------------Forest map Start----------------------------------------")	
 		main:InitGameMode()
 	end

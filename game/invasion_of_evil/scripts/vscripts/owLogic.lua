@@ -194,6 +194,14 @@ function DestroyPortal()
 		MINIONS_LEVEL = MINIONS_LEVEL + 3
 		LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false)) - 120
 		GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
+
+		if MINIONS_LEVEL <= 5 then
+			GameRules:SendCustomMessage("#help_messages_11", 0, 0)
+			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cursed_tree_spawner_5"):GetAbsOrigin(), 300, 60, false)
+    		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cemetery_spawner_5"):GetAbsOrigin(), 300, 60, false)
+    		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "church_spawner_5"):GetAbsOrigin(), 300, 60, false)
+		end
+		
 		return nil
     end)
 end

@@ -46,7 +46,7 @@ function main:InitGameMode()
     PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
     SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
 
-   --AddFOWViewer(DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, 2000, 60, false)
+   
     --self:TestBosses()
     self:SpanwMoobs()
 end
@@ -77,15 +77,17 @@ end
 function main:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        GameRules:SendCustomMessageToTeam("#start_necromancer_message_1", DOTA_TEAM_GOODGUYS, 0, 0)
+        
         --GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
         EmitGlobalSound("Invasion_of_evil.Nocturnus")
         
         --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
         GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian von Ziegler - Nocturnus</font>", 0, 0)
-        
+        GameRules:SendCustomMessage("#start_game", 0, 0)        
 
+        CreateInceptionWaves()        
         StartOwTimer()
+        StartHelpMessagesTimer()        
     end
 end
 
@@ -242,7 +244,26 @@ function main:OnEntityKilled(data)
                 self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
             end            
 
+            if killedEntity:GetUnitName() == "npc_inception_attacker_evil_warrior" then
+                if RollPercentage(COMMON_DROP_PERC/4) then
+                    self:CreateDrop(GetRandomItemNameFrom("first"), killedEntity:GetAbsOrigin())
+                end
+
+                if RollPercentage(SKULL_DROP_PERC) then
+                    self:CreateDrop("item_skull_of_evil", killedEntity:GetAbsOrigin())
+                end 
+            end
+
+            if killedEntity:GetUnitName():find("npc_start_boss_")  then
+                if RollPercentage(COMMON_DROP_PERC) then
+                     self:CreateDrop(GetRandomItemNameFrom("second"), killedEntity:GetAbsOrigin())
+                end
+            end
+
+
             if not killedEntity:GetUnitName():find("wave") 
+                and not killedEntity:GetUnitName():find("npc_start_boss_") 
+                and killedEntity:GetUnitName() ~= "npc_inception_attacker_evil_warrior"
                 and killedEntity:GetUnitName() ~= "npc_minion_ow"
                 and killedEntity:GetUnitName() ~= "npc_cursed_minion"
                 and killedEntity:GetUnitName() ~= "npc_jeepers_minion"
@@ -262,6 +283,7 @@ function main:OnEntityKilled(data)
                         self:CreateDrop(GetRandomItemNameFrom("second"), killedEntity:GetAbsOrigin())
                     end
                 end
+
 
                 --if not killedEntity:GetUnitName():find("start") then
                 --    if RollPercentage(TRAN_GRASS_DROP_PERC) then
@@ -346,8 +368,7 @@ function main:OnEntityKilled(data)
 
             if killedEntity.spawner then
                 if killedEntity:GetUnitName():find("start") then
-                    self:RespawnStartUnits( killedEntity:GetUnitName(),
-                                            killedEntity.vSpawnLoc,
+                    self:RespawnStartUnits( killedEntity.vSpawnLoc,
                                             MINIONS_COUNT,
                                             START_MONS_RESPAWN_TIME)
                 elseif killedEntity:GetUnitName() == "npc_tree" then
@@ -450,7 +471,7 @@ function main:SpanwMoobs()
 
     for i = 1, 3 do
         point = Entities:FindByName( nil, "start_monster_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnStartUnits("npc_start_evil_warrior", point, MINIONS_COUNT, 1)
+        self:RespawnStartUnits( point, MINIONS_COUNT, 1)
     end
 
     for i = 6, 15 do
@@ -600,18 +621,21 @@ function main:RespawnEnvironmentUnits(unitName,SpawnLoc,healthbar,time,modifierN
 end
 
 
-function main:RespawnStartUnits(unitName,SpawnLoc,numMinions,time)
+function main:RespawnStartUnits(SpawnLoc,numMinions,time)
     
     local team = DOTA_TEAM_NEUTRALS
     local unit = nil
-    
+    local name = "npc_start_boss_" .. RandomInt(1, 3)
+
     Timers:CreateTimer(time, function()
-        unit = CreateUnitByName(unitName, SpawnLoc, true, nil, nil, team )
+
+        unit = CreateUnitByName(name, SpawnLoc, true, nil, nil, team )
         unit.vSpawnLoc = SpawnLoc 
         unit.spawner = true
+        unit:AddNewModifier(unit, nil, GetRandomModifierName(), {})
 
         for i = 1, numMinions do 
-            unit = CreateUnitByName(unitName, SpawnLoc + RandomVector(100), true, nil, nil, team )
+            unit = CreateUnitByName("npc_start_evil_warrior", SpawnLoc + RandomVector(100), true, nil, nil, team )
         end
 
       return nil
@@ -732,9 +756,12 @@ function main:GiveNewHero(oldHero)
             newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_cursed", {})
         end
 
-
         if oldHero:HasModifier("modifier_alchemy") then
             newHero:AddNewModifier(newHero, nil, "modifier_alchemy", {})
+        end
+
+        if oldHero:HasModifier("modifier_achievement_ghostbusters") then
+            newHero:AddNewModifier(newHero, nil, "modifier_achievement_ghostbusters", {})
         end
 
         UTIL_Remove(oldHero)
@@ -892,21 +919,6 @@ function main:FocusCameraOnPlayer(player)
 end
 
 
---playerid,text,teamonly,userid,splitscreenplayer
-function main:OnChat( data )
-
-    local player = PlayerResource:GetPlayer(data.playerid) 
-    local text = data.text
-    if text == "-stopsound" then
-        --print("StopSound")
-        --EmitGlobalSound("Item.DropWorld")
-        --StopSoundEvent("Invasion_of_evil.Nocturnus",player)
-        --player:StopSound("Invasion_of_evil.Nocturnus")
-        --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
-        --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
-    end
-end
-
 function main:ApplyBackTeleport()
     local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, SPAWNER_OW_POINT, nil, 2000,
     DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
@@ -923,9 +935,81 @@ function main:ApplyBackTeleport()
     end
 end
 
+
+function StartHelpMessagesTimer()
+
+    local helpMessageNumber = 0
+
+    Timers:CreateTimer(20, function()
+        helpMessageNumber = helpMessageNumber + 1
+        if helpMessageNumber <= 7 then
+            GameRules:SendCustomMessage("#help_messages_" .. helpMessageNumber, 0, 0)
+            return 16
+        end
+
+        return nil
+    end
+    )   
+
+    Timers:CreateTimer(WAVE_DURATION + 10, function()
+        GameRules:SendCustomMessage("#help_messages_10", 0, 0)
+        return nil 
+    end)
+
+end
+
+
+function CreateInceptionWaves()
+    local point = nil
+    local waveCount = WAVE_DURATION 
+    local unit = nil
+
+    WAVE_STEP = 7 - PlayerResource:GetTeamPlayerCount()
+
+    Timers:CreateTimer(1, function()
+        if waveCount > 0 then
+            for i = 1, 6 do
+                point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
+                unit = CreateUnitByName("npc_inception_attacker_evil_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+            end
+
+            waveCount = waveCount - WAVE_STEP
+            
+            return WAVE_STEP
+        end
+
+        if waveCount <= 0 then
+            GameRules:SendCustomMessage("#start_necromancer_message_1", 0, 0)
+            return nil
+        end
+        
+    end
+    )
+end
+
+
+--playerid,text,teamonly,userid,splitscreenplayer
+function main:OnChat( data )
+
+    local player = PlayerResource:GetPlayer(data.playerid) 
+    local text = data.text
+    if text == "-stopsound" then
+        --print("StopSound")
+        --EmitGlobalSound("Item.DropWorld")
+        --StopSoundEvent("Invasion_of_evil.Nocturnus",player)
+        --player:StopSound("Invasion_of_evil.Nocturnus")
+        --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
+        --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
+    end
+end
+
+
+
 function main:TestBosses()
     local unit = CreateUnitByName("cursed_flame_boss", SPAWNER_OW_POINT, true, nil, nil, DOTA_TEAM_NEUTRALS )
     unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
 
     --unit:SetAbsOrigin(Entities:FindByName( nil, "hero_teleport_spawner"):GetAbsOrigin())
 end
+
+
