@@ -131,7 +131,9 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_heart_of_evil")
             end
 
-            --unit:AddNewModifier(unit, nil, "modifier_alchemy", {})
+            if GetMapName() == "chapter_one_easy" then
+                unit:AddNewModifier(unit, nil, "modifier_easy_mode_buff", {})
+            end
 
         end
     end
@@ -766,6 +768,7 @@ function main:GiveNewHero(oldHero)
 
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
+
     end
 end
 

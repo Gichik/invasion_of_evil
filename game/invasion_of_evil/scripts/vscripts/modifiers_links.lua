@@ -39,11 +39,15 @@ LinkLuaModifier("modifier_block_physical_damage", "modifiers/items/unique_items/
 -------------------------QUESTS MODIFIERS--------------------
 -------------------------------------------------------------------
 
+LinkLuaModifier("modifier_easy_mode_buff", "modifiers/heroes/modifier_easy_mode_buff.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 LinkLuaModifier("modifier_quest_dungeon_jeepers", "modifiers/quests/modifier_quest_dungeon_jeepers.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_quest_dungeon_cursed", "modifiers/quests/modifier_quest_dungeon_cursed.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_npc_invulnerable", "modifiers/quests/modifier_npc_invulnerable.lua", LUA_MODIFIER_MOTION_NONE )
 
 LinkLuaModifier("modifier_quest_ghostbusters", "modifiers/quests/modifier_quest_ghostbusters.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 -------------------------------------------------------------------
 -------------------------ACHIEVEMENT MODIFIERS--------------------

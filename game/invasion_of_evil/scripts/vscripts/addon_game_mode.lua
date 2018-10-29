@@ -193,9 +193,10 @@ function Activate()
 		GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
-	if MapName == "chapter_one" then
-		print("----------------------------------------Forest map Start----------------------------------------")	
+	if MapName == "chapter_one_easy" or "chapter_one_normal" then
+		print("----------------------------------------chapter_one----------------------------------------")
 		main:InitGameMode()
 	end
+
 	
 end
