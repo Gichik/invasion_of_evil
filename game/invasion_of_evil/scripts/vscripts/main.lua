@@ -126,9 +126,9 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_blink")
                 --unit:AddItemByName("item_heart")
                 --unit:AddItemByName("item_note_alchemist_one")
-                --unit:AddItemByName("item_heart_of_evil")
-                --unit:AddItemByName("item_heart_of_evil")
-                --unit:AddItemByName("item_heart_of_evil")
+                unit:AddItemByName("item_heart_of_evil")
+                unit:AddItemByName("item_heart_of_evil")
+                unit:AddItemByName("item_heart_of_evil")
             end
 
             if GetMapName() == "chapter_one_easy" then
@@ -177,6 +177,9 @@ function main:OnAbilityLearned(data)
             if data.abilityname:find("summoner") then
                 pathName = "summoner"
             end  
+            if data.abilityname:find("vampire") then
+                pathName = "vampire"
+            end   
 
             hHero:RemoveAbility(data.abilityname)
 

@@ -1,0 +1,358 @@
+"DOTAAbilities"
+{
+
+	"vampire_blood_magic"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "ogre_magi_bloodlust"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduced_hp_regen"		"-3 -6 -9 -12 -15 -18 -21"
+			}
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_resist"	"5 10 15 20 25 30 45"
+			}
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"4 7 10 14 17 20 30"
+			}												
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_blood_magic"
+			}
+		}					    
+	}
+
+	"vampire_aura_of_death"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "shadow_demon_demonic_purge"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"400"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduced_hp_regen"		"-3 -6 -9 -12 -15 -18 -21"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"5 10 15 20 25 30 45"
+			}												
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_aura_of_death"
+			}
+		}					    
+	}
+
+	"vampire_beast_of_the_night"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "night_stalker_hunter_in_the_night"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"400"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"10 20 30 40 50 60 80"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"	"10 20 30 40 50 60 80"
+			}												
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_beast_of_the_night"
+			}
+		}					    
+	}
+
+	"vampire_night_power"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "luna_eclipse"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"400"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"				"10 20 30 40 50 60 80"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"15 20 25 30 35 40 60"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_proc"				"200"
+			}																	
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_night_power"
+			}
+		}					    
+	}
+
+
+	"vampire_sower_of_weakness"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "spectre_desolate"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"600"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_attack_speed"	"10 20 30 40 50 60 80"
+			}																	
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_sower_of_weakness"
+			}
+		}					    
+	}
+
+
+	"vampire_sower_of_horror"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "night_stalker_crippling_fear"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"600"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_magic_resist"	"15 20 25 30 35 40 50"
+			}																	
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_sower_of_horror"
+			}
+		}					    
+	}
+
+
+	"vampire_sower_of_pain"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "lich_dark_ritual"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"600"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_health_proc"	"15 20 25 30 35 40 50"
+			}																	
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_sower_of_pain"
+			}
+		}					    
+	}
+
+
+	"vampire_power_of_demon"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "necrolyte_heartstopper_aura"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stats_bonus"			"10 20 30 40 50 60 70"
+			}																				
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_power_of_demon"
+			}
+		}					    
+	}
+
+
+	"vampire_sucking_life"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "death_prophet_spirit_siphon"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"600"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp_regen"		"3 6 9 12 15 18 21"
+			}																	
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_vampire_sucking_life"
+			}
+		}					    
+	}
+
+
+}

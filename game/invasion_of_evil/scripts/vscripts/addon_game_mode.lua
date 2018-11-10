@@ -178,6 +178,13 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf", context ) -- modifier_strychnine_dagger
 	PrecacheResource( "particle", "particles/world_destruction_fx/tree_dire_destroy.vpcf", context ) -- modifier_jeepers_trap_check
 	PrecacheResource( "particle", "particles/units/heroes/hero_dark_seer/dark_seer_loadout.vpcf", context ) -- prophecy
+	PrecacheResource( "particle", "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_track_trail_circle_soft.vpcf", context ) -- vampire_sower_of_horror
+	PrecacheResource( "particle", "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail_circle.vpcf", context ) -- vampire_sower_of_pain
+	PrecacheResource( "particle", "particles/econ/items/invoker/invoker_ti6/invoker_deafening_blast_ti6_debuff_echo_demo.vpcf", context ) -- vampire_sucking_life
+
+
+
+
 
 
 

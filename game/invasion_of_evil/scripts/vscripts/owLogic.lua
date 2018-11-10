@@ -192,7 +192,7 @@ function DestroyPortal()
 
 		--возможно понадобиться, если нужно будет точнее настраивать время
 		MINIONS_LEVEL = MINIONS_LEVEL + 3
-		LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false)) - 120
+		--LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false)) - 120
 		GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
 
 		if MINIONS_LEVEL <= 5 then

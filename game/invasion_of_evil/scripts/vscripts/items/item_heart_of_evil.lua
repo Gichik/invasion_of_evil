@@ -8,19 +8,19 @@ function item_heart_of_evil:CastFilterResultTarget(hTarget)
 	--print("Error")
 	if IsServer() then
 
-		if hTarget == self:GetCaster() then
+		if self:GetCurrentCharges() < self:GetInitialCharges() then
 			return UF_FAIL_CUSTOM
 		end
 
-		if hTarget:IsRealHero() then
-			return UF_FAIL_CUSTOM
+		if hTarget and hTarget:IsRealHero() then
+			if hTarget:HasModifier("modifier_vampire_power_of_demon") then
+				return UF_SUCCESS
+			else
+				return UF_FAIL_CUSTOM
+			end
 		end
 
 		if hTarget and hTarget:GetUnitName() ~= "npc_necromant_base"  then
-			return UF_FAIL_CUSTOM
-		end		
-
-		if self:GetCurrentCharges() < self:GetInitialCharges() then
 			return UF_FAIL_CUSTOM
 		end		
 
@@ -37,21 +37,21 @@ function item_heart_of_evil:GetCustomCastErrorTarget(hTarget)
 	--print("Error")
 	if IsServer() then
 
-		if hTarget == self:GetCaster() then
-			return "#dota_hud_error_bad_target"
-		end
+		if self:GetCurrentCharges() < self:GetInitialCharges() then
+			return "#dota_hud_error_havent_charges"
+		end	
 
-		if hTarget:IsRealHero() then
-			return "#dota_hud_error_bad_target"
+		if hTarget and hTarget:IsRealHero() then
+			if hTarget:HasModifier("modifier_vampire_power_of_demon") then
+				return UF_SUCCESS
+			else
+				return "#dota_hud_error_bad_target"
+			end
 		end
 
 		if hTarget and hTarget:GetUnitName() ~= "npc_necromant_base"  then
 			return "#dota_hud_error_bad_target"
-		end	
-
-		if self:GetCurrentCharges() < self:GetInitialCharges() then
-			return "#dota_hud_error_havent_charges"
-		end	
+		end
 
 		if PORTAL_OW_EXIST == true or WAVE_STATE == true then
 			return "#dota_hud_error_necromant_tired"
@@ -69,33 +69,50 @@ function item_heart_of_evil:OnSpellStart()
 		local hCaster = self:GetCaster()
 		local hTarget = self:GetCursorTarget()
 		local hItem = self
+		local modifier = nil
 
 		hTarget:EmitSound("Item.DropWorld")
-		if hTarget:GetUnitName() == "npc_necromant_base" then
 
-			if hItem:GetCurrentCharges() <= hItem:GetInitialCharges() then
-				hCaster:RemoveItem(hItem)
-			else
-				hItem:SetCurrentCharges(hItem:GetCurrentCharges() - hItem:GetInitialCharges())
-			end
 
-			if hTarget:HasModifier("modifier_heart_evil_progress") then
-				local modifier = hTarget:FindModifierByName("modifier_heart_evil_progress")
+		if hTarget:IsRealHero() then
+			if hTarget:HasModifier("modifier_vampire_power_of_demon") then
+				modifier = hTarget:FindModifierByName("modifier_vampire_power_of_demon")
 				modifier:IncrementStackCount()
-				if modifier:GetStackCount() >= HEART_FOR_END then
-					hTarget:RemoveModifierByName("modifier_heart_evil_progress")
-					hTarget:AddNewModifier(hTarget, self, "modifier_signal_animation", {duration = 2})
-					GameRules:SendCustomMessageToTeam("#end_necromancer_message", DOTA_TEAM_GOODGUYS, 0, 0)
-				    Timers:CreateTimer(2.3, function()
-				    	self:CreateFinalBoss(hTarget)
-						return nil
-				    end
-				    )					
-				end
-			else
-				hTarget:AddNewModifier(hTarget, nil, "modifier_heart_evil_progress", {}):IncrementStackCount()
+				
+				if hItem:GetCurrentCharges() <= hItem:GetInitialCharges() then
+					hCaster:RemoveItem(hItem)
+				else
+					hItem:SetCurrentCharges(hItem:GetCurrentCharges() - hItem:GetInitialCharges())
+				end				
 			end
-			
+		else
+			if hTarget:GetUnitName() == "npc_necromant_base" then
+
+				if hItem:GetCurrentCharges() <= hItem:GetInitialCharges() then
+					hCaster:RemoveItem(hItem)
+				else
+					hItem:SetCurrentCharges(hItem:GetCurrentCharges() - hItem:GetInitialCharges())
+				end
+
+				if hTarget:HasModifier("modifier_heart_evil_progress") then
+					modifier = hTarget:FindModifierByName("modifier_heart_evil_progress")
+					modifier:IncrementStackCount()
+					if modifier:GetStackCount() >= HEART_FOR_END then
+						hTarget:RemoveModifierByName("modifier_heart_evil_progress")
+						hTarget:AddNewModifier(hTarget, self, "modifier_signal_animation", {duration = 2})
+						GameRules:SendCustomMessageToTeam("#end_necromancer_message", DOTA_TEAM_GOODGUYS, 0, 0)
+					    Timers:CreateTimer(2.3, function()
+					    	self:CreateFinalBoss(hTarget)
+							return nil
+					    end
+					    )					
+					end
+				else
+					hTarget:AddNewModifier(hTarget, nil, "modifier_heart_evil_progress", {}):IncrementStackCount()
+				end
+				
+			end
+
 		end
 	end
 end

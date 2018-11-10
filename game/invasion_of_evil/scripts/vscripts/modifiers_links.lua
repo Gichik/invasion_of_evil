@@ -268,6 +268,28 @@ LinkLuaModifier("modifier_summoner_mammock", "modifiers/heroes/enchanter/summone
 LinkLuaModifier("modifier_summoner_mammock_debuff", "modifiers/heroes/enchanter/summoner/modifier_summoner_mammock.lua", LUA_MODIFIER_MOTION_NONE )
 
 
+-------------------------------------------------------------------
+--------------------VAMPIRE MODIFIER--------------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_vampire_blood_magic", "modifiers/heroes/knight/vampire/modifier_vampire_blood_magic.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_aura_of_death", "modifiers/heroes/knight/vampire/modifier_vampire_aura_of_death.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_beast_of_the_night", "modifiers/heroes/knight/vampire/modifier_vampire_beast_of_the_night.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_beast_of_the_night_buff", "modifiers/heroes/knight/vampire/modifier_vampire_beast_of_the_night.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_beast_of_the_night_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_beast_of_the_night.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_night_power", "modifiers/heroes/knight/vampire/modifier_vampire_night_power.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_night_power_buff", "modifiers/heroes/knight/vampire/modifier_vampire_night_power.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_night_power_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_night_power.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_weakness", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_weakness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_weakness_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_weakness.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_horror", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_horror.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_horror_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_horror.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_pain", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_pain.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sower_of_pain_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_sower_of_pain.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sucking_life", "modifiers/heroes/knight/vampire/modifier_vampire_sucking_life.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_sucking_life_debuff", "modifiers/heroes/knight/vampire/modifier_vampire_sucking_life.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_vampire_power_of_demon", "modifiers/heroes/knight/vampire/modifier_vampire_power_of_demon.lua", LUA_MODIFIER_MOTION_NONE )
+
 
 
 -------------------------------------------------------------------

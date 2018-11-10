@@ -134,4 +134,22 @@ function AddPathAbilitiesToHero(data)
         end
     end
 
+    if pathName == "vampire" then
+        if abilityTier == 1 then
+            hHero:AddAbility("vampire_blood_magic")
+            hHero:AddAbility("vampire_aura_of_death")
+            hHero:AddAbility("vampire_beast_of_the_night")
+            hHero:AddAbility("vampire_night_power")
+        end
+        if abilityTier == 2 then
+            hHero:AddAbility("vampire_sower_of_weakness")
+            hHero:AddAbility("vampire_sower_of_horror")
+            hHero:AddAbility("vampire_sower_of_pain")
+        end
+        if abilityTier == 3 then
+            hHero:AddAbility("vampire_sucking_life")
+            hHero:AddAbility("vampire_power_of_demon")
+        end
+    end  
+
 end

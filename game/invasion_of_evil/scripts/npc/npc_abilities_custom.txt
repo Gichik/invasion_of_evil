@@ -6,6 +6,7 @@
 #base "heroes_path/dishonored.kv"
 #base "heroes_path/sapient.kv"
 #base "heroes_path/summoner.kv"
+#base "heroes_path/vampire.kv"
 
 #base "monsters/bosses_ability.kv"
 
@@ -176,6 +177,30 @@
 	}
 
 
+	"vampire_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "abaddon_borrowed_time"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"vampire"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
+
 	"start_range_magick_attack"
 	{
 		"BaseClass" 					"ability_datadriven"
@@ -311,6 +336,39 @@
 			}		
 		}			
 	}
+
+
+	"blood_effect"
+	{
+		"BaseClass"                 "ability_datadriven"
+		"AbilityTextureName"      	"bloodseeker_rupture"
+		"MaxLevel"            		"1"
+
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+			
+
+		"Modifiers"
+		{		
+			"modifier_blood_on_take_damage"
+		    { 
+				"Passive"	"1"
+				"IsHidden"  "1"			
+				"OnTakeDamage"
+				{
+		         
+					"AttachEffect"
+		            {
+		                "EffectName" "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_blood04.vpcf"
+		                "EffectAttachType" "follow_origin"
+		                "Target" "CASTER"
+		            }				
+				
+				}
+				
+		    }
+		}
+	}
+
 
 
 	"ability_no_damage"
