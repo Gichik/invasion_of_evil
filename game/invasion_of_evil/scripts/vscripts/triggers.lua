@@ -13,6 +13,17 @@ function TeleportTrigger(data)
 		FindClearSpaceForUnit(activator, point, false) 
 		activator:Stop()
 		main:FocusCameraOnPlayer(activator)
+
+		if activator.controllableUnit then
+			if not activator.controllableUnit:IsNull() then
+				if activator.controllableUnit:IsAlive() then
+					activator.controllableUnit:SetAbsOrigin(point) 
+					FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+					activator.controllableUnit:Stop()
+				end
+			end
+		end
+
 	end
 end
 
@@ -22,23 +33,46 @@ function TeleportHome(data)
 	local activator = data.activator
     activator:RespawnHero(false, false)
     main:FocusCameraOnPlayer(activator)
+
+	if activator.controllableUnit then
+		if not activator.controllableUnit:IsNull() then
+			if activator.controllableUnit:IsAlive() then
+				activator.controllableUnit:SetAbsOrigin(activator:GetAbsOrigin()) 
+				FindClearSpaceForUnit(activator.controllableUnit, activator:GetAbsOrigin(), false) 
+				activator.controllableUnit:Stop()
+			end
+		end
+	end
+
 end
 
 function TeleportTriggerDungJeepers(data)
 	--print("TeleportTriggerDungJeepers")
 	local activator = data.activator
 	local modifier = activator:FindModifierByName("modifier_quest_dungeon_jeepers") or nil
+	local point = Entities:FindByName( nil, "dungeon_jeepers_hero_spawner"):GetAbsOrigin()
 
 	if not modifier then
 		return nil
 	end
 
 	if modifier:GetStackCount() >= CHARGES_FOR_JEEPERS_DUNG  then
-		activator:SetAbsOrigin(Entities:FindByName( nil, "dungeon_jeepers_hero_spawner"):GetAbsOrigin()) 
+		activator:SetAbsOrigin(point) 
 		FindClearSpaceForUnit(activator, activator:GetAbsOrigin(), false) 
 		activator:Stop()
 		main:FocusCameraOnPlayer(activator)
 		modifier:SetStackCount(0)
+
+		if activator.controllableUnit then
+			if not activator.controllableUnit:IsNull() then
+				if activator.controllableUnit:IsAlive() then
+					activator.controllableUnit:SetAbsOrigin(point) 
+					FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+					activator.controllableUnit:Stop()
+				end
+			end
+		end
+
 	end	
 
 end
@@ -48,17 +82,29 @@ function TeleportTriggerDungCursed(data)
 	--print("TeleportTriggerDungCursed")
 	local activator = data.activator
 	local modifier = activator:FindModifierByName("modifier_quest_dungeon_cursed") or nil
+	local point = Entities:FindByName( nil, "dungeon_cursed_hero_spawner"):GetAbsOrigin()
 
 	if not modifier then
 		return nil
 	end
 
 	if modifier:GetStackCount() >= CHARGES_FOR_CURSED_DUNG  then
-		activator:SetAbsOrigin(Entities:FindByName( nil, "dungeon_cursed_hero_spawner"):GetAbsOrigin()) 
+		activator:SetAbsOrigin(point) 
 		FindClearSpaceForUnit(activator, activator:GetAbsOrigin(), false) 
 		activator:Stop()
 		main:FocusCameraOnPlayer(activator)
 		modifier:SetStackCount(0)
+
+		if activator.controllableUnit then
+			if not activator.controllableUnit:IsNull() then
+				if activator.controllableUnit:IsAlive() then
+					activator.controllableUnit:SetAbsOrigin(point) 
+					FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+					activator.controllableUnit:Stop()
+				end
+			end
+		end
+
 	end	
 end
 
@@ -85,6 +131,17 @@ function TeleportTriggerCellar(data)
 	FindClearSpaceForUnit(activator, point, false) 
 	activator:Stop()
 	main:FocusCameraOnPlayer(activator)
+
+	if activator.controllableUnit then
+		if not activator.controllableUnit:IsNull() then
+			if activator.controllableUnit:IsAlive() then
+				activator.controllableUnit:SetAbsOrigin(point) 
+				FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+				activator.controllableUnit:Stop()
+			end
+		end
+	end
+
 end
 
 
@@ -110,4 +167,15 @@ function TeleportTriggerFromCellar(data)
 	FindClearSpaceForUnit(activator, point, false) 
 	activator:Stop()
 	main:FocusCameraOnPlayer(activator)
+
+	if activator.controllableUnit then
+		if not activator.controllableUnit:IsNull() then
+			if activator.controllableUnit:IsAlive() then
+				activator.controllableUnit:SetAbsOrigin(point) 
+				FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+				activator.controllableUnit:Stop()
+			end
+		end
+	end
+
 end

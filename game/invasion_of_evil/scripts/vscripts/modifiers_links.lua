@@ -266,6 +266,11 @@ LinkLuaModifier("modifier_summoner_aesculapius", "modifiers/heroes/enchanter/sum
 LinkLuaModifier("modifier_summoner_aesculapius_buff", "modifiers/heroes/enchanter/summoner/modifier_summoner_aesculapius.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_summoner_mammock", "modifiers/heroes/enchanter/summoner/modifier_summoner_mammock.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_summoner_mammock_debuff", "modifiers/heroes/enchanter/summoner/modifier_summoner_mammock.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_natural_density", "modifiers/heroes/enchanter/summoner/modifier_summoner_natural_density.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_internal_power", "modifiers/heroes/enchanter/summoner/modifier_summoner_internal_power.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_internal_power_buff", "modifiers/heroes/enchanter/summoner/modifier_summoner_internal_power.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_deep_knowledge", "modifiers/heroes/enchanter/summoner/modifier_summoner_deep_knowledge.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_summoner_wide_swing", "modifiers/heroes/enchanter/summoner/modifier_summoner_wide_swing.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 -------------------------------------------------------------------

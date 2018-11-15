@@ -181,7 +181,7 @@
 	{
 		"BaseClass" 					"ability_datadriven"		
     	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
-	    "AbilityTextureName"            "abaddon_borrowed_time"
+	    "AbilityTextureName"            "custom_folder/BloodKnight"
 	    "MaxLevel"                      "1"		
 
 		// Casting

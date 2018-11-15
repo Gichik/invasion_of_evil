@@ -128,6 +128,13 @@ function item_heart_of_evil:CreateFinalBoss(hTarget)
     unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
 
     unit:EmitSound("Hero_Nightstalker.Darkness")
+ 	
+
+    Timers:CreateTimer(5, function()
+    	EmitGlobalSound("Invasion_of_evil.ToshiroMasuda_OrochimaruSentou")
+		return nil
+    end
+    ) 
 
 	GameRules:SetTimeOfDay( 0.75 )    
 	GameRules:SendCustomMessageToTeam("#enigma_message", DOTA_TEAM_GOODGUYS, 0, 0)

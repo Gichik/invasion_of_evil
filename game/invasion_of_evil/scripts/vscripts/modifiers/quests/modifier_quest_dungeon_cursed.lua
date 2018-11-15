@@ -31,7 +31,22 @@ end
 function modifier_quest_dungeon_cursed:OnDeath(data)
 	if IsServer() and self:GetParent() then
 		if data.unit:GetUnitName() == "npc_tree" then
-			if data.attacker == self:GetParent() then
+
+			local applyQuest = false
+
+			if data.attacker:IsRealHero() then
+				if data.attacker == self:GetParent() then
+					applyQuest = true
+				end
+			else
+				if data.attacker:GetOwner() then
+					if data.attacker:GetOwner() == self:GetParent() then
+						applyQuest = true
+					end
+				end
+			end 
+
+			if applyQuest then
 				if self:GetStackCount() < CHARGES_FOR_CURSED_DUNG then
 					EmitSoundOn("Hero_Undying.SoulRip.Cast", data.unit)
 					local parent = self:GetParent();
@@ -42,6 +57,7 @@ function modifier_quest_dungeon_cursed:OnDeath(data)
 					self:IncrementStackCount()
 				end
 			end
+
 		end
 	end
 end

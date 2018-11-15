@@ -34,7 +34,22 @@ function modifier_quest_ghostbusters:OnDeath(data)
 
 
 		if data.unit:GetUnitName():find("npc_start_boss_") then
-			if data.attacker == self.parent then
+
+			local applyQuest = false
+
+			if data.attacker:IsRealHero() then
+				if data.attacker == self.parent then
+					applyQuest = true
+				end
+			else
+				if data.attacker:GetOwner() then
+					if data.attacker:GetOwner() == self.parent then
+						applyQuest = true
+					end
+				end
+			end 
+
+			if applyQuest then
 				local accept = false
 				local bossNumber = data.unit:GetUnitName():sub(16)
 

@@ -4,17 +4,28 @@ if modifier_summoner_mammock == nil then
 end
 
 function modifier_summoner_mammock:IsHidden()
-	return true
-end
-
-function modifier_summoner_mammock:RemoveOnDeath()
-	return false
+    if self:GetCaster():IsRealHero() then
+        return false
+    else
+        return true
+    end
 end
 
 function modifier_summoner_mammock:GetTexture()
     return "tiny_grow"
 end
 
+function modifier_summoner_mammock:RemoveOnDeath()
+	return true
+end
+
+function modifier_summoner_mammock:IsPurgable()
+    return false
+end
+
+function modifier_summoner_mammock:IsPurgeException()
+    return false
+end
 
 function modifier_summoner_mammock:DeclareFunctions()
     local funcs = {
@@ -71,6 +82,15 @@ function modifier_summoner_mammock:GetAuraDuration()
     return 0.3
 end
 
+function modifier_summoner_mammock:OnCreated()
+    self:GetCaster().applyBuffs = true
+end
+
+
+function modifier_summoner_mammock:OnDestroy()
+    self:GetCaster().applyBuffs = false
+end
+
 --------------------------------------------------------------------------------
 
 modifier_summoner_mammock_debuff = class({})
@@ -83,8 +103,17 @@ function modifier_summoner_mammock_debuff:RemoveOnDeath()
     return true
 end
 
+function modifier_summoner_mammock_debuff:IsPurgable()
+    return false
+end
+
+function modifier_summoner_mammock_debuff:IsPurgeException()
+    return false
+end
+
 function modifier_summoner_mammock_debuff:OnCreated()
     if IsServer() then
     	self:GetParent():SetAggroTarget(self:GetCaster())
     end
 end
+

@@ -91,7 +91,7 @@ function modifier_alchemy:ApplyAlchemyBuff(combination)
 		end
 
 		if combination == "rrg" or combination == "rgr" or combination == "grr" then
-			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_evasion_buff", {duration = 180})
+			self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_alchemy_damage_buff", {duration = 180})
 			EmitSoundOn("DOTA_Item.SoulRing.Activate", self:GetCaster())
 			return nil
 		end

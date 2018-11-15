@@ -43,9 +43,10 @@ function CreateWaves()
 	--print("player count:  " .. PlayerResource:GetTeamPlayerCount())
 
 	GameRules:SendCustomMessageToTeam("#wave_start", DOTA_TEAM_GOODGUYS, 0, 0)
-	EmitGlobalSound("Invasion_of_evil.EpicFight1")
-	GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
-	
+	if ACTIVE_MUSIC then
+		EmitGlobalSound("Invasion_of_evil.EpicFight1")
+		GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
+	end
 	main:SetWaveState(true)
 
     Timers:CreateTimer(1, function()

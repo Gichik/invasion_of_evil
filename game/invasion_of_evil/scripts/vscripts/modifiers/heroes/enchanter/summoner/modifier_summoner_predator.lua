@@ -4,7 +4,11 @@ if modifier_summoner_predator == nil then
 end
 
 function modifier_summoner_predator:IsHidden()
-	return true
+    if self:GetCaster():IsRealHero() then
+        return false
+    else
+        return true
+    end
 end
 
 function modifier_summoner_predator:GetTexture()
@@ -12,7 +16,15 @@ function modifier_summoner_predator:GetTexture()
 end
 
 function modifier_summoner_predator:RemoveOnDeath()
-	return false
+	return true
+end
+
+function modifier_summoner_predator:IsPurgable()
+    return false
+end
+
+function modifier_summoner_predator:IsPurgeException()
+    return false
 end
 
 function modifier_summoner_predator:DeclareFunctions()
@@ -38,4 +50,11 @@ function modifier_summoner_predator:GetModifierPreAttack_BonusDamage()
 end
 
 
+function modifier_summoner_predator:OnCreated()
+    self:GetCaster().applyBuffs = true
+end
 
+
+function modifier_summoner_predator:OnDestroy()
+    self:GetCaster().applyBuffs = false
+end

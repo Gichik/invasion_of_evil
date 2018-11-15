@@ -79,15 +79,17 @@ function main:GameRulesStateChange(data)
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         
         --GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
-        EmitGlobalSound("Invasion_of_evil.Nocturnus")
-        
-        --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
-        GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian von Ziegler - Nocturnus</font>", 0, 0)
+        if ACTIVE_MUSIC then
+           EmitGlobalSound("Invasion_of_evil.AdrianVonZiegler_ReignOfTheDark")
+            --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
+            GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian Von Ziegler - Reign Of The Dark</font>", 0, 0)
+        end
         GameRules:SendCustomMessage("#start_game", 0, 0)        
 
         CreateInceptionWaves()        
         StartOwTimer()
-        StartHelpMessagesTimer()        
+        StartHelpMessagesTimer() 
+        StartMusicTimer()       
     end
 end
 
@@ -126,9 +128,9 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_blink")
                 --unit:AddItemByName("item_heart")
                 --unit:AddItemByName("item_note_alchemist_one")
-                unit:AddItemByName("item_heart_of_evil")
-                unit:AddItemByName("item_heart_of_evil")
-                unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_heart_of_evil")
             end
 
             if GetMapName() == "chapter_one_easy" then
@@ -986,6 +988,10 @@ function CreateInceptionWaves()
 
         if waveCount <= 0 then
             GameRules:SendCustomMessage("#start_necromancer_message_1", 0, 0)
+            if ACTIVE_MUSIC then
+                EmitGlobalSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
+                GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian Von Ziegler - Death Dance</font>", 0, 0)
+            end
             return nil
         end
         
@@ -999,14 +1005,45 @@ function main:OnChat( data )
 
     local player = PlayerResource:GetPlayer(data.playerid) 
     local text = data.text
-    if text == "-stopsound" then
-        --print("StopSound")
-        --EmitGlobalSound("Item.DropWorld")
-        --StopSoundEvent("Invasion_of_evil.Nocturnus",player)
-        --player:StopSound("Invasion_of_evil.Nocturnus")
-        --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
-        --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
+
+    if text == "-onmusic" then
+        ACTIVE_MUSIC = true
+        GameRules:SendCustomMessage("Music ON", 0, 0) 
     end
+
+    if text == "-offmusic" then
+        ACTIVE_MUSIC = false
+        GameRules:SendCustomMessage("Music OFF", 0, 0) 
+        self:StopAllMusic(player)
+    end
+
+    if text == "-stopmusic" then
+        print("-stopmusic")
+        --player:StopSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
+        --StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_DeathDance",player)
+        self:StopAllMusic(player)
+    end
+
+    --print("StopSound")
+    --EmitGlobalSound("Item.DropWorld")
+    --StopSoundEvent("Invasion_of_evil.Nocturnus",player)
+    --player:StopSound("Invasion_of_evil.Nocturnus")
+    --StopSoundEvent("Invasion_of_evil.ShadowHouse",MUSIC_SOURCE)
+    --StopSoundEvent("Invasion_of_evil.EpicFight1",MUSIC_SOURCE)
+
+end
+
+function main:StopAllMusic(hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_ReignOfTheDark",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_DeathDance",hPlayer)
+    StopSoundEvent("Invasion_of_evil.EpicFight1",hPlayer)
+
+    StopSoundEvent("Invasion_of_evil.Diablo2_Cave",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_BlackenedRoots",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_FraNordri",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_Einherjer",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_BoneTemple",hPlayer)
+    StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_PathToDarkness",hPlayer)                              
 end
 
 
@@ -1019,3 +1056,28 @@ function main:TestBosses()
 end
 
 
+function StartMusicTimer()
+    local musicID = 0
+    local musicTable = GetMusicByID(1)
+
+
+    Timers:CreateTimer(670, function()
+
+        if  WAVE_STATE == true then
+            return 180
+        end 
+
+        if musicID >= 9 then
+            musicID = 0
+        end
+
+        musicID = musicID + 1
+        musicTable = GetMusicByID(musicID)
+        if ACTIVE_MUSIC then
+            EmitGlobalSound("Invasion_of_evil." .. musicTable[1])
+            GameRules:SendCustomMessage(musicTable[3], 0, 0)  
+        end  
+        return musicTable[2]
+    end)
+
+end

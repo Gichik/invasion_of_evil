@@ -33,7 +33,7 @@ TIME_BEFORE_REMOVE_DROP = 20
 --PORTAL_OW_DURATION = 300    -- OTHERKIN_WORLD
 --PORTAL_REPEAT_TIME = 480
 PORTAL_REPEAT_TIME = 960
-ATTENTION_REPEAT_TIME = 419
+ATTENTION_REPEAT_TIME = 899
 LAST_OW_PORTAL_TIME = -480 -- чтобы первый открылся на 8й минуте, а остальные каждую 16ю.
 PORTAL_OW_THINK_COUNT = 10
 PORTAL_OW_CURRENT_THINK_NUMBER = 1
@@ -54,7 +54,9 @@ MUSIC_SOURCE = nil
 NUMBER_OF_PLAYER = 0
 HERO_OF_PLAYER = {nil,nil,nil}
 
+
 -------------------------------------------------------------------
+
 
 BOSSES_NAME = { 
         "lump_of_flame_big_boss",
@@ -171,3 +173,23 @@ function SetProphecyItemName(itemName)
     PROPHECY_ITEM = itemName
 end
 
+-------------------------------------------------------------------
+
+ACTIVE_MUSIC = true
+
+MUSIC = { 
+        {"Diablo2_Cave", 240, "<font color='#58ACFA'>Music: Matt Uelmen - Cave</font>"},
+        {"AdrianVonZiegler_BlackenedRoots", 240, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Blackened Roots</font>"},
+        {"AdrianVonZiegler_FraNordri", 250, "<font color='#58ACFA'>Music: Adrian Von Ziegler - FraNordri</font>"},
+        {"AdrianVonZiegler_Einherjer", 250, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Einherjer</font>"},
+        {"AdrianVonZiegler_BoneTemple", 180, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Bone Temple</font>"},
+        {"AdrianVonZiegler_PathToDarkness", 320, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Path To Darkness</font>"},
+        }
+
+--"Invasion_of_evil.ToshiroMasuda_OrochimaruSentou"
+
+function GetMusicByID(id)               
+    return MUSIC[id]        
+end
+
+-------------------------------------------------------------------

@@ -100,9 +100,9 @@ function AddPathAbilitiesToHero(data)
 
     if pathName == "summoner" then
         if abilityTier == 1 then
-            hHero:AddAbility("summoner_natural_density_dummy")
-            hHero:AddAbility("summoner_internal_power_dummy")
-            hHero:AddAbility("summoner_vampirism_dummy")
+            hHero:AddAbility("summoner_natural_density")
+            hHero:AddAbility("summoner_internal_power")
+            hHero:AddAbility("summoner_vampirism")
             hHero:AddAbility("summoner_sapience")
         end
         if abilityTier == 2 then
@@ -111,8 +111,9 @@ function AddPathAbilitiesToHero(data)
             hHero:AddAbility("summoner_aesculapius")
         end
         if abilityTier == 3 then
-            hHero:AddAbility("summoner_third_eye_dummy")
-            hHero:AddAbility("summoner_sacrifice")
+            --hHero:AddAbility("summoner_third_eye_dummy")
+            hHero:AddAbility("summoner_deep_knowledge")
+            hHero:AddAbility("summoner_synergy")
         end
     end
 

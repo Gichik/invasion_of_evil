@@ -229,3 +229,517 @@
         }
     }
 }
+
+
+"Invasion_of_evil.AdrianVonZiegler_ReignOfTheDark"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_ReignOfTheDark.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_DeathDance"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_DeathDance.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.Diablo2_Cave"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/Diablo2_Cave.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_BlackenedRoots"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_BlackenedRoots.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_FraNordri"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_FraNordri.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_Einherjer"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_Einherjer.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_BoneTemple"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_BoneTemple.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.AdrianVonZiegler_PathToDarkness"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/AdrianVonZiegler_PathToDarkness.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.300000"
+					}
+					"volume_max"
+					{
+							"value"         "1.300000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "80.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "80.000000"
+					}
+                }
+            }
+        }
+    }
+}
+
+"Invasion_of_evil.ToshiroMasuda_OrochimaruSentou"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/ToshiroMasuda_OrochimaruSentou.vsnd"
+                        }
+                    }
+					"volume_min"
+					{
+							"value"         "1.500000"
+					}
+					"volume_max"
+					{
+							"value"         "1.500000"
+					}
+					"pitch_min"
+					{
+							"value"         "0.950000"
+					}
+					"pitch_max"
+					{
+							"value"         "1.050000"
+					}
+					"chan_type"
+					{
+							"value"         "6"
+					}
+					"memory_type"
+					{
+							"value"         "0"
+					}
+					"soundlevel_min"
+					{
+							"value"         "100.000000"
+					}
+					"soundlevel_max"
+					{
+							"value"         "100.000000"
+					}
+                }
+            }
+        }
+    }
+}

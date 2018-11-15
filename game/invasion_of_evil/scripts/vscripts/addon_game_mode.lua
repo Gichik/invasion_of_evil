@@ -182,6 +182,11 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail_circle.vpcf", context ) -- vampire_sower_of_pain
 	PrecacheResource( "particle", "particles/econ/items/invoker/invoker_ti6/invoker_deafening_blast_ti6_debuff_echo_demo.vpcf", context ) -- vampire_sucking_life
 
+	PrecacheResource( "particle", "particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8_glyph.vpcf", context ) -- modifier_summoner_internal_power_buff
+	PrecacheResource( "particle", "particles/units/heroes/hero_tiny/tiny_craggy_cleave.vpcf", context ) -- modifier_summoner_wide_swing
+
+
+
 
 
 
@@ -197,7 +202,7 @@ function Activate()
 
 	if MapName == "test_map" then
 		print("----------------------------------------Test map Start----------------------------------------")	
-		GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
+		--GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
 	if MapName == "chapter_one_easy" or "chapter_one_normal" then

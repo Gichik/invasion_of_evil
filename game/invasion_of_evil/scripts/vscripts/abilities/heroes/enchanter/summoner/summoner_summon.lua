@@ -33,17 +33,17 @@ function SummonUnit(data)
 		   		unit:AddNewModifier(unit, data.ability, "modifier_summoner_mammock", {})
 		   	end
 
-		   	AdddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_natural_density_dummy"), unit)
-		   	AdddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_internal_power_dummy"), unit)
-		   	AdddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_vampirism_dummy"), unit)
-		   	AdddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_third_eye_dummy"), unit)
+		   	AddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_natural_density_dummy"), unit)
+		   	AddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_internal_power_dummy"), unit)
+		   	AddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_vampirism_dummy"), unit)
+		   	AddAbilityToSummonUnit(data.caster:FindAbilityByName("summoner_third_eye_dummy"), unit)
 
 		   	data.caster.controllableUnit = unit
 		end
 	end
 end
 
-function AdddAbilityToSummonUnit(ability,unit)
+function AddAbilityToSummonUnit(ability,unit)
    	if ability then
    		local abilityName = string.gsub(ability:GetAbilityName(),"_dummy","")
    		if ability:GetLevel() > 0 then

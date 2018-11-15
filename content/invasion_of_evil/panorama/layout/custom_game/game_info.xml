@@ -51,6 +51,11 @@
 			<Label id="InfoTextMarginCenter" text="#info_text_lore" />						
 		</Panel> 
 
+		<!--Шестой заголовок-->
+		<Label id="H6" class="Header" html="true" text="#info_head_console" />
+		<Panel id="Info6" class="InfoStringDown" >
+			<Label id="InfoTextMarginCenter" text="#info_text_console" />						
+		</Panel>
 
 	</Panel>		
 </root>

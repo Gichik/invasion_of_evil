@@ -3,20 +3,32 @@ if modifier_summoner_aesculapius == nil then
     modifier_summoner_aesculapius = class({})
 end
 
-function modifier_summoner_aesculapius:GetModifierAura()
-    return "modifier_summoner_aesculapius_buff"
-end
-
 function modifier_summoner_aesculapius:IsHidden()
-	return true
+    if self:GetCaster():IsRealHero() then
+        return false
+    else
+        return true
+    end
 end
 
 function modifier_summoner_aesculapius:RemoveOnDeath()
-	return false
+	return true
+end
+
+function modifier_summoner_aesculapius:IsPurgable()
+    return false
+end
+
+function modifier_summoner_aesculapius:IsPurgeException()
+    return false
 end
 
 function modifier_summoner_aesculapius:IsAura()
     return true
+end
+
+function modifier_summoner_aesculapius:GetModifierAura()
+    return "modifier_summoner_aesculapius_buff"
 end
 
 function modifier_summoner_aesculapius:GetAuraRadius()
@@ -24,7 +36,7 @@ function modifier_summoner_aesculapius:GetAuraRadius()
 end
 
 function modifier_summoner_aesculapius:GetTexture()
-    return "puck_illusory_orb"
+    return "puck_waning_rift"
 end
 
 --function modifier_summoner_aesculapius:GetEffectName()
@@ -43,12 +55,13 @@ function modifier_summoner_aesculapius:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
 end
 
+--[[
 function modifier_summoner_aesculapius:GetAuraEntityReject(target)
     if (target == self:GetCaster()) then
         return true
     end
     return false
-end
+end]]
 
 function modifier_summoner_aesculapius:GetAuraDuration()
     return self.auraDuration
@@ -57,8 +70,12 @@ end
 function modifier_summoner_aesculapius:OnCreated()
     self.auraRadius = self:GetAbility():GetSpecialValueFor("aura_radius") or 500
     self.auraDuration = 0.5
+    self:GetCaster().applyBuffs = true
 end
 
+function modifier_summoner_aesculapius:OnDestroy()
+    self:GetCaster().applyBuffs = false
+end
 
 --------------------------------------------------------------------------------
 
@@ -100,4 +117,12 @@ end
 
 function modifier_summoner_aesculapius_buff:RemoveOnDeath()
     return true
+end
+
+function modifier_summoner_aesculapius_buff:IsPurgable()
+    return false
+end
+
+function modifier_summoner_aesculapius_buff:IsPurgeException()
+    return false
 end
