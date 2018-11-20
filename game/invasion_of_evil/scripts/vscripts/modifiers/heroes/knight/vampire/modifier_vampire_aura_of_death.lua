@@ -23,9 +23,9 @@ function modifier_vampire_aura_of_death:GetTexture()
     return "shadow_demon_demonic_purge"
 end
 
---function modifier_vampire_aura_of_death:GetEffectName()
---    return "particles/units/heroes/hero_grimstroke/grimstroke_ink_swell_buff_ground_smoke.vpcf"
---end
+function modifier_vampire_aura_of_death:GetEffectName()
+    return "particles/units/heroes/hero_night_stalker/nightstalker_crippling_fear_aura.vpcf"
+end
 
 function modifier_vampire_aura_of_death:DeclareFunctions()
     local funcs = {

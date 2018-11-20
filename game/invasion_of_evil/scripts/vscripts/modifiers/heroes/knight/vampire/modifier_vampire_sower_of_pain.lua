@@ -32,7 +32,7 @@ function modifier_vampire_sower_of_pain:GetAuraRadius()
 end
 
 function modifier_vampire_sower_of_pain:GetTexture()
-    return "lich_dark_ritual"
+    return "custom_folder/sower_of_pain"
 end
 
 function modifier_vampire_sower_of_pain:GetEffectName()
@@ -73,19 +73,32 @@ end
 modifier_vampire_sower_of_pain_debuff = class({})
 
 function modifier_vampire_sower_of_pain_debuff:DeclareFunctions()
-    return { MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS }
+    return { 
+        MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
+        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+     }
 end
 
 function modifier_vampire_sower_of_pain_debuff:GetModifierExtraHealthBonus()
-    if self:GetParent() then
-	   return -1*self:GetParent():GetMaxHealth()*self:GetAbility():GetSpecialValueFor("reduce_health_proc")/100
-    else
-        return 0
+    if self:GetParent() and self:GetCaster() then
+        if self:GetParent():GetTeamNumber() ~= self:GetCaster():GetTeamNumber() then
+            return -1*self:GetParent():GetMaxHealth()*self:GetAbility():GetSpecialValueFor("reduce_health_proc")/100
+        end
     end
+    return 0
+end
+
+function modifier_vampire_sower_of_pain_debuff:GetModifierPhysicalArmorBonus()    
+    if self:GetParent() and self:GetCaster() then
+        if self:GetParent():GetTeamNumber() == self:GetCaster():GetTeamNumber() then
+            return -1*self:GetAbility():GetSpecialValueFor("reduce_armor")
+        end
+    end
+    return 0
 end
 
 function modifier_vampire_sower_of_pain_debuff:GetTexture()
-    return "lich_dark_ritual"
+    return "custom_folder/sower_of_pain"
 end
 
 function modifier_vampire_sower_of_pain_debuff:IsHidden()

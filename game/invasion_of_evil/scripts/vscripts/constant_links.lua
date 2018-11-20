@@ -32,9 +32,9 @@ TIME_BEFORE_REMOVE_DROP = 20
 
 --PORTAL_OW_DURATION = 300    -- OTHERKIN_WORLD
 --PORTAL_REPEAT_TIME = 480
-PORTAL_REPEAT_TIME = 960
-ATTENTION_REPEAT_TIME = 899
-LAST_OW_PORTAL_TIME = -480 -- чтобы первый открылся на 8й минуте, а остальные каждую 16ю.
+PORTAL_REPEAT_TIME = 600
+ATTENTION_REPEAT_TIME = 539
+LAST_OW_PORTAL_TIME = -120 -- чтобы первый открылся на 8й минуте, а остальные каждую 10ю.
 PORTAL_OW_THINK_COUNT = 10
 PORTAL_OW_CURRENT_THINK_NUMBER = 1
 WAVE_DURATION = 120
@@ -178,11 +178,11 @@ end
 ACTIVE_MUSIC = true
 
 MUSIC = { 
-        {"Diablo2_Cave", 240, "<font color='#58ACFA'>Music: Matt Uelmen - Cave</font>"},
-        {"AdrianVonZiegler_BlackenedRoots", 240, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Blackened Roots</font>"},
-        {"AdrianVonZiegler_FraNordri", 250, "<font color='#58ACFA'>Music: Adrian Von Ziegler - FraNordri</font>"},
-        {"AdrianVonZiegler_Einherjer", 250, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Einherjer</font>"},
-        {"AdrianVonZiegler_BoneTemple", 180, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Bone Temple</font>"},
+        {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Fire) - Shadow House</font>"},
+        {"Diablo2_Cave", 320, "<font color='#58ACFA'>Music: Matt Uelmen - Cave</font>"},
+        {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Flame) - Shadow House</font>"},
+        {"AdrianVonZiegler_FraNordri", 320, "<font color='#58ACFA'>Music: Adrian Von Ziegler - FraNordri</font>"},
+        {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Fire) - Shadow House</font>"},
         {"AdrianVonZiegler_PathToDarkness", 320, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Path To Darkness</font>"},
         }
 
@@ -190,6 +190,10 @@ MUSIC = {
 
 function GetMusicByID(id)               
     return MUSIC[id]        
+end
+
+function GetMusicCount()               
+    return #MUSIC      
 end
 
 -------------------------------------------------------------------

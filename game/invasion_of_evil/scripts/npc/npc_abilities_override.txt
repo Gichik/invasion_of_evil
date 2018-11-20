@@ -13,6 +13,24 @@
 	// items
 	//=================================================================================================================	
 
+	"item_crown"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+
+	"item_recipe_holy_locket"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+
+	"item_ring_of_tarrasque"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+
 	"item_recipe_aeon_disk"
 	{
 		"ItemPurchasable"				"0"

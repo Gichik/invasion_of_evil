@@ -909,7 +909,7 @@ function main:BerserkRageReduceDmg(hHero,damage)
         local health = hHero:GetHealth() - damage
         if health < thresholdPerc*maxHealth then
             hHero:AddNewModifier(hHero, ability, "modifier_berserk_rage", {duration = ability:GetSpecialValueFor("duration")})
-            ability:StartCooldown(ability:GetCooldown(1))
+            ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
             damage = 0
         end
     end
@@ -1067,7 +1067,7 @@ function StartMusicTimer()
             return 180
         end 
 
-        if musicID >= 9 then
+        if musicID >= GetMusicCount() then
             musicID = 0
         end
 

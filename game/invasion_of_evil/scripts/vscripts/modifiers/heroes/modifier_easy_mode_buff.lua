@@ -18,15 +18,19 @@ end
 function modifier_easy_mode_buff:DeclareFunctions()
     local funcs = {
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
-        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
+        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,       
     }
     return funcs
 end
 
-function modifier_easy_mode_buff:GetModifierMagicalResistanceBonus()	
-	return 35
+function modifier_easy_mode_buff:GetModifierMagicalResistanceBonus()    
+   return 35
 end
 
+
 function modifier_easy_mode_buff:GetModifierPhysicalArmorBonus()	
-	return 20
+	return 18
 end
+
+
+

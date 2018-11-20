@@ -129,7 +129,7 @@ function Precache( context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_enigma", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_witchdoctor", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_bane", context )
-
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_night_stalker", context )
 
 
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )
@@ -184,6 +184,8 @@ function Precache( context )
 
 	PrecacheResource( "particle", "particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8_glyph.vpcf", context ) -- modifier_summoner_internal_power_buff
 	PrecacheResource( "particle", "particles/units/heroes/hero_tiny/tiny_craggy_cleave.vpcf", context ) -- modifier_summoner_wide_swing
+	PrecacheResource( "particle", "particles/units/heroes/hero_night_stalker/nightstalker_crippling_fear_aura.vpcf", context ) -- vampire
+
 
 
 

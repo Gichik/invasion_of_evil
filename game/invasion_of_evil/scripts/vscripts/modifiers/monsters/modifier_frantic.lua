@@ -23,7 +23,7 @@ function modifier_frantic:DeclareFunctions()
     local funcs = {
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
-        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
+        MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE,
     }
     return funcs
 end
@@ -36,14 +36,14 @@ function modifier_frantic:GetModifierMagicalResistanceBonus()
 	return self:GetStackCount()*self.magicResistBonus or 0
 end
 
-function modifier_frantic:GetModifierPhysicalArmorBonus()	
+function modifier_frantic:GetModifierIncomingPhysicalDamage_Percentage()		
 	return self:GetStackCount()*self.physArmorBonus or 0
 end
 
 function modifier_frantic:OnCreated()
 	self.attackSpeedBonus = 20
-	self.magicResistBonus = 15
-	self.physArmorBonus = 20
+	self.magicResistBonus = 9
+	self.physArmorBonus = -9
 	self.thresholdPerc = 10 
 
 	if IsServer() then
