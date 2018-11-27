@@ -100,7 +100,9 @@ function item_heart_of_evil:OnSpellStart()
 					if modifier:GetStackCount() >= HEART_FOR_END then
 						hTarget:RemoveModifierByName("modifier_heart_evil_progress")
 						hTarget:AddNewModifier(hTarget, self, "modifier_signal_animation", {duration = 2})
-						GameRules:SendCustomMessageToTeam("#end_necromancer_message", DOTA_TEAM_GOODGUYS, 0, 0)
+						
+						CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#end_necromancer_message"})
+						--GameRules:SendCustomMessageToTeam("#end_necromancer_message", DOTA_TEAM_GOODGUYS, 0, 0)
 					    Timers:CreateTimer(2.3, function()
 					    	self:CreateFinalBoss(hTarget)
 							return nil
@@ -137,7 +139,8 @@ function item_heart_of_evil:CreateFinalBoss(hTarget)
     ) 
 
 	GameRules:SetTimeOfDay( 0.75 )    
-	GameRules:SendCustomMessageToTeam("#enigma_message", DOTA_TEAM_GOODGUYS, 0, 0)
+	CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#enigma_message_name", messageText = "#enigma_message"})
+	--GameRules:SendCustomMessageToTeam("#enigma_message", DOTA_TEAM_GOODGUYS, 0, 0)
    	--GameRules:GetGameModeEntity():SetBuybackEnabled( false )
    	
     Timers:CreateTimer(240, function()

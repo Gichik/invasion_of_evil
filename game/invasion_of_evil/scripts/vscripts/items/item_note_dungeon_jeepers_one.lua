@@ -3,61 +3,26 @@ if item_note_dungeon_jeepers_one == nil then
 	item_note_dungeon_jeepers_one = class({})
 end
 
-
-function item_note_dungeon_jeepers_one:CastFilterResultTarget(hTarget)
-	--print("Error")
-	if IsServer() then
-
-		if hTarget == self:GetCaster() then
-			return UF_FAIL_CUSTOM
-		end
-
-		if hTarget:IsRealHero() then
-			return UF_FAIL_CUSTOM
-		end
-
-		if hTarget and hTarget:GetUnitName() ~= "npc_vern_base"  then
-			return UF_FAIL_CUSTOM
-		end			
-
-		return UF_SUCCESS
-	end
-end
-
-
-function item_note_dungeon_jeepers_one:GetCustomCastErrorTarget(hTarget)
-	--print("Error")
-	if IsServer() then
-
-		if hTarget == self:GetCaster() then
-			return "#dota_hud_system_error_bad_target"
-		end
-
-		if hTarget:IsRealHero() then
-			return "#dota_hud_system_error_bad_target"
-		end
-
-		if hTarget and hTarget:GetUnitName() ~= "npc_vern_base"  then
-			return "#dota_hud_system_error_bad_target"
-		end	
-
-		return UF_SUCCESS
-	end
-end
-
 function item_note_dungeon_jeepers_one:OnSpellStart()
 	if IsServer() then
 
-	--print("OnSpellStart")
+		--print("ChurchNoteOnSpellStart")
 
 		local hCaster = self:GetCaster()
-		local hTarget = self:GetCursorTarget()
 		local hItem = self
 
-		hTarget:EmitSound("Item.TomeOfKnowledge")
-		if hTarget:GetUnitName() == "npc_vern_base" then
-			hCaster:RemoveItem(hItem)
-			main:CreateDrop("item_note_dungeon_jeepers_two", hCaster:GetAbsOrigin())
+		if not hCaster.church_step and not hCaster:HasModifier("modifier_quest_dungeon_jeepers") then
+			hCaster.church_step = 1
+			hCaster:EmitSound("Item.TomeOfKnowledge")
+			CustomGameEventManager:Send_ServerToPlayer(
+				hCaster:GetPlayerOwner(),
+				"QuestMsgPanel_create_new_message",
+				{messageName = "#note_church_dungeon", messageText = "#note_dungeon_church_one_Description", quest = "church", questClose = false}
+			)
+		else
+			main:CreateDrop("item_note_dungeon_jeepers_one", hCaster:GetAbsOrigin())
 		end
+
+		hCaster:RemoveItem(hItem)
 	end
 end

@@ -23,7 +23,8 @@ function StartOwTimer()
 
 		if repeatTime >= ATTENTION_REPEAT_TIME then
 			--print("CreateWaves")
-			GameRules:SendCustomMessageToTeam("#attention_time", DOTA_TEAM_GOODGUYS, 0, 0)
+			--GameRules:SendCustomMessageToTeam("#attention_time", DOTA_TEAM_GOODGUYS, 0, 0)
+			CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#attention_time"})
 			EmitGlobalSound("Tutorial.Quest.complete_01")
 		end
 
@@ -42,7 +43,8 @@ function CreateWaves()
 	WAVE_STEP = 5 - PlayerResource:GetTeamPlayerCount()
 	--print("player count:  " .. PlayerResource:GetTeamPlayerCount())
 
-	GameRules:SendCustomMessageToTeam("#wave_start", DOTA_TEAM_GOODGUYS, 0, 0)
+	CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#wave_start"})
+	--GameRules:SendCustomMessageToTeam("#wave_start", DOTA_TEAM_GOODGUYS, 0, 0)
 	if ACTIVE_MUSIC then
 		EmitGlobalSound("Invasion_of_evil.EpicFight1")
 		GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Daniel Pemberton - (ost)King Arthur: Legend of the Sword</font>", 0, 0)
@@ -68,7 +70,8 @@ function CreateWaves()
 
       	if waveCount == 0 then
       		waveCount = -1
-      		GameRules:SendCustomMessageToTeam("#wave_end", DOTA_TEAM_GOODGUYS, 0, 0)
+      		CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#wave_end"})
+      		--GameRules:SendCustomMessageToTeam("#wave_end", DOTA_TEAM_GOODGUYS, 0, 0)
       		return BREAK_AFTER_WAVE
       	end
 
@@ -158,7 +161,8 @@ end
 
 function DestroyPortal()
 	--print("DestroyPortal")
-	GameRules:SendCustomMessageToTeam("#teleport_end", DOTA_TEAM_GOODGUYS, 0, 0)
+	CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#teleport_end"})
+	--GameRules:SendCustomMessageToTeam("#teleport_end", DOTA_TEAM_GOODGUYS, 0, 0)
 	Timers:CreateTimer(15, function()
     	
 		main:SetPortalOwExist(false)
@@ -194,10 +198,13 @@ function DestroyPortal()
 		--возможно понадобиться, если нужно будет точнее настраивать время
 		MINIONS_LEVEL = MINIONS_LEVEL + 3
 		--LAST_OW_PORTAL_TIME = math.floor(GameRules:GetDOTATime(false,false)) - 120
-		GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
-
-		if MINIONS_LEVEL <= 5 then
-			GameRules:SendCustomMessage("#help_messages_11", 0, 0)
+		--LAST_OW_PORTAL_TIME = LAST_OW_PORTAL_TIME + 120
+		--GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
+		CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#teleport_wait"})
+		if MINIONS_LEVEL <= 4 then
+			LAST_OW_PORTAL_TIME = LAST_OW_PORTAL_TIME + 120
+			--GameRules:SendCustomMessage("#help_messages_11", 0, 0)
+			CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#help_messages_name", messageText = "#help_messages_11"})
 			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cursed_tree_spawner_5"):GetAbsOrigin(), 300, 60, false)
     		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cemetery_spawner_5"):GetAbsOrigin(), 300, 60, false)
     		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "church_spawner_5"):GetAbsOrigin(), 300, 60, false)

@@ -4,6 +4,7 @@ end
 
 --npc_spawner_bush_1
 --npc_spawner_alchemist_1
+--CustomGameEventManager
 
 function main:InitGameMode()
    --print( "InitGameMode" )
@@ -43,14 +44,18 @@ function main:InitGameMode()
     ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
     ListenToGameEvent( "player_chat", Dynamic_Wrap( main, "OnChat" ), self )
 
+    CustomGameEventManager:RegisterListener( "quest_cursed_activate", Dynamic_Wrap( main, "OnQuestCursedActivate" ))
+    CustomGameEventManager:RegisterListener( "quest_church_activate", Dynamic_Wrap( main, "OnQuestChurchActivate" ))
+    CustomGameEventManager:RegisterListener( "quest_alchemy_activate", Dynamic_Wrap( main, "OnQuestAlchemyActivate" ))
+
+
     PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
     SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
 
-   
+    AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin(), 2000, -1, false)
     --self:TestBosses()
     self:SpanwMoobs()
 end
-
 
 function main:SetPortalOwExist(flag)
     PORTAL_OW_EXIST = flag
@@ -76,16 +81,16 @@ end
 
 function main:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
+
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        
         --GameRules:SendCustomMessageToTeam("#start_necromancer_message_2", DOTA_TEAM_GOODGUYS, 0, 0)
         if ACTIVE_MUSIC then
            EmitGlobalSound("Invasion_of_evil.AdrianVonZiegler_ReignOfTheDark")
             --GameRules:SendCustomMessage("<font color='#58ACFA'>Luka - Shadow House(skyrim mods)</font>", 0, 0)
             GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian Von Ziegler - Reign Of The Dark</font>", 0, 0)
         end
-        GameRules:SendCustomMessage("#start_game", 0, 0)        
-
+        --GameRules:SendCustomMessage("#start_game", 0, 0)        
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_messages_name", messageText = "#start_game"})
         CreateInceptionWaves()        
         StartOwTimer()
         StartHelpMessagesTimer() 
@@ -231,7 +236,8 @@ function main:OnEntityKilled(data)
     if killedEntity:IsCreature()  then
 
         if killedEntity:GetUnitName() == "npc_necromant_base" then
-            GameRules:SendCustomMessageToTeam("#necromancer_die", DOTA_TEAM_GOODGUYS, 0, 0)
+            --GameRules:SendCustomMessageToTeam("#necromancer_die", DOTA_TEAM_GOODGUYS, 0, 0)
+            CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "", messageText = "#necromancer_die"})
             GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
         end
 
@@ -239,7 +245,8 @@ function main:OnEntityKilled(data)
 
 
             if killedEntity:GetUnitName() == "final_boss" then
-                GameRules:SendCustomMessageToTeam("#final_boss_die", DOTA_TEAM_GOODGUYS, 0, 0)
+                --GameRules:SendCustomMessageToTeam("#final_boss_die", DOTA_TEAM_GOODGUYS, 0, 0)
+                CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "", messageText = "#final_boss_die"})
                 GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
             end
 
@@ -339,7 +346,8 @@ function main:OnEntityKilled(data)
             
                 self:SetBossOwStatus(false)
 
-                GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
+                --GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
+                CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#teleport_back"})
                 Timers:CreateTimer(15, function()
                     self:ApplyBackTeleport() 
                     return nil
@@ -482,8 +490,10 @@ function main:SpanwMoobs()
     end
 
     for i = 6, 15 do
-        point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
-        self:RespawnEnvironmentUnits("npc_tree", point, false, 1, nil)
+        if i ~= 12 and i ~= 13 then
+            point = Entities:FindByName( nil, "cursed_tree_spawner_" .. i ):GetAbsOrigin()
+            self:RespawnEnvironmentUnits("npc_tree", point, false, 1, nil)
+        end
     end
 
     for i = 1, 15 do
@@ -774,6 +784,12 @@ function main:GiveNewHero(oldHero)
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
 
+        CustomGameEventManager:Send_ServerToPlayer(
+            newHero:GetPlayerOwner(),
+            "QuestMsgPanel_close",
+            {}
+        )       
+
     end
 end
 
@@ -950,19 +966,21 @@ function StartHelpMessagesTimer()
 
     Timers:CreateTimer(20, function()
         helpMessageNumber = helpMessageNumber + 1
-        if helpMessageNumber <= 7 then
-            GameRules:SendCustomMessage("#help_messages_" .. helpMessageNumber, 0, 0)
-            return 16
+        if helpMessageNumber <= 9 then
+            --GameRules:SendCustomMessage("#help_messages_" .. helpMessageNumber, 0, 0)
+            CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#help_messages_name", messageText = "#help_messages_" .. helpMessageNumber})
+            return 11
         end
 
         return nil
     end
     )   
 
-    Timers:CreateTimer(WAVE_DURATION + 10, function()
-        GameRules:SendCustomMessage("#help_messages_10", 0, 0)
-        return nil 
-    end)
+    --Timers:CreateTimer(WAVE_DURATION + 5, function()
+    --    CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#help_messages_name", messageText = "#help_messages_10"})
+        --GameRules:SendCustomMessage("#help_messages_10", 0, 0)
+    --    return nil 
+    -- end)
 
 end
 
@@ -987,7 +1005,8 @@ function CreateInceptionWaves()
         end
 
         if waveCount <= 0 then
-            GameRules:SendCustomMessage("#start_necromancer_message_1", 0, 0)
+            --GameRules:SendCustomMessage("#start_necromancer_message_1", 0, 0)
+            CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#start_necromancer_message_1"})
             if ACTIVE_MUSIC then
                 EmitGlobalSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
                 GameRules:SendCustomMessage("<font color='#58ACFA'>Music: Adrian Von Ziegler - Death Dance</font>", 0, 0)
@@ -1022,6 +1041,21 @@ function main:OnChat( data )
         --player:StopSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
         --StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_DeathDance",player)
         self:StopAllMusic(player)
+    end
+
+    if text == "-newMessage" then
+        print("-newMessage")
+        --player:StopSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
+        --StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_DeathDance",player)
+        --CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#start_necromancer_message_1"})
+    end
+
+
+    if text == "-removeMessage" then
+        print("-removeMessage")
+        --player:StopSound("Invasion_of_evil.AdrianVonZiegler_DeathDance")
+        --StopSoundEvent("Invasion_of_evil.AdrianVonZiegler_DeathDance",player)
+        --CustomGameEventManager:Send_ServerToAllClients("quests_remove_message", {text = "hello"})
     end
 
     --print("StopSound")
@@ -1080,4 +1114,279 @@ function StartMusicTimer()
         return musicTable[2]
     end)
 
+end
+
+
+function main:OnQuestCursedActivate(data)
+    --print("OnQuestCursedActivate")
+    --print(data.PlayerID)
+
+    local hPlayer = PlayerResource:GetPlayer(data.PlayerID)
+    if hPlayer then
+        local hHero = hPlayer:GetAssignedHero()
+        if hHero and hHero.cursed_step then
+
+            ------------------------------------------------------------------------------------
+            if hHero.cursed_step == 1 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_vern_base" then
+                            hHero.cursed_step = 2
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_cursed_dungeon", messageText = "#note_dungeon_cursed_two_Description", quest = "cursed", questClose = false}
+                            ) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_cursed_dungeon", messageText = "#note_dungeon_vern_Description", quest = "cursed", questClose = false}
+                ) 
+                return nil            
+            end 
+
+            ------------------------------------------------------------------------------------
+            if hHero.cursed_step == 2 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_necromant_base" then
+                            hHero.cursed_step = 3
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_cursed_dungeon", messageText = "#note_dungeon_cursed_three_Description", quest = "cursed", questClose = true}
+                            )
+                            hHero:AddNewModifier(hHero, nil, "modifier_quest_dungeon_cursed", {}) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_cursed_dungeon", messageText = "#note_dungeon_necromant_Description", quest = "cursed", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+        end
+    end
+end
+
+
+
+function main:OnQuestChurchActivate(data)
+
+    local hPlayer = PlayerResource:GetPlayer(data.PlayerID)
+    if hPlayer then
+        local hHero = hPlayer:GetAssignedHero()
+        if hHero and hHero.church_step then
+
+            ------------------------------------------------------------------------------------
+            if hHero.church_step == 1 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_vern_base" then
+                            hHero.church_step = 2
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_church_dungeon", messageText = "#note_dungeon_church_two_Description", quest = "church", questClose = false}
+                            ) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_church_dungeon", messageText = "#note_dungeon_vern_Description", quest = "church", questClose = false}
+                ) 
+                return nil            
+            end 
+
+            ------------------------------------------------------------------------------------
+            if hHero.church_step == 2 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_necromant_base" then
+                            hHero.church_step = 3
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_church_dungeon", messageText = "#note_dungeon_church_three_Description", quest = "church", questClose = true}
+                            )
+                            hHero:AddNewModifier(hHero, nil, "modifier_quest_dungeon_jeepers", {}) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_church_dungeon", messageText = "#note_dungeon_necromant_Description", quest = "church", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+        end
+    end
+end
+
+
+
+function main:OnQuestAlchemyActivate(data)
+
+    local hPlayer = PlayerResource:GetPlayer(data.PlayerID)
+    if hPlayer then
+        local hHero = hPlayer:GetAssignedHero()
+        if hHero and hHero.alchemy_step then
+
+            ------------------------------------------------------------------------------------
+            if hHero.alchemy_step == 1 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_vern_base" then
+                            hHero.alchemy_step = 2
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_two_Description", quest = "alchemy", questClose = false}
+                            ) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_alchemy_quest", messageText = "#note_dungeon_vern_Description", quest = "alchemy", questClose = false}
+                ) 
+                return nil            
+            end 
+
+            ------------------------------------------------------------------------------------
+            if hHero.alchemy_step == 2 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_alchemist_tombstone" then
+                            hHero.alchemy_step = 3
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_three_Description", quest = "alchemy", questClose = false}
+                            )
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_next_one_Description", quest = "alchemy", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+            if hHero.alchemy_step == 3 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_alchemist_table" then
+                            hHero.alchemy_step = 4
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_fourth_Description", quest = "alchemy", questClose = false}
+                            )
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_next_two_Description", quest = "alchemy", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+            if hHero.alchemy_step == 4 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_alchemist_book" then
+                            hHero.alchemy_step = 5
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_fifth_Description", quest = "alchemy", questClose = true}
+                            )
+                            hHero:AddNewModifier(hHero, nil, "modifier_alchemy", {}) 
+
+                            local point = Entities:FindByName( nil, "npc_spawner_alchemist_3" ):GetAbsOrigin()
+                            local unit = CreateUnitByName("npc_alchemist_ghost", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+                            unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
+                            unit:AddNewModifier(unit, nil, "modifier_npc_invulnerable", {})
+                            unit:AddNewModifier(unit, nil, "modifier_kill", {duration = 15})
+                            unit:SetForwardVector(Vector(1,-1,0))
+
+
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_alchemy_quest", messageText = "#note_alchemy_next_three_Description", quest = "alchemy", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+
+        end
+    end
 end

@@ -1,0 +1,52 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/quests/quests.css" />
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/quests/quests.js" />
+	</scripts>
+
+	<Panel class="RootPanel">
+		<Panel id="MessagePanel" class="MessagePanel">
+			<Label id="MessagePanelName" text=""/>
+			<Label id="MessagePanelText" text=""/>			
+		</Panel>
+
+		<Panel id="QuestMsgPanel" class="QuestMsgPanel">
+			<Panel id="QuestMsgPanelLeft" class="QuestMsgPanelLeft">
+				<ToggleButton id="QuestButton_1" onactivate="QuestCursedActivate()">
+					<Label id="QuestButtonText_1" text="Press to Activate"/>
+				</ToggleButton>
+				<ToggleButton id="QuestButton_2" onactivate="QuestChurchActivate()">
+					<Label id="QuestButtonText_1" text="Press to Activate"/>
+				</ToggleButton>
+				<ToggleButton id="QuestButton_3" onactivate="QuestAlchemyActivate()">
+					<Label id="QuestButtonText_1" text="Press to Activate"/>
+				</ToggleButton>											
+			</Panel>
+
+			<Panel id="QuestMsgPanelRight" class="QuestMsgPanelRight">
+				<Label id="QuestMsgPanelName" text="#fifth_alchemist_note"/>
+				<Label id="QuestMsgPanelText" text="#fifth_alchemist_note_Description"/>
+				<ToggleButton id="QuestMsgButtonClose" text="Close" onactivate="OnCloseQuestMsgPanelRight()"/>	
+			</Panel>
+		</Panel>
+	</Panel>
+
+</root>
+
+<!-- 
+		<Image id="ImageQuestPanel" src="file://{images}/custom_game/quests/invisibleIMG.png" />
+		<Label id="MessagePanelName" text=""/>
+		<Label id="MessagePanelText" text=""/>
+
+
+		<Label id="QuestMsgPanelName" text="Quest"/>
+		<Label id="QuestMsgPanelText" text="text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text"/>	
+
+			<Label id="QuestMsgPanelName" text="#fifth_alchemist_note"/>
+			<Label id="QuestMsgPanelText" text="#fifth_alchemist_note_Description"/>
+
+
+-->

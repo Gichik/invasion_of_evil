@@ -403,6 +403,7 @@
 		"ItemPurchasable"				"0" 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1" 
+		"ItemCastOnPickup"				"1"		
 	}
 
 	"item_note_dungeon_jeepers_two"
@@ -502,6 +503,7 @@
 		"ItemPurchasable"				"0" 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1" 
+		"ItemCastOnPickup"				"1"		
 	}
 
 	"item_note_dungeon_cursed_two"
@@ -603,6 +605,7 @@
 		"ItemPurchasable"				"0" 
 		"ItemSellable"					"1" 
 		"ItemKillable"					"1" 
+		"ItemCastOnPickup"				"1"			
 	}
 
 	"item_note_alchemist_two"
