@@ -33,7 +33,7 @@ function modifier_quest_ghostbusters:OnDeath(data)
 		self.parent = self:GetParent()
 
 
-		if data.unit:GetUnitName():find("npc_start_boss_") then
+		if data.unit:GetUnitName():find("npc_start_ghost") then
 
 			local applyQuest = false
 

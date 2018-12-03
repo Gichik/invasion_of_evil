@@ -34,7 +34,7 @@ end
 
 function modifier_exile_highlander:OnDeath(data)
 	if IsServer() and self:GetParent() then
-		if data.unit:GetUnitName() == "npc_mini_boss" then
+		if data.unit:GetUnitName():find("boss") then
 			if data.attacker == self:GetParent() then
 				if self:GetStackCount() < self:GetAbility():GetSpecialValueFor("max_stacks") then
 					EmitSoundOn("Hero_Undying.SoulRip.Cast", data.unit)

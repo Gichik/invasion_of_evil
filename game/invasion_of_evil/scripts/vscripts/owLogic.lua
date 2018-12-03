@@ -40,7 +40,7 @@ function CreateWaves()
 	local waveCount = WAVE_DURATION
 	local unit = nil
 
-	WAVE_STEP = 5 - PlayerResource:GetTeamPlayerCount()
+	WAVE_STEP = 8 - PlayerResource:GetTeamPlayerCount()
 	--print("player count:  " .. PlayerResource:GetTeamPlayerCount())
 
 	CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#wave_start"})

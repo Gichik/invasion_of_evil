@@ -53,8 +53,8 @@ function modifier_frantic:OnCreated()
 end
 
 function modifier_frantic:OnIntervalThink()
-	local stack = self:GetParent():GetMaxHealth() - self:GetParent():GetHealth()
-	stack = (stack*self.thresholdPerc)/self:GetParent():GetMaxHealth()
+	local stack = self:GetParent():GetMaxHealth()*self.thresholdPerc/100
+	stack = (self:GetParent():GetMaxHealth() - self:GetParent():GetHealth())/stack
 	self:SetStackCount(stack)
 end
 

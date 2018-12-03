@@ -73,7 +73,7 @@ end
 function echoes_victims:CreateHands(vLocation,time)
     Timers:CreateTimer(time, function()
 		if self:GetCaster() then
-			StartSoundEventFromPosition("Hero_Bane.FiendsGrip.Cast",vLocation)	
+			--StartSoundEventFromPosition("Hero_Bane.FiendsGrip.Cast",vLocation)	
 			CreateModifierThinker(	self:GetCaster(), 
 									self, 
 									"modifier_echoes_victims", 
