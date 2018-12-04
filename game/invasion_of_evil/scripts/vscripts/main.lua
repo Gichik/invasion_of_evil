@@ -47,7 +47,7 @@ function main:InitGameMode()
     CustomGameEventManager:RegisterListener( "quest_cursed_activate", Dynamic_Wrap( main, "OnQuestCursedActivate" ))
     CustomGameEventManager:RegisterListener( "quest_church_activate", Dynamic_Wrap( main, "OnQuestChurchActivate" ))
     CustomGameEventManager:RegisterListener( "quest_alchemy_activate", Dynamic_Wrap( main, "OnQuestAlchemyActivate" ))
-
+    CustomGameEventManager:RegisterListener( "quest_help_activate", Dynamic_Wrap( main, "OnQuestHelpActivate" ))
 
     PORTAL_OW_POINT = Entities:FindByName( nil, "trigger_teleport"):GetAbsOrigin()
     SPAWNER_OW_POINT = Entities:FindByName( nil, "otherkin_world_spawner"):GetAbsOrigin()
@@ -91,10 +91,10 @@ function main:GameRulesStateChange(data)
         end
         --GameRules:SendCustomMessage("#start_game", 0, 0)        
         CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_messages_name", messageText = "#start_game"})
-        CreateInceptionWaves()        
+        self:CreateInceptionWaves()        
         StartOwTimer()
-        StartHelpMessagesTimer() 
-        StartMusicTimer()       
+        --StartHelpMessagesTimer() 
+        --self:StartMusicTimer()       
     end
 end
 
@@ -268,7 +268,7 @@ function main:OnEntityKilled(data)
                 end 
             end
 
-            if killedEntity:GetUnitName():find("npc_start_boss_")  then
+            if killedEntity:GetUnitName():find("npc_start_ghost_")  then
                 if RollPercentage(COMMON_DROP_PERC) then
                      self:CreateDrop(GetRandomItemNameFrom("second"), killedEntity:GetAbsOrigin())
                 end
@@ -276,7 +276,7 @@ function main:OnEntityKilled(data)
 
 
             if not killedEntity:GetUnitName():find("wave") 
-                and not killedEntity:GetUnitName():find("npc_start_boss_") 
+                and not killedEntity:GetUnitName():find("npc_start_ghost_") 
                 and killedEntity:GetUnitName() ~= "npc_inception_attacker_evil_warrior"
                 and killedEntity:GetUnitName() ~= "npc_minion_ow"
                 and killedEntity:GetUnitName() ~= "npc_cursed_minion"
@@ -642,7 +642,7 @@ function main:RespawnStartUnits(SpawnLoc,numMinions,time)
     
     local team = DOTA_TEAM_NEUTRALS
     local unit = nil
-    local name = "npc_start_boss_" .. RandomInt(1, 3)
+    local name = "npc_start_ghost_" .. RandomInt(1, 3)
 
     Timers:CreateTimer(time, function()
 
@@ -960,7 +960,7 @@ function main:ApplyBackTeleport()
 end
 
 
-function StartHelpMessagesTimer()
+function main:StartHelpMessagesTimer()
 
     local helpMessageNumber = 0
 
@@ -985,7 +985,7 @@ function StartHelpMessagesTimer()
 end
 
 
-function CreateInceptionWaves()
+function main:CreateInceptionWaves()
     local point = nil
     local waveCount = WAVE_DURATION 
     local unit = nil
@@ -1090,27 +1090,23 @@ function main:TestBosses()
 end
 
 
-function StartMusicTimer()
-    local musicID = 0
+function main:StartMusicTimer()
+
     local musicTable = GetMusicByID(1)
 
 
-    Timers:CreateTimer(670, function()
+    Timers:CreateTimer(1, function()
 
-        if  WAVE_STATE == true then
-            return 180
-        end 
-
-        if musicID >= GetMusicCount() then
-            musicID = 0
+        if MUSIC_ID >= GetMusicCount() then
+            MUSIC_ID = 1
         end
 
-        musicID = musicID + 1
-        musicTable = GetMusicByID(musicID)
+        musicTable = GetMusicByID(MUSIC_ID)
         if ACTIVE_MUSIC then
             EmitGlobalSound("Invasion_of_evil." .. musicTable[1])
-            GameRules:SendCustomMessage(musicTable[3], 0, 0)  
-        end  
+            GameRules:SendCustomMessage(musicTable[3], 0, 0) 
+        end 
+        MUSIC_ID = MUSIC_ID + 1  
         return musicTable[2]
     end)
 
@@ -1388,5 +1384,26 @@ function main:OnQuestAlchemyActivate(data)
             ------------------------------------------------------------------------------------
 
         end
+    end
+end
+
+
+
+function main:OnQuestHelpActivate(data)
+    --print("OnQuestHelpActivate")
+    local hPlayer = PlayerResource:GetPlayer(data.PlayerID)
+    if hPlayer then
+
+        if not hPlayer.helpMsgNumb or hPlayer.helpMsgNumb >= 11 then
+             hPlayer.helpMsgNumb = 1
+        else
+            hPlayer.helpMsgNumb = hPlayer.helpMsgNumb + 1
+        end
+
+        CustomGameEventManager:Send_ServerToPlayer(hPlayer,"QuestMsgPanel_create_new_message", {
+            messageName = "#help_messages_name", 
+            messageText = "#help_messages_" .. hPlayer.helpMsgNumb
+            })         
+
     end
 end

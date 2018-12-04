@@ -111,33 +111,35 @@ end
 
 function TeleportTriggerCellar(data)
 	--print("TeleportTrigger")
-	local caller = data.caller:GetName()
-	local point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
-	local activator = data.activator
+	if  not FINAL_BOSS_STATE then
+		local caller = data.caller:GetName()
+		local point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
+		local activator = data.activator
 
-	if caller == "trigger_teleport_to_cellar_1" then
-		point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
-	end
+		if caller == "trigger_teleport_to_cellar_1" then
+			point = Entities:FindByName( nil, "cellar_hero_spawner_1"):GetAbsOrigin()
+		end
 
-	if caller == "trigger_teleport_to_cellar_2" then
-		point = Entities:FindByName( nil, "cellar_hero_spawner_2"):GetAbsOrigin()
-	end
+		if caller == "trigger_teleport_to_cellar_2" then
+			point = Entities:FindByName( nil, "cellar_hero_spawner_2"):GetAbsOrigin()
+		end
 
-	if caller == "trigger_teleport_to_cellar_3" then
-		point = Entities:FindByName( nil, "cellar_hero_spawner_3"):GetAbsOrigin()
-	end
+		if caller == "trigger_teleport_to_cellar_3" then
+			point = Entities:FindByName( nil, "cellar_hero_spawner_3"):GetAbsOrigin()
+		end
 
-	activator:SetAbsOrigin(point) 
-	FindClearSpaceForUnit(activator, point, false) 
-	activator:Stop()
-	main:FocusCameraOnPlayer(activator)
+		activator:SetAbsOrigin(point) 
+		FindClearSpaceForUnit(activator, point, false) 
+		activator:Stop()
+		main:FocusCameraOnPlayer(activator)
 
-	if activator.controllableUnit then
-		if not activator.controllableUnit:IsNull() then
-			if activator.controllableUnit:IsAlive() then
-				activator.controllableUnit:SetAbsOrigin(point) 
-				FindClearSpaceForUnit(activator.controllableUnit, point, false) 
-				activator.controllableUnit:Stop()
+		if activator.controllableUnit then
+			if not activator.controllableUnit:IsNull() then
+				if activator.controllableUnit:IsAlive() then
+					activator.controllableUnit:SetAbsOrigin(point) 
+					FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+					activator.controllableUnit:Stop()
+				end
 			end
 		end
 	end

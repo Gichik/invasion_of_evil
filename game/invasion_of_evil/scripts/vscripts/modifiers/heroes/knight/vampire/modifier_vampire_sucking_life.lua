@@ -118,7 +118,7 @@ end
 
 function modifier_vampire_sucking_life_debuff:GetModifierConstantHealthRegen()  
     if self:GetParent() then
-        return -1*self:GetAbility():GetSpecialValueFor("bonus_hp_regen")
+        return -1*self:GetAbility():GetSpecialValueFor("reduce_hp_regen")
     else
         return 0
     end    

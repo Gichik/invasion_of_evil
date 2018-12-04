@@ -23,12 +23,18 @@
 				</ToggleButton>
 				<ToggleButton id="QuestButton_3" onactivate="QuestAlchemyActivate()">
 					<Label id="QuestButtonText_1" text="Press to Activate"/>
-				</ToggleButton>											
+				</ToggleButton>
+				<ToggleButton id="QuestButton_4">
+					<Label id="QuestButtonText_1" text="Press to Activate"/>
+				</ToggleButton>	
+				<ToggleButton id="QuestButton_5" onactivate="QuestHelpActivate()">
+					<Label id="QuestButtonText_2" text="GAME HELP"/>
+				</ToggleButton>																				
 			</Panel>
 
 			<Panel id="QuestMsgPanelRight" class="QuestMsgPanelRight">
-				<Label id="QuestMsgPanelName" text="#fifth_alchemist_note"/>
-				<Label id="QuestMsgPanelText" text="#fifth_alchemist_note_Description"/>
+				<Label id="QuestMsgPanelName" text=""/>
+				<Label id="QuestMsgPanelText" text=""/>
 				<ToggleButton id="QuestMsgButtonClose" text="Close" onactivate="OnCloseQuestMsgPanelRight()"/>	
 			</Panel>
 		</Panel>

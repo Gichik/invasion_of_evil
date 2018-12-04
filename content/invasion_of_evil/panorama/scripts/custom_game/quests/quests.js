@@ -1,5 +1,6 @@
 //$.GetContextPanel().SetHasClass("Quest", false);
 $.GetContextPanel().visible = true;
+$( "#QuestMsgPanelRight" ).visible = false;
 
 function OnNewMessage(data)
 {
@@ -9,7 +10,7 @@ function OnNewMessage(data)
 	$( "#MessagePanelText" ).text = $.Localize( data.messageText );
 	$( "#MessagePanel" ).visible = true;
 
-	$.Schedule(7,function()
+	$.Schedule(10,function()
 	{
 		$( "#MessagePanel" ).visible = false; 
 	});
@@ -86,6 +87,14 @@ function QuestAlchemyActivate() {
 	$( "#QuestMsgPanelRight" ).visible = false;
 	var PlayerID = Players.GetLocalPlayer();
 	GameEvents.SendCustomGameEventToServer( "quest_alchemy_activate", {"PlayerID" : PlayerID});
+}
+
+
+function QuestHelpActivate() {
+	//$.Msg("QuestAlchemyActivate");
+	$( "#QuestMsgPanelRight" ).visible = false;
+	var PlayerID = Players.GetLocalPlayer();
+	GameEvents.SendCustomGameEventToServer( "quest_help_activate", {"PlayerID" : PlayerID});
 }
 
 function debug()

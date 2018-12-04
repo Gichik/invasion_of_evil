@@ -176,14 +176,14 @@ end
 -------------------------------------------------------------------
 
 ACTIVE_MUSIC = true
-
+MUSIC_ID = 1
 MUSIC = { 
         {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Fire) - Shadow House</font>"},
-        {"Diablo2_Cave", 320, "<font color='#58ACFA'>Music: Matt Uelmen - Cave</font>"},
+        {"Diablo2_Cave", nil, "<font color='#58ACFA'>Music: Matt Uelmen - Cave</font>"},
         {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Flame) - Shadow House</font>"},
-        {"AdrianVonZiegler_FraNordri", 380, "<font color='#58ACFA'>Music: Adrian Von Ziegler - FraNordri</font>"},
+        {"AdrianVonZiegler_FraNordri", nil, "<font color='#58ACFA'>Music: Adrian Von Ziegler - FraNordri</font>"},
         {"ShadowHouse", 170, "<font color='#58ACFA'>Music: Luke (Cult of Fire) - Shadow House</font>"},
-        {"AdrianVonZiegler_PathToDarkness", 380, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Path To Darkness</font>"},
+        {"AdrianVonZiegler_PathToDarkness", nil, "<font color='#58ACFA'>Music: Adrian Von Ziegler - Path To Darkness</font>"},
         }
 
 --"Invasion_of_evil.ToshiroMasuda_OrochimaruSentou"

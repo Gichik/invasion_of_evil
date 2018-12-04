@@ -40,7 +40,7 @@ function CreateWaves()
 	local waveCount = WAVE_DURATION
 	local unit = nil
 
-	WAVE_STEP = 8 - PlayerResource:GetTeamPlayerCount()
+	WAVE_STEP = 7 - PlayerResource:GetTeamPlayerCount()
 	--print("player count:  " .. PlayerResource:GetTeamPlayerCount())
 
 	CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#wave_start"})
@@ -204,7 +204,8 @@ function DestroyPortal()
 		if MINIONS_LEVEL <= 4 then
 			LAST_OW_PORTAL_TIME = LAST_OW_PORTAL_TIME + 120
 			--GameRules:SendCustomMessage("#help_messages_11", 0, 0)
-			CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#help_messages_name", messageText = "#help_messages_11"})
+			CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#help_messages_name", messageText = "#help_messages_12"})
+			main:StartMusicTimer()
 			AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cursed_tree_spawner_5"):GetAbsOrigin(), 300, 60, false)
     		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "cemetery_spawner_5"):GetAbsOrigin(), 300, 60, false)
     		AddFOWViewer(DOTA_TEAM_GOODGUYS, Entities:FindByName( nil, "church_spawner_5"):GetAbsOrigin(), 300, 60, false)

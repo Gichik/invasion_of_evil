@@ -7,6 +7,9 @@ background-color: purple;
 text-overflow: clip;
 width: fit-children;
 
+
+	width: 35%; 
+	height: 75%;
 */
 
 .RootPanel
@@ -16,8 +19,9 @@ width: fit-children;
 	height: 75%;
   	flow-children: down; 
   	contrast: 1.0; 
+  	/* background-color: green; */
   	visibility: collapse;	
-
+	
 }
 
 .MessagePanel
@@ -33,7 +37,7 @@ width: fit-children;
   	/* style */
 	background-image: url("file://{images}/custom_game/quests/MessagePanel_1.png");
  	background-size: 100%;	  
- 	background-color: none;
+ 	/* background-color: blue; */
   	visibility: collapse; 		
 	
 }
@@ -51,8 +55,7 @@ width: fit-children;
 
  	/* style */
   	flow-children: right;	
- 	background-color: none;
- 	visibility: collapse; 
+ 	/* ackground-color: purple; */ 
 }
 
 
@@ -64,7 +67,7 @@ width: fit-children;
 
  	/* style */
  	background-size: 100%; 	
- 	background-color: none;	
+ 	/*background-color: gray;*/	
 }
 
 .QuestMsgPanelRight
@@ -169,14 +172,14 @@ width: fit-children;
 
 #QuestMsgButtonClose
 {
+	/* size */
+	width: 100%;
+	height: 100%;
+
 	/* position	 */
 	text-align: center;
 	margin-top: 91%;
 	margin-left: 45%;
-
-	/* size */
-	width: 100%;
-	height: 100%;	
 
 	/* style */
 	font-size: 24;
@@ -190,18 +193,19 @@ width: fit-children;
 	/* size	 */
 	width: 50%;
 	height: 20%;
-	margin-top: 0%;
-	margin-left: 20%;
 
 	/* position	 */
 	vertical-align: top;
 	text-align: left;  
+	margin-top: 0%;	
+	margin-left: 20%;
 
  	/* style */
  	background-image: url("file://{images}/custom_game/quests/quest_cursed_icon.png");	
  	background-size: 100%;	
- 	background-color: none;
- 	visibility: collapse;	
+ 	/* background-color: white; */
+ 	visibility: collapse;
+	
 }
 
 #QuestButton_2
@@ -209,18 +213,19 @@ width: fit-children;
 	/* size	 */
 	width: 50%;
 	height: 20%;
-	margin-left: 20%;
 
 	/* position	 */
 	vertical-align: top;
 	text-align: left;  
-	margin-top: 25%;
+	margin-top: 20%;
+	margin-left: 20%;
 
  	/* style */
  	background-image: url("file://{images}/custom_game/quests/quest_church_icon.png");	
  	background-size: 100%;	
- 	background-color: none;
- 	visibility: collapse;	
+ 	/* background-color: blue; */
+ 	visibility: collapse;
+	
 }
 
 #QuestButton_3
@@ -228,18 +233,19 @@ width: fit-children;
 	/* size	 */
 	width: 50%;
 	height: 20%;
-	margin-left: 20%;
 
 	/* position	 */
 	vertical-align: top;
 	text-align: left;  
-	margin-top: 50%;
+	margin-top: 40%;
+	margin-left: 20%;
 
  	/* style */
  	background-image: url("file://{images}/custom_game/quests/quest_alchemy_icon.png");	
  	background-size: 100%;	
- 	background-color: none;
+ 	/* background-color: green; */
  	visibility: collapse;	
+
 }
 
 #QuestButton_4
@@ -247,20 +253,40 @@ width: fit-children;
 	/* size	 */
 	width: 50%;
 	height: 20%;
-	margin-left: 20%;
 
 	/* position	 */
 	vertical-align: top;
 	text-align: left;  
-	margin-top: 75%;
+	margin-top: 60%;
+	margin-left: 20%;	
 
  	/* style */
  	background-image: url("file://{images}/custom_game/quests/quest_alchemy_icon.png");	
  	background-size: 100%;	
- 	background-color: none;
- 	visibility: collapse;	
+ 	/* background-color: yellow; */
+ 	visibility: collapse; 
+
 }
 
+
+#QuestButton_5
+{
+	/* size	 */
+	width: 50%;
+	height: 20%;
+
+	/* position	 */
+	vertical-align: top;
+	text-align: left;  
+	margin-top: 80%;
+	margin-left: 20%;
+
+ 	/* style */
+ 	background-image: url("file://{images}/custom_game/quests/help_button.png");	
+ 	background-size: 100%;	
+ 	/* background-color: black; */
+
+}
 
 #QuestButtonText_1
 {
@@ -276,5 +302,22 @@ width: fit-children;
 	font-size: 23;
 	font-weight: bold;	
 	color: white;
+	text-decoration: underline;	
+}
+
+#QuestButtonText_2
+{
+	/* position	 */
+	text-align: center;
+	position: 0% 25% 0%;
+
+	/* max size	 */
+	width: 100%;
+	height: 50%;	
+
+	/* style */
+	font-size: 23;
+	font-weight: bold;	
+	color: black;
 	text-decoration: underline;	
 }
