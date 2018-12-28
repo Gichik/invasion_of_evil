@@ -51,8 +51,7 @@ SPAWNER_OW_POINT = nil
 MUSIC_SOURCE = nil
 
 
-NUMBER_OF_PLAYER = 0
-HERO_OF_PLAYER = {nil,nil,nil}
+RANDOMIZE_MODE = false
 
 
 -------------------------------------------------------------------
@@ -197,3 +196,89 @@ function GetMusicCount()
 end
 
 -------------------------------------------------------------------
+
+
+ENCHANTER_ABILITY = {
+        { 
+        "sapient_flows_of_life",
+        "sapient_flows_of_magic",
+        "sapient_cheerful_spirit",
+        "sapient_strength_of_mind",
+        }, 
+        { 
+        "sapient_mana_shield",
+        "sapient_concentration",
+        "sapient_knowledge_of_ancients",
+        "summoner_mammock",
+        "summoner_predator",
+        "summoner_aesculapius"       
+        }, 
+        { 
+        "sapient_sapience",
+        "sapient_magic_circle"
+        } 
+    }
+
+
+BARBARIAN_ABILITY = {
+        { 
+        "berserk_ripper",
+        "berserk_heavy",
+        "berserk_knowledge_elders",
+        "berserk_durability",
+        "exile_alert",
+        "exile_ardor",
+        "exile_trophies",
+        "exile_meditation"
+        },
+        { 
+        "berserk_heroism",
+        "berserk_battle_rage",
+        "berserk_rage",
+        "exile_riot",
+        "exile_severity",
+        "exile_intimidation"       
+        }, 
+        { 
+        "berserk_spirit_of_war",
+        "berserk_spirit_of_nimbleness",
+        "exile_highlander",
+        "exile_zeal"
+        } 
+    }    
+
+KNIGHT_ABILITY = {
+        { 
+        "templar_strength_of_will",
+        "templar_experience",
+        "templar_shield_bearer",
+        "templar_frightfulness",
+        "dishonored_counterattack",
+        "dishonored_insidious",
+        "dishonored_honed_blows",
+        "dishonored_strength_of_body",
+        "vampire_blood_magic",
+        "vampire_aura_of_death",
+        "vampire_beast_of_the_night",
+        "vampire_night_power"
+        }, 
+        { 
+        "templar_heavy_armor",
+        "templar_strength_of_body",
+        "templar_fruits_of_training",
+        "dishonored_sword_dance",
+        "dishonored_second_breath",
+        "dishonored_leather_armor",
+        "vampire_sower_of_weakness",
+        "vampire_sower_of_horror",
+        "vampire_sower_of_pain"      
+        }, 
+        { 
+        "templar_nobleness",
+        "templar_blessing",
+        "dishonored_acuteness_reaction",
+        "dishonored_fleetness",
+        "vampire_sucking_life",
+        "vampire_power_of_demon"
+        } 
+    }   

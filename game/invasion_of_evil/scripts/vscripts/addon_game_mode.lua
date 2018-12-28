@@ -207,7 +207,7 @@ function Activate()
 		--GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
-	if MapName == "chapter_one_easy" or "chapter_one_normal" then
+	if MapName == "chapter_one_easy" or "chapter_one_normal" or "chapter_one_randomize" then
 		print("----------------------------------------chapter_one----------------------------------------")
 		main:InitGameMode()
 	end

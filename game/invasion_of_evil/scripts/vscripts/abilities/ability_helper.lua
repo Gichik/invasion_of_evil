@@ -1,5 +1,4 @@
 
-
 function ApplyModifierToUnit(data)
 	--print("ApplyModifierToUnit")
 	data.caster:AddNewModifier(data.caster, data.ability, data.ModifName, {})
@@ -152,5 +151,39 @@ function AddPathAbilitiesToHero(data)
             hHero:AddAbility("vampire_power_of_demon")
         end
     end  
+
+end
+
+
+
+function CreateRandomizeAbility(hHero)
+    --print("CreateRandomizeAbility")
+
+    local ability = nil
+
+    for i = 0, 3 do
+        ability = hHero:GetAbilityByIndex(i)
+        if ability then
+            hHero:RemoveAbility(ability:GetAbilityName())
+        end
+    end
+
+    if hHero:GetUnitName() == "npc_dota_hero_axe" or hHero:GetUnitName() == "npc_dota_hero_beastmaster"  then
+        for i = 1, 3 do
+            hHero:AddAbility(BARBARIAN_ABILITY[i][RandomInt(1,#BARBARIAN_ABILITY[i])])
+        end
+    end
+
+    if hHero:GetUnitName() == "npc_dota_hero_dragon_knight" or hHero:GetUnitName() == "npc_dota_hero_silencer"  then     
+        for i = 1, 3 do
+            ability = hHero:AddAbility(KNIGHT_ABILITY[i][RandomInt(1,#KNIGHT_ABILITY[i])])
+        end        
+    end
+
+    if hHero:GetUnitName() == "npc_dota_hero_rubick" or hHero:GetUnitName() == "npc_dota_hero_dazzle"  then
+        for i = 1, 3 do
+            hHero:AddAbility(ENCHANTER_ABILITY[i][RandomInt(1,#ENCHANTER_ABILITY[i])])
+        end        
+    end
 
 end

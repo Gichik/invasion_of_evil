@@ -35,14 +35,23 @@ function main:InitGameMode()
 
     GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(main, "DamageFilter"), self) 
 
+    if GetMapName() == "chapter_one_randomize" then
+        RANDOMIZE_MODE = true
+    end
+
+
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(main, 'GameRulesStateChange'), self)
     ListenToGameEvent("npc_spawned", Dynamic_Wrap(main, 'OnNPCSpawn'), self) 
     --ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(main, 'OnPlayerGainedLevel'), self)   
     ListenToGameEvent("dota_player_killed", Dynamic_Wrap(main, "OnSomeHeroKilled"), self)
     ListenToGameEvent("entity_killed", Dynamic_Wrap(main, "OnEntityKilled"), self)
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(main, 'OnItemPickedUp'), self) 
-    ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
     ListenToGameEvent( "player_chat", Dynamic_Wrap( main, "OnChat" ), self )
+
+    if not RANDOMIZE_MODE then
+        ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(main, 'OnAbilityLearned'), self) 
+    end
+
 
     CustomGameEventManager:RegisterListener( "quest_cursed_activate", Dynamic_Wrap( main, "OnQuestCursedActivate" ))
     CustomGameEventManager:RegisterListener( "quest_church_activate", Dynamic_Wrap( main, "OnQuestChurchActivate" ))
@@ -113,20 +122,24 @@ function main:OnNPCSpawn(data)
 
         if not unit.next_spawn then
             
-            HERO_OF_PLAYER[NUMBER_OF_PLAYER] = unit;
-            NUMBER_OF_PLAYER = NUMBER_OF_PLAYER + 1;
-
             unit.next_spawn = true; 
             unit:SetAbilityPoints(0)
             unit:SetGold(5, true)
 
-            local ability = nil 
-            for i = 0, 3 do
-                ability = unit:GetAbilityByIndex(i)
-                if ability then
-                    ability:SetLevel(1)
-                end 
+
+            if RANDOMIZE_MODE then
+                CreateRandomizeAbility(unit)
+            else
+                local ability = nil
+                for i = 0, 3 do
+                    ability = unit:GetAbilityByIndex(i)
+                    if ability then
+                        ability:SetLevel(1)
+                    end 
+                end               
             end
+
+
      
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_ice_shards_spear")
@@ -153,16 +166,6 @@ function main:OnAbilityLearned(data)
     local hHero = PlayerResource:GetPlayer(data.PlayerID):GetAssignedHero() or nil
     local ability = hHero:FindAbilityByName(data.abilityname)
     local pathName = nil
-
-    if not hHero then
-        GameRules:SendCustomMessageToTeam("Console: player not here.", DOTA_TEAM_GOODGUYS, 0, 0)
-        for i = 0, 2 do
-            hHero = HERO_OF_PLAYER[i]
-            if hHero:HasAbility(data.abilityname) then
-                i = 3
-            end
-        end
-    end
 
     if ability:GetLevel() <= 1 then
         if not data.abilityname:find("special_bonus") then

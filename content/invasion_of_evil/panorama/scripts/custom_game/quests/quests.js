@@ -52,8 +52,8 @@ function OnNewQuestMsg(data)
 
 function OnCloseQuestMsgPanel() {
 	//$.Msg("CloseQuestMsgPanel");
-	$( "#QuestMsgPanel" ).visible = false;
-	$( "#QuestMsgPanelLeft" ).visible = false;
+	//$( "#QuestMsgPanel" ).visible = false;
+	//$( "#QuestMsgPanelLeft" ).visible = false;
 	$( "#QuestMsgPanelRight" ).visible = false;
 	$( "#QuestButton_1" ).visible = false;	
 	$( "#QuestButton_2" ).visible = false;

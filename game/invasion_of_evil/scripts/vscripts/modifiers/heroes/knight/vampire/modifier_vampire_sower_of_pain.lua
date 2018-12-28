@@ -80,17 +80,23 @@ function modifier_vampire_sower_of_pain_debuff:DeclareFunctions()
 end
 
 function modifier_vampire_sower_of_pain_debuff:GetModifierExtraHealthBonus()
-    if self:GetParent() and self:GetCaster() then
-        if self:GetParent():GetTeamNumber() ~= self:GetCaster():GetTeamNumber() then
-            return -1*self:GetParent():GetMaxHealth()*self:GetAbility():GetSpecialValueFor("reduce_health_proc")/100
+    local hParent = self:GetParent()
+    local hCaster = self:GetCaster()
+
+    if hParent and hCaster then
+        if hParent:GetTeamNumber() ~= hCaster:GetTeamNumber() then
+            return -1*hParent:GetMaxHealth()*self:GetAbility():GetSpecialValueFor("reduce_health_proc")/100
         end
     end
     return 0
 end
 
-function modifier_vampire_sower_of_pain_debuff:GetModifierPhysicalArmorBonus()    
-    if self:GetParent() and self:GetCaster() then
-        if self:GetParent():GetTeamNumber() == self:GetCaster():GetTeamNumber() then
+function modifier_vampire_sower_of_pain_debuff:GetModifierPhysicalArmorBonus() 
+    local hParent = self:GetParent()
+    local hCaster = self:GetCaster()
+   
+    if hParent and hCaster then
+        if hParent:GetTeamNumber() == hCaster:GetTeamNumber() then
             return -1*self:GetAbility():GetSpecialValueFor("reduce_armor")
         end
     end

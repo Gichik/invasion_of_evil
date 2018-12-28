@@ -1,6 +1,6 @@
 "AddonInfo"
 {
-	maps  "chapter_one_easy chapter_one_normal"
+	maps  "chapter_one_easy chapter_one_normal chapter_one_randomize"
 	"IsPlayable" "1"
 	"HeroGuidesSupported" "0"
 	"chapter_one_easy"
@@ -10,5 +10,9 @@
 	"chapter_one_normal"
  	{
   		"MaxPlayers" "3"
- 	} 	
+ 	} 
+	"chapter_one_randomize"
+ 	{
+  		"MaxPlayers" "3"
+ 	}  		
 }
