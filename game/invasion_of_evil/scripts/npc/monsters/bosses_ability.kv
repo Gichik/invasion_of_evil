@@ -325,5 +325,73 @@
 	}	
 
 
+	"fallen_commander"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"					
+	    "AbilityTextureName"            "dark_troll_warlord_raise_dead"
+	    "MaxLevel"                      "1"	
+
+		// Time		
+		//--------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"30"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"max_charges"				"10"
+			}						
+		}
+
+		"OnCreated"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_fallen_commander"
+			}
+		}
+
+	}	
+
+	"weighty_hit"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"					
+	    "AbilityTextureName"            "skeleton_king_mortal_strike"
+	    "MaxLevel"                      "1"	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stun_chance"			"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aoe_radius"			"300"
+			}							
+		}
+
+		"OnCreated"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_templar_experience"
+			}
+		}
+	}
+
 
 }

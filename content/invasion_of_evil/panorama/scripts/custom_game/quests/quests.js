@@ -40,11 +40,19 @@ function OnNewQuestMsg(data)
 		}				
 	}
 
-	if (data.quest == "alchemy"){
+	if (data.quest == "cemetry"){
 		$( "#QuestButton_3" ).visible = true;
 		
 		if (data.questClose){
 			$( "#QuestButton_3" ).visible = false;	
+		}				
+	}
+
+	if (data.quest == "alchemy"){
+		$( "#QuestButton_4" ).visible = true;
+		
+		if (data.questClose){
+			$( "#QuestButton_4" ).visible = false;	
 		}				
 	}
 
@@ -58,6 +66,7 @@ function OnCloseQuestMsgPanel() {
 	$( "#QuestButton_1" ).visible = false;	
 	$( "#QuestButton_2" ).visible = false;
 	$( "#QuestButton_3" ).visible = false;
+	$( "#QuestButton_4" ).visible = false;	
 	//if (!$( "#MessagePanel" ).visible){	
 	//	$.GetContextPanel().visible = false;		
 	//}	
@@ -80,6 +89,13 @@ function QuestChurchActivate() {
 	$( "#QuestMsgPanelRight" ).visible = false;
 	var PlayerID = Players.GetLocalPlayer();
 	GameEvents.SendCustomGameEventToServer( "quest_church_activate", {"PlayerID" : PlayerID});
+}
+
+function QuestCemetryActivate() {
+	//$.Msg("QuestChurchActivate");
+	$( "#QuestMsgPanelRight" ).visible = false;
+	var PlayerID = Players.GetLocalPlayer();
+	GameEvents.SendCustomGameEventToServer( "quest_cemetry_activate", {"PlayerID" : PlayerID});
 }
 
 function QuestAlchemyActivate() {

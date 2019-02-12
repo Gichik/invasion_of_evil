@@ -6,6 +6,12 @@ end
 --npc_spawner_alchemist_1
 --CustomGameEventManager
 
+--cemetry_dungeon_spawner_1
+--trigger_dung_cemetry_teleport_home
+--trigger_teleport_dung_cemetry
+--TeleportTriggerDungCemetry
+--dungeon_cemetry_hero_spawner
+
 function main:InitGameMode()
    --print( "InitGameMode" )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
@@ -55,6 +61,7 @@ function main:InitGameMode()
 
     CustomGameEventManager:RegisterListener( "quest_cursed_activate", Dynamic_Wrap( main, "OnQuestCursedActivate" ))
     CustomGameEventManager:RegisterListener( "quest_church_activate", Dynamic_Wrap( main, "OnQuestChurchActivate" ))
+    CustomGameEventManager:RegisterListener( "quest_cemetry_activate", Dynamic_Wrap( main, "OnQuestCemetryActivate" ))    
     CustomGameEventManager:RegisterListener( "quest_alchemy_activate", Dynamic_Wrap( main, "OnQuestAlchemyActivate" ))
     CustomGameEventManager:RegisterListener( "quest_help_activate", Dynamic_Wrap( main, "OnQuestHelpActivate" ))
 
@@ -149,6 +156,8 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_cemetry", {})
+                --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_church", {})
             end
 
             if GetMapName() == "chapter_one_easy" then
@@ -311,7 +320,7 @@ function main:OnEntityKilled(data)
                 if killedEntity:GetUnitName():find("start") then
                     if RollPercentage(NOTE_DROP_PERC) then
                         --self:CreateDrop("item_note_" .. RandomInt(1,3), killedEntity:GetAbsOrigin())
-                        local variation = RandomInt(1, 3)
+                        local variation = RandomInt(1, 4)
 
                         if variation == 1 then
                             self:CreateDrop("item_note_dungeon_cursed_one", killedEntity:GetAbsOrigin())
@@ -322,8 +331,12 @@ function main:OnEntityKilled(data)
                         end   
 
                         if variation == 3 then
-                            self:CreateDrop("item_note_alchemist_one", killedEntity:GetAbsOrigin())
+                            self:CreateDrop("item_note_dungeon_cemetry_one", killedEntity:GetAbsOrigin())
                         end
+
+                        if variation == 4 then
+                            self:CreateDrop("item_note_alchemist_one", killedEntity:GetAbsOrigin())
+                        end 
                     end                                  
                 end
 
@@ -519,7 +532,8 @@ function main:SpanwMoobs()
     end 
 
     self:CreateDungeonFor("dungeon_boss_cursed",5) 
-    self:CreateDungeonFor("dungeon_boss_jeepers",5)     
+    self:CreateDungeonFor("dungeon_boss_jeepers",5)
+    self:CreateDungeonFor("dungeon_boss_cemetry",5)     
 end
 
 
@@ -598,6 +612,25 @@ function main:CreateDungeonFor(bossName,time)
                     unit:AddNewModifier(unit, nil, "modifier_no_health_bar", {})
                     unit:AddNewModifier(unit, nil, "modifier_invisible", {})
                 end                
+            end
+
+            if bossName == "dungeon_boss_cemetry" then
+                biomName = "cemetry"
+                spawnerCount = 5
+                GameRules:SendCustomMessage("#cemetry_reincarnated", 0, 0)
+            
+                point = Entities:FindByName( nil, biomName .. "_dungeon_spawner_1" ):GetAbsOrigin()
+
+                local units = FindUnitsInRadius( DOTA_TEAM_NEUTRALS, point, nil, 2000,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+                
+                if units then   
+                    for i = 1, #units do
+                        UTIL_Remove(units[i])
+                    end
+                end
+               
+                unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_NEUTRALS )              
             end
 
             return nil
@@ -768,12 +801,17 @@ function main:GiveNewHero(oldHero)
         end
         newHero = PlayerResource:ReplaceHeroWith(playerID, oldHero:GetName(), oldHero:GetGold(), oldHero:GetCurrentXP())
        
-        if oldHero:HasModifier("modifier_quest_dungeon_jeepers") then
-            newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_jeepers", {})
+        if oldHero:HasModifier("modifier_quest_dungeon_church") then
+            newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_church", {})
         end
 
         if oldHero:HasModifier("modifier_quest_dungeon_cursed") then
             newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_cursed", {})
+        end
+
+
+        if oldHero:HasModifier("modifier_quest_dungeon_cemetry") then
+            newHero:AddNewModifier(newHero, nil, "modifier_quest_dungeon_cemetry", {})
         end
 
         if oldHero:HasModifier("modifier_alchemy") then
@@ -1116,6 +1154,7 @@ function main:StartMusicTimer()
 end
 
 
+
 function main:OnQuestCursedActivate(data)
     --print("OnQuestCursedActivate")
     --print(data.PlayerID)
@@ -1238,7 +1277,7 @@ function main:OnQuestChurchActivate(data)
                                 "QuestMsgPanel_create_new_message",
                                 {messageName = "#note_church_dungeon", messageText = "#note_dungeon_church_three_Description", quest = "church", questClose = true}
                             )
-                            hHero:AddNewModifier(hHero, nil, "modifier_quest_dungeon_jeepers", {}) 
+                            hHero:AddNewModifier(hHero, nil, "modifier_quest_dungeon_church", {}) 
                             return nil                       
                         end
                     end
@@ -1256,6 +1295,79 @@ function main:OnQuestChurchActivate(data)
     end
 end
 
+
+function main:OnQuestCemetryActivate(data)
+    --print("OnQuestCursedActivate")
+    --print(data.PlayerID)
+
+    local hPlayer = PlayerResource:GetPlayer(data.PlayerID)
+    if hPlayer then
+        local hHero = hPlayer:GetAssignedHero()
+        if hHero and hHero.cemetry_step then
+
+            ------------------------------------------------------------------------------------
+            if hHero.cemetry_step == 1 then
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), hHero:GetAbsOrigin(), hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if units[ i ] :GetUnitName() == "npc_vern_base" then
+                            hHero.cemetry_step = 2
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_cemetry_dungeon", messageText = "#note_dungeon_cemetry_two_Description", quest = "cemetry", questClose = false}
+                            ) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_cemetry_dungeon", messageText = "#note_dungeon_vern_Description", quest = "cemetry", questClose = false}
+                ) 
+                return nil            
+            end 
+
+            ------------------------------------------------------------------------------------
+            if hHero.cemetry_step == 2 then
+
+                local point = Entities:FindByName( nil, "trigger_teleport_dung_cemetry"):GetAbsOrigin()
+
+                local units = FindUnitsInRadius( hHero:GetTeamNumber(), point, hHero, 300,
+                DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+                
+                if units then
+                    for i = 1, #units do
+                        if  units[ i ] == hHero then
+                            hHero.cemetry_step = 3
+                            hHero:EmitSound("Item.TomeOfKnowledge")
+                            CustomGameEventManager:Send_ServerToPlayer(
+                                hHero:GetPlayerOwner(),
+                                "QuestMsgPanel_create_new_message",
+                                {messageName = "#note_cemetry_dungeon", messageText = "#note_dungeon_cemetry_three_Description", quest = "cemetry", questClose = true}
+                            )
+                            hHero:AddNewModifier(hHero, nil, "modifier_quest_dungeon_cemetry", {}) 
+                            return nil                       
+                        end
+                    end
+                end
+
+                CustomGameEventManager:Send_ServerToPlayer(
+                    hHero:GetPlayerOwner(),
+                    "QuestMsgPanel_create_new_message",
+                    {messageName = "#note_cemetry_dungeon", messageText = "#note_dungeon_crypt_Description", quest = "cemetry", questClose = false}
+                ) 
+                return nil            
+            end 
+            ------------------------------------------------------------------------------------
+        end
+    end
+end
 
 
 function main:OnQuestAlchemyActivate(data)

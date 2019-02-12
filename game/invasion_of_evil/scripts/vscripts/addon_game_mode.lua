@@ -122,6 +122,8 @@ function Precache( context )
 
 	PrecacheResource( "model", "models/items/pugna/ward/weta_call_of_the_nether_lotus_ward/weta_call_of_the_nether_lotus_ward.vmdl", context ) --bush
 
+	PrecacheResource( "model", "models/heroes/wraith_king/wraith_king.vmdl", context ) --fallen commander
+	PrecacheResource( "model", "models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl", context ) --fallen commander minion
 
 	------------------------------------------------particles-----------------------------------------------------
 	
@@ -181,11 +183,10 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_track_trail_circle_soft.vpcf", context ) -- vampire_sower_of_horror
 	PrecacheResource( "particle", "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail_circle.vpcf", context ) -- vampire_sower_of_pain
 	PrecacheResource( "particle", "particles/econ/items/invoker/invoker_ti6/invoker_deafening_blast_ti6_debuff_echo_demo.vpcf", context ) -- vampire_sucking_life
-
 	PrecacheResource( "particle", "particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8_glyph.vpcf", context ) -- modifier_summoner_internal_power_buff
 	PrecacheResource( "particle", "particles/units/heroes/hero_tiny/tiny_craggy_cleave.vpcf", context ) -- modifier_summoner_wide_swing
 	PrecacheResource( "particle", "particles/units/heroes/hero_night_stalker/nightstalker_crippling_fear_aura.vpcf", context ) -- vampire
-
+	PrecacheResource( "particle", "particles/items2_fx/soul_ring.vpcf", context ) --modif dung church
 
 
 

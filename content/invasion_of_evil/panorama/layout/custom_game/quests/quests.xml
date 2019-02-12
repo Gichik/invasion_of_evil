@@ -21,12 +21,12 @@
 				<ToggleButton id="QuestButton_2" onactivate="QuestChurchActivate()">
 					<Label id="QuestButtonText_1" text="Press to Activate"/>
 				</ToggleButton>
-				<ToggleButton id="QuestButton_3" onactivate="QuestAlchemyActivate()">
-					<Label id="QuestButtonText_1" text="Press to Activate"/>
-				</ToggleButton>
-				<ToggleButton id="QuestButton_4">
+				<ToggleButton id="QuestButton_3" onactivate=" QuestCemetryActivate()">
 					<Label id="QuestButtonText_1" text="Press to Activate"/>
 				</ToggleButton>	
+				<ToggleButton id="QuestButton_4" onactivate="QuestAlchemyActivate()">
+					<Label id="QuestButtonText_1" text="Press to Activate"/>
+				</ToggleButton>				
 				<ToggleButton id="QuestButton_5" onactivate="QuestHelpActivate()">
 					<Label id="QuestButtonText_2" text="GAME HELP"/>
 				</ToggleButton>																				

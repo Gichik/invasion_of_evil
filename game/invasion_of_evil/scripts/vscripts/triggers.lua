@@ -49,14 +49,14 @@ end
 function TeleportTriggerDungJeepers(data)
 	--print("TeleportTriggerDungJeepers")
 	local activator = data.activator
-	local modifier = activator:FindModifierByName("modifier_quest_dungeon_jeepers") or nil
+	local modifier = activator:FindModifierByName("modifier_quest_dungeon_church") or nil
 	local point = Entities:FindByName( nil, "dungeon_jeepers_hero_spawner"):GetAbsOrigin()
 
 	if not modifier then
 		return nil
 	end
 
-	if modifier:GetStackCount() >= CHARGES_FOR_JEEPERS_DUNG  then
+	if modifier:GetStackCount() >= CHARGES_FOR_CHURCH_DUNG  then
 		activator:SetAbsOrigin(point) 
 		FindClearSpaceForUnit(activator, activator:GetAbsOrigin(), false) 
 		activator:Stop()
@@ -108,6 +108,37 @@ function TeleportTriggerDungCursed(data)
 	end	
 end
 
+
+function TeleportTriggerDungCemetry(data)
+	--print("TeleportTriggerDungCemetry")
+	local activator = data.activator
+	local modifier = activator:FindModifierByName("modifier_quest_dungeon_cemetry") or nil
+	local point = Entities:FindByName( nil, "dungeon_cemetry_hero_spawner"):GetAbsOrigin()
+
+	if not modifier then
+		return nil
+	end
+
+	if modifier:GetStackCount() >= CHARGES_FOR_CEMETRY_DUNG  then
+		activator:SetAbsOrigin(point) 
+		FindClearSpaceForUnit(activator, activator:GetAbsOrigin(), false) 
+		activator:Stop()
+		main:FocusCameraOnPlayer(activator)
+		modifier:SetStackCount(0)
+
+		if activator.controllableUnit then
+			if not activator.controllableUnit:IsNull() then
+				if activator.controllableUnit:IsAlive() then
+					activator.controllableUnit:SetAbsOrigin(point) 
+					FindClearSpaceForUnit(activator.controllableUnit, point, false) 
+					activator.controllableUnit:Stop()
+				end
+			end
+		end
+
+	end	
+
+end
 
 function TeleportTriggerCellar(data)
 	--print("TeleportTrigger")

@@ -42,10 +42,11 @@ LinkLuaModifier("modifier_block_physical_damage", "modifiers/items/unique_items/
 LinkLuaModifier("modifier_easy_mode_buff", "modifiers/heroes/modifier_easy_mode_buff.lua", LUA_MODIFIER_MOTION_NONE )
 
 
-LinkLuaModifier("modifier_quest_dungeon_jeepers", "modifiers/quests/modifier_quest_dungeon_jeepers.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_quest_dungeon_church", "modifiers/quests/modifier_quest_dungeon_church.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_quest_dungeon_cursed", "modifiers/quests/modifier_quest_dungeon_cursed.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_npc_invulnerable", "modifiers/quests/modifier_npc_invulnerable.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_quest_dungeon_cemetry", "modifiers/quests/modifier_quest_dungeon_cemetry.lua", LUA_MODIFIER_MOTION_NONE )
 
+LinkLuaModifier("modifier_npc_invulnerable", "modifiers/quests/modifier_npc_invulnerable.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_quest_ghostbusters", "modifiers/quests/modifier_quest_ghostbusters.lua", LUA_MODIFIER_MOTION_NONE )
 
 
@@ -160,6 +161,9 @@ LinkLuaModifier("modifier_puddle_of_poison", "modifiers/monsters/modifier_puddle
 LinkLuaModifier("modifier_puddle_of_poison_debuff", "modifiers/monsters/modifier_puddle_of_poison.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_aoe_hex", "modifiers/monsters/modifier_aoe_hex.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_hexed_tree", "modifiers/monsters/modifier_aoe_hex.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+LinkLuaModifier("modifier_fallen_commander", "modifiers/monsters/bosses/modifier_fallen_commander.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------BERSERK MODIFIER--------------------------
