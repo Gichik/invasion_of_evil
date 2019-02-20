@@ -205,8 +205,8 @@
 		"Ability1"					"blood_effect"
 		"Ability2"					""
 		"Ability3"					""
+		"Ability4"					""
 
-		
 		// Armor
 		//----------------------------------------------------------------
 		"ArmorPhysical"				"40"

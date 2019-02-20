@@ -156,8 +156,15 @@ function main:OnNPCSpawn(data)
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
+                --unit:AddItemByName("item_skull_of_evil")
+                --unit:AddItemByName("item_skull_of_evil")
+                --unit:AddItemByName("item_skull_of_evil")
+                --unit:AddItemByName("item_skull_of_evil")
+                --unit:AddItemByName("item_skull_of_evil")
                 --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_cemetry", {})
                 --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_church", {})
+                --unit:AddItemByName("item_enchantment_aura_hp_regen")
+
             end
 
             if GetMapName() == "chapter_one_easy" then
@@ -466,6 +473,10 @@ function main:SpanwMoobs()
     point = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
     unit = CreateUnitByName("npc_necromant_base", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
     unit:SetForwardVector(Vector(0,-1,0))
+
+    if GetMapName() == "chapter_one_easy" then
+        unit:AddNewModifier(unit, nil, "modifier_easy_mode_buff", {})
+    end    
     --self:ApplyMusicOn("Invasion_of_evil.ShadowHouse",unit)
 
     point = Entities:FindByName( nil, "npc_spawner_5"):GetAbsOrigin()
@@ -821,6 +832,21 @@ function main:GiveNewHero(oldHero)
         if oldHero:HasModifier("modifier_achievement_ghostbusters") then
             newHero:AddNewModifier(newHero, nil, "modifier_achievement_ghostbusters", {})
         end
+
+        if oldHero.numResetBonusStr then
+            newHero.numResetBonusStr = oldHero.numResetBonusStr         
+            newHero:AddNewModifier(newHero, nil, "modifier_reset_bonus_str", {}) 
+        end
+
+        if oldHero.numResetBonusAgi then
+            newHero.numResetBonusAgi = oldHero.numResetBonusAgi         
+            newHero:AddNewModifier(newHero, nil, "modifier_reset_bonus_agi", {}) 
+        end
+
+        if oldHero.numResetBonusInt then
+            newHero.numResetBonusInt = oldHero.numResetBonusInt         
+            newHero:AddNewModifier(newHero, nil, "modifier_reset_bonus_int", {}) 
+        end  
 
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)

@@ -1,0 +1,40 @@
+"DOTAAbilities"
+{
+
+
+	"enchantment_aura_hp_regen"
+	{
+		"BaseClass" 					"ability_datadriven"
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"			
+	    "AbilityTextureName"            "earth_spirit_petrify"
+	    "MaxLevel"                      "7"	
+	    "LevelsBetweenUpgrades" 		"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+	    	
+
+		// Special
+		//--------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_regen"				"3 4 5 6 7 8 9"
+			}			
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ability_helper.lua"
+				"Function"		"ApplyModifierToUnit"
+				"ModifName"		"modifier_enchantment_aura_hp_regen"
+			}
+		}
+
+	}
+}

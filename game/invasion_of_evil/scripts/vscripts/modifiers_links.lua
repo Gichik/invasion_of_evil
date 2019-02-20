@@ -32,8 +32,21 @@ LinkLuaModifier("modifier_heart_evil_progress", "modifiers/items/consumable_item
 LinkLuaModifier("modifier_tran_grass", "modifiers/items/consumable_items/modifier_tran_grass.lua", LUA_MODIFIER_MOTION_NONE )
 
 
-
 LinkLuaModifier("modifier_block_physical_damage", "modifiers/items/unique_items/modifier_block_physical_damage.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+LinkLuaModifier("modifier_reset_bonus_int", "modifiers/items/consumable_items/modifier_reset_bonus_int.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_reset_bonus_str", "modifiers/items/consumable_items/modifier_reset_bonus_str.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_reset_bonus_agi", "modifiers/items/consumable_items/modifier_reset_bonus_agi.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+-------------------------------------------------------------------
+-------------------------ENCHANTMENTS MODIFIERS--------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_enchantment_aura_hp_regen", "modifiers/enchantments/modifier_enchantment_aura_hp_regen.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_hp_regen_buff", "modifiers/enchantments/modifier_enchantment_aura_hp_regen.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 
 -------------------------------------------------------------------
 -------------------------QUESTS MODIFIERS--------------------
