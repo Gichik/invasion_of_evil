@@ -113,6 +113,18 @@ UNIQUE_ITEMS = {
         "item_protective_amulet"
         }   
 
+ENCHANTMENT_ITEMS = { 
+        "item_enchantment_aura_hp_regen",
+        "item_enchantment_aura_mp_regen",
+        "item_enchantment_aura_bonus_armor",
+        "item_enchantment_aura_reduce_armor",
+        "item_enchantment_aura_bonus_as",
+        "item_enchantment_aura_reduce_as",
+        "item_enchantment_aura_reduce_ms",
+        "item_enchantment_aura_reduce_damage",
+        "item_enchantment_taunt",               
+        } 
+
 function GetRandomItemNameFrom(itemQuality)
     if itemQuality == "first" then
         return FIRST_ITEMS[RandomInt(1,#FIRST_ITEMS)]        
@@ -128,6 +140,10 @@ function GetRandomItemNameFrom(itemQuality)
 
     if itemQuality == "unique" then
         return UNIQUE_ITEMS[RandomInt(1,#UNIQUE_ITEMS)]        
+    end
+
+    if itemQuality == "enchant" then
+        return ENCHANTMENT_ITEMS[RandomInt(1,#ENCHANTMENT_ITEMS)]        
     end
 end
 

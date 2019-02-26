@@ -203,9 +203,9 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"blood_effect"
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
+		"Ability2"					"tower_empty_slot_1"
+		"Ability3"					"tower_empty_slot_2"
+		"Ability4"					"tower_empty_slot_3"
 
 		// Armor
 		//----------------------------------------------------------------

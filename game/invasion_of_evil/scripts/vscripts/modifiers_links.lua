@@ -45,7 +45,26 @@ LinkLuaModifier("modifier_reset_bonus_agi", "modifiers/items/consumable_items/mo
 -------------------------------------------------------------------
 LinkLuaModifier("modifier_enchantment_aura_hp_regen", "modifiers/enchantments/modifier_enchantment_aura_hp_regen.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_enchantment_hp_regen_buff", "modifiers/enchantments/modifier_enchantment_aura_hp_regen.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_mp_regen", "modifiers/enchantments/modifier_enchantment_aura_mp_regen.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_mp_regen_buff", "modifiers/enchantments/modifier_enchantment_aura_mp_regen.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_bonus_armor", "modifiers/enchantments/modifier_enchantment_aura_bonus_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_bonus_armor_buff", "modifiers/enchantments/modifier_enchantment_aura_bonus_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_bonus_as", "modifiers/enchantments/modifier_enchantment_aura_bonus_as.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_bonus_as_buff", "modifiers/enchantments/modifier_enchantment_aura_bonus_as.lua", LUA_MODIFIER_MOTION_NONE )
 
+
+LinkLuaModifier("modifier_enchantment_aura_reduce_armor", "modifiers/enchantments/modifier_enchantment_aura_reduce_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_reduce_armor_buff", "modifiers/enchantments/modifier_enchantment_aura_reduce_armor.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_reduce_as", "modifiers/enchantments/modifier_enchantment_aura_reduce_as.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_reduce_as_buff", "modifiers/enchantments/modifier_enchantment_aura_reduce_as.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_reduce_ms", "modifiers/enchantments/modifier_enchantment_aura_reduce_ms.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_reduce_ms_buff", "modifiers/enchantments/modifier_enchantment_aura_reduce_ms.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_aura_reduce_damage", "modifiers/enchantments/modifier_enchantment_aura_reduce_damage.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_reduce_damage_buff", "modifiers/enchantments/modifier_enchantment_aura_reduce_damage.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+LinkLuaModifier("modifier_enchantment_taunt", "modifiers/enchantments/modifier_enchantment_taunt.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_enchantment_taunt_debuff", "modifiers/enchantments/modifier_enchantment_taunt.lua", LUA_MODIFIER_MOTION_NONE )
 
 
 -------------------------------------------------------------------

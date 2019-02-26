@@ -11,7 +11,7 @@ function item_note_dungeon_cemetry_one:OnSpellStart()
 		local hCaster = self:GetCaster()
 		local hItem = self
 
-		if not hCaster.church_step and not hCaster:HasModifier("modifier_quest_dungeon_cemetry") then
+		if not hCaster.cemetry_step and not hCaster:HasModifier("modifier_quest_dungeon_cemetry") then
 			hCaster.cemetry_step = 1
 			hCaster:EmitSound("Item.TomeOfKnowledge")
 			CustomGameEventManager:Send_ServerToPlayer(

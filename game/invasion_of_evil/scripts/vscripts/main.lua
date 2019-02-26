@@ -164,7 +164,7 @@ function main:OnNPCSpawn(data)
                 --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_cemetry", {})
                 --unit:AddNewModifier(unit, nil, "modifier_quest_dungeon_church", {})
                 --unit:AddItemByName("item_enchantment_aura_hp_regen")
-
+                --unit:AddItemByName("item_enchantment_taunt") 
             end
 
             if GetMapName() == "chapter_one_easy" then
@@ -353,6 +353,7 @@ function main:OnEntityKilled(data)
                 self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
                 
                 self:CreateDrop(GetRandomItemNameFrom("third"), killedEntity:GetAbsOrigin())
+                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
                 
                 --if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
                     --self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
@@ -465,6 +466,7 @@ function main:OnEntityKilled(data)
     end    
 end
 
+
 function main:SpanwMoobs()
 
     local point = nil
@@ -489,7 +491,7 @@ function main:SpanwMoobs()
 
     point = Entities:FindByName( nil, "npc_spawner_3" ):GetAbsOrigin()
     unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
-    unit:SetForwardVector(Vector(1,-1,0))
+    unit:SetForwardVector(Vector(1,-1,0))  
 
     point = Entities:FindByName( nil, "npc_spawner_4" ):GetAbsOrigin()
     unit = CreateUnitByName("npc_guardian", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
@@ -545,6 +547,38 @@ function main:SpanwMoobs()
     self:CreateDungeonFor("dungeon_boss_cursed",5) 
     self:CreateDungeonFor("dungeon_boss_jeepers",5)
     self:CreateDungeonFor("dungeon_boss_cemetry",5)     
+end
+
+
+function main:SpawnEnemysForGuards(enemyName, count)
+    --print("SpawnEnemyForGuard")
+    local point = nil
+    local enemy = nil
+    local hGuard = nil
+
+    
+    for j = 2, 4 do
+        point = Entities:FindByName( nil, "npc_spawner_" .. j ):GetAbsOrigin()
+
+        local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, point, nil, 300,
+        DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )
+        
+        if units then
+            for i = 1, #units do
+                if units[i]:GetUnitName() == "npc_guardian" then
+                    hGuard = units[i]
+                    break
+                end
+            end
+        end
+
+        for i = 1, count do
+            enemy = CreateUnitByName(enemyName, point + RandomVector(100), true, nil, nil, DOTA_TEAM_NEUTRALS )
+            if hGuard then
+                enemy:AddNewModifier(hGuard, nil, "modifier_enchantment_taunt_debuff", {duration = 10})
+            end
+        end
+    end
 end
 
 
@@ -1058,12 +1092,15 @@ function main:CreateInceptionWaves()
     local unit = nil
 
     WAVE_STEP = 7 - PlayerResource:GetTeamPlayerCount()
+    self:SpawnEnemysForGuards("npc_inception_attacker_evil_warrior", 10)
 
     Timers:CreateTimer(1, function()
         if waveCount > 0 then
-            for i = 1, 6 do
-                point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
-                unit = CreateUnitByName("npc_inception_attacker_evil_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+            if waveCount <= (WAVE_DURATION-15) then
+                for i = 1, 6 do
+                    point = Entities:FindByName( nil, "wave_spawner_" .. i):GetAbsOrigin()
+                    unit = CreateUnitByName("npc_inception_attacker_evil_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
+                end
             end
 
             waveCount = waveCount - WAVE_STEP
