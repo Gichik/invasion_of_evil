@@ -39,6 +39,11 @@ function CreateWaves()
 	local targetPoint = Entities:FindByName( nil, "npc_spawner_1"):GetAbsOrigin()
 	local waveCount = WAVE_DURATION
 	local unit = nil
+	local modifName = GetRandomModifierName()
+
+	if modifName == "modifier_unity_of_evil" or modifName == "modifier_cursed_aura" then
+		modifName = "modifier_insane"
+	end
 
 	WAVE_STEP = 7 - PlayerResource:GetTeamPlayerCount()
 	--print("player count:  " .. PlayerResource:GetTeamPlayerCount())
@@ -62,6 +67,13 @@ function CreateWaves()
 					unit = CreateUnitByName("npc_range_wave_warrior", point, true, nil, nil, DOTA_TEAM_NEUTRALS )
 					unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 				end
+
+				if ALTAR_COUNT > 0 then
+					if RollPercentage(10*ALTAR_COUNT) then
+						unit:AddNewModifier(unit, nil, modifName, {}) 
+					end
+				end
+
 			end
 
 			waveCount = waveCount - WAVE_STEP
@@ -201,6 +213,21 @@ function DestroyPortal()
 		--LAST_OW_PORTAL_TIME = LAST_OW_PORTAL_TIME + 120
 		--GameRules:SendCustomMessageToTeam("#teleport_wait", DOTA_TEAM_GOODGUYS, 0, 0)
 		CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#necromancer_message_name", messageText = "#teleport_wait"})
+		
+		--создаем новые алтари
+		if ALTAR_COUNT == 0 then
+			ALTAR_COUNT = 1
+		end
+		main:CreateNewAltar(nil)
+		main:CreateNewAltar(nil)
+		main:CreateNewAltar("cemetery")
+		main:CreateNewAltar("church")
+		main:CreateNewAltar("cursed_tree")
+
+
+
+
+		--после первого похода, нужно дать подсказку игрокам, что делать дальше, указав на минибоссов на карте
 		if MINIONS_LEVEL <= 4 then
 			LAST_OW_PORTAL_TIME = LAST_OW_PORTAL_TIME + 120
 			--GameRules:SendCustomMessage("#help_messages_11", 0, 0)

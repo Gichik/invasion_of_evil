@@ -52,16 +52,6 @@ function ApplyResetPoison(data)
 		    end	 
 		end   
 
-    	--дропаем активные вещи с зарядами (сердце, воду)
-		for i = 0, 11 do
-			item = hCaster:GetItemInSlot(i)
-			if item ~= nil then
-				if item:GetCurrentCharges() > 1 and item:IsDroppable() and not item:IsPassive() then
-					hCaster:DropItemAtPositionImmediate(item, hCaster:GetAbsOrigin())
-				end
-			end
-		end
-
 		--удаляем само зелье
 		for i = 0, 8 do
 			item = hCaster:GetItemInSlot(i)
@@ -69,6 +59,16 @@ function ApplyResetPoison(data)
 				if item:GetAbilityName() == data.ability:GetAbilityName() then
 					hCaster:RemoveItem(item)
 					break
+				end
+			end
+		end
+
+    	--дропаем вещи с зарядами (сердце, воду, черепа)
+		for i = 0, 11 do
+			item = hCaster:GetItemInSlot(i)
+			if item ~= nil then
+				if item:GetCurrentCharges() > 1 and item:IsDroppable() then
+					hCaster:DropItemAtPositionImmediate(item, hCaster:GetAbsOrigin())
 				end
 			end
 		end
@@ -130,6 +130,12 @@ function ApplyResetPoison(data)
         if newHero:GetMana() > oMana then
         	newHero:SetMana(oMana)
         end
+
+
+        newHero.cursed_step = hCaster.cursed_step
+        newHero.church_step = hCaster.church_step
+        newHero.cemetry_step = hCaster.cemetry_step
+        newHero.alchemy_step = hCaster.alchemy_step      
 
         UTIL_Remove(hCaster)
         --newHero:RespawnHero(false, false)

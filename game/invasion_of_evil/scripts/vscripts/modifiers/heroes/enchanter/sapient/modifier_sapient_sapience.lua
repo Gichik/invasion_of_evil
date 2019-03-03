@@ -35,7 +35,15 @@ end
 function modifier_sapient_sapience:OnDeath(data)
 	if IsServer() and self:GetParent() then
 		if data.unit:GetUnitName():find("boss") then
-			if data.attacker == self:GetParent() then
+
+			local ParentAbsOrigin = self:GetParent():GetAbsOrigin()
+			local UnitAbsOrigin = data.unit:GetAbsOrigin()
+
+			if 	ParentAbsOrigin.x > UnitAbsOrigin.x - 500 and 
+				ParentAbsOrigin.x < UnitAbsOrigin.x + 500 and
+				ParentAbsOrigin.y > UnitAbsOrigin.y - 500 and
+				ParentAbsOrigin.y < UnitAbsOrigin.y + 500 then
+
 				if self:GetStackCount() < self:GetAbility():GetSpecialValueFor("max_stacks") then
 					EmitSoundOn("Hero_Undying.SoulRip.Cast", data.unit)
 					local parent = self:GetParent();
@@ -45,6 +53,7 @@ function modifier_sapient_sapience:OnDeath(data)
 					ParticleManager:ReleaseParticleIndex(particleID)
 					self:IncrementStackCount()
 				end
+
 			end
 		end
 	end

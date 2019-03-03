@@ -357,3 +357,14 @@ function GetRandomModifierName()
 						}						
 	return ModifName[RandomInt(1,#ModifName)]
 end
+
+
+function GetRandomAuraModifierName()
+	local ModifName = {
+						"modifier_revitalizing_loss",
+						"modifier_weakness_aura",
+						"modifier_pest_aura",
+						"modifier_devastator_aura",
+						}						
+	return ModifName[RandomInt(1,#ModifName)]
+end

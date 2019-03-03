@@ -51,7 +51,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"
+		"BountyXP"					"70"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -146,7 +146,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"
+		"BountyXP"					"70"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -240,7 +240,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"
+		"BountyXP"					"70"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -334,7 +334,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"
+		"BountyXP"					"70"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -427,7 +427,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"
+		"BountyXP"					"40"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -524,7 +524,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"200"
+		"BountyXP"					"250"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -619,7 +619,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"200"
+		"BountyXP"					"250"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -715,7 +715,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"
+		"BountyXP"					"50"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -821,7 +821,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"
+		"BountyXP"					"50"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 
@@ -881,6 +881,84 @@
 		}
 	}
 
+	//----------------------------------------------------------------
+	//---------------------------ALTAR---------------------------
+	//----------------------------------------------------------------
+
+	"npc_altar"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/undying/idol_of_ruination/idol_tower_sim.vmdl"
+		"ModelScale"				"0.7"
+		"Level"						"10"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"0"
+		"ConsideredHero"			"0"
+		"UseNeutralCreepBehavior"	"1"
+		"CanBeDominated"            "0"
+
+		"UnitLabel"					"npc_altar"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"10"
+		"MagicalResistance"			"20"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"0"
+		"AttackDamageMax"			"0"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"300"
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+		"CollisionSize"				"1"
+		
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"2000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"900"
+		"VisionNighttimeRange"		"900"
+		
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}		
+
 
 	//----------------------------------------------------------------
 	//---------------------------MINI BOSES---------------------------
@@ -931,7 +1009,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"300"
+		"BountyXP"					"350"
 		"BountyGoldMin"				"0"	
 		"BountyGoldMax"				"0"	
 

@@ -53,7 +53,7 @@ MUSIC_SOURCE = nil
 
 
 RANDOMIZE_MODE = false
-
+ALTAR_COUNT = 0
 
 -------------------------------------------------------------------
 

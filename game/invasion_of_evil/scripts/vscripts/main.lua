@@ -109,8 +109,10 @@ function main:GameRulesStateChange(data)
         CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_messages_name", messageText = "#start_game"})
         self:CreateInceptionWaves()        
         StartOwTimer()
+
         --StartHelpMessagesTimer() 
-        --self:StartMusicTimer()       
+        --self:StartMusicTimer() 
+
     end
 end
 
@@ -353,7 +355,6 @@ function main:OnEntityKilled(data)
                 self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
                 
                 self:CreateDrop(GetRandomItemNameFrom("third"), killedEntity:GetAbsOrigin())
-                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
                 
                 --if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
                     --self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
@@ -404,6 +405,21 @@ function main:OnEntityKilled(data)
                     end                      
                 end
             end]] 
+            if killedEntity:GetUnitName() == "npc_altar" then
+
+                killedEntity:EmitSound("Hero_Zuus.LightningBolt")
+
+                ALTAR_COUNT = ALTAR_COUNT - 1
+                if ALTAR_COUNT < 1 then
+                    ALTAR_COUNT = 1
+                end 
+
+                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+
+            end
+
 
             if killedEntity.spawner then
                 if killedEntity:GetUnitName():find("start") then
@@ -882,14 +898,19 @@ function main:GiveNewHero(oldHero)
             newHero:AddNewModifier(newHero, nil, "modifier_reset_bonus_int", {}) 
         end  
 
+        newHero.cursed_step = oldHero.cursed_step
+        newHero.church_step = oldHero.church_step
+        newHero.cemetry_step = oldHero.cemetry_step
+        newHero.alchemy_step = oldHero.alchemy_step
+
         UTIL_Remove(oldHero)
         newHero:RespawnHero(false, false)
 
-        CustomGameEventManager:Send_ServerToPlayer(
-            newHero:GetPlayerOwner(),
-            "QuestMsgPanel_close",
-            {}
-        )       
+        --CustomGameEventManager:Send_ServerToPlayer(
+        --    newHero:GetPlayerOwner(),
+        --    "QuestMsgPanel_close",
+        --    {}
+        --)       
 
     end
 end
@@ -1120,6 +1141,36 @@ function main:CreateInceptionWaves()
         
     end
     )
+end
+
+
+function main:CreateNewAltar(biomName)
+
+    if ALTAR_COUNT <= 6 then
+        local placeTable = { "cemetery_spawner_", "church_spawner_", "cursed_tree_spawner_" }
+        local place = placeTable[RandomInt(1, 3)]
+
+        if biomName then
+            place = biomName .. "_spawner_"
+        end
+
+        local point = Entities:FindByName( nil,  place .. RandomInt(1, 4) ):GetAbsOrigin() or nil
+        local altar = nil
+        local modifier = nil
+        local units = nil
+
+        if point then
+            altar = CreateUnitByName("npc_altar", point, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+            altar.spawner = false 
+            altar:SetForwardVector(Vector(-1,-1,0))    
+        end
+            
+        if altar then 
+            ALTAR_COUNT = ALTAR_COUNT + 1
+            modifier = altar:AddNewModifier(altar, nil, GetRandomAuraModifierName(), {}) 
+        end  
+    end 
+
 end
 
 
@@ -1448,7 +1499,7 @@ function main:OnQuestAlchemyActivate(data)
                 if units then
                     for i = 1, #units do
                         if units[ i ] :GetUnitName() == "npc_vern_base" then
-                            hHero.alchemy_step = 2
+                            hHero.alchemy_step = 4
                             hHero:EmitSound("Item.TomeOfKnowledge")
                             CustomGameEventManager:Send_ServerToPlayer(
                                 hHero:GetPlayerOwner(),
