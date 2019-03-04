@@ -112,7 +112,6 @@ function main:GameRulesStateChange(data)
 
         --StartHelpMessagesTimer() 
         --self:StartMusicTimer() 
-
     end
 end
 
@@ -414,6 +413,13 @@ function main:OnEntityKilled(data)
                     ALTAR_COUNT = 1
                 end 
 
+                for i = 1, 3 do
+                    if not ALTAR_TABLE[ i ] then
+                        ALTAR_TABLE[ i ] = killedEntity.biom
+                        break
+                    end
+                end
+                
                 self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
                 self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
                 self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
@@ -1146,23 +1152,25 @@ end
 
 function main:CreateNewAltar(biomName)
 
-    if ALTAR_COUNT <= 6 then
-        local placeTable = { "cemetery_spawner_", "church_spawner_", "cursed_tree_spawner_" }
-        local place = placeTable[RandomInt(1, 3)]
+    if ALTAR_COUNT <= 4 then
+        local placeTable = { "cemetery", "church", "cursed_tree" }
+        local place = placeTable[RandomInt(1, 3)] 
 
         if biomName then
-            place = biomName .. "_spawner_"
+            place = biomName 
         end
 
-        local point = Entities:FindByName( nil,  place .. RandomInt(1, 4) ):GetAbsOrigin() or nil
+        local point = Entities:FindByName( nil,  place .. "_spawner_" .. RandomInt(1, 4) ):GetAbsOrigin() or nil
         local altar = nil
         local modifier = nil
         local units = nil
 
         if point then
             altar = CreateUnitByName("npc_altar", point, true, nil, nil, DOTA_TEAM_NEUTRALS ) 
+            altar.biom = place 
             altar.spawner = false 
-            altar:SetForwardVector(Vector(-1,-1,0))    
+            altar:SetForwardVector(Vector(-1,-1,0)) 
+
         end
             
         if altar then 

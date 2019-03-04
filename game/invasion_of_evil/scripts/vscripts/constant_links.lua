@@ -54,6 +54,7 @@ MUSIC_SOURCE = nil
 
 RANDOMIZE_MODE = false
 ALTAR_COUNT = 0
+ALTAR_TABLE = {"cemetery","church","cursed_tree"}
 
 -------------------------------------------------------------------
 

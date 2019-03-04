@@ -41,7 +41,7 @@ function CreateWaves()
 	local unit = nil
 	local modifName = GetRandomModifierName()
 
-	if modifName == "modifier_unity_of_evil" or modifName == "modifier_cursed_aura" then
+	if modifName == "modifier_unity_of_evil" or modifName == "modifier_cursed_aura" or modifName == "modifier_reflector" then
 		modifName = "modifier_insane"
 	end
 
@@ -218,11 +218,20 @@ function DestroyPortal()
 		if ALTAR_COUNT == 0 then
 			ALTAR_COUNT = 1
 		end
-		main:CreateNewAltar(nil)
-		main:CreateNewAltar(nil)
-		main:CreateNewAltar("cemetery")
-		main:CreateNewAltar("church")
-		main:CreateNewAltar("cursed_tree")
+
+		for i = 1, 3 do
+			if ALTAR_TABLE[ i ] then
+				main:CreateNewAltar(ALTAR_TABLE[ i ])
+				ALTAR_TABLE[ i ] = nil
+			end
+		end
+
+		--main:CreateNewAltar(nil)
+		--main:CreateNewAltar(nil)
+		--main:CreateNewAltar(nil)
+		--main:CreateNewAltar("cemetery")
+		--main:CreateNewAltar("church")
+		--main:CreateNewAltar("cursed_tree")
 
 
 
