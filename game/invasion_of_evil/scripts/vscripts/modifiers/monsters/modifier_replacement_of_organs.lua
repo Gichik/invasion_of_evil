@@ -47,7 +47,7 @@ end
 function modifier_replacement_of_organs:OnCreated()
 
     self.healthRegen = 15
-    self.magicResBonus = 18 
+    self.magicResBonus = 8 
     self.physArmorBonus = 18
 
     self.auraRadius = 2500

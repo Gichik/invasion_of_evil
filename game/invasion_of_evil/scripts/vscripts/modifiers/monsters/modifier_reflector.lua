@@ -32,17 +32,23 @@ mkb_tested,no_attack_cooldown,damage_flags,original_damage,gain,cost,basher_test
 function modifier_reflector:OnTakeDamage(data)
 	if IsServer() then
 		if data.unit == self:GetParent() then
-	        ApplyDamage({
-	            victim = data.attacker,
-	            attacker = self:GetParent(),
-	            damage = data.damage*self.refPercent/100,
-	            damage_type = data.damage_type,
-	            ability = self
-	           })
-	        local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_spectre/spectre_dispersion_fallback_mid.vpcf", PATTACH_POINT_FOLLOW, data.attacker) 
-			ParticleManager:SetParticleControlEnt(particle, 0, data.unit, PATTACH_POINT_FOLLOW, "attach_hitloc", data.unit:GetAbsOrigin(), true) 
-			ParticleManager:SetParticleControlEnt(particle, 1, data.attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", data.attacker:GetAbsOrigin(), true)
-			ParticleManager:ReleaseParticleIndex(particle)
+			if not data.attacker:IsNull() and not data.unit:IsNull() then
+
+		        ApplyDamage({
+		            victim = data.attacker,
+		            attacker = self:GetParent(),
+		            damage = data.damage*self.refPercent/100,
+		            damage_type = data.damage_type,
+		            ability = self
+		           })
+
+				if not data.attacker:IsNull() and not data.unit:IsNull() then
+		        	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_spectre/spectre_dispersion_fallback_mid.vpcf", PATTACH_POINT_FOLLOW, data.attacker) 
+					ParticleManager:SetParticleControlEnt(particle, 0, data.unit, PATTACH_POINT_FOLLOW, "attach_hitloc", data.unit:GetAbsOrigin(), true) 
+					ParticleManager:SetParticleControlEnt(particle, 1, data.attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", data.attacker:GetAbsOrigin(), true)
+					ParticleManager:ReleaseParticleIndex(particle)
+				end
+			end
 		end
 	end
 end

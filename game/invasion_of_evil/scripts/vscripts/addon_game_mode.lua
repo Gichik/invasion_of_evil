@@ -50,8 +50,12 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts", context )
 
-	
+
 	------------------------------------------------models-----------------------------------------------------
 	PrecacheResource( "model", "models/heroes/silencer/silencer_curse_skull.vmdl", context )
 	PrecacheResource( "model", "models/heroes/warlock/warlock.vmdl", context )
@@ -132,6 +136,8 @@ function Precache( context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_witchdoctor", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_bane", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_night_stalker", context )
+		PrecacheResource( "particle_folder", "particles/units/heroes/hero_arc_warden", context )
+	--PrecacheResource( "particle_folder", "particles/units/heroes/hero_jakiro", context )
 
 
 	PrecacheResource( "particle", "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf", context )
@@ -187,16 +193,21 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_tiny/tiny_craggy_cleave.vpcf", context ) -- modifier_summoner_wide_swing
 	PrecacheResource( "particle", "particles/units/heroes/hero_night_stalker/nightstalker_crippling_fear_aura.vpcf", context ) -- vampire
 	PrecacheResource( "particle", "particles/items2_fx/soul_ring.vpcf", context ) --modif dung church
+	PrecacheResource( "particle", "particles/items3_fx/lotus_orb_shell.vpcf", context ) --elementalist shield
+	PrecacheResource( "particle", "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf", context ) --elementalist shield
+	PrecacheResource( "particle", "particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_explosion.vpcf", context ) --elementalist shield
+	PrecacheResource( "particle", "particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf", context ) --elementalist shield
+	PrecacheResource( "particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context ) --elementalist fire
+	PrecacheResource( "particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context ) --elementalist fire
 
 
 
-
-
-
-
+	PrecacheResource( "particle", "particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_cast.vpcf", context ) --elementalist water
+	PrecacheResource( "particle", "endparticles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_debuff.vpcf", context ) --elementalist water
 
 
 end
+
 
 function Activate()
 

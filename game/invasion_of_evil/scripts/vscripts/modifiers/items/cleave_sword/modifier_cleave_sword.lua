@@ -89,7 +89,7 @@ end
 
 function modifier_cleave_sword:ApplyDamage(target)
 	if self:GetParent() then
-		local damage =  self.dmgMultiply*self.parent:GetAttackDamage()
+		local damage =  self.dmgMultiply*self.parent:GetAverageTrueAttackDamage(target)
 		local particle = "particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength_crit.vpcf"
 		DoCleaveAttack(self.parent, target, self, damage, self.cleaveStRadius, self.cleaveEndRadius, self.cleaveDistance, particle)
 	end

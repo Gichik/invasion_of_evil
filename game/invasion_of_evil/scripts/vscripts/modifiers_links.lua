@@ -334,6 +334,31 @@ LinkLuaModifier("modifier_vampire_power_of_demon", "modifiers/heroes/knight/vamp
 
 
 -------------------------------------------------------------------
+--------------------ELEMENTALIST MODIFIER--------------------------
+-------------------------------------------------------------------
+
+LinkLuaModifier("modifier_elementalist_magic_shield", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_shield.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_shield_buff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_shield.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_debuff_ice", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_debuff_ice.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_debuff_earth", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_debuff_earth.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_debuff_electricity", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_debuff_electricity.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_fire", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_fire.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_fire_debuff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_fire.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_water", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_water.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_water_debuff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_water.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_elementalist_magic_of_plasma", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_plasma.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_plasma_buff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_plasma.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_magma", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_magma.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_magma_debuff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_magma.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_air", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_air.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_air_buff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_air.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_energy", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_energy.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_elementalist_magic_of_energy_buff", "modifiers/heroes/enchanter/elementalist/modifier_elementalist_magic_of_energy.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
+-------------------------------------------------------------------
 
 function GetRandomModifierName()
 	local ModifName = {	"modifier_giant",

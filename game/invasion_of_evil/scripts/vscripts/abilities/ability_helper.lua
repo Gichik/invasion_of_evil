@@ -152,6 +152,25 @@ function AddPathAbilitiesToHero(data)
         end
     end  
 
+    if pathName == "elementalist" then
+        if abilityTier == 1 then
+            hHero:AddAbility("elementalist_magic_of_plasma")
+            hHero:AddAbility("elementalist_magic_of_magma")
+            hHero:AddAbility("elementalist_magic_of_air")
+            hHero:AddAbility("elementalist_magic_of_energy")
+        end
+        if abilityTier == 2 then
+            hHero:AddAbility("elementalist_magic_of_earth")
+            hHero:AddAbility("elementalist_magic_of_electricity")
+            hHero:AddAbility("elementalist_magic_of_ice")
+        end
+        if abilityTier == 3 then
+            hHero:AddAbility("elementalist_magic_of_fire")
+            hHero:AddAbility("elementalist_magic_of_water")
+        end
+    end
+
+
 end
 
 

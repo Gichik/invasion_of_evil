@@ -109,7 +109,7 @@ function main:GameRulesStateChange(data)
         CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_messages_name", messageText = "#start_game"})
         self:CreateInceptionWaves()        
         StartOwTimer()
-
+        
         --StartHelpMessagesTimer() 
         --self:StartMusicTimer() 
     end
@@ -197,16 +197,20 @@ function main:OnAbilityLearned(data)
             end 
             if data.abilityname:find("dishonored") then
                 pathName = "dishonored"
-            end              
+            end
+            if data.abilityname:find("vampire") then
+                pathName = "vampire"
+            end                            
             if data.abilityname:find("sapient") then
                 pathName = "sapient"
             end              
             if data.abilityname:find("summoner") then
                 pathName = "summoner"
             end  
-            if data.abilityname:find("vampire") then
-                pathName = "vampire"
-            end   
+            if data.abilityname:find("elementalist") then
+                pathName = "elementalist"
+            end            
+ 
 
             hHero:RemoveAbility(data.abilityname)
 
@@ -354,7 +358,7 @@ function main:OnEntityKilled(data)
                 self:RespawnMiniBoss(killedEntity:GetUnitName(), killedEntity.modelName, killedEntity.modelScale, killedEntity.vSpawnLoc, MINI_BOSS_RESPAWN_TIME)
                 
                 self:CreateDrop(GetRandomItemNameFrom("third"), killedEntity:GetAbsOrigin())
-                
+                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())                
                 --if RollPercentage(ENTRAILS_EVIL_DROP_PERC) then
                     --self:CreateDrop("item_entrails_evil", killedEntity:GetAbsOrigin())
                 --end 
@@ -407,6 +411,11 @@ function main:OnEntityKilled(data)
             if killedEntity:GetUnitName() == "npc_altar" then
 
                 killedEntity:EmitSound("Hero_Zuus.LightningBolt")
+                local point = killedEntity:GetAbsOrigin()
+                local lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf", PATTACH_CUSTOMORIGIN, nil)
+                ParticleManager:SetParticleControl(lightningBolt, 0, Vector(point.x,point.y,2000))
+                ParticleManager:SetParticleControl(lightningBolt, 1, point)
+                ParticleManager:SetParticleControl(lightningBolt, 2, point)  
 
                 ALTAR_COUNT = ALTAR_COUNT - 1
                 if ALTAR_COUNT < 1 then
@@ -420,9 +429,9 @@ function main:OnEntityKilled(data)
                     end
                 end
                 
-                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
-                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
-                self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+                --self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+                --self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
+                --self:CreateDrop(GetRandomItemNameFrom("enchant"), killedEntity:GetAbsOrigin())
 
             end
 
@@ -990,6 +999,7 @@ function main:DamageFilter(data)
             if hVictim:IsRealHero() then
                 data.damage = self:ManaShieldReduceDmg(hVictim,data.damage)
                 data.damage = self:BerserkRageReduceDmg(hVictim,data.damage)
+                data.damage = self:MagicShieldReduceDmg(hVictim,data.damage)
             end
         end
 
@@ -1044,6 +1054,14 @@ function main:ManaShieldReduceDmg(hHero,damage)
     end
     return damage   
 end 
+
+function main:MagicShieldReduceDmg(hHero,damage)
+    if hHero:HasModifier("modifier_elementalist_magic_shield_buff") then
+        damage = 0
+    end
+    return damage   
+end 
+
 
 function main:BerserkRageReduceDmg(hHero,damage)
     local ability = hHero:FindAbilityByName("berserk_rage") or nil

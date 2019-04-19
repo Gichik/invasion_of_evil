@@ -28,7 +28,7 @@ function ApplyResetPoison(data)
 	    local stat = data.Stat
 	    local currXP = hCaster:GetCurrentXP()
 
-	    if hCaster:GetLevel() >= 25 then
+	    if hCaster:GetLevel() >= 20 then
 	    	currXP = 0
 		    if stat == "strength" then
 			    if not hCaster.numResetBonusStr then

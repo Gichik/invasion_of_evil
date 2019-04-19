@@ -111,7 +111,8 @@ UNIQUE_ITEMS = {
         "item_ring_of_the_basilius",
         "item_poor_man_shield",
         "item_amulet_of_conversion",
-        "item_protective_amulet"
+        "item_protective_amulet",
+        "item_planeswalkers_cloak"
         }   
 
 ENCHANTMENT_ITEMS = { 
@@ -222,6 +223,10 @@ ENCHANTER_ABILITY = {
         "sapient_flows_of_magic",
         "sapient_cheerful_spirit",
         "sapient_strength_of_mind",
+        "elementalist_magic_of_plasma",
+        "elementalist_magic_of_magma",
+        "elementalist_magic_of_air",
+        "elementalist_magic_of_energy",
         }, 
         { 
         "sapient_mana_shield",
@@ -229,11 +234,16 @@ ENCHANTER_ABILITY = {
         "sapient_knowledge_of_ancients",
         "summoner_mammock",
         "summoner_predator",
-        "summoner_aesculapius"       
+        "summoner_aesculapius",
+        "elementalist_magic_of_earth",
+        "elementalist_magic_of_electricity",
+        "elementalist_magic_of_ice"       
         }, 
         { 
         "sapient_sapience",
-        "sapient_magic_circle"
+        "sapient_magic_circle",
+        "elementalist_magic_of_fire",
+        "elementalist_magic_of_water"
         } 
     }
 

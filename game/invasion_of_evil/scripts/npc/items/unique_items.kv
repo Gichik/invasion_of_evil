@@ -341,4 +341,60 @@
 	}
 
 
+   "item_planeswalkers_cloak"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/armor/planeswalkers_cloak" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"armor;int;spell_resist"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_resist"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"10"
+			}				
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_planeswalkers_cloak"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 		"%bonus_resist"	
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intellect"									
+				}				
+			}
+		}					
+   }
+
+
 }

@@ -23,12 +23,12 @@
 		"Ability5"		""
 		"Ability6"		""	
 		"Ability10"		"special_bonus_mp_regen_10"
-		"Ability11"		"special_bonus_strength_10"
+		"Ability11"		"special_bonus_strength_15"
 		"Ability12"		"special_bonus_hp_regen_10"
 		"Ability13"		"special_bonus_attack_damage_30"
 		"Ability14"		"special_bonus_armor_10"
 		"Ability15"		"special_bonus_magic_resistance_20"
-		"Ability16"		"special_bonus_strength_20"
+		"Ability16"		"special_bonus_strength_25"
 		"Ability17"		"special_bonus_attack_speed_70"
 
 		// Vision
@@ -85,12 +85,12 @@
 		"Ability5"		""
 		"Ability6"		""	
 		"Ability10"		"special_bonus_mp_regen_10"
-		"Ability11"		"special_bonus_strength_10"
+		"Ability11"		"special_bonus_strength_15"
 		"Ability12"		"special_bonus_hp_regen_10"
 		"Ability13"		"special_bonus_attack_damage_30"
 		"Ability14"		"special_bonus_armor_10"
 		"Ability15"		"special_bonus_magic_resistance_20"
-		"Ability16"		"special_bonus_strength_20"
+		"Ability16"		"special_bonus_strength_25"
 		"Ability17"		"special_bonus_attack_speed_70"
 
 		// Vision
@@ -148,13 +148,13 @@
 		"Ability5"		""
 		"Ability6"		""
 		"Ability10"		"special_bonus_mp_regen_10"
-		"Ability11"		"special_bonus_agility_10"
+		"Ability11"		"special_bonus_agility_15"
 		"Ability12"		"special_bonus_attack_damage_40"
 		"Ability13"		"special_bonus_magic_resistance_30"
 		"Ability14"		"special_bonus_hp_700"
 		"Ability15"		"special_bonus_attack_speed_40"
-		"Ability16"		"special_bonus_strength_20"
-		"Ability17"		"special_bonus_agility_20"
+		"Ability16"		"special_bonus_strength_25"
+		"Ability17"		"special_bonus_agility_25"
 
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
@@ -212,13 +212,13 @@
 		"Ability5"		""
 		"Ability6"		""
 		"Ability10"		"special_bonus_mp_regen_10"
-		"Ability11"		"special_bonus_agility_10"
+		"Ability11"		"special_bonus_agility_15"
 		"Ability12"		"special_bonus_attack_damage_40"
 		"Ability13"		"special_bonus_magic_resistance_30"
 		"Ability14"		"special_bonus_hp_700"
 		"Ability15"		"special_bonus_attack_speed_40"
-		"Ability16"		"special_bonus_strength_20"
-		"Ability17"		"special_bonus_agility_20"
+		"Ability16"		"special_bonus_strength_25"
+		"Ability17"		"special_bonus_agility_25"
 
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
@@ -269,7 +269,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"		"sapient_path"
 		"Ability2"		"summoner_path"
-		"Ability3"		"empty_slot_2"
+		"Ability3"		"elementalist_path"
 		"Ability4"		"empty_slot_3"
 		"Ability5"		""
 		"Ability6"		""
@@ -278,12 +278,12 @@
 		"Ability9"		""
 		"Ability10"		""
 		"Ability11"		"special_bonus_mp_regen_14"
-		"Ability12"		"special_bonus_intelligence_10"
+		"Ability12"		"special_bonus_intelligence_15"
 		"Ability13"		"special_bonus_magic_resistance_20"
 		"Ability14"		"special_bonus_attack_speed_50"
 		"Ability15"		"special_bonus_hp_500"
 		"Ability16"		"special_bonus_mp_500"
-		"Ability17"		"special_bonus_intelligence_20"
+		"Ability17"		"special_bonus_intelligence_25"
 		"Ability18"		"special_bonus_attack_range_200"
 
 		// Vision
@@ -336,7 +336,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"		"sapient_path"
 		"Ability2"		"summoner_path"
-		"Ability3"		"empty_slot_2"
+		"Ability3"		"elementalist_path"
 		"Ability4"		"empty_slot_3"
 		"Ability5"		""
 		"Ability6"		""
@@ -344,12 +344,12 @@
 		"Ability8"		""
 		"Ability9"		""
 		"Ability10"		"special_bonus_mp_regen_14"
-		"Ability11"		"special_bonus_intelligence_10"
+		"Ability11"		"special_bonus_intelligence_15"
 		"Ability12"		"special_bonus_magic_resistance_20"
 		"Ability13"		"special_bonus_attack_speed_50"
 		"Ability14"		"special_bonus_hp_500"
 		"Ability15"		"special_bonus_mp_500"
-		"Ability16"		"special_bonus_intelligence_20"
+		"Ability16"		"special_bonus_intelligence_25"
 		"Ability17"		"special_bonus_attack_range_200"
 
 		// Vision

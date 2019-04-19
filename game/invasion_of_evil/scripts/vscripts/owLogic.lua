@@ -41,8 +41,12 @@ function CreateWaves()
 	local unit = nil
 	local modifName = GetRandomModifierName()
 
-	if modifName == "modifier_unity_of_evil" or modifName == "modifier_cursed_aura" or modifName == "modifier_reflector" then
-		modifName = "modifier_insane"
+	if modifName == "modifier_unity_of_evil" 
+		or modifName == "modifier_cursed_aura" 
+		or modifName == "modifier_reflector" 
+		or modifName == "modifier_insane" then
+			
+		modifName = "modifier_lump"
 	end
 
 	WAVE_STEP = 7 - PlayerResource:GetTeamPlayerCount()

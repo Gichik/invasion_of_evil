@@ -23,9 +23,10 @@ function sizzling_ray:OnSpellStart()
 	self.maxRotate = math.floor(self.duration / self.think) 
 	self.damage = self:GetSpecialValueFor("damage") or 0
 	self.particleID = nil
+	self.caster:EmitSound("Hero_Phoenix.SuperNova.Death")
 	self.caster:AddNewModifier(self.caster, self, "modifier_cast_ray", {})
 
-    Timers:CreateTimer(0, function()
+    Timers:CreateTimer(2, function()
     	self.caster:StopSound("Hero_Phoenix.SunRay.Cast")
     	self:RayAnimation()
     	self:ApplyDamageToTargets()

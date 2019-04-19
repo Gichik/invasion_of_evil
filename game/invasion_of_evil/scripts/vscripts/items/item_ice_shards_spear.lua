@@ -48,6 +48,7 @@ function OnToggle(data)
 
 end
 
+--снаряды привязаны к абилке, а абилка в кв отлавливает столкновение и вызывает функцию
 --target,caster,caster_entindex,ScriptFile,Function,ability
 function OnShardsHitUnit(data)
 	if data.target and data.caster and data.ability then
@@ -55,7 +56,7 @@ function OnShardsHitUnit(data)
         ApplyDamage({
             victim = data.target,
             attacker = data.caster,
-            damage = data.caster:GetAttackDamage()*data.ability:GetSpecialValueFor("dmg_perc")/100,
+            damage = data.caster:GetAverageTrueAttackDamage(data.target)*data.ability:GetSpecialValueFor("dmg_perc")/100,
             damage_type = DAMAGE_TYPE_MAGICAL,
             ability = data.ability
            })
