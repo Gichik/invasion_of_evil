@@ -123,7 +123,7 @@ LinkLuaModifier("modifier_prophecy_armor_gleaming_sea", "modifiers/items/prophec
 LinkLuaModifier("modifier_prophecy_ring_of_the_basilius", "modifiers/items/prophecy/modifier_prophecy_ring_of_the_basilius.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_prophecy_poor_man_shield", "modifiers/items/prophecy/modifier_prophecy_poor_man_shield.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_prophecy_amulet_of_conversion", "modifiers/items/prophecy/modifier_prophecy_amulet_of_conversion.lua", LUA_MODIFIER_MOTION_NONE )
-
+LinkLuaModifier("modifier_prophecy_planeswalkers_cloak", "modifiers/items/prophecy/modifier_prophecy_planeswalkers_cloak.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------

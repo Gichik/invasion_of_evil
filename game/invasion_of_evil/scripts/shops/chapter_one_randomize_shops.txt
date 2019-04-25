@@ -136,6 +136,7 @@
         "item"   "item_prophecy_ring_of_the_basilius"       
         "item"   "item_prophecy_poor_man_shield" 
         "item"   "item_prophecy_amulet_of_conversion"
+        "item"   "item_prophecy_planeswalkers_cloak"
         "item"   "item_flask_of_blue_poison" 
         "item"   "item_flask_of_red_poison"
         "item"   "item_flask_of_green_poison"                                       

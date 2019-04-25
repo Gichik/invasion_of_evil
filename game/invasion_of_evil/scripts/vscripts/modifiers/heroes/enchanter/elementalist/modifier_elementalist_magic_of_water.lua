@@ -31,8 +31,8 @@ function modifier_elementalist_magic_of_water:OnAttackLanded(data)
         if self.debuffChance and self.debuffRadius and self.debuffDur then
             if data.attacker == self:GetParent() and RollPercentage(self.debuffChance) then
 
-                ParticleManager:CreateParticle("particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_cast.vpcf", PATTACH_ABSORIGIN, data.target)
-                data.target:EmitSound("Hero_Morphling.AdaptiveStrikeAgi.Target")
+                --ParticleManager:CreateParticle("particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_cast.vpcf", PATTACH_ABSORIGIN, data.target)
+                data.target:EmitSound("Hero_Morphling.attack")
 
                 local units = FindUnitsInRadius( data.attacker:GetTeamNumber(), data.target:GetAbsOrigin(), data.attacker, self.debuffRadius,
                     DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, 0, false )

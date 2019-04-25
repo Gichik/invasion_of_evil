@@ -44,18 +44,21 @@ end
 
 
 function echoes_victims:CreateSignalZone()
-	if self:GetCaster() then
-		local point = ( self:GetCaster():GetAbsOrigin() + RandomVector( RandomFloat( 0, self.aoeRadius )) ) or nil	
-	
-		if point then
-			local particleID = ParticleManager:CreateParticle("particles/units/heroes/hero_bane/bane_nightmare_slime.vpcf", PATTACH_CUSTOMORIGIN, self:GetCaster() )
-			ParticleManager:SetParticleControl(particleID, 0, point)
-			--ParticleManager:SetParticleControl(particleID, 1, Vector(400, 0, 0))
-			self:DestroyParticle(particleID,self.sZoneDur)
-			self:CreateHands(point,self.sZoneDur)				
-		end	
 
+	if self.caster then
+		if not self.caster:IsNull() then
+			local point = ( self.caster:GetAbsOrigin() + RandomVector( RandomFloat( 0, self.aoeRadius )) ) or nil	
+		
+			if point then
+				local particleID = ParticleManager:CreateParticle("particles/units/heroes/hero_bane/bane_nightmare_slime.vpcf", PATTACH_CUSTOMORIGIN, self.caster )
+				ParticleManager:SetParticleControl(particleID, 0, point)
+				--ParticleManager:SetParticleControl(particleID, 1, Vector(400, 0, 0))
+				self:DestroyParticle(particleID,self.sZoneDur)
+				self:CreateHands(point,self.sZoneDur)				
+			end
+		end
 	end
+	
 end
 
 function echoes_victims:DestroyParticle(particleID,time)
@@ -71,17 +74,22 @@ end
 
 
 function echoes_victims:CreateHands(vLocation,time)
+
     Timers:CreateTimer(time, function()
-		if self:GetCaster() then
-			--StartSoundEventFromPosition("Hero_Bane.FiendsGrip.Cast",vLocation)	
-			CreateModifierThinker(	self:GetCaster(), 
-									self, 
-									"modifier_echoes_victims", 
-									{duration = self.handsDur}, 
-									vLocation, 
-									self:GetCaster():GetTeamNumber(), 
-									false)
+
+		if self.caster then
+			if not self.caster:IsNull() then
+				--StartSoundEventFromPosition("Hero_Bane.FiendsGrip.Cast",vLocation)	
+				CreateModifierThinker(	self.caster, 
+										self, 
+										"modifier_echoes_victims", 
+										{duration = self.handsDur}, 
+										vLocation, 
+										self.caster:GetTeamNumber(), 
+										false)
+			end
 		end
+
 		return nil
     end
     )

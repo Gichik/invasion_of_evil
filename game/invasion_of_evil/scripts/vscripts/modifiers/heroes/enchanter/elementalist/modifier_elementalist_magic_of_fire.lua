@@ -112,7 +112,7 @@ function modifier_elementalist_magic_of_fire_debuff:DeclareFunctions()
 end
 
 function modifier_elementalist_magic_of_fire_debuff:GetModifierMagicalResistanceBonus()
-    return self.reduce_resist
+    return -self.reduce_resist
 end
 
 
