@@ -8,7 +8,7 @@ function modifier_reflector:IsHidden()
 end
 
 function modifier_reflector:GetTexture()
-    return "nevermore_shadowraze1"
+    return "nevermore_shadowraze3"
 end
 
 function modifier_reflector:RemoveOnDeath()
