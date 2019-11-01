@@ -185,7 +185,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemShopTags"					"agi;damage;attack;spell_resist"
+		"ItemShopTags"					"agi;damage;attack"
 		"ItemQuality"					"component"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
 		"ItemDroppable"					"1" 
@@ -395,6 +395,63 @@
 			}
 		}					
    }
+
+
+   "item_warrior_boots"
+   {
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"  
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom_folder/boots/warrior_boots" 
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemShopTags"					"armor;agi"
+		"ItemQuality"					"component"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES" 
+		"ItemDroppable"					"1" 
+		"ItemPurchasable"				"0" 
+		"ItemCost"						"0"	 
+		"ItemSellable"					"1" 
+		"ItemKillable"					"1"
+    	"ItemShareability" 				"ITEM_FULLY_SHAREABLE"
+
+		// Special
+		//------------------------------------------------------------------------------------------------------------	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movespeed"		"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"10"
+			}				
+		}		
+		
+		// Modifiers
+		//------------------------------------------------------------------------------------------------------------	
+		"Modifiers"
+		{
+			"modifier_planeswalkers_cloak"
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"  
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agility"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 		"%bonus_movespeed"										
+				}				
+			}
+		}					
+   }
+
 
 
 }

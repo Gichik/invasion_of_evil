@@ -112,7 +112,8 @@ UNIQUE_ITEMS = {
         "item_poor_man_shield",
         "item_amulet_of_conversion",
         "item_protective_amulet",
-        "item_planeswalkers_cloak"
+        "item_planeswalkers_cloak",
+        "item_warrior_boots"
         }   
 
 ENCHANTMENT_ITEMS = { 
@@ -257,7 +258,11 @@ BARBARIAN_ABILITY = {
         "exile_alert",
         "exile_ardor",
         "exile_trophies",
-        "exile_meditation"
+        "exile_meditation",
+        "madman_imposing",
+        "madman_spitfire",
+        "madman_contiguous",
+        "madman_persistent"
         },
         { 
         "berserk_heroism",
@@ -265,13 +270,18 @@ BARBARIAN_ABILITY = {
         "berserk_rage",
         "exile_riot",
         "exile_severity",
-        "exile_intimidation"       
+        "exile_intimidation",
+        "madman_destructive",
+        "madman_heavy",
+        "madman_wild",       
         }, 
         { 
         "berserk_spirit_of_war",
         "berserk_spirit_of_nimbleness",
         "exile_highlander",
-        "exile_zeal"
+        "exile_zeal",
+        "madman_bloodthirsty",
+        "madman_fearless"
         } 
     }    
 

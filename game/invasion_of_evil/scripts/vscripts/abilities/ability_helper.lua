@@ -170,6 +170,23 @@ function AddPathAbilitiesToHero(data)
         end
     end
 
+    if pathName == "madman" then
+        if abilityTier == 1 then
+            hHero:AddAbility("madman_imposing")
+            hHero:AddAbility("madman_spitfire")
+            hHero:AddAbility("madman_contiguous")
+            hHero:AddAbility("madman_persistent")
+        end
+        if abilityTier == 2 then
+            hHero:AddAbility("madman_destructive")
+            hHero:AddAbility("madman_heavy")
+            hHero:AddAbility("madman_wild")
+        end
+        if abilityTier == 3 then
+            hHero:AddAbility("madman_fearless")
+            hHero:AddAbility("madman_bloodthirsty")
+        end
+    end
 
 end
 

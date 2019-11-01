@@ -212,3 +212,44 @@ function TeleportTriggerFromCellar(data)
 	end
 
 end
+
+function BulletinBoardOpen(data)
+	--print("BulletinBoardOpen")
+	if IsServer() then
+		local activator = data.activator
+		local messageID = ""
+		if not activator.board then
+			activator.board = 0
+		end
+
+		activator.board = activator.board + 1
+		if activator.board > 7 then
+			activator.board = 1
+		end
+
+		if activator.board == 1 then
+			messageID = "#1_bulletin_board_thanks_Description"
+		end
+		if activator.board == 2 then
+			messageID = "#2_bulletin_board_thanks_Description"
+		end
+		if activator.board == 3 then
+			messageID = "#3_bulletin_board_thanks_Description"
+		end
+		if activator.board == 4 then
+			messageID = "#4_bulletin_board_thanks_Description"
+		end
+		if activator.board == 5 then
+			messageID = "#5_bulletin_board_thanks_Description"
+		end		
+		if activator.board == 6 then
+			messageID = "#6_bulletin_board_thanks_Description"
+		end
+		if activator.board == 7 then
+			messageID = "#7_bulletin_board_thanks_Description"
+		end	
+			
+		data.activator:EmitSound("Item.TomeOfKnowledge")
+		CustomGameEventManager:Send_ServerToPlayer(data.activator:GetPlayerOwner(),"QuestMsgPanel_create_new_message", {messageName = "#bulletin_board", messageText = messageID})			
+	end
+end

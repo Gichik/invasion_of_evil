@@ -12,6 +12,9 @@ end
 --TeleportTriggerDungCemetry
 --dungeon_cemetry_hero_spawner
 
+--trigger_bulletin_board
+--BulletinBoardOpen
+
 function main:InitGameMode()
    --print( "InitGameMode" )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 3 )
@@ -191,7 +194,10 @@ function main:OnAbilityLearned(data)
             end
             if data.abilityname:find("exile") then
                 pathName = "exile"
-            end            
+            end         
+            if data.abilityname:find("madman") then
+                pathName = "madman"
+            end               
             if data.abilityname:find("templar") then
                 pathName = "templar"
             end 
@@ -210,7 +216,7 @@ function main:OnAbilityLearned(data)
             if data.abilityname:find("elementalist") then
                 pathName = "elementalist"
             end            
- 
+
 
             hHero:RemoveAbility(data.abilityname)
 

@@ -124,6 +124,9 @@ LinkLuaModifier("modifier_prophecy_ring_of_the_basilius", "modifiers/items/proph
 LinkLuaModifier("modifier_prophecy_poor_man_shield", "modifiers/items/prophecy/modifier_prophecy_poor_man_shield.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_prophecy_amulet_of_conversion", "modifiers/items/prophecy/modifier_prophecy_amulet_of_conversion.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_prophecy_planeswalkers_cloak", "modifiers/items/prophecy/modifier_prophecy_planeswalkers_cloak.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_prophecy_warrior_boots", "modifiers/items/prophecy/modifier_prophecy_warrior_boots.lua", LUA_MODIFIER_MOTION_NONE )
+
+
 
 -------------------------------------------------------------------
 -------------------------MONSTER MODIFIER--------------------------
@@ -237,6 +240,26 @@ LinkLuaModifier("modifier_exile_intimidation_debuff", "modifiers/heroes/barbaria
 LinkLuaModifier("modifier_exile_riot", "modifiers/heroes/barbarian/exile/modifier_exile_riot.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_exile_severity", "modifiers/heroes/barbarian/exile/modifier_exile_severity.lua", LUA_MODIFIER_MOTION_NONE )
 
+
+
+-------------------------------------------------------------------
+-------------------------MADMAN MODIFIER--------------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_madman_bloodthirsty", "modifiers/heroes/barbarian/madman/modifier_madman_bloodthirsty.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_bloodthirsty_debuff", "modifiers/heroes/barbarian/madman/modifier_madman_bloodthirsty.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_fearless", "modifiers/heroes/barbarian/madman/modifier_madman_fearless.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_spitfire", "modifiers/heroes/barbarian/madman/modifier_madman_spitfire.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_spitfire_buff", "modifiers/heroes/barbarian/madman/modifier_madman_spitfire.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_wild", "modifiers/heroes/barbarian/madman/modifier_madman_wild.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_wild_buff", "modifiers/heroes/barbarian/madman/modifier_madman_wild.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_destructive", "modifiers/heroes/barbarian/madman/modifier_madman_destructive.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_destructive_debuff", "modifiers/heroes/barbarian/madman/modifier_madman_destructive.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_imposing", "modifiers/heroes/barbarian/madman/modifier_madman_imposing.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_contiguous", "modifiers/heroes/barbarian/madman/modifier_madman_contiguous.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_contiguous_buff", "modifiers/heroes/barbarian/madman/modifier_madman_contiguous.lua", LUA_MODIFIER_MOTION_NONE )
+
+LinkLuaModifier("modifier_madman_persistent", "modifiers/heroes/barbarian/madman/modifier_madman_persistent.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_madman_heavy", "modifiers/heroes/barbarian/madman/modifier_madman_heavy.lua", LUA_MODIFIER_MOTION_NONE )
 
 -------------------------------------------------------------------
 -------------------------TEMPLAR MODIFIER--------------------------

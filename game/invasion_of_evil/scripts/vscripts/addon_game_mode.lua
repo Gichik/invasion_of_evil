@@ -54,6 +54,10 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/voscripts/game_sounds_vo_brewmaster.vsndevts", context )
+
 
 
 	------------------------------------------------models-----------------------------------------------------
@@ -136,7 +140,8 @@ function Precache( context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_witchdoctor", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_bane", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_night_stalker", context )
-		PrecacheResource( "particle_folder", "particles/units/heroes/hero_arc_warden", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_arc_warden", context )
+	PrecacheResource( "particle_folder", "particles/units/heroes/hero_pangolier", context )
 	--PrecacheResource( "particle_folder", "particles/units/heroes/hero_jakiro", context )
 
 
@@ -199,11 +204,19 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf", context ) --elementalist shield
 	PrecacheResource( "particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context ) --elementalist fire
 	PrecacheResource( "particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context ) --elementalist fire
-
-
-
 	PrecacheResource( "particle", "particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_cast.vpcf", context ) --elementalist water
 	PrecacheResource( "particle", "endparticles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_debuff.vpcf", context ) --elementalist water
+
+
+	PrecacheResource( "particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b.vpcf", context ) --madman bloodthirsty
+	PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf", context ) --madman bloodthirsty
+
+	PrecacheResource( "particle", "particles/econ/items/bloodseeker/bloodseeker_ti7/bloodseeker_ti7_thirst_owner_ground.vpcf", context ) --madman bloodthirsty
+	PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_d.vpcf", context ) --madman fearless
+
+	PrecacheResource( "particle", "particles/units/heroes/hero_spectre/spectre_desolate_debuff.vpcf", context ) --madman destructive
+
+
 
 
 end

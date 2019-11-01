@@ -27,6 +27,7 @@ function ApplyResetPoison(data)
 	    local abilityCount = hCaster:GetAbilityCount()
 	    local stat = data.Stat
 	    local currXP = hCaster:GetCurrentXP()
+        local itemTable = {"","","","","","","","","","","",""}
 
 	    if hCaster:GetLevel() >= 20 then
 	    	currXP = 0
@@ -72,6 +73,14 @@ function ApplyResetPoison(data)
 				end
 			end
 		end
+
+        --сохраняем остальные вещи
+        for i = 0, 11 do
+            item = hCaster:GetItemInSlot(i)
+            if item ~= nil then
+                itemTable[i] = item:GetAbilityName()
+            end
+        end
 
         for i = 0, abilityCount-1 do
             ability = hCaster:GetAbilityByIndex(i)
@@ -136,6 +145,12 @@ function ApplyResetPoison(data)
         newHero.church_step = hCaster.church_step
         newHero.cemetry_step = hCaster.cemetry_step
         newHero.alchemy_step = hCaster.alchemy_step      
+
+        for i = 0, #itemTable do
+            if itemTable[i] ~= "" and newHero:HasAnyAvailableInventorySpace() then
+                newHero:AddItemByName(itemTable[i])
+            end
+        end
 
         UTIL_Remove(hCaster)
         --newHero:RespawnHero(false, false)

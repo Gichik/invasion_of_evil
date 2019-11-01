@@ -8,7 +8,7 @@
 #base "heroes_path/summoner.kv"
 #base "heroes_path/vampire.kv"
 #base "heroes_path/elementalist.kv"
-
+#base "heroes_path/madman.kv"
 
 #base "monsters/bosses_ability.kv"
 
@@ -102,6 +102,29 @@
 				"ScriptFile"		"abilities/ability_helper.lua"
 				"Function"			"AddPathAbilitiesToHero"
 				"Path"				"exile"
+				"Tier"				"1"												
+			}
+		}	
+	}
+
+	"madman_path"
+	{
+		"BaseClass" 					"ability_datadriven"		
+    	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"			
+	    "AbilityTextureName"            "huskar_berserkers_blood"
+	    "MaxLevel"                      "1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           	"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/ability_helper.lua"
+				"Function"			"AddPathAbilitiesToHero"
+				"Path"				"madman"
 				"Tier"				"1"												
 			}
 		}	
