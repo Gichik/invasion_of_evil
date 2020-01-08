@@ -14,6 +14,7 @@
 		</Panel>
 
 		<Panel id="QuestMsgPanel" class="QuestMsgPanel">
+			
 			<Panel id="QuestMsgPanelLeft" class="QuestMsgPanelLeft">
 				<ToggleButton id="QuestButton_1" onactivate="QuestCursedActivate()">
 					<Label id="QuestButtonText_1" text="Press to Activate"/>
@@ -32,6 +33,15 @@
 				</ToggleButton>																				
 			</Panel>
 
+		<!--====================Event Bar=========================-->
+			<Panel id="QuestMsgPanelLeft" class="QuestMsgPanelLeft">
+				<Panel id="EventScorebar">
+					<Panel id="EventScorebarFiller"/>
+					<Label id="EventPanelText" text="EVENT\n\nP\nR\nO\nG\nR\nE\nS\nS"/>	
+				</Panel>		
+			</Panel>
+		<!--=================================================-->
+		
 			<Panel id="QuestMsgPanelRight" class="QuestMsgPanelRight">
 				<Label id="QuestMsgPanelName" text=""/>
 				<Label id="QuestMsgPanelText" text=""/>

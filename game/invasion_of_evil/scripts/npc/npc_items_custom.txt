@@ -7,6 +7,7 @@
 #base "items/prophecy_items.kv"
 #base "items/achievement_items.kv"
 #base "items/enchantments.kv"
+#base "items/events_items.kv"
 
 "DOTAAbilities"
 {

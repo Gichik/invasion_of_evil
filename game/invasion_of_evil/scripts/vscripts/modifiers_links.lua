@@ -416,3 +416,19 @@ function GetRandomAuraModifierName()
 						}						
 	return ModifName[RandomInt(1,#ModifName)]
 end
+
+
+function GetRandomAlchemyModifierName()
+	local ModifName = {	"modifier_alchemy_hp_regen_buff",
+						"modifier_alchemy_health_buff",
+						"modifier_alchemy_mp_regen_buff",
+						"modifier_alchemy_damage_buff",
+						"modifier_alchemy_movement_speed_buff",
+						"modifier_alchemy_armor_buff",
+						"modifier_alchemy_accuracy_buff",
+						"modifier_alchemy_evasion_buff",
+						"modifier_alchemy_magic_resist_buff",
+						"modifier_alchemy_attack_speed_buff",
+						}						
+	return ModifName[RandomInt(1,#ModifName)]
+end

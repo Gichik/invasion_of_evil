@@ -2,6 +2,7 @@
 
 #base "monsters/npc_monsters.kv"
 #base "monsters/npc_bosses.kv"
+#base "monsters/npc_monsters_chap_two.kv"
 
 "DOTAUnits"
 {

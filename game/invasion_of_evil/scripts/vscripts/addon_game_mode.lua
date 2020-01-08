@@ -1,5 +1,6 @@
 
 require( 'main' )
+require( 'main_chap_two' )
 require( 'timers' )
 require( 'modifiers_links' )
 require( 'constant_links' )
@@ -133,6 +134,11 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/wraith_king/wraith_king.vmdl", context ) --fallen commander
 	PrecacheResource( "model", "models/items/wraith_king/wk_ti8_creep/wk_ti8_creep.vmdl", context ) --fallen commander minion
 
+	PrecacheResource( "model", "models/props_gameplay/rune_haste01.vmdl", context ) --blood coin
+
+
+
+
 	------------------------------------------------particles-----------------------------------------------------
 	
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_legion_commander", context )
@@ -232,10 +238,14 @@ function Activate()
 		--GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
 	end
 
-	if MapName == "chapter_one_easy" or "chapter_one_normal" or "chapter_one_randomize" then
+	if (MapName == "chapter_one_easy") or (MapName == "chapter_one_normal") or (MapName == "chapter_one_randomize") then
 		print("----------------------------------------chapter_one----------------------------------------")
 		main:InitGameMode()
 	end
 
-	
+	if MapName == "chapter_two_normal" then
+		print("----------------------------------------chapter_two----------------------------------------")
+		main_chap_two:InitGameMode()
+	end
+
 end

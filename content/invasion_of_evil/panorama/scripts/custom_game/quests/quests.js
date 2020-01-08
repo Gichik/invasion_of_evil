@@ -1,6 +1,15 @@
 //$.GetContextPanel().SetHasClass("Quest", false);
 $.GetContextPanel().visible = true;
 $( "#QuestMsgPanelRight" ).visible = false;
+//$( "#QuestMsgPanelLeft" ).visible = true;
+//$( "#MessagePanel" ).visible = false;
+//$( "#QuestButton_1" ).visible = false;	
+//$( "#QuestButton_2" ).visible = false;
+//$( "#QuestButton_3" ).visible = false;
+//$( "#QuestButton_4" ).visible = false;
+//$( "#QuestButton_4" ).visible = false;
+//$( "#QuestButton_5" ).visible = false;
+//$( "#EventScorebar" ).visible = false;
 
 function OnNewMessage(data)
 {
@@ -67,6 +76,7 @@ function OnCloseQuestMsgPanel() {
 	$( "#QuestButton_2" ).visible = false;
 	$( "#QuestButton_3" ).visible = false;
 	$( "#QuestButton_4" ).visible = false;	
+	$( "#EventScorebar" ).visible = false;
 	//if (!$( "#MessagePanel" ).visible){	
 	//	$.GetContextPanel().visible = false;		
 	//}	
@@ -113,11 +123,26 @@ function QuestHelpActivate() {
 	GameEvents.SendCustomGameEventToServer( "quest_help_activate", {"PlayerID" : PlayerID});
 }
 
+
+function OnUpdateEventScorebar(data)
+{
+
+	$( "#EventScorebar" ).visible = true;
+	var percent =  100 - 100*(data.currentScore / data.maxScore);
+	//$.Msg(percent);
+	$( "#EventScorebarFiller" ).style.marginTop = percent + "%";
+}
+
+
+
 function debug()
 {
 	$.Msg("Debug");
 	GameEvents.Subscribe("MessagePanel_create_new_message", OnNewMessage);
 	GameEvents.Subscribe("QuestMsgPanel_create_new_message", OnNewQuestMsg);
+
+
+	GameEvents.Subscribe("QuestPanel_UpdateEventScorebar", OnUpdateEventScorebar);
 
 	GameEvents.Subscribe("QuestMsgPanel_close", OnCloseQuestMsgPanel);
 }

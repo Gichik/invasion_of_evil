@@ -29,7 +29,7 @@ COMMON_DROP_PERC = 20
 PROPHECY_DROP_PERC = 30
 PROPHECY_ITEM = nil
 ENTRAILS_EVIL_DROP_PERC = 30
-TIME_BEFORE_REMOVE_DROP = 20
+TIME_BEFORE_REMOVE_DROP = 30
 
 --PORTAL_OW_DURATION = 300    -- OTHERKIN_WORLD
 --PORTAL_REPEAT_TIME = 480
@@ -55,6 +55,35 @@ MUSIC_SOURCE = nil
 RANDOMIZE_MODE = false
 ALTAR_COUNT = 0
 ALTAR_TABLE = {"cemetery","church","cursed_tree"}
+
+
+-----------------------------chapter_two--------------------------------
+
+PlAYER_COUNT = 0
+CURRENT_MONSTER_COUNT = 0
+NUMBER_OF_WAVE = 1
+EVENT_NUMBER = 1
+EVENT_REWARD = 0
+EVENT_BLOOD_COIN_MAX = 5
+
+MODIFIER_WAVES_TABLE = { 
+    "modifier_devourer", 
+    "modifier_devourer", 
+    "modifier_devourer",
+    "modifier_devourer",    
+    "modifier_lump",
+    "modifier_frantic", 
+    "modifier_devourer",
+    "modifier_thorns",
+    "modifier_distortion_carrier",
+    "modifier_devourer", 
+    "modifier_circulator_infection",  
+    "modifier_explosive",
+    }
+
+--    "modifier_pest_aura",
+--    "modifier_weakness_aura",
+--    "modifier_devastator_aura",
 
 -------------------------------------------------------------------
 
