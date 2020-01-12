@@ -83,6 +83,13 @@ LinkLuaModifier("modifier_quest_ghostbusters", "modifiers/quests/modifier_quest_
 
 
 -------------------------------------------------------------------
+-------------------------EVENTS MODIFIERS--------------------
+-------------------------------------------------------------------
+LinkLuaModifier("modifier_events_colossus_part", "modifiers/quests/modifier_events_colossus_part.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+
+-------------------------------------------------------------------
 -------------------------ACHIEVEMENT MODIFIERS--------------------
 -------------------------------------------------------------------
 

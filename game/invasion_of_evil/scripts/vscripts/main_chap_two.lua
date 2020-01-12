@@ -105,7 +105,7 @@ function main_chap_two:OnNPCSpawn(data)
      
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_ice_shards_spear")
-                --unit:AddItemByName("item_blink")
+                unit:AddItemByName("item_blink")
                 unit:AddItemByName("item_heart")
                 unit:AddItemByName("item_radiance")
                 --unit:AddItemByName("item_note_alchemist_one")
@@ -176,6 +176,10 @@ function main_chap_two:CreateDrop(itemName, pos)
    newItem:SetPurchaseTime(0)
    local drop = CreateItemOnPositionSync(pos, newItem)
    newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 50)))
+
+    if itemName == "item_colossus_part" then
+        return nil
+    end
 
     Timers:CreateTimer(TIME_BEFORE_REMOVE_DROP, function()
         if newItem and IsValidEntity(newItem) then
@@ -535,7 +539,10 @@ end
 
 function main_chap_two:StartNewEvent()
     print("========================EVENT_REWARD========================")
-
+    --EVENT_NUMBER = RandomInt(1,2)
+    EVENT_NUMBER = 2
+    local units = nil
+    local point = nil
 
     if EVENT_REWARD == 0 then
         print("======================== 0 ========================")
@@ -543,7 +550,7 @@ function main_chap_two:StartNewEvent()
 
     if EVENT_REWARD == 1 then
         print("======================== 1 ========================")
-        local units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
+        units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
         
         if units then   
@@ -555,6 +562,14 @@ function main_chap_two:StartNewEvent()
         EVENT_REWARD = 0      
     end  
 
+    if EVENT_REWARD == 2 then
+        print("======================== 2 ========================")
+        point = Entities:FindByName( nil, "trigger_event_colossus"):GetAbsOrigin()
+        units = CreateUnitByName("npc_colossus", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+
+        EVENT_REWARD = 0 
+    end
+
     self:PrepareNewEvent()
 
 end
@@ -562,9 +577,21 @@ end
 
 function main_chap_two:PrepareNewEvent()
     print("OnEventScorebarVisible") 
+    if EVENT_NUMBER == 1 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#event_blood_coin_head", messageText = "#event_blood_coin_text"})
+        CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 10})
+    end
 
-    CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#event_blood_coin_head", messageText = "#event_blood_coin_text"})
-    CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 10})
+    if EVENT_NUMBER == 2 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#event_colossus_head", messageText = "#event_colossus_text"})
+        CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 5})
+
+        for i = 1, 5 do
+            point = Entities:FindByName( nil, "spawner_" .. RandomInt(1, 40)):GetAbsOrigin()
+            self:CreateDrop("item_colossus_part", point)
+        end
+    end
+
 end
 
         --CustomGameEventManager:Send_ServerToPlayer(

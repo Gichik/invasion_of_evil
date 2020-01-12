@@ -253,3 +253,18 @@ function BulletinBoardOpen(data)
 		CustomGameEventManager:Send_ServerToPlayer(data.activator:GetPlayerOwner(),"QuestMsgPanel_create_new_message", {messageName = "#bulletin_board", messageText = messageID})			
 	end
 end
+
+
+
+
+function EventColossusBuild(data)
+
+	if IsServer() then
+		local activator = data.activator
+		if activator:HasModifier("modifier_events_colossus_part") then
+			activator.colossus_part_build = true;
+			activator:RemoveModifierByName("modifier_events_colossus_part")
+		end
+	end
+
+end
