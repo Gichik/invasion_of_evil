@@ -137,6 +137,8 @@ function Precache( context )
 	PrecacheResource( "model", "models/props_gameplay/rune_haste01.vmdl", context ) --blood coin
 	PrecacheResource( "model", "models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl", context ) --colossus
 	PrecacheResource( "model", "models/props_items/bloodstone.vmdl", context ) --collosus part
+	PrecacheResource( "model", "models/props_structures/radiant_tower001.vmdl", context ) --monolith
+
 
 
 

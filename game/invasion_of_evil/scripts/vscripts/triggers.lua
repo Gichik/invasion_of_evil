@@ -268,3 +268,28 @@ function EventColossusBuild(data)
 	end
 
 end
+
+
+function EventCircleStartTouch(data)
+
+	if IsServer() then
+		local activator = data.activator
+		if activator:IsRealHero() then
+			--print("TOUCHING")
+			main_chap_two:IncrementEventCirclePlayer()
+		end
+	end
+
+end
+
+function EventCircleEndTouch(data)
+
+	if IsServer() then
+		local activator = data.activator
+		if activator:IsRealHero() then
+			--print("END TOUCHING")
+			main_chap_two:DecrementEventCirclePlayer()
+		end
+	end
+
+end

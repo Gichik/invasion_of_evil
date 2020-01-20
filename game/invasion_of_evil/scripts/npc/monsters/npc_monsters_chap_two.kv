@@ -407,7 +407,7 @@
 		
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""
+		"Ability1"					"enchantment_taunt"
 		"Ability2"					""
 		"Ability3"					""
 		"Ability4"					""
@@ -464,5 +464,86 @@
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"		
 	}
+
+
+	"npc_lightning_monolith"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_structures/radiant_tower001.vmdl"
+		"ModelScale"				"1.1"
+		"SoundSet"					"Hero_zuus"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"		
+		"Level"						"10"
+		"HealthBarOffset"			"140"
+		"HasInventory"				"0"
+		"ConsideredHero"			"0"
+		"IsNeutralUnitType"         "1"
+		"CanBeDominated"            "0"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"enchantment_taunt"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"
+		"MagicalResistance"			"0"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"100"
+		"AttackRate"				"0.5"
+		"AttackAnimationPoint"		"0.5"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"1000"
+	    "ProjectileModel"       	"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+	    "ProjectileSpeed"       	"1000"
+
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyGoldMin"				"0.0"
+		"BountyGoldMax"				"0.0"
+		
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"70"
+		"CollisionSize"				"1"
+		
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND" //----Чтоб была анимация движений
+		"MovementSpeed"				"0"	
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"
+		"VisionNighttimeRange"		"1000"
+		
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"		
+	}
+
 
 }

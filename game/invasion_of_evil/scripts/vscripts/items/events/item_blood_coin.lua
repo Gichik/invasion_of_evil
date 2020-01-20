@@ -27,7 +27,7 @@ function item_blood_coin:OnSpellStart()
 		end
 
 
-		hCaster:EmitSound("Item.TomeOfKnowledge")
+		hCaster:EmitSound("Item.PickUpRingShop")
 		hCaster:RemoveItem(hItem)
 
 	end

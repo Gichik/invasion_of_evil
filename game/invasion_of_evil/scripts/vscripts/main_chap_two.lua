@@ -60,6 +60,7 @@ function main_chap_two:InitGameMode()
     AddFOWViewer(DOTA_TEAM_BADGUYS, Vector(-200,-150,0), 7000, -1, false)
 
     PlAYER_COUNT = PlayerResource:GetTeamPlayerCount()
+  
 end
 
 
@@ -67,6 +68,13 @@ function main_chap_two:SetEventReward(flag)
     EVENT_REWARD = flag
 end
 
+function main_chap_two:IncrementEventCirclePlayer()
+    EVENT_CIRCLE_PLAYER_COUNT = EVENT_CIRCLE_PLAYER_COUNT + 1
+end
+
+function main_chap_two:DecrementEventCirclePlayer()
+    EVENT_CIRCLE_PLAYER_COUNT = EVENT_CIRCLE_PLAYER_COUNT - 1
+end
 
 function main_chap_two:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
@@ -176,12 +184,13 @@ function main_chap_two:CreateDrop(itemName, pos)
    newItem:SetPurchaseTime(0)
    local drop = CreateItemOnPositionSync(pos, newItem)
    newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 50)))
+   local timeBeforeRemove = TIME_BEFORE_REMOVE_DROP
 
     if itemName == "item_colossus_part" then
-        return nil
+        timeBeforeRemove = WAVE_DURATION
     end
 
-    Timers:CreateTimer(TIME_BEFORE_REMOVE_DROP, function()
+    Timers:CreateTimer(timeBeforeRemove, function()
         if newItem and IsValidEntity(newItem) then
             if not newItem:GetOwnerEntity() then 
 
@@ -428,6 +437,7 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
             print(CURRENT_MONSTER_COUNT)
             if CURRENT_MONSTER_COUNT <= 0 then
                 print("------------------START NEW-----------------")
+                CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {})  
                 self:CreateWaveReward()
                 self:PrepareToNewWave()
                 return nil
@@ -539,8 +549,8 @@ end
 
 function main_chap_two:StartNewEvent()
     print("========================EVENT_REWARD========================")
-    --EVENT_NUMBER = RandomInt(1,2)
-    EVENT_NUMBER = 2
+    EVENT_NUMBER = RandomInt(1,5)
+    EVENT_NUMBER = 1
     local units = nil
     local point = nil
 
@@ -566,9 +576,44 @@ function main_chap_two:StartNewEvent()
         print("======================== 2 ========================")
         point = Entities:FindByName( nil, "trigger_event_colossus"):GetAbsOrigin()
         units = CreateUnitByName("npc_colossus", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
-
+        units:AddNewModifier(units, nil, "modifier_force_kill", {duration = WAVE_DURATION})
         EVENT_REWARD = 0 
     end
+
+    if EVENT_REWARD == 3 then
+        print("======================== 3 ========================")
+        units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
+        DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+        
+        if units then   
+            for i = 1, #units do
+                if units[i]:GetUnitName() == "npc_lightning_monolith" then
+                    units[i]:AddNewModifier(units[i], nil, "modifier_force_kill", {duration = WAVE_DURATION})
+                    units[i]:AddNewModifier(units[i], nil, "modifier_npc_invulnerable", {duration = WAVE_DURATION})
+                    units[i]:RemoveAbility("enchantment_taunt")
+                    units[i]:RemoveModifierByName("modifier_disarmed")
+                    units[i]:RemoveModifierByName("modifier_enchantment_taunt")
+                end
+            end
+        end
+
+        EVENT_REWARD = 0  
+    end
+
+
+    if EVENT_REWARD == 4 then
+        print("======================== 4 ========================")
+        units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
+        DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
+        
+        if units then   
+            for i = 1, #units do
+                units[i]:AddNewModifier(units[i], nil, GetRandomAlchemyModifierName(), {duration = WAVE_DURATION})
+            end
+        end
+
+        EVENT_REWARD = 0      
+    end 
 
     self:PrepareNewEvent()
 
@@ -577,19 +622,73 @@ end
 
 function main_chap_two:PrepareNewEvent()
     print("OnEventScorebarVisible") 
+    local unit = nil
+    local point = nil
+
+
     if EVENT_NUMBER == 1 then
-        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#event_blood_coin_head", messageText = "#event_blood_coin_text"})
+        CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_blood_coin_head", messageText = "#event_blood_coin_text"}) 
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 10})
     end
 
+
     if EVENT_NUMBER == 2 then
-        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#event_colossus_head", messageText = "#event_colossus_text"})
+        CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_colossus_head", messageText = "#event_colossus_text"}) 
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 5})
 
         for i = 1, 5 do
             point = Entities:FindByName( nil, "spawner_" .. RandomInt(1, 40)):GetAbsOrigin()
             self:CreateDrop("item_colossus_part", point)
         end
+    end
+
+
+    if EVENT_NUMBER == 3 then
+        CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_monolith_head", messageText = "#event_monolith_text"}) 
+        for i = 1, 3 do
+            print(i)
+            point = Entities:FindByName( nil, "spawner_monolith_" .. i):GetAbsOrigin()
+            unit = CreateUnitByName("npc_lightning_monolith", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+            unit:AddNewModifier(unit, nil, "modifier_disarmed", {}) 
+            --unit:AddNewModifier(unit, nil, "modifier_force_kill", {duration = }) 
+        end   
+        EVENT_REWARD = 3  
+    end
+
+
+    if EVENT_NUMBER == 4 then
+        EVENT_CIRCLE_SCORE = 0
+        CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_circle_head", messageText = "#event_circle_text"}) 
+        CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_CIRCLE_SCORE, maxScore = EVENT_CIRCLE_MAX_SCORE})
+        Timers:CreateTimer(5, function()
+            if EVENT_CIRCLE_PLAYER_COUNT > 0 then
+                EVENT_CIRCLE_SCORE = EVENT_CIRCLE_SCORE + 3*EVENT_CIRCLE_PLAYER_COUNT
+            end
+            if EVENT_CIRCLE_SCORE >= EVENT_CIRCLE_MAX_SCORE then
+                CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {}) 
+                EVENT_REWARD = 4
+                return nil
+            end            
+            if CURRENT_MONSTER_COUNT > 0 then
+                CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_CIRCLE_SCORE, maxScore = EVENT_CIRCLE_MAX_SCORE})
+                return 1
+            end                       
+            return nil
+        end
+        )
+    end
+
+
+    if EVENT_NUMBER == 5 then
+        CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_altar_head", messageText = "#event_altar_text"}) 
+        for i = 1, 4 do
+            print(i)
+            point = Entities:FindByName( nil, "otherkin_world_point_" .. RandomInt(1, 8)):GetAbsOrigin()
+            unit = CreateUnitByName("npc_altar", point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
+            unit:AddNewModifier(unit, nil, GetRandomAuraModifierName(), {}) 
+            unit:SetForwardVector(Vector(0,-1,0))
+        end   
+        EVENT_REWARD = 0  
     end
 
 end
