@@ -285,12 +285,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_min"			"10"
+				"damage_min"			"5"
 			}
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_max"			"15"
+				"damage_max"			"10"
 			}						
 		}
 

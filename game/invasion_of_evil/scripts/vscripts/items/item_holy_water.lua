@@ -16,7 +16,7 @@ function item_holy_water:CastFilterResultTarget(hTarget)
 			return UF_FAIL_CUSTOM
 		end
 
-		if hTarget and hTarget:GetUnitName() ~= "npc_mini_boss"  then
+		if hTarget and hTarget:GetUnitName() ~= "npc_mini_boss" and hTarget:GetUnitName() ~= "npc_wave_mini_boss" then
 			return UF_FAIL_CUSTOM
 		end		
 
@@ -41,7 +41,7 @@ function item_holy_water:GetCustomCastErrorTarget(hTarget)
 			return "#dota_hud_error_bad_target"
 		end
 
-		if hTarget and hTarget:GetUnitName() ~= "npc_mini_boss"  then
+		if hTarget and hTarget:GetUnitName() ~= "npc_mini_boss" and hTarget:GetUnitName() ~= "npc_wave_mini_boss" then
 			return "#dota_hud_error_bad_target"
 		end	
 
@@ -63,7 +63,7 @@ function item_holy_water:OnSpellStart()
 		local hItem = self
 
 		hTarget:EmitSound("RiverPaint.Cast")
-		if hTarget:GetUnitName() == "npc_mini_boss" then
+		if hTarget:GetUnitName() == "npc_mini_boss" or hTarget:GetUnitName() == "npc_wave_mini_boss" then
 
 			if hItem:GetCurrentCharges() <= hItem:GetInitialCharges() then
 				hCaster:RemoveItem(hItem)

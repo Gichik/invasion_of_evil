@@ -27,7 +27,7 @@ function item_blood_coin:OnSpellStart()
 		end
 
 
-		hCaster:EmitSound("Item.PickUpRingShop")
+		hCaster:EmitSound("DOTA_Item.Nullifier.Slow")
 		hCaster:RemoveItem(hItem)
 
 	end

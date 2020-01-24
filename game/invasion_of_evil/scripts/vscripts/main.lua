@@ -377,7 +377,7 @@ function main:OnEntityKilled(data)
                 
                 self:CreateDrop("item_heart_of_evil", killedEntity:GetAbsOrigin())
                 self:CreateDrop(GetRandomItemNameFrom("unique"), killedEntity:GetAbsOrigin())
-            
+                StartSoundEventFromPosition("DOTA_Item.Refresher.Activate",killedEntity:GetAbsOrigin())
                 self:SetBossOwStatus(false)
 
                 --GameRules:SendCustomMessageToTeam("#teleport_back", DOTA_TEAM_GOODGUYS, 0, 0)
@@ -404,6 +404,7 @@ function main:OnEntityKilled(data)
                 end
 
                 self:CreateDrop(dropItemName, killedEntity:GetAbsOrigin())
+                StartSoundEventFromPosition("DOTA_Item.Refresher.Activate",killedEntity:GetAbsOrigin())
                 self:CreateDungeonFor(killedEntity:GetUnitName(),TIME_BEFORE_DUNGEON)                    
             end
   

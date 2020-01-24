@@ -36,6 +36,7 @@ function main_chap_two:InitGameMode()
     GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( false )
     GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
     GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
+    GameRules:SetHeroRespawnEnabled( false )
     GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
     GameRules:GetGameModeEntity():SetLoseGoldOnDeath(false)
 
@@ -85,7 +86,7 @@ function main_chap_two:GameRulesStateChange(data)
           return 60
         end
         ) 
-
+        self:SendStartEventMassegae()
         self:CreateWave(10, "npc_wave_demon", "npc_wave_demon", "npc_wave_mini_boss")       
     end
 end
@@ -93,6 +94,8 @@ end
 
 function main_chap_two:OnNPCSpawn(data)
     --print("OnNPCSpawn")
+    PlAYER_COUNT = PlayerResource:GetTeamPlayerCount()
+
     local unit = EntIndexToHScript(data.entindex)
 
     if unit:IsRealHero() then
@@ -113,9 +116,9 @@ function main_chap_two:OnNPCSpawn(data)
      
             if unit:HasAnyAvailableInventorySpace() then
                 --unit:AddItemByName("item_ice_shards_spear")
-                unit:AddItemByName("item_blink")
-                unit:AddItemByName("item_heart")
-                unit:AddItemByName("item_radiance")
+                --unit:AddItemByName("item_blink")
+                --unit:AddItemByName("item_heart")
+                --unit:AddItemByName("item_radiance")
                 --unit:AddItemByName("item_note_alchemist_one")
                 --unit:AddItemByName("item_heart_of_evil")
                 --unit:AddItemByName("item_heart_of_evil")
@@ -173,8 +176,49 @@ function main_chap_two:OnEntityKilled(data)
                 end
 
             end
+
+
+            if RollPercentage(HEAL_DROP_PERC) then
+                self:CreateDrop("item_potion_of_heal", killedEntity:GetAbsOrigin())
+            end
+
+            if RollPercentage(HEAL_DROP_PERC) then
+                self:CreateDrop("item_potion_of_mana", killedEntity:GetAbsOrigin())
+            end 
+
+            --print(killedEntity:GetDeathXP())
+            local bonusXP = killedEntity:GetDeathXP()*(PlAYER_COUNT-1)/PlAYER_COUNT
+            attackerEntity:AddExperience(bonusXP, 0, true, true)
         end
     end
+
+
+    if killedEntity:IsRealHero() then
+            local newItem = CreateItem( "item_tombstone", killedEntity, killedEntity )
+            newItem:SetPurchaseTime( 0 )
+            newItem:SetPurchaser( killedEntity )
+            local tombstone = SpawnEntityFromTableSynchronous( "dota_item_tombstone_drop", {} )
+            tombstone:SetContainedItem( newItem )
+            tombstone:SetAngles( 0, RandomFloat( 0, 360 ), 0 )
+            FindClearSpaceForUnit( tombstone, killedEntity:GetAbsOrigin(), true )
+
+            local AllDead = true
+            local playerCount = PlayerResource:GetTeamPlayerCount()
+
+            for i = 0, PlAYER_COUNT  do
+                if PlayerResource:IsValidPlayer(i) then
+                    if PlayerResource:GetSelectedHeroEntity(i):IsAlive() then
+                        AllDead = false
+                    end
+                end
+            end
+
+            if AllDead then
+                GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+            end
+
+        end 
+
 
 end
 
@@ -345,7 +389,7 @@ end
 
 function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonstersType2, bossName)
     local point = nil
-    local waveCount = (WAVE_DURATION - 90)/spawnInterval
+    local waveCount = WAVE_DURATION/spawnInterval
     local unit = nil
     local bossWaveCount = waveCount
     local modifName = nil
@@ -478,6 +522,7 @@ function main_chap_two:CreateWaveReward()
     if NUMBER_OF_WAVE > 10 then
         rareType1 = "third"
         rareType2 = "unique"
+        tartSoundEventFromPosition("DOTA_Item.Refresher.Activate",spawnPoint)
     end
 
     for i = 1, PlAYER_COUNT do
@@ -495,18 +540,61 @@ function main_chap_two:CreateWaveReward()
   
             if NUMBER_OF_WAVE == 4 or NUMBER_OF_WAVE == 7 or NUMBER_OF_WAVE == 10 then
                 self:CreateDrop(GetRandomItemNameFrom("unique"), spawnPoint)
+                StartSoundEventFromPosition("DOTA_Item.Refresher.Activate",spawnPoint)
             end
         end
     end
 
 end
 
-
+function main_chap_two:SendStartEventMassegae()
+    if NUMBER_OF_WAVE == 1 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_1"})
+    end
+    if NUMBER_OF_WAVE == 2 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_2"})
+    end
+    if NUMBER_OF_WAVE == 3 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_3"})
+    end
+    if NUMBER_OF_WAVE == 4 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_4"})
+    end
+    if NUMBER_OF_WAVE == 5 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_5"})
+    end
+    if NUMBER_OF_WAVE == 6 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_6"})
+    end
+    if NUMBER_OF_WAVE == 7 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_7"})
+    end
+    if NUMBER_OF_WAVE == 8 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_8"})
+    end
+    if NUMBER_OF_WAVE == 9 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_9"})
+    end
+    if NUMBER_OF_WAVE == 10 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_10"})
+    end
+    if NUMBER_OF_WAVE == 11 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_11"})
+    end
+    if NUMBER_OF_WAVE == 12 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_12"})
+    end
+    if NUMBER_OF_WAVE == 13 then
+        CustomGameEventManager:Send_ServerToAllClients("MessagePanel_create_new_message", {messageName = "#start_wave_head", messageText = "#start_wave_13"})
+    end
+end
 
 function main_chap_two:PrepareToNewWave()
     print("------------------PrepareToNewWave-----------------")
 
+    
     NUMBER_OF_WAVE = NUMBER_OF_WAVE + 1
+    self:SendStartEventMassegae()
 
     local bossName = "npc_wave_mini_boss"
     local monsterType1 = "npc_melee_wave_warrior"
@@ -550,9 +638,10 @@ end
 function main_chap_two:StartNewEvent()
     print("========================EVENT_REWARD========================")
     EVENT_NUMBER = RandomInt(1,5)
-    EVENT_NUMBER = 1
+    --EVENT_NUMBER = 1
     local units = nil
     local point = nil
+    local modifierName = ""
 
     if EVENT_REWARD == 0 then
         print("======================== 0 ========================")
@@ -560,12 +649,13 @@ function main_chap_two:StartNewEvent()
 
     if EVENT_REWARD == 1 then
         print("======================== 1 ========================")
+        modifierName = GetRandomAlchemyModifierName()
         units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
         
         if units then   
             for i = 1, #units do
-                units[i]:AddNewModifier(units[i], nil, GetRandomAlchemyModifierName(), {duration = WAVE_DURATION})
+                units[i]:AddNewModifier(units[i], nil, modifierName, {duration = WAVE_DURATION})
             end
         end
 
@@ -603,12 +693,13 @@ function main_chap_two:StartNewEvent()
 
     if EVENT_REWARD == 4 then
         print("======================== 4 ========================")
+        modifierName = GetRandomAlchemyModifierName()
         units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
         
         if units then   
             for i = 1, #units do
-                units[i]:AddNewModifier(units[i], nil, GetRandomAlchemyModifierName(), {duration = WAVE_DURATION})
+                units[i]:AddNewModifier(units[i], nil, modifierName, {duration = WAVE_DURATION})
             end
         end
 
@@ -662,7 +753,7 @@ function main_chap_two:PrepareNewEvent()
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_CIRCLE_SCORE, maxScore = EVENT_CIRCLE_MAX_SCORE})
         Timers:CreateTimer(5, function()
             if EVENT_CIRCLE_PLAYER_COUNT > 0 then
-                EVENT_CIRCLE_SCORE = EVENT_CIRCLE_SCORE + 3*EVENT_CIRCLE_PLAYER_COUNT
+                EVENT_CIRCLE_SCORE = EVENT_CIRCLE_SCORE + EVENT_CIRCLE_PLAYER_COUNT
             end
             if EVENT_CIRCLE_SCORE >= EVENT_CIRCLE_MAX_SCORE then
                 CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {}) 
