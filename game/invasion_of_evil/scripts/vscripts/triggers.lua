@@ -274,9 +274,12 @@ function EventCircleStartTouch(data)
 
 	if IsServer() then
 		local activator = data.activator
+		local caller = data.caller:GetName()
+
 		if activator:IsRealHero() then
 			--print("TOUCHING")
-			main_chap_two:IncrementEventCirclePlayer()
+			local number = string.gsub(caller, "trigger_event_circle_", "")
+			main_chap_two:EventCircleChangeActive(tonumber(number), 1)
 		end
 	end
 
@@ -286,9 +289,12 @@ function EventCircleEndTouch(data)
 
 	if IsServer() then
 		local activator = data.activator
+		local caller = data.caller:GetName()
+
 		if activator:IsRealHero() then
 			--print("END TOUCHING")
-			main_chap_two:DecrementEventCirclePlayer()
+			local number = string.gsub(caller, "trigger_event_circle_", "")
+			main_chap_two:EventCircleChangeActive(tonumber(number), -1)
 		end
 	end
 

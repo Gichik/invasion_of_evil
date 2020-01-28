@@ -66,16 +66,14 @@ end
 
 
 function main_chap_two:SetEventReward(flag)
+    EmitGlobalSound("Hero_LegionCommander.Duel.Victory")
     EVENT_REWARD = flag
 end
 
-function main_chap_two:IncrementEventCirclePlayer()
-    EVENT_CIRCLE_PLAYER_COUNT = EVENT_CIRCLE_PLAYER_COUNT + 1
+function main_chap_two:EventCircleChangeActive(number, active)
+    EVENT_CIRCLE_ACTIVE[number] = EVENT_CIRCLE_ACTIVE[number] + active
 end
 
-function main_chap_two:DecrementEventCirclePlayer()
-    EVENT_CIRCLE_PLAYER_COUNT = EVENT_CIRCLE_PLAYER_COUNT - 1
-end
 
 function main_chap_two:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
@@ -168,7 +166,7 @@ function main_chap_two:OnEntityKilled(data)
             if CURRENT_MONSTER_COUNT > 0 then
                 CURRENT_MONSTER_COUNT = CURRENT_MONSTER_COUNT - 1
 
-                print("Event reward: " .. EVENT_REWARD)
+                --print("Event reward: " .. EVENT_REWARD)
                 if EVENT_NUMBER == 1 and EVENT_REWARD == 0 then
                     if RollPercentage(50) then
                         self:CreateDrop("item_blood_coin", killedEntity:GetAbsOrigin())
@@ -187,8 +185,10 @@ function main_chap_two:OnEntityKilled(data)
             end 
 
             --print(killedEntity:GetDeathXP())
-            local bonusXP = killedEntity:GetDeathXP()*(PlAYER_COUNT-1)/PlAYER_COUNT
-            attackerEntity:AddExperience(bonusXP, 0, true, true)
+            if attackerEntity:IsRealHero() then
+                local bonusXP = killedEntity:GetDeathXP()*(PlAYER_COUNT-1)/PlAYER_COUNT
+                attackerEntity:AddExperience(bonusXP, 0, true, true)
+            end
         end
     end
 
@@ -408,6 +408,7 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
     end
 
     self:StartNewEvent()
+    EmitGlobalSound("Tutorial.Quest.complete_01")
 
     Timers:CreateTimer(1, function()
 
@@ -415,6 +416,7 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
         if waveCount == bossWaveCount then
             point = Entities:FindByName( nil, "spawner_" .. RandomInt(1,40) ):GetAbsOrigin()
             unit = CreateUnitByName(bossName, point, true, nil, nil, DOTA_TEAM_BADGUYS )
+            unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
             if bossName == "npc_wave_mini_boss" then
                 for i = 0, 10 do
                     if modifCount >= modifLimit then
@@ -435,10 +437,12 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
                 point = Entities:FindByName( nil, "spawner_" .. RandomInt(1,40) ):GetAbsOrigin()
                 unit = CreateUnitByName("lump_of_flame_big_boss", point, true, nil, nil, DOTA_TEAM_BADGUYS )
                 unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
+                unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
 
                 point = Entities:FindByName( nil, "spawner_" .. RandomInt(1,40) ):GetAbsOrigin()
                 unit = CreateUnitByName("flamethrower_big_boss", point, true, nil, nil, DOTA_TEAM_BADGUYS )
                 unit:AddNewModifier(unit, nil, "modifier_bosses_autocast", {})
+                unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
 
                 CURRENT_MONSTER_COUNT = CURRENT_MONSTER_COUNT + 2
             end
@@ -459,10 +463,10 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
                         point = Entities:FindByName( nil, "spawner_" .. i):GetAbsOrigin()
                         if RollPercentage(50) then
                             unit = CreateUnitByName(waveMonstersType1, point, true, nil, nil, DOTA_TEAM_BADGUYS )
-                            --unit:CreatureLevelUp(MINIONS_LEVEL - 1)
+                            unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
                         else
                             unit = CreateUnitByName(waveMonstersType2, point, true, nil, nil, DOTA_TEAM_BADGUYS )
-                            --unit:CreatureLevelUp(MINIONS_LEVEL - 1)
+                            unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
                         end
 
                         if NUMBER_OF_WAVE >= 4 and bossName == "npc_wave_mini_boss" then
@@ -477,10 +481,10 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
 
         --награда
         Timers:CreateTimer(10, function()
-            print("------------------WAVE END-----------------")
-            print(CURRENT_MONSTER_COUNT)
+            --print("------------------WAVE END-----------------")
+            --print(CURRENT_MONSTER_COUNT)
             if CURRENT_MONSTER_COUNT <= 0 then
-                print("------------------START NEW-----------------")
+                --print("------------------START NEW-----------------")
                 CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {})  
                 self:CreateWaveReward()
                 self:PrepareToNewWave()
@@ -496,7 +500,7 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
 end
 
 function main_chap_two:CreateWaveReward()
-    print("------------------CreateWaveReward-----------------")
+    --print("------------------CreateWaveReward-----------------")
     local rareType1 = "first"
     local rareType2 = "second"
 
@@ -590,16 +594,16 @@ function main_chap_two:SendStartEventMassegae()
 end
 
 function main_chap_two:PrepareToNewWave()
-    print("------------------PrepareToNewWave-----------------")
+    --print("------------------PrepareToNewWave-----------------")
 
     
     NUMBER_OF_WAVE = NUMBER_OF_WAVE + 1
     self:SendStartEventMassegae()
 
     local bossName = "npc_wave_mini_boss"
-    local monsterType1 = "npc_melee_wave_warrior"
-    local monsterType2 = "npc_range_wave_warrior"
-    local interval = 10
+    local monsterType1 = "npc_melee_wave_warrior_ch2"
+    local monsterType2 = "npc_range_wave_warrior_ch2"
+    local interval = math.floor(10/PlAYER_COUNT)
 
     if NUMBER_OF_WAVE == 2 then
         monsterType1 = "npc_wave_zombie"
@@ -608,21 +612,21 @@ function main_chap_two:PrepareToNewWave()
 
     if NUMBER_OF_WAVE == 4 then
         bossName = "flamethrower_big_boss"
-        monsterType1 = "npc_minion_ow"
-        monsterType2 = "npc_minion_ow"
-        interval = 20
+        monsterType1 = "npc_minion_ow_ch2"
+        monsterType2 = "npc_minion_ow_ch2"
+        interval = math.floor(15/PlAYER_COUNT)
     end
     if NUMBER_OF_WAVE == 7 then
         bossName = "lump_of_flame_big_boss"
-        monsterType1 = "npc_minion_ow"
-        monsterType2 = "npc_minion_ow"
-        interval = 20
+        monsterType1 = "npc_minion_ow_ch2"
+        monsterType2 = "npc_minion_ow_ch2"
+        interval = math.floor(15/PlAYER_COUNT)
     end        
     if NUMBER_OF_WAVE == 10 or NUMBER_OF_WAVE == 13 then
         bossName = "cursed_flame_big_boss"
-        monsterType1 = "npc_minion_ow"
-        monsterType2 = "npc_minion_ow"
-        interval = 20
+        monsterType1 = "npc_minion_ow_ch2"
+        monsterType2 = "npc_minion_ow_ch2"
+        interval = math.floor(15/PlAYER_COUNT)
     end
 
     Timers:CreateTimer(30, function()
@@ -636,19 +640,19 @@ function main_chap_two:PrepareToNewWave()
 end
 
 function main_chap_two:StartNewEvent()
-    print("========================EVENT_REWARD========================")
+    --print("========================EVENT_REWARD========================")
     EVENT_NUMBER = RandomInt(1,5)
-    --EVENT_NUMBER = 1
+    EVENT_NUMBER = 4
     local units = nil
     local point = nil
     local modifierName = ""
 
     if EVENT_REWARD == 0 then
-        print("======================== 0 ========================")
+        --print("======================== 0 ========================")
     end
 
     if EVENT_REWARD == 1 then
-        print("======================== 1 ========================")
+        --print("======================== 1 ========================")
         modifierName = GetRandomAlchemyModifierName()
         units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
@@ -663,7 +667,7 @@ function main_chap_two:StartNewEvent()
     end  
 
     if EVENT_REWARD == 2 then
-        print("======================== 2 ========================")
+        --print("======================== 2 ========================")
         point = Entities:FindByName( nil, "trigger_event_colossus"):GetAbsOrigin()
         units = CreateUnitByName("npc_colossus", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
         units:AddNewModifier(units, nil, "modifier_force_kill", {duration = WAVE_DURATION})
@@ -671,7 +675,7 @@ function main_chap_two:StartNewEvent()
     end
 
     if EVENT_REWARD == 3 then
-        print("======================== 3 ========================")
+        --print("======================== 3 ========================")
         units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
         
@@ -692,7 +696,7 @@ function main_chap_two:StartNewEvent()
 
 
     if EVENT_REWARD == 4 then
-        print("======================== 4 ========================")
+        --print("======================== 4 ========================")
         modifierName = GetRandomAlchemyModifierName()
         units = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 7000,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0, false )
@@ -712,7 +716,7 @@ end
 
 
 function main_chap_two:PrepareNewEvent()
-    print("OnEventScorebarVisible") 
+    --print("OnEventScorebarVisible") 
     local unit = nil
     local point = nil
 
@@ -737,7 +741,6 @@ function main_chap_two:PrepareNewEvent()
     if EVENT_NUMBER == 3 then
         CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_monolith_head", messageText = "#event_monolith_text"}) 
         for i = 1, 3 do
-            print(i)
             point = Entities:FindByName( nil, "spawner_monolith_" .. i):GetAbsOrigin()
             unit = CreateUnitByName("npc_lightning_monolith", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
             unit:AddNewModifier(unit, nil, "modifier_disarmed", {}) 
@@ -752,12 +755,17 @@ function main_chap_two:PrepareNewEvent()
         CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_circle_head", messageText = "#event_circle_text"}) 
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_CIRCLE_SCORE, maxScore = EVENT_CIRCLE_MAX_SCORE})
         Timers:CreateTimer(5, function()
-            if EVENT_CIRCLE_PLAYER_COUNT > 0 then
-                EVENT_CIRCLE_SCORE = EVENT_CIRCLE_SCORE + EVENT_CIRCLE_PLAYER_COUNT
+            for i = 1, #EVENT_CIRCLE_ACTIVE do
+                if EVENT_CIRCLE_ACTIVE[i] > 0 then
+                    --print("ceil: " .. math.ceil(3/PlAYER_COUNT))
+                    EVENT_CIRCLE_SCORE = EVENT_CIRCLE_SCORE + math.ceil(3/PlAYER_COUNT)
+                end
             end
+
+
             if EVENT_CIRCLE_SCORE >= EVENT_CIRCLE_MAX_SCORE then
                 CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {}) 
-                EVENT_REWARD = 4
+                self:SetEventReward(4)
                 return nil
             end            
             if CURRENT_MONSTER_COUNT > 0 then
@@ -773,7 +781,6 @@ function main_chap_two:PrepareNewEvent()
     if EVENT_NUMBER == 5 then
         CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_altar_head", messageText = "#event_altar_text"}) 
         for i = 1, 4 do
-            print(i)
             point = Entities:FindByName( nil, "otherkin_world_point_" .. RandomInt(1, 8)):GetAbsOrigin()
             unit = CreateUnitByName("npc_altar", point, true, nil, nil, DOTA_TEAM_BADGUYS ) 
             unit:AddNewModifier(unit, nil, GetRandomAuraModifierName(), {}) 

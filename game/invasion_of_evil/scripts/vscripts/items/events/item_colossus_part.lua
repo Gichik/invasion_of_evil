@@ -18,7 +18,7 @@ function item_colossus_part:OnSpellStart()
 			hCaster:AddNewModifier(hCaster, self, "modifier_events_colossus_part", {}) 
 		end
 		
-		hCaster:EmitSound("Item.TomeOfKnowledge")
+		hCaster:EmitSound("Item.CrimsonGuard.Cast")
 		hCaster:RemoveItem(hItem)
 
 	end

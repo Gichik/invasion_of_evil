@@ -38,6 +38,7 @@ function modifier_events_colossus_part:OnDestroy(data)
         if self.parent.colossus_part_build and EVENT_REWARD == 0 then
 
             EVENT_COLLOSUS_PART_COUNT = EVENT_COLLOSUS_PART_COUNT + 1
+            self.parent:EmitSound("DOTA_Item.AbyssalBlade.Activate")
             CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_COLLOSUS_PART_COUNT, maxScore = EVENT_COLLOSUS_PART_MAX})
           
             if EVENT_COLLOSUS_PART_COUNT >= EVENT_COLLOSUS_PART_MAX then
