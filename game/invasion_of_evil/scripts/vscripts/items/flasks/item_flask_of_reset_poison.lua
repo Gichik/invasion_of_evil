@@ -28,6 +28,7 @@ function ApplyResetPoison(data)
 	    local stat = data.Stat
 	    local currXP = hCaster:GetCurrentXP()
         local itemTable = {"","","","","","","","","","","",""}
+        local abilityTable = {"","",""}
 
 	    if hCaster:GetLevel() >= 20 then
 	    	currXP = 0
@@ -50,7 +51,7 @@ function ApplyResetPoison(data)
 					hCaster.numResetBonusInt = 0
 				end
 				hCaster.numResetBonusInt = hCaster.numResetBonusInt + 1
-		    end	 
+		    end	
 		end   
 
 		--удаляем само зелье
@@ -81,6 +82,16 @@ function ApplyResetPoison(data)
                 itemTable[i] = item:GetAbilityName()
             end
         end
+
+        if (GetMapName() == "chapter_two_normal" or GetMapName() == "chapter_one_randomize") and hCaster:GetLevel() >= 20 then
+            for i = 0, 2 do
+                ability = hCaster:GetAbilityByIndex(i)
+                if ability then
+                    abilityTable[i] = ability:GetAbilityName()
+                end
+            end
+        end 
+
 
         for i = 0, abilityCount-1 do
             ability = hCaster:GetAbilityByIndex(i)
@@ -150,6 +161,18 @@ function ApplyResetPoison(data)
             if itemTable[i] ~= "" and newHero:HasAnyAvailableInventorySpace() then
                 newHero:AddItemByName(itemTable[i])
             end
+        end
+
+        if (GetMapName() == "chapter_two_normal" or GetMapName() == "chapter_one_randomize") and hCaster:GetLevel() >= 20 then
+            for i = 0, 2 do
+                ability = newHero:GetAbilityByIndex(i)
+                if ability then
+                    newHero:RemoveAbility(ability:GetAbilityName())
+                end
+            end
+            newHero:AddAbility(abilityTable[0])
+            newHero:AddAbility(abilityTable[1])
+            newHero:AddAbility(abilityTable[2])
         end
 
         UTIL_Remove(hCaster)

@@ -70,6 +70,7 @@ EVENT_CIRCLE_ACTIVE = {0,0,0}
 EVENT_CIRCLE_SCORE = 0
 EVENT_CIRCLE_MAX_SCORE = 180
 
+
 MODIFIER_WAVES_TABLE = { 
     "modifier_devourer", 
     "modifier_devourer", 
@@ -353,3 +354,32 @@ KNIGHT_ABILITY = {
         "vampire_power_of_demon"
         } 
     }   
+
+
+XP_PER_LEVEL_TABLE = {
+    0,--1
+    230,--2
+    600,--3
+    1080,--4
+    1660,--5
+    2260,--6
+    2980,--7
+    3730,--8
+    4510,--9
+    5320,--10
+    6160,--11
+    7030,--12
+    7930,--13
+    9155,--14
+    10405,--15
+    11680,--16
+    12980,--17
+    14305,--18
+    15805,--19
+    17395,--20
+    18995,--21
+    20845,--22
+    22945,--23
+    25295,--24
+    27895--25  
+ }

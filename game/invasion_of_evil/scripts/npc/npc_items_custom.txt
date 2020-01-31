@@ -141,7 +141,8 @@
 	{
 		// General
 		//---------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven" 
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_greater_salve" 
 		"Model"							"models/props_gameplay/salve_red.vmdl"		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -192,7 +193,7 @@
 				"TextureName"	"custom_folder/potion_hp"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"30"					
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"40"					
 				}
 			}
 		}	
@@ -204,6 +205,7 @@
 		// General
 		//---------------------------------------------------------------------------------------------------------
 		"BaseClass"						"item_datadriven" 
+		"AbilityTextureName"			"item_greater_clarity"		
 		"Model"							"models/props_gameplay/salve_blue.vmdl"		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -248,7 +250,7 @@
 				"TextureName"	"custom_folder/potion_mp"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"30"				
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 		"40"				
 				}
 			}
 		}	

@@ -40,6 +40,9 @@ function main_chap_two:InitGameMode()
     GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
     GameRules:GetGameModeEntity():SetLoseGoldOnDeath(false)
 
+    GameRules:GetGameModeEntity():SetUseCustomHeroLevels(true)
+    GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(25)        
+    GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');
@@ -61,7 +64,6 @@ function main_chap_two:InitGameMode()
     AddFOWViewer(DOTA_TEAM_BADGUYS, Vector(-200,-150,0), 7000, -1, false)
 
     PlAYER_COUNT = PlayerResource:GetTeamPlayerCount()
-  
 end
 
 
@@ -74,18 +76,24 @@ function main_chap_two:EventCircleChangeActive(number, active)
     EVENT_CIRCLE_ACTIVE[number] = EVENT_CIRCLE_ACTIVE[number] + active
 end
 
+function main_chap_two:SetEventBloodCoinCount(flag)
+    EVENT_BLOOD_COIN_COUNT = flag
+end
+
 
 function main_chap_two:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
 
     if newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        CustomGameEventManager:Send_ServerToAllClients("QuestAllMsgPanel_close",  {})
+
         Timers:CreateTimer(1, function()
             GameRules:SetTimeOfDay( 0.75 )
           return 60
         end
         ) 
         self:SendStartEventMassegae()
-        self:CreateWave(10, "npc_wave_demon", "npc_wave_demon", "npc_wave_mini_boss")       
+        self:CreateWave(15, "npc_wave_demon", "npc_wave_demon", "npc_wave_mini_boss", 50)       
     end
 end
 
@@ -140,6 +148,7 @@ end
 
 --player, level,splitscreenplayer
 function main_chap_two:OnPlayerGainedLevel(data)
+    print("gained")
     local hPlayer = EntIndexToHScript(data.player)
     local hHero = hPlayer:GetAssignedHero()
     --[[if hHero:GetLevel() > 20 and hHero:GetLevel() < 25 then 
@@ -387,7 +396,7 @@ end
 
 
 
-function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonstersType2, bossName)
+function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonstersType2, bossName, rollPercType1)
     local point = nil
     local waveCount = WAVE_DURATION/spawnInterval
     local unit = nil
@@ -461,7 +470,7 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
                 for i = 1, 40 do
                     if CURRENT_MONSTER_COUNT < 200 then
                         point = Entities:FindByName( nil, "spawner_" .. i):GetAbsOrigin()
-                        if RollPercentage(50) then
+                        if RollPercentage(rollPercType1) then
                             unit = CreateUnitByName(waveMonstersType1, point, true, nil, nil, DOTA_TEAM_BADGUYS )
                             unit:CreatureLevelUp(NUMBER_OF_WAVE - 1)
                         else
@@ -603,34 +612,36 @@ function main_chap_two:PrepareToNewWave()
     local bossName = "npc_wave_mini_boss"
     local monsterType1 = "npc_melee_wave_warrior_ch2"
     local monsterType2 = "npc_range_wave_warrior_ch2"
-    local interval = math.floor(10/PlAYER_COUNT)
+    local interval = math.floor(15/PlAYER_COUNT)
+    local rollPercType1 = 50
 
     if NUMBER_OF_WAVE == 2 then
         monsterType1 = "npc_wave_zombie"
         monsterType2 = "npc_wave_ghost"
+        rollPercType1 = 80
     end
 
     if NUMBER_OF_WAVE == 4 then
         bossName = "flamethrower_big_boss"
         monsterType1 = "npc_minion_ow_ch2"
         monsterType2 = "npc_minion_ow_ch2"
-        interval = math.floor(15/PlAYER_COUNT)
+        interval = math.floor(20/PlAYER_COUNT)
     end
     if NUMBER_OF_WAVE == 7 then
         bossName = "lump_of_flame_big_boss"
         monsterType1 = "npc_minion_ow_ch2"
         monsterType2 = "npc_minion_ow_ch2"
-        interval = math.floor(15/PlAYER_COUNT)
+        interval = math.floor(20/PlAYER_COUNT)
     end        
     if NUMBER_OF_WAVE == 10 or NUMBER_OF_WAVE == 13 then
         bossName = "cursed_flame_big_boss"
         monsterType1 = "npc_minion_ow_ch2"
         monsterType2 = "npc_minion_ow_ch2"
-        interval = math.floor(15/PlAYER_COUNT)
+        interval = math.floor(20/PlAYER_COUNT)
     end
 
     Timers:CreateTimer(30, function()
-        self:CreateWave(interval, monsterType1, monsterType2, bossName)
+        self:CreateWave(interval, monsterType1, monsterType2, bossName, rollPercType1)
 
         return nil
     end
@@ -642,7 +653,7 @@ end
 function main_chap_two:StartNewEvent()
     --print("========================EVENT_REWARD========================")
     EVENT_NUMBER = RandomInt(1,5)
-    EVENT_NUMBER = 4
+    EVENT_NUMBER = 1
     local units = nil
     local point = nil
     local modifierName = ""
@@ -722,6 +733,7 @@ function main_chap_two:PrepareNewEvent()
 
 
     if EVENT_NUMBER == 1 then
+        self:SetEventBloodCoinCount(0)
         CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_blood_coin_head", messageText = "#event_blood_coin_text"}) 
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 10})
     end

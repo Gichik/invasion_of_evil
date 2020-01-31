@@ -37,6 +37,9 @@ function main:InitGameMode()
     GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
     GameRules:GetGameModeEntity():SetLoseGoldOnDeath(false)
 
+    GameRules:GetGameModeEntity():SetUseCustomHeroLevels(true)
+    GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(25)        
+    GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_axe');
     --GameRules:GetGameModeEntity():SetCustomGameForceHero('npc_dota_hero_rubick');

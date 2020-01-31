@@ -82,6 +82,22 @@ function OnCloseQuestMsgPanel() {
 	//}	
 }
 
+function OnCloseAllPanel() {
+	//$.Msg("CloseQuestMsgPanel");
+	//$( "#QuestMsgPanel" ).visible = false;
+	//$( "#QuestMsgPanelLeft" ).visible = false;
+	$( "#QuestMsgPanelRight" ).visible = false;
+	$( "#QuestButton_1" ).visible = false;	
+	$( "#QuestButton_2" ).visible = false;
+	$( "#QuestButton_3" ).visible = false;
+	$( "#QuestButton_4" ).visible = false;
+	$( "#QuestButton_5" ).visible = false;		
+	$( "#EventScorebar" ).visible = false;
+	//if (!$( "#MessagePanel" ).visible){	
+	//	$.GetContextPanel().visible = false;		
+	//}	
+}
+
 function OnCloseQuestMsgPanelRight() {
 	//$.Msg("CloseQuestMsgPanel");
 	$( "#QuestMsgPanelRight" ).visible = false;
@@ -145,6 +161,7 @@ function debug()
 	GameEvents.Subscribe("QuestPanel_UpdateEventScorebar", OnUpdateEventScorebar);
 
 	GameEvents.Subscribe("QuestMsgPanel_close", OnCloseQuestMsgPanel);
+	GameEvents.Subscribe("QuestAllMsgPanel_close", OnCloseAllPanel);
 }
 
 

@@ -89,5 +89,8 @@ function modifier_exile_trophies_debuff:DeclareFunctions()
 end
 
 function modifier_exile_trophies_debuff:GetModifierPhysicalArmorBonus()	
-	return -self:GetStackCount()*self:GetAbility():GetSpecialValueFor("reduce_armor") or 0
+	if self:GetAbility() then
+		return -self:GetStackCount()*self:GetAbility():GetSpecialValueFor("reduce_armor") or 0
+	end
+	return 0
 end
