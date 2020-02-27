@@ -64,8 +64,8 @@ CURRENT_MONSTER_COUNT = 0
 NUMBER_OF_WAVE = 1
 EVENT_NUMBER = 1
 EVENT_REWARD = 0
-EVENT_BLOOD_COIN_MAX = 100
-EVENT_COLLOSUS_PART_MAX = 5
+EVENT_BLOOD_COIN_MAX = 70
+EVENT_COLLOSUS_PART_MAX = 4
 EVENT_CIRCLE_ACTIVE = {0,0,0}
 EVENT_CIRCLE_SCORE = 0
 EVENT_CIRCLE_MAX_SCORE = 180
@@ -79,10 +79,10 @@ MODIFIER_WAVES_TABLE = {
     "modifier_lump",
     "modifier_frantic", 
     "modifier_devourer",
-    "modifier_thorns",
+    "modifier_circulator_infection",    
     "modifier_distortion_carrier",
-    "modifier_devourer", 
-    "modifier_circulator_infection",  
+    "modifier_devourer",
+    "modifier_thorns", 
     "modifier_explosive",
     }
 

@@ -35,7 +35,6 @@ function duplicate_teleport:OnSpellStart()
 			unit:CreatureLevelUp(MINIONS_LEVEL - 1)
 			self.caster:SetAbsOrigin(point)
 			FindClearSpaceForUnit(self.caster, self.caster:GetAbsOrigin(), true)
-			CURRENT_MONSTER_COUNT = CURRENT_MONSTER_COUNT + 1
 		end
 	end
 end

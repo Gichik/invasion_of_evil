@@ -37,7 +37,7 @@ function main_chap_two:InitGameMode()
     GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
     GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
     GameRules:SetHeroRespawnEnabled( false )
-    GameRules:GetGameModeEntity():SetFixedRespawnTime(30)
+    GameRules:GetGameModeEntity():SetFixedRespawnTime(10)
     GameRules:GetGameModeEntity():SetLoseGoldOnDeath(false)
 
     GameRules:GetGameModeEntity():SetUseCustomHeroLevels(true)
@@ -64,6 +64,7 @@ function main_chap_two:InitGameMode()
     AddFOWViewer(DOTA_TEAM_BADGUYS, Vector(-200,-150,0), 7000, -1, false)
 
     PlAYER_COUNT = PlayerResource:GetTeamPlayerCount()
+    --NUMBER_OF_WAVE = 12
 end
 
 
@@ -80,6 +81,9 @@ function main_chap_two:SetEventBloodCoinCount(flag)
     EVENT_BLOOD_COIN_COUNT = flag
 end
 
+function main_chap_two:SetEventColossusPartCount(flag)
+    EVENT_COLLOSUS_PART_COUNT = flag
+end
 
 function main_chap_two:GameRulesStateChange(data)
     local newState = GameRules:State_Get()
@@ -106,8 +110,20 @@ function main_chap_two:OnNPCSpawn(data)
 
     if unit:IsRealHero() then
 
-        Timers:CreateTimer(1, function()
+        Timers:CreateTimer(0.5, function()
             unit:RemoveModifierByName("modifier_silencer_int_steal")
+
+            --удаляем вещи у рандом пик
+            for i = 0, 8 do
+                item = unit:GetItemInSlot(i)
+                if item ~= nil then
+                    --print(item:GetAbilityName())
+                    if item:GetAbilityName():find("mango") or item:GetAbilityName():find("fire") then
+                        unit:RemoveItem(item)
+                    end
+                end
+            end
+
           return nil
         end
         )
@@ -148,7 +164,7 @@ end
 
 --player, level,splitscreenplayer
 function main_chap_two:OnPlayerGainedLevel(data)
-    print("gained")
+    --print("gained")
     local hPlayer = EntIndexToHScript(data.player)
     local hHero = hPlayer:GetAssignedHero()
     --[[if hHero:GetLevel() > 20 and hHero:GetLevel() < 25 then 
@@ -173,7 +189,10 @@ function main_chap_two:OnEntityKilled(data)
 
         if killedEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS then
             if CURRENT_MONSTER_COUNT > 0 then
-                CURRENT_MONSTER_COUNT = CURRENT_MONSTER_COUNT - 1
+
+                if killedEntity:GetUnitName() ~= "npc_altar" and killedEntity:GetUnitName() ~= "duplicate_cursed_flame" then      
+                    CURRENT_MONSTER_COUNT = CURRENT_MONSTER_COUNT - 1
+                end
 
                 --print("Event reward: " .. EVENT_REWARD)
                 if EVENT_NUMBER == 1 and EVENT_REWARD == 0 then
@@ -198,11 +217,35 @@ function main_chap_two:OnEntityKilled(data)
                 local bonusXP = killedEntity:GetDeathXP()*(PlAYER_COUNT-1)/PlAYER_COUNT
                 attackerEntity:AddExperience(bonusXP, 0, true, true)
             end
+
+            if killedEntity:GetUnitName():find("big_boss") then
+                self:CreateDrop("item_heart_of_evil", killedEntity:GetAbsOrigin())                    
+            end
+
         end
     end
 
 
     if killedEntity:IsRealHero() then
+
+
+            local haveProtect = false
+            for i = 0, 8 do
+                item = killedEntity:GetItemInSlot(i)
+                if item ~= nil then
+                    if item:GetAbilityName() == "item_protective_amulet" then
+                        haveProtect = true
+                        killedEntity:RemoveItem(item)
+                        break
+                    end
+                end
+            end
+
+            if haveProtect == true then
+                killedEntity:RespawnHero(false, false)
+                return nil
+            end  
+
             local newItem = CreateItem( "item_tombstone", killedEntity, killedEntity )
             newItem:SetPurchaseTime( 0 )
             newItem:SetPurchaser( killedEntity )
@@ -226,9 +269,8 @@ function main_chap_two:OnEntityKilled(data)
                 GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
             end
 
-        end 
 
-
+    end 
 end
 
 
@@ -419,6 +461,9 @@ function main_chap_two:CreateWave(spawnInterval, waveMonstersType1, waveMonsters
     self:StartNewEvent()
     EmitGlobalSound("Tutorial.Quest.complete_01")
 
+    --print(NUMBER_OF_WAVE)
+    --print(MODIFIER_WAVES_TABLE[NUMBER_OF_WAVE])
+
     Timers:CreateTimer(1, function()
 
         --босс
@@ -513,11 +558,6 @@ function main_chap_two:CreateWaveReward()
     local rareType1 = "first"
     local rareType2 = "second"
 
-    if NUMBER_OF_WAVE > 13 then
-        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-        return nil
-    end
-
     if NUMBER_OF_WAVE == 1 then
         rareType2 = "first"
     end
@@ -532,16 +572,10 @@ function main_chap_two:CreateWaveReward()
         rareType2 = "third"
     end
 
-    if NUMBER_OF_WAVE > 10 then
-        rareType1 = "third"
-        rareType2 = "unique"
-        tartSoundEventFromPosition("DOTA_Item.Refresher.Activate",spawnPoint)
-    end
-
     for i = 1, PlAYER_COUNT do
         if i <= 3 then
             local spawnPoint = Entities:FindByName( nil, "loot_spawner_" .. i):GetAbsOrigin()
-            for i = 1, 10 do
+            for i = 1, 15 do
                 self:CreateDrop("item_skull_of_evil", spawnPoint)
             end  
 
@@ -551,7 +585,7 @@ function main_chap_two:CreateWaveReward()
 
             self:CreateDrop(GetRandomItemNameFrom(rareType2), spawnPoint)
   
-            if NUMBER_OF_WAVE == 4 or NUMBER_OF_WAVE == 7 or NUMBER_OF_WAVE == 10 then
+            if NUMBER_OF_WAVE == 4 or NUMBER_OF_WAVE == 7 or NUMBER_OF_WAVE >= 10 then
                 self:CreateDrop(GetRandomItemNameFrom("unique"), spawnPoint)
                 StartSoundEventFromPosition("DOTA_Item.Refresher.Activate",spawnPoint)
             end
@@ -607,6 +641,12 @@ function main_chap_two:PrepareToNewWave()
 
     
     NUMBER_OF_WAVE = NUMBER_OF_WAVE + 1
+
+    if NUMBER_OF_WAVE > 13 then
+        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+        return nil
+    end
+
     self:SendStartEventMassegae()
 
     local bossName = "npc_wave_mini_boss"
@@ -653,7 +693,7 @@ end
 function main_chap_two:StartNewEvent()
     --print("========================EVENT_REWARD========================")
     EVENT_NUMBER = RandomInt(1,5)
-    EVENT_NUMBER = 1
+    --EVENT_NUMBER = 2
     local units = nil
     local point = nil
     local modifierName = ""
@@ -681,6 +721,7 @@ function main_chap_two:StartNewEvent()
         --print("======================== 2 ========================")
         point = Entities:FindByName( nil, "trigger_event_colossus"):GetAbsOrigin()
         units = CreateUnitByName("npc_colossus", point, true, nil, nil, DOTA_TEAM_GOODGUYS )
+        units:AddNewModifier(units, nil, "modifier_summoner_wide_swing", {})
         units:AddNewModifier(units, nil, "modifier_force_kill", {duration = WAVE_DURATION})
         EVENT_REWARD = 0 
     end
@@ -740,10 +781,11 @@ function main_chap_two:PrepareNewEvent()
 
 
     if EVENT_NUMBER == 2 then
+        self:SetEventColossusPartCount(0)
         CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_create_new_message", {messageName = "#event_colossus_head", messageText = "#event_colossus_text"}) 
         CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = 0, maxScore = 5})
 
-        for i = 1, 5 do
+        for i = 1, 4 do
             point = Entities:FindByName( nil, "spawner_" .. RandomInt(1, 40)):GetAbsOrigin()
             self:CreateDrop("item_colossus_part", point)
         end

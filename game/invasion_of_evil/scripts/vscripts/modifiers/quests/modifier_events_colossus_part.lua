@@ -2,7 +2,6 @@
 
 modifier_events_colossus_part = class({})
 
-EVENT_COLLOSUS_PART_COUNT = 0
 
 function modifier_events_colossus_part:DeclareFunctions()
     return { MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT }
@@ -37,13 +36,13 @@ function modifier_events_colossus_part:OnDestroy(data)
     if IsServer() and self.parent then
         if self.parent.colossus_part_build and EVENT_REWARD == 0 then
 
-            EVENT_COLLOSUS_PART_COUNT = EVENT_COLLOSUS_PART_COUNT + 1
+            main_chap_two:SetEventColossusPartCount(EVENT_COLLOSUS_PART_COUNT + 1)
             self.parent:EmitSound("DOTA_Item.AbyssalBlade.Activate")
             CustomGameEventManager:Send_ServerToAllClients("QuestPanel_UpdateEventScorebar",  {currentScore = EVENT_COLLOSUS_PART_COUNT, maxScore = EVENT_COLLOSUS_PART_MAX})
           
             if EVENT_COLLOSUS_PART_COUNT >= EVENT_COLLOSUS_PART_MAX then
                 --print("Change reward")
-                EVENT_COLLOSUS_PART_COUNT = 0
+                main_chap_two:SetEventColossusPartCount(0)
                 main_chap_two:SetEventReward(2)
                 CustomGameEventManager:Send_ServerToAllClients("QuestMsgPanel_close",  {})
             end

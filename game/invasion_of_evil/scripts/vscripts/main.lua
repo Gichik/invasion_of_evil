@@ -128,8 +128,20 @@ function main:OnNPCSpawn(data)
 
     if unit:IsRealHero() then
 
-        Timers:CreateTimer(1, function()
+        Timers:CreateTimer(0.5, function()
             unit:RemoveModifierByName("modifier_silencer_int_steal")
+
+            --удаляем вещи у рандом пик
+            for i = 0, 8 do
+                item = unit:GetItemInSlot(i)
+                if item ~= nil then
+                    print(item:GetAbilityName())
+                    if item:GetAbilityName():find("mango") or item:GetAbilityName():find("fire") then
+                        unit:RemoveItem(item)
+                    end
+                end
+            end
+
           return nil
         end
         )
